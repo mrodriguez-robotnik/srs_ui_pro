@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="srs_ui_pro" />
+		<Option makefile_is_custom="1" />
+		<Option execution_dir="/home/marodga/local_packages/srs_ui_pro/" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="../bin/srs_ui_pro" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../build/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="`wx-config --cflags`" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config --libs`" />
+		</Linker>
+		<Unit filename="wxsmith/srs_ui_proframe.wxs" />
+		<Unit filename="../include/ObjectInfo.h" />
+		<Unit filename="../include/ProcessManager.h" />
+		<Unit filename="../include/RosInterface.h" />
+		<Unit filename="../include/SkypeFunctions.h" />
+		<Unit filename="../include/SkypeWindow.h" />
+		<Unit filename="../include/SkypeWindow2.h" />
+		<Unit filename="../include/srs_ui_proApp.h" />
+		<Unit filename="../include/srs_ui_proMain.h" />
+		<Unit filename="../src/GUI/ObjectInfo.cpp" />
+		<Unit filename="../src/GUI/ProcessManager.cc" />
+		<Unit filename="../src/GUI/RosInterface.cpp" />
+		<Unit filename="../src/GUI/SkypeFunctions.cpp" />
+		<Unit filename="../src/GUI/SkypeWindow.cpp" />
+		<Unit filename="../src/GUI/SkypeWindow2.cpp" />
+		<Unit filename="../src/GUI/srs_ui_proApp.cpp" />
+		<Unit filename="../src/GUI/srs_ui_proMain.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<lib_finder disable_auto="1" />
+			<debugger />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="../src/GUI/srs_ui_proApp.cpp" main="srs_ui_proFrame" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/srs_ui_proframe.wxs" src="../src/GUI/srs_ui_proMain.cpp" hdr="../include/srs_ui_proMain.h" name="srs_ui_proFrame" language="CPP" />
+					<wxFrame wxs="wxsmith/ObjectInfo.wxs" src="../src/GUI/ObjectInfo.cpp" hdr="../include/ObjectInfo.h" name="ObjectInfo" language="CPP" />
+					<wxFrame wxs="wxsmith/SkypeWindow.wxs" src="../src/GUI/SkypeWindow.cpp" hdr="../include/SkypeWindow.h" name="SkypeWindow" language="CPP" />
+					<wxFrame wxs="wxsmith/SkypeWindow2.wxs" src="../src/GUI/SkypeWindow2.cpp" hdr="../include/SkypeWindow2.h" name="SkypeWindow2" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

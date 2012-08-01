@@ -1,0 +1,2 @@
+float32 linear_scale
+float32 angular_scale

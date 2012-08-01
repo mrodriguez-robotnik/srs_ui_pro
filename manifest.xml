@@ -1,0 +1,37 @@
+<package>
+  <description brief="srs_ui_pro">
+	GUI interface for the SRS project
+  </description>
+  <author>Robotnik</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/srs_ui_pro</url>
+
+  <depend package="roscpp"/>
+  <depend package="actionlib"/>
+  <depend package="actionlib"/>
+  <depend package="interactive_markers"/>
+  <depend package="srs_grasping"/>
+  <depend package="srs_decision_making"/>
+  <depend package="srs_decision_making_interface"/>
+  <depend package="srs_interaction_primitives"/>
+  <depend package="cob_relayboard"/>
+  <depend package="schunk_sdh"/>
+  <depend package="srs_assisted_arm_navigation"/>
+  <depend package="visualization_msgs"/>
+  <depend package="actionlib_msgs"/>
+  <depend package="std_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="gazebo_msgs"/>
+  <depend package="move_base_msgs"/>
+  <depend package="trajectory_msgs"/>
+
+  <!--export>
+	<cpp cflags ="-I${prefix}/include -I${prefix}/msg_gen/cpp/include -I${prefix}/srv_gen/cpp/include"/>
+  </export-->
+
+  <rosdep name="wxwidgets"/>
+
+</package>
+
+

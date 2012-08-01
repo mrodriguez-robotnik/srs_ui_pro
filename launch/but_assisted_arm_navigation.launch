@@ -1,0 +1,6 @@
+<launch>
+  
+  <include file="$(find srs_assisted_arm_navigation)/launch/arm_manip_node.launch"/>
+  <include file="$(find srs_assisted_arm_navigation)/launch/planning_env_but.launch"/>
+
+</launch>

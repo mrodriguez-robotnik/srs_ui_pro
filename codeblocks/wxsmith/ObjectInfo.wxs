@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="ObjectInfo">
+		<size>416,542</size>
+		<id_arg>0</id_arg>
+		<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText1" member="yes">
+			<label>Object name:</label>
+			<pos>16,16</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT2" variable="StaticText2" member="yes">
+			<label>Detected pose:</label>
+			<pos>16,56</pos>
+			<size>136,17</size>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT3" variable="StaticText3" member="yes">
+			<label>frame__id:</label>
+			<pos>32,80</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT15" variable="StaticText15" member="yes">
+			<label>position:</label>
+			<pos>32,112</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT4" variable="StaticText4" member="yes">
+			<label>position:</label>
+			<pos>32,352</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT16" variable="StaticText16" member="yes">
+			<label>orientation:</label>
+			<pos>32,204</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT5" variable="StaticText5" member="yes">
+			<label>orientation:</label>
+			<pos>32,442</pos>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="box_object_name" member="yes">
+			<pos>120,12</pos>
+			<size>280,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL11" variable="box_reference_link" member="yes">
+			<value>/base__link</value>
+			<pos>192,328</pos>
+			<size>208,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL4" variable="box_frame_id" member="yes">
+			<value>Text</value>
+			<pos>120,76</pos>
+			<size>280,27</size>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT17" variable="StaticText17" member="yes">
+			<label>X</label>
+			<pos>159,136</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT9" variable="StaticText9" member="yes">
+			<label>X</label>
+			<pos>159,376</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT20" variable="StaticText20" member="yes">
+			<label>X</label>
+			<pos>147,228</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT6" variable="StaticText6" member="yes">
+			<label>X</label>
+			<pos>147,466</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT18" variable="StaticText18" member="yes">
+			<label>Y</label>
+			<pos>255,136</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT10" variable="StaticText10" member="yes">
+			<label>Y</label>
+			<pos>255,376</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT21" variable="StaticText21" member="yes">
+			<label>Y</label>
+			<pos>219,228</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT7" variable="StaticText7" member="yes">
+			<label>Y</label>
+			<pos>219,466</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT19" variable="StaticText19" member="yes">
+			<label>Z</label>
+			<pos>351,136</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT11" variable="StaticText11" member="yes">
+			<label>Z</label>
+			<pos>351,376</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT22" variable="StaticText22" member="yes">
+			<label>Z</label>
+			<pos>292,228</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT8" variable="StaticText8" member="yes">
+			<label>Z</label>
+			<pos>292,466</pos>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL13" variable="box_pY" member="yes">
+			<value>Text</value>
+			<pos>216,152</pos>
+			<size>88,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL7" variable="box_tpY" member="yes">
+			<value>Text</value>
+			<pos>216,392</pos>
+			<size>88,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL12" variable="box_pX" member="yes">
+			<value>Text</value>
+			<pos>120,152</pos>
+			<size>88,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL6" variable="box_tpX" member="yes">
+			<value>Text</value>
+			<pos>120,392</pos>
+			<size>88,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL15" variable="box_oX" member="yes">
+			<value>Text</value>
+			<pos>120,244</pos>
+			<size>64,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL17" variable="box_toX" member="yes">
+			<value>Text</value>
+			<pos>120,482</pos>
+			<size>64,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL18" variable="box_toY" member="yes">
+			<value>Text</value>
+			<pos>192,482</pos>
+			<size>64,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL19" variable="box_toZ" member="yes">
+			<value>Text</value>
+			<pos>264,482</pos>
+			<size>64,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL8" variable="box_toW" member="yes">
+			<value>Text</value>
+			<pos>336,482</pos>
+			<size>64,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL9" variable="box_oY" member="yes">
+			<value>Text</value>
+			<pos>192,244</pos>
+			<size>64,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL10" variable="box_oW" member="yes">
+			<value>Text</value>
+			<pos>336,244</pos>
+			<size>64,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL5" variable="box_oZ" member="yes">
+			<value>Text</value>
+			<pos>264,244</pos>
+			<size>64,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL14" variable="box_pZ" member="yes">
+			<value>Text</value>
+			<pos>312,152</pos>
+			<size>88,27</size>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="box_tpZ" member="yes">
+			<value>Text</value>
+			<pos>312,392</pos>
+			<size>88,27</size>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT23" variable="StaticText23" member="yes">
+			<label>W</label>
+			<pos>361,228</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT12" variable="StaticText12" member="yes">
+			<label>W</label>
+			<pos>361,466</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT13" variable="StaticText13" member="yes">
+			<label>Transformed pose:</label>
+			<pos>16,296</pos>
+			<size>144,17</size>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT14" variable="StaticText14" member="yes">
+			<label>Reference link:</label>
+			<pos>32,320</pos>
+		</object>
+	</object>
+</wxsmith>

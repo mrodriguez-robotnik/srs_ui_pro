@@ -1,0 +1,7 @@
+<launch>
+
+   <include file="$(find srs_object_database)/launch/srs_db.launch"/>
+   <include file="$(find srs_grasping)/launch/grasping_services.launch"/>
+   <node pkg="srs_ui_pro" type="wait_request_events.py" name="wait_request_events" ns="wait_request_events" cwd="node" respawn="false" output="screen" />
+
+</launch>

@@ -1,0 +1,1 @@
+/home/marodga/local_packages/srs_ui_pro/codeblocks/build/CMakeFiles/srs_ui_pro.dir

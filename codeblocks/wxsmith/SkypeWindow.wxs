@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="SkypeWindow">
+		<size>400,315</size>
+		<id_arg>0</id_arg>
+		<style>wxDEFAULT_FRAME_STYLE|wxMAXIMIZE_BOX</style>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="chat_log" member="yes">
+			<pos>8,112</pos>
+			<size>384,160</size>
+			<style>wxTE_MULTILINE|wxTE_READONLY</style>
+		</object>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="chat_send" member="yes">
+			<pos>8,280</pos>
+			<size>344,27</size>
+			<style>wxTE_PROCESS_ENTER|wxTE_MULTILINE</style>
+			<handler function="Onchat_sendTextEnter" entry="EVT_TEXT_ENTER" />
+		</object>
+		<object class="wxButton" name="ID_BUTTON1" variable="button_chat" member="yes">
+			<label>&lt;-</label>
+			<pos>360,280</pos>
+			<size>32,27</size>
+			<handler function="Onbutton_chatClick" entry="EVT_BUTTON" />
+		</object>
+		<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">
+			<pos>8,8</pos>
+			<size>384,96</size>
+			<object class="wxStaticBitmap" name="ID_STATICBITMAP1" variable="img_avatar" member="yes">
+				<bitmap>./img/avatar_prueba.jpg</bitmap>
+				<pos>0,0</pos>
+				<size>89,89</size>
+			</object>
+			<object class="wxPanel" name="ID_PANEL3" variable="panel_call" member="yes">
+				<pos>104,0</pos>
+				<size>48,40</size>
+				<object class="wxBitmapButton" name="ID_BITMAPBUTTON1" variable="img_call" member="yes">
+					<bitmap>./img/call_on.gif</bitmap>
+					<default>1</default>
+					<pos>0,0</pos>
+					<size>40,40</size>
+					<handler function="callButton" entry="EVT_BUTTON" />
+				</object>
+			</object>
+			<object class="wxPanel" name="ID_PANEL4" variable="Panel2" member="yes">
+				<pos>152,0</pos>
+				<size>48,40</size>
+				<object class="wxBitmapButton" name="ID_BITMAPBUTTON3" variable="img_sound" member="yes">
+					<bitmap>./img/mute_on.png</bitmap>
+					<default>1</default>
+					<pos>0,0</pos>
+					<size>40,40</size>
+					<handler function="soundButton" entry="EVT_BUTTON" />
+				</object>
+			</object>
+			<object class="wxPanel" name="ID_PANEL2" variable="panel_mute" member="yes">
+				<pos>200,0</pos>
+				<size>48,40</size>
+				<object class="wxBitmapButton" name="ID_BITMAPBUTTON2" variable="img_micro" member="yes">
+					<bitmap>./img/micro_on.png</bitmap>
+					<default>1</default>
+					<pos>0,0</pos>
+					<size>40,40</size>
+					<handler function="muteButton" entry="EVT_BUTTON" />
+				</object>
+			</object>
+			<object class="wxStaticText" name="ID_STATICTEXT1" variable="label_name" member="yes">
+				<label>Name</label>
+				<pos>104,48</pos>
+			</object>
+			<object class="wxStaticText" name="ID_STATICTEXT2" variable="label_location" member="yes">
+				<label>City, Country</label>
+				<pos>104,72</pos>
+			</object>
+		</object>
+	</object>
+</wxsmith>

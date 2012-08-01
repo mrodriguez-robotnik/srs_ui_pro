@@ -1,0 +1,5 @@
+int32 object_id
+srs_msgs/GraspSubConfiguration grasp_configuration
+geometry_msgs/Pose object_pose
+---
+bool result
