@@ -25,7 +25,12 @@ bool srs_ui_proApp::OnInit()
     wxInitAllImageHandlers();
     if ( wxsOK )
     {
+        /*
     	srs_ui_proFrame* Frame = new srs_ui_proFrame(0);
+    	Frame->Show();
+    	SetTopWindow(Frame);
+    	*/
+    	LogginScreen* Frame = new LogginScreen(0);
     	Frame->Show();
     	SetTopWindow(Frame);
     }

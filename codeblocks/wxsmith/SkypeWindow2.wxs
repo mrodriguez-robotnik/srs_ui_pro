@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <wxsmith>
 	<object class="wxFrame" name="SkypeWindow2">
+		<title>srs__ui__pro</title>
 		<size>400,542</size>
 		<id_arg>0</id_arg>
 		<object class="wxPanel" name="ID_PANEL2" variable="Panel2" member="yes">

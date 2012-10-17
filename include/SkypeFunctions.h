@@ -93,14 +93,25 @@ public:
   bool isLiveSessionUp;
   wxTextCtrl *log;
   wxListCtrl *incoming_calls;
+  std::string accountName;
 
+  std::string text_event;
+  wxColour colour_event;
+  bool message_event;
+
+  bool incomingCall_event;
+  std::string incomingCall_message;
 
   MySkype() : Skype() {
     callFinished = false;
     isLiveSessionUp = false;
     liveSession = 0;
+    message_event = false;
+    incomingCall_event = false;
+    accountName = "";
   };
 
+  void setUsername(std::string user){ accountName = user;}
   Account*      newAccount(int oid) {return new MyAccount(oid, this);}
   ContactGroup* newContactGroup(int oid) {return new MyContactGroup(oid, this);}
   Contact*      newContact(int oid) {return new MyContact(oid, this);}
@@ -132,6 +143,7 @@ class SkypeFunctions
 
         wxTextCtrl *log;
         wxListCtrl *incoming_calls;
+        std::string contact_event;
 
         SEString inetAddr;
         uint portNum;
@@ -142,6 +154,7 @@ class SkypeFunctions
         SkypeFunctions();
         virtual ~SkypeFunctions();
 
+        void setAccountInfo(std::string user, std::string pass) {accountName = user; accountPsw = pass; skype->setUsername(user); }
         void initialize();
         int connect(wxListCtrl *contactList);
         void disconnect(wxListCtrl *contactList);
@@ -162,11 +175,18 @@ class SkypeFunctions
         void refuseCall();
 
         void setEventOutput(wxListCtrl *lc){ incoming_calls = lc; skype->setEventOutput(lc);}
-        void setChatOutput(wxTextCtrl *tc){ log = tc; skype->setOutput(tc); }
+        void allowNewMessageEvent();
+        void allowNewIncomingCallEvent();
+        bool messageEvent();
+        bool incomingCallEvent();
+        std::string textEvent();
+        std::string incomingCallMessageEvent();
+
     protected:
 
-
     private:
+        std::string accountName;
+        std::string accountPsw;
 
         MySkype *skype;
         MyAccount::Ref account;

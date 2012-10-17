@@ -31,7 +31,7 @@ END_EVENT_TABLE()
 SkypeWindow2::SkypeWindow2(wxWindow* parent, SkypeFunctions *sf, std::string un, wxWindowID id,const wxPoint& pos,const wxSize& size)
 {
 	//(*Initialize(SkypeWindow2)
-	Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
+	Create(parent, wxID_ANY, _("srs_ui_pro"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
 	SetClientSize(wxSize(400,542));
 	Panel2 = new wxPanel(this, ID_PANEL2, wxPoint(8,8), wxSize(384,96), wxTAB_TRAVERSAL, _T("ID_PANEL2"));
 	img_avatar = new wxStaticBitmap(Panel2, ID_STATICBITMAP1, wxBitmap(wxImage(_T("./img/avatar_prueba.jpg")).Rescale(wxSize(89,89).GetWidth(),wxSize(89,89).GetHeight())), wxPoint(0,0), wxSize(89,89), 0, _T("ID_STATICBITMAP1"));

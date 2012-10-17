@@ -10,11 +10,12 @@
 
 
 #include <ros/ros.h>
+#include <ros/package.h>
 #include <tf/transform_listener.h>
 #include <geometry_msgs/Pose.h>
 #include <trajectory_msgs/JointTrajectory.h>
 #include <sensor_msgs/JointState.h>
-#include <kinematics_msgs/GetPositionIK.h>
+#include <kinematics_msgs/GetConstraintAwarePositionIK.h>
 #include <diagnostic_msgs/DiagnosticArray.h>
 #include <gazebo_msgs/GetWorldProperties.h>
 #include <move_base_msgs/MoveBaseActionGoal.h>
@@ -25,6 +26,7 @@
 
 #include <pr2_msgs/PowerState.h>
 #include <pr2_msgs/AccessPoint.h>
+#include <pr2_controllers_msgs/JointTrajectoryControllerState.h>
 #include <cob_object_detection_msgs/DetectionArray.h>
 #include <cob_object_detection_msgs/DetectObjects.h>
 #include <cob_relayboard/EmergencyStopState.h>
@@ -33,6 +35,7 @@
 
 #include <srs_msgs/FeasibleGrasp.h>
 #include <srs_decision_making_interface/srs_actionActionFeedback.h>     //#include <srs_decision_making/ExecutionActionFeedback.h>
+#include <srs_decision_making_interface/srs_actionActionResult.h>     //#include <srs_decision_making/ExecutionActionFeedback.h>
 #include <srs_decision_making_interface/srs_actionAction.h>
 #include <srs_grasping/GetDBGrasps.h>
 #include <srs_grasping/GetFeasibleGrasps.h>
@@ -51,8 +54,8 @@
 #include <srs_knowledge/GetRoomsOnMap.h>
 #include <srs_knowledge/GetPredefinedPoses.h>
 #include <srs_knowledge/GetWorkspaceForObject.h>
-#include <srs_knowledge/SRSSpatialInfo.h>
-#include <srs_assisted_arm_navigation/ManualArmManipAction.h>
+#include <srs_msgs/SRSSpatialInfo.h>
+//#include <srs_assisted_arm_navigation/ManualArmManipAction.h>
 
 
 #include <exception>
@@ -135,7 +138,7 @@ class RosInterface
         virtual ~RosInterface();
         static void init();
 
-        int decision_making_actions(std::string action, std::string parameters);
+        int decision_making_actions(std::string action, std::string parameters, std::string json_parameters="NULL");
         std::vector<srs_msgs::DBGrasp> getGraspConfigurations(int object_id);
         std::vector<srs_msgs::FeasibleGrasp> getGraspsFromPosition(int object_id, geometry_msgs::Pose object_pose);
         bool GraspSimulator(int object_id, srs_msgs::FeasibleGrasp grasp_configuration, geometry_msgs::Pose object_pose);
@@ -144,7 +147,7 @@ class RosInterface
         std::vector<std::string> get_objects_on_map();
         std::vector<std::string> get_objects_on_tray();
         std::vector<std::string> get_workspace_on_map();
-        std::vector<srs_knowledge::SRSSpatialInfo> get_workspace_on_map_info();
+        std::vector<srs_msgs::SRSSpatialInfo> get_workspace_on_map_info();
         std::vector<std::string> get_rooms_on_map();
         std::vector<std::string> get_predefined_poses();
         std::vector<std::string> get_workspace_for_object(std::string objectType);
@@ -153,6 +156,10 @@ class RosInterface
         std::string getMoveBaseStatus();
         std::string getDMStatusText();
         std::string getDMCurrentState();
+        std::string getDMCurrentTask();
+        std::string getDMCurrentTaskID();
+        int getDMCurrentStatus();
+        int DM_InterventionRequired();
         std::string getMesh(int object_id);
         int getObjectId(std::string object_name);
         pr2_msgs::PowerState getPowerState();
@@ -179,11 +186,13 @@ class RosInterface
         void IP_RemoveObject(std::string object_name);
         void startAssistedArm();
 
+        void callback_arm_joint_states(const pr2_controllers_msgs::JointTrajectoryControllerState::ConstPtr &msg);
         void callback_joint_states(const sensor_msgs::JointState::ConstPtr &msg);
         void callback_diagnostic(const diagnostic_msgs::DiagnosticArray::ConstPtr &msg);
         void callback_emergency_stop_state(const cob_relayboard::EmergencyStopState::ConstPtr &msg);
         void callback_MoveBase(const actionlib_msgs::GoalStatusArray::ConstPtr &msg);
         void callback_dm_fb(const srs_decision_making_interface::srs_actionActionFeedback::ConstPtr &msg);
+        void callback_dm_result(const srs_decision_making_interface::srs_actionActionResult::ConstPtr &msg);
         void callback_ts(const schunk_sdh::TactileSensor::ConstPtr &msg);
         void callback_power_state(const pr2_msgs::PowerState &msg);
         void callback_wifi_state(const pr2_msgs::AccessPoint &msg);
@@ -216,18 +225,21 @@ class RosInterface
         ros::ServiceClient get_predefined_poses_client;
         ros::ServiceClient get_workspace_for_object_client;
 
-
+        ros::Subscriber sub_arm_state;
         ros::Subscriber sub_joint_states;
         ros::Subscriber sub_odom;
         ros::Subscriber sub_diagnostic;
         ros::Subscriber sub_emergency_state_stop;
         ros::Subscriber sub_goto_status;
         ros::Subscriber sub_dm_fb;
+        ros::Subscriber sub_dm_result;
         ros::Subscriber sub_ts;
         ros::Subscriber sub_power_state;
         ros::Subscriber sub_wifi_state;
         ros::Subscriber sub_grabbed;
         ros::Subscriber sub_grabbed2;
+
+        actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction>* dm_client;
 
         //ros::Subscriber sub_sdh_controller;    // Suscriber
         //ros::Publisher pub_sdh_controller;     // publisher
@@ -236,8 +248,10 @@ class RosInterface
 
         void ControlThread();
         int Start();
+        void initializeVariables();
         void initTopics();
         void initServices();
+        void initActionServers();
         void serviceAvailable(ros::ServiceClient sc);
         void serviceCall(ros::ServiceClient sc, bool response);
 
@@ -263,10 +277,15 @@ class RosInterface
         std::string diagnostics_message;
         std::string move_base_status_message;
         std::string dm_status_text;
-        std::string dm_current_status;
+        std::string dm_current_state;
+        int dm_current_status;
+        bool dm_solution_required;
+        int dm_exceptional_case_id;
         std::string dm_goal_id;
         bool emergency_button_stop_state;
         bool scanner_stop_state;
+        std::string dm_current_task, dm_current_task_id;
+
 };
 
 #endif // ROSINTERFACE_H

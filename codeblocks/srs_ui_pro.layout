@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="default" />
-	<File name="../src/GUI/srs_ui_proApp.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="547" topLine="0" />
+	<File name="../include/LogginScreen.h" open="0" top="0" tabpos="0">
+		<Cursor position="198" topLine="0" />
 	</File>
-	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="39" topLine="0" />
+	<File name="../include/ProcessManager.h" open="0" top="0" tabpos="0">
+		<Cursor position="433" topLine="15" />
+	</File>
+	<File name="../include/RosInterface.h" open="0" top="0" tabpos="0">
+		<Cursor position="2426" topLine="37" />
+	</File>
+	<File name="../include/SkypeFunctions.h" open="0" top="0" tabpos="0">
+		<Cursor position="3925" topLine="136" />
+	</File>
+	<File name="../include/SkypeWindow.h" open="0" top="0" tabpos="0">
+		<Cursor position="537" topLine="0" />
+	</File>
+	<File name="../include/srs_ui_proApp.h" open="0" top="0" tabpos="0">
+		<Cursor position="429" topLine="0" />
+	</File>
+	<File name="../include/srs_ui_proMain.h" open="0" top="0" tabpos="0">
+		<Cursor position="2121" topLine="72" />
+	</File>
+	<File name="../src/GUI/LogginScreen.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="15769" topLine="489" />
+	</File>
+	<File name="../src/GUI/ProcessManager.cc" open="0" top="0" tabpos="1">
+		<Cursor position="6482" topLine="137" />
+	</File>
+	<File name="../src/GUI/RosInterface.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="18410" topLine="492" />
+	</File>
+	<File name="../src/GUI/SkypeFunctions.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="3319" topLine="70" />
+	</File>
+	<File name="../src/GUI/SkypeWindow.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="4126" topLine="46" />
+	</File>
+	<File name="../src/GUI/srs_ui_proApp.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="850" topLine="0" />
+	</File>
+	<File name="../src/GUI/srs_ui_proMain.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="77889" topLine="1239" />
 	</File>
 </CodeBlocks_layout_file>

@@ -8,6 +8,7 @@
 #include <wx/frame.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
+#include <wx/timer.h>
 #include <wx/statbmp.h>
 //*)
 
@@ -37,6 +38,7 @@ class SkypeWindow: public wxFrame
 		wxPanel* Panel2;
 		wxStaticBitmap* img_avatar;
 		wxPanel* panel_call;
+		wxTimer timer_messageEvents;
 		wxStaticText* label_name;
 		wxStaticText* label_location;
 		//*)
@@ -61,6 +63,7 @@ class SkypeWindow: public wxFrame
 		static const long ID_STATICTEXT1;
 		static const long ID_STATICTEXT2;
 		static const long ID_PANEL1;
+		static const long ID_TIMER1;
 		//*)
 
 	private:
@@ -71,6 +74,7 @@ class SkypeWindow: public wxFrame
 		void Onbutton_chatClick(wxCommandEvent& event);
 		void Onchat_sendTextEnter(wxCommandEvent& event);
 		void soundButton(wxCommandEvent& event);
+		void Ontimer_messageEventsTrigger(wxTimerEvent& event);
 		//*)
 
 		DECLARE_EVENT_TABLE()

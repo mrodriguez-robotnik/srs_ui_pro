@@ -11,17 +11,17 @@
 			<object class="wxPanel" name="ID_PANEL2" variable="panel_comunications_main" member="yes">
 				<pos>8,0</pos>
 				<size>391,688</size>
-				<object class="wxBoxSizer" variable="BoxSizer7" member="no">
+				<object class="wxBoxSizer" variable="sizer_comunications" member="no">
 					<object class="sizeritem">
-						<object class="wxPanel" name="ID_PANEL4" variable="PanelCommunications" member="yes">
+						<object class="wxPanel" name="ID_PANEL4" variable="panel_comunications" member="yes">
 							<pos>0,0</pos>
 							<size>360,600</size>
 							<object class="wxGrid" name="ID_GRID1" variable="grid_requests" member="yes">
 								<cols>3</cols>
-								<rows>1</rows>
+								<rows>6</rows>
 								<readonly>1</readonly>
 								<labelcolwidth>1</labelcolwidth>
-								<defaultcolsize>110</defaultcolsize>
+								<defaultcolsize>115</defaultcolsize>
 								<collabels>
 									<item>ID</item>
 									<item>URI</item>
@@ -33,25 +33,24 @@
 									<item>Can&apos;t grasp an object</item>
 								</celltext>
 								<pos>0,32</pos>
-								<size>344,176</size>
+								<size>345,176</size>
 								<minsize>-1,-1</minsize>
 								<handler function="Ongrid_requestsCellLeftDClick" entry="EVT_CMD_GRID_CELL_LEFT_DCLICK" />
-								<handler function="Ongrid_request_eventsLabelLeftDClick" entry="EVT_CMD_GRID_LABEL_LEFT_DCLICK" />
 							</object>
-							<object class="wxStaticText" name="ID_STATICTEXT7" variable="StaticText7" member="yes">
+							<object class="wxStaticText" name="ID_STATICTEXT7" variable="label_Requests" member="yes">
 								<label>Requests</label>
-								<pos>8,8</pos>
+								<pos>0,8</pos>
 								<size>72,24</size>
 							</object>
-							<object class="wxNotebook" name="ID_NOTEBOOK2" variable="chat" member="yes">
+							<object class="wxNotebook" name="ID_NOTEBOOK2" variable="tabs_skype" member="yes">
 								<pos>0,232</pos>
 								<size>360,240</size>
 								<style>wxNB_MULTILINE</style>
 								<object class="notebookpage">
-									<object class="wxPanel" name="ID_PANEL10" variable="Panel10" member="yes">
+									<object class="wxPanel" name="ID_PANEL10" variable="tab_skype_contacts" member="yes">
 										<pos>4,381</pos>
 										<size>352,243</size>
-										<object class="wxListCtrl" name="ID_LISTCTRL1" variable="notebook_skype_contacts_contactList" member="yes">
+										<object class="wxListCtrl" name="ID_LISTCTRL1" variable="grid_skype_contactList" member="yes">
 											<pos>16,16</pos>
 											<size>320,168</size>
 											<style>wxLC_REPORT|wxSIMPLE_BORDER</style>
@@ -61,8 +60,8 @@
 									<label>Contacts</label>
 								</object>
 								<object class="notebookpage">
-									<object class="wxPanel" name="ID_PANEL9" variable="PanelIncomingCalls" member="yes">
-										<object class="wxListCtrl" name="ID_LISTCTRL2" variable="notebook_skype_incoming_calls_incomingList" member="yes">
+									<object class="wxPanel" name="ID_PANEL9" variable="tab_skype_IncomingCalls" member="yes">
+										<object class="wxListCtrl" name="ID_LISTCTRL2" variable="grid_skype_IncomingCalls" member="yes">
 											<pos>16,16</pos>
 											<size>320,168</size>
 											<style>wxLC_REPORT|wxSIMPLE_BORDER</style>
@@ -83,26 +82,26 @@
 				<pos>376,0</pos>
 				<size>674,482</size>
 				<enabled>0</enabled>
-				<object class="wxBoxSizer" variable="BoxSizer2" member="no">
+				<object class="wxBoxSizer" variable="sizer_actions" member="no">
 					<object class="sizeritem">
 						<object class="wxPanel" name="ID_PANEL7" variable="panel_actions" member="yes">
 							<pos>360,0</pos>
 							<size>800,500</size>
-							<object class="wxNotebook" name="ID_NOTEBOOK1" variable="tab_actions" member="yes">
+							<object class="wxNotebook" name="ID_NOTEBOOK1" variable="tabs_actions" member="yes">
 								<pos>0,0</pos>
 								<size>656,472</size>
 								<object class="notebookpage">
 									<object class="wxPanel" name="ID_PANEL11" variable="tab_automatic" member="yes">
-										<object class="wxNotebook" name="ID_NOTEBOOK4" variable="NotebookFull" member="yes">
+										<object class="wxNotebook" name="ID_NOTEBOOK4" variable="tabs_decisionmaking" member="yes">
 											<pos>0,0</pos>
 											<size>648,100</size>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL20" variable="tab_automatic_move" member="yes">
-													<object class="wxBoxSizer" variable="BoxSizer5" member="no">
+													<object class="wxBoxSizer" variable="sizer_automatic_move" member="no">
 														<object class="sizeritem">
-															<object class="wxPanel" name="ID_PANEL46" variable="panel_GetMilk_sub" member="yes">
+															<object class="wxPanel" name="ID_PANEL46" variable="panel_automatic_move" member="yes">
 																<size>968,392</size>
-																<object class="wxButton" name="ID_BUTTON14" variable="button_GetMilkStart" member="yes">
+																<object class="wxButton" name="ID_BUTTON14" variable="but_move_Start" member="yes">
 																	<label>Start</label>
 																	<pos>128,16</pos>
 																	<size>48,29</size>
@@ -111,11 +110,6 @@
 																<object class="wxTextCtrl" name="ID_TEXTCTRL6" variable="box_automatic_move_small" member="yes">
 																	<pos>184,16</pos>
 																	<size>448,29</size>
-																</object>
-																<object class="wxTextCtrl" name="ID_TEXTCTRL7" variable="box_automatic_move_big" member="yes">
-																	<pos>8,56</pos>
-																	<size>624,296</size>
-																	<style>wxTE_MULTILINE</style>
 																</object>
 																<object class="wxChoice" name="ID_CHOICE3" variable="choice_automatic_move" member="yes">
 																	<pos>8,16</pos>
@@ -131,11 +125,11 @@
 											</object>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL18" variable="tab_automatic_get" member="yes">
-													<object class="wxBoxSizer" variable="BoxSizer3" member="no">
+													<object class="wxBoxSizer" variable="sizer_automatic_get" member="no">
 														<object class="sizeritem">
-															<object class="wxPanel" name="ID_PANEL19" variable="Panel26" member="yes">
+															<object class="wxPanel" name="ID_PANEL19" variable="panel_automatic_get" member="yes">
 																<size>968,392</size>
-																<object class="wxButton" name="ID_BUTTON13" variable="Button1" member="yes">
+																<object class="wxButton" name="ID_BUTTON13" variable="but_get_Start" member="yes">
 																	<label>Start</label>
 																	<pos>248,16</pos>
 																	<size>48,29</size>
@@ -144,11 +138,6 @@
 																<object class="wxTextCtrl" name="ID_TEXTCTRL3" variable="box_automatic_get_small" member="yes">
 																	<pos>304,16</pos>
 																	<size>328,29</size>
-																</object>
-																<object class="wxTextCtrl" name="ID_TEXTCTRL8" variable="box_automatic_get_big" member="yes">
-																	<pos>8,56</pos>
-																	<size>624,296</size>
-																	<style>wxTE_MULTILINE</style>
 																</object>
 																<object class="wxChoice" name="ID_CHOICE8" variable="choice_automatic_get_search" member="yes">
 																	<pos>128,16</pos>
@@ -160,7 +149,7 @@
 																	<size>112,29</size>
 																	<handler function="Onchoice_automatic_getSelect" entry="EVT_CHOICE" />
 																</object>
-																<object class="wxStaticText" name="ID_STATICTEXT5" variable="StaticText5" member="yes">
+																<object class="wxStaticText" name="ID_STATICTEXT5" variable="label_get_Optional" member="yes">
 																	<label>Optional:</label>
 																	<pos>128,0</pos>
 																</object>
@@ -173,11 +162,11 @@
 											</object>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL21" variable="tab_automatic_search" member="yes">
-													<object class="wxBoxSizer" variable="BoxSizer4" member="no">
+													<object class="wxBoxSizer" variable="sizer_automatic_search" member="no">
 														<object class="sizeritem">
-															<object class="wxPanel" name="ID_PANEL37" variable="Panel28" member="yes">
+															<object class="wxPanel" name="ID_PANEL37" variable="panel_automatic_search" member="yes">
 																<size>968,392</size>
-																<object class="wxButton" name="ID_BUTTON19" variable="Button12" member="yes">
+																<object class="wxButton" name="ID_BUTTON19" variable="but_search_Start" member="yes">
 																	<label>Start</label>
 																	<pos>248,16</pos>
 																	<size>48,29</size>
@@ -186,11 +175,6 @@
 																<object class="wxTextCtrl" name="ID_TEXTCTRL9" variable="box_automatic_search_small" member="yes">
 																	<pos>304,16</pos>
 																	<size>328,29</size>
-																</object>
-																<object class="wxTextCtrl" name="ID_TEXTCTRL10" variable="box_automatic_search_big" member="yes">
-																	<pos>8,56</pos>
-																	<size>624,296</size>
-																	<style>wxTE_MULTILINE</style>
 																</object>
 																<object class="wxChoice" name="ID_CHOICE7" variable="choice_automatic_search_search" member="yes">
 																	<pos>128,16</pos>
@@ -202,7 +186,7 @@
 																	<size>112,29</size>
 																	<handler function="Onchoice_automatic_searchSelect" entry="EVT_CHOICE" />
 																</object>
-																<object class="wxStaticText" name="ID_STATICTEXT11" variable="StaticText11" member="yes">
+																<object class="wxStaticText" name="ID_STATICTEXT11" variable="label_search_Optional" member="yes">
 																	<label>Optional:</label>
 																	<pos>128,0</pos>
 																</object>
@@ -215,20 +199,15 @@
 											</object>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL22" variable="tab_automatic_fetch" member="yes">
-													<object class="wxBoxSizer" variable="BoxSizer8" member="no">
+													<object class="wxBoxSizer" variable="sizer_automatic_fetch" member="no">
 														<object class="sizeritem">
-															<object class="wxPanel" name="ID_PANEL30" variable="panel_GoTo_sub" member="yes">
+															<object class="wxPanel" name="ID_PANEL30" variable="panel_automatic_fetch" member="yes">
 																<size>968,392</size>
 																<object class="wxTextCtrl" name="ID_TEXTCTRL5" variable="box_automatic_fetch_small" member="yes">
 																	<pos>424,16</pos>
 																	<size>208,29</size>
 																</object>
-																<object class="wxTextCtrl" name="ID_TEXTCTRL14" variable="box_automatic_fetch_big" member="yes">
-																	<pos>8,56</pos>
-																	<size>624,296</size>
-																	<style>wxTE_MULTILINE</style>
-																</object>
-																<object class="wxButton" name="ID_BUTTON1" variable="button_GoToStart" member="yes">
+																<object class="wxButton" name="ID_BUTTON1" variable="but_fetch_Start" member="yes">
 																	<label>Start</label>
 																	<pos>368,16</pos>
 																	<size>48,29</size>
@@ -253,7 +232,7 @@
 																	<size>112,29</size>
 																	<handler function="Onchoice_automatic_fetchSelect" entry="EVT_CHOICE" />
 																</object>
-																<object class="wxStaticText" name="ID_STATICTEXT13" variable="StaticText13" member="yes">
+																<object class="wxStaticText" name="ID_STATICTEXT13" variable="label_fetch_Optional" member="yes">
 																	<label>Optional:</label>
 																	<pos>248,0</pos>
 																</object>
@@ -266,11 +245,11 @@
 											</object>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL47" variable="tab_automatic_deliver" member="yes">
-													<object class="wxBoxSizer" variable="BoxSizer6" member="no">
+													<object class="wxBoxSizer" variable="sizer_automatic_deliver" member="no">
 														<object class="sizeritem">
-															<object class="wxPanel" name="ID_PANEL49" variable="Panel30" member="yes">
+															<object class="wxPanel" name="ID_PANEL49" variable="panel_automatic_deliver" member="yes">
 																<size>968,392</size>
-																<object class="wxButton" name="ID_BUTTON25" variable="Button16" member="yes">
+																<object class="wxButton" name="ID_BUTTON25" variable="but_deliver_Start" member="yes">
 																	<label>Start</label>
 																	<pos>368,16</pos>
 																	<size>48,29</size>
@@ -279,11 +258,6 @@
 																<object class="wxTextCtrl" name="ID_TEXTCTRL11" variable="box_automatic_deliver_small" member="yes">
 																	<pos>424,16</pos>
 																	<size>208,29</size>
-																</object>
-																<object class="wxTextCtrl" name="ID_TEXTCTRL12" variable="box_automatic_deliver_big" member="yes">
-																	<pos>8,56</pos>
-																	<size>624,296</size>
-																	<style>wxTE_MULTILINE</style>
 																</object>
 																<object class="wxChoice" name="ID_CHOICE12" variable="choice_automatic_deliver_deliver_position" member="yes">
 																	<pos>128,16</pos>
@@ -300,7 +274,7 @@
 																	<size>112,29</size>
 																	<handler function="Onchoice_automatic_deliverSelect" entry="EVT_CHOICE" />
 																</object>
-																<object class="wxStaticText" name="ID_STATICTEXT25" variable="StaticText14" member="yes">
+																<object class="wxStaticText" name="ID_STATICTEXT25" variable="label_deliver_Optional" member="yes">
 																	<label>Optional:</label>
 																	<pos>248,0</pos>
 																</object>
@@ -312,26 +286,27 @@
 												<label>deliver</label>
 											</object>
 										</object>
-										<object class="wxButton" name="ID_BUTTON16" variable="button_PAUSE" member="yes">
+										<object class="wxButton" name="ID_BUTTON16" variable="but_PAUSE" member="yes">
 											<label>PAUSE</label>
 											<pos>12,400</pos>
 											<size>200,29</size>
+											<enabled>0</enabled>
 											<handler function="Onbutton_DMPauseClick" entry="EVT_BUTTON" />
 										</object>
-										<object class="wxButton" name="ID_BUTTON17" variable="button_RESUME" member="yes">
+										<object class="wxButton" name="ID_BUTTON17" variable="but_RESUME" member="yes">
 											<label>RESUME</label>
 											<pos>224,400</pos>
 											<size>200,29</size>
 											<enabled>0</enabled>
 											<handler function="Onbutton_DMResumeClick" entry="EVT_BUTTON" />
 										</object>
-										<object class="wxButton" name="ID_BUTTON15" variable="button_STOP" member="yes">
+										<object class="wxButton" name="ID_BUTTON15" variable="but_STOP" member="yes">
 											<label>STOP</label>
 											<pos>436,400</pos>
 											<size>200,29</size>
 											<handler function="Onbutton_DMStopClick" entry="EVT_BUTTON" />
 										</object>
-										<object class="wxTextCtrl" name="ID_TEXTCTRL17" variable="box_automatic_log" member="yes">
+										<object class="wxTextCtrl" name="ID_TEXTCTRL17" variable="box_dm_log" member="yes">
 											<pos>12,112</pos>
 											<size>624,280</size>
 											<style>wxTE_MULTILINE</style>
@@ -341,24 +316,23 @@
 								</object>
 								<object class="notebookpage">
 									<object class="wxPanel" name="ID_PANEL12" variable="tab_semi" member="yes">
-										<object class="wxNotebook" name="ID_NOTEBOOK3" variable="PanelSemi_sub" member="yes">
+										<object class="wxNotebook" name="ID_NOTEBOOK3" variable="tabs_subsemi" member="yes">
 											<pos>0,0</pos>
 											<size>648,400</size>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL13" variable="tab_semi_navigation" member="yes">
-													<object class="wxPanel" name="ID_PANEL32" variable="Panel19" member="yes">
+													<object class="wxPanel" name="ID_PANEL32" variable="panel_navigation_dashboard" member="yes">
 														<pos>16,16</pos>
 														<size>296,40</size>
-														<enabled>0</enabled>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP9" variable="StaticBitmap6" member="yes">
+														<object class="wxStaticBitmap" name="ID_STATICBITMAP9" variable="img_navigation_dashboard" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT15" variable="StaticText15" member="yes">
-															<label>Other...</label>
+														<object class="wxStaticText" name="ID_STATICTEXT15" variable="label_navigation_dashboard" member="yes">
+															<label>Dashboard</label>
 															<pos>48,16</pos>
 														</object>
-														<object class="wxButton" name="ID_BUTTON9" variable="Button7" member="yes">
+														<object class="wxButton" name="ID_BUTTON9" variable="but_navigation_dashboard" member="yes">
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
@@ -369,7 +343,7 @@
 											</object>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL14" variable="tab_semi_detection" member="yes">
-													<object class="wxButton" name="ID_BUTTON5" variable="button_detect_objects" member="yes">
+													<object class="wxButton" name="ID_BUTTON5" variable="but_DetectObjects" member="yes">
 														<label>Detect object</label>
 														<pos>176,16</pos>
 														<size>120,29</size>
@@ -379,11 +353,11 @@
 														<pos>16,96</pos>
 														<size>616,216</size>
 													</object>
-													<object class="wxStaticText" name="ID_STATICTEXT12" variable="StaticText12" member="yes">
+													<object class="wxStaticText" name="ID_STATICTEXT12" variable="label_DetectedObjects" member="yes">
 														<label>Detected objects</label>
 														<pos>16,72</pos>
 													</object>
-													<object class="wxButton" name="ID_BUTTON33" variable="button_spawn_objects" member="yes">
+													<object class="wxButton" name="ID_BUTTON33" variable="but_SpawnObjectsInRviz" member="yes">
 														<label>Spawn objects in RVIZ</label>
 														<pos>16,320</pos>
 														<size>168,29</size>
@@ -400,10 +374,10 @@
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL15" variable="tab_semi_grasping" member="yes">
 													<enabled>0</enabled>
-													<object class="wxPanel" name="ID_PANEL28" variable="panelrandom" member="yes">
+													<object class="wxPanel" name="ID_PANEL28" variable="panel_grasping" member="yes">
 														<pos>8,8</pos>
 														<size>957,367</size>
-														<object class="wxButton" name="ID_BUTTON6" variable="button_generate_grasps" member="yes">
+														<object class="wxButton" name="ID_BUTTON6" variable="but_GenerateGrasps" member="yes">
 															<label>Generate grasps</label>
 															<pos>152,74</pos>
 															<size>184,29</size>
@@ -423,7 +397,7 @@
 															<size>47,29</size>
 															<enabled>0</enabled>
 														</object>
-														<object class="wxButton" name="ID_BUTTON7" variable="button_GraspIt" member="yes">
+														<object class="wxButton" name="ID_BUTTON7" variable="but_GraspIt" member="yes">
 															<label>Grasp it!</label>
 															<pos>200,162</pos>
 															<size>136,29</size>
@@ -435,7 +409,7 @@
 															<pos>72,202</pos>
 															<size>224,31</size>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT14" variable="label_result" member="yes">
+														<object class="wxStaticText" name="ID_STATICTEXT14" variable="label_Result" member="yes">
 															<label>Result:</label>
 															<pos>16,210</pos>
 														</object>
@@ -447,14 +421,14 @@
 																<pos>0,0</pos>
 															</object>
 														</object>
-														<object class="wxButton" name="ID_BUTTON22" variable="button_simulateGrasp" member="yes">
+														<object class="wxButton" name="ID_BUTTON22" variable="but_SimulateGrasp" member="yes">
 															<label>Simulate grasp</label>
 															<pos>72,162</pos>
 															<size>120,29</size>
 															<enabled>0</enabled>
 															<handler function="Onbutton_simulateGraspClick" entry="EVT_BUTTON" />
 														</object>
-														<object class="wxPanel" name="ID_PANEL40" variable="panel_tactil" member="yes">
+														<object class="wxPanel" name="ID_PANEL40" variable="panel_TactilSensors" member="yes">
 															<pos>368,0</pos>
 															<size>216,320</size>
 															<object class="wxPanel" name="ID_PANEL45" variable="panel_ts11" member="yes">
@@ -487,22 +461,22 @@
 																<size>60,140</size>
 																<style>wxSIMPLE_BORDER|wxTAB_TRAVERSAL</style>
 															</object>
-															<object class="wxStaticText" name="ID_STATICTEXT18" variable="StaticText18" member="yes">
+															<object class="wxStaticText" name="ID_STATICTEXT18" variable="label_TS_F2" member="yes">
 																<label>F2</label>
 																<pos>104,304</pos>
 																<size>23,17</size>
 															</object>
-															<object class="wxStaticText" name="ID_STATICTEXT20" variable="StaticText20" member="yes">
+															<object class="wxStaticText" name="ID_STATICTEXT20" variable="label_TS_F3" member="yes">
 																<label>F3</label>
 																<pos>168,304</pos>
 																<size>16,19</size>
 															</object>
-															<object class="wxStaticText" name="ID_STATICTEXT19" variable="StaticText19" member="yes">
+															<object class="wxStaticText" name="ID_STATICTEXT19" variable="label_TS_F1" member="yes">
 																<label>F1</label>
 																<pos>40,304</pos>
 																<size>23,17</size>
 															</object>
-															<object class="wxStaticText" name="ID_STATICTEXT21" variable="StaticText21" member="yes">
+															<object class="wxStaticText" name="ID_STATICTEXT21" variable="label_TS_TactilSensors" member="yes">
 																<label>TACTIL SENSORS</label>
 																<pos>32,0</pos>
 																<size>148,28</size>
@@ -528,52 +502,52 @@
 								<object class="notebookpage">
 									<object class="wxPanel" name="ID_PANEL17" variable="tab_manual" member="yes">
 										<size>1066,324</size>
-										<object class="wxNotebook" name="ID_NOTEBOOK5" variable="PanelManual_sub" member="yes">
+										<object class="wxNotebook" name="ID_NOTEBOOK5" variable="tabs_submanual" member="yes">
 											<pos>0,0</pos>
 											<size>648,400</size>
 											<object class="notebookpage">
-												<object class="wxPanel" name="ID_PANEL23" variable="Panel6" member="yes">
+												<object class="wxPanel" name="ID_PANEL23" variable="tab_joystick" member="yes">
 													<enabled>0</enabled>
-													<object class="wxPanel" name="ID_PANEL24" variable="Panel7" member="yes">
+													<object class="wxPanel" name="ID_PANEL24" variable="panel_joystick_unused1" member="yes">
 														<pos>16,16</pos>
 														<size>296,40</size>
 														<enabled>0</enabled>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP3" variable="StaticBitmap2" member="yes">
+														<object class="wxStaticBitmap" name="ID_STATICBITMAP3" variable="img_joystick_unused1" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT9" variable="StaticText9" member="yes">
+														<object class="wxStaticText" name="ID_STATICTEXT9" variable="label_joystick_unnused1" member="yes">
 															<label>Joystick</label>
 															<pos>48,16</pos>
 														</object>
-														<object class="wxButton" name="ID_BUTTON3" variable="Button4" member="yes">
+														<object class="wxButton" name="ID_BUTTON3" variable="but_joystick_unused1" member="yes">
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
 															<handler function="manual_joystickButton" entry="EVT_BUTTON" />
 														</object>
 													</object>
-													<object class="wxRadioButton" name="ID_RADIOBUTTON2" variable="RadioButton2" member="yes">
+													<object class="wxRadioButton" name="ID_RADIOBUTTON2" variable="option_joystick_Head" member="yes">
 														<label>Head</label>
 														<pos>16,96</pos>
 													</object>
-													<object class="wxRadioButton" name="ID_RADIOBUTTON3" variable="RadioButton3" member="yes">
+													<object class="wxRadioButton" name="ID_RADIOBUTTON3" variable="option_joystick_Torso" member="yes">
 														<label>Torso</label>
 														<pos>96,96</pos>
 													</object>
-													<object class="wxRadioButton" name="ID_RADIOBUTTON4" variable="RadioButton4" member="yes">
+													<object class="wxRadioButton" name="ID_RADIOBUTTON4" variable="option_joystick_Tray" member="yes">
 														<label>Tray</label>
 														<pos>176,96</pos>
 													</object>
-													<object class="wxRadioButton" name="ID_RADIOBUTTON5" variable="RadioButton5" member="yes">
+													<object class="wxRadioButton" name="ID_RADIOBUTTON5" variable="option_joystick_Arm" member="yes">
 														<label>Arm</label>
 														<pos>256,96</pos>
 													</object>
-													<object class="wxRadioButton" name="ID_RADIOBUTTON6" variable="RadioButton6" member="yes">
+													<object class="wxRadioButton" name="ID_RADIOBUTTON6" variable="option_joystick_Hand" member="yes">
 														<label>Hand</label>
 														<pos>336,96</pos>
 													</object>
-													<object class="wxRadioButton" name="ID_RADIOBUTTON1" variable="RadioButton1" member="yes">
+													<object class="wxRadioButton" name="ID_RADIOBUTTON1" variable="option_joystick_Base" member="yes">
 														<label>Base</label>
 														<pos>416,96</pos>
 													</object>
@@ -581,96 +555,97 @@
 												<label>Joystick</label>
 											</object>
 											<object class="notebookpage">
-												<object class="wxPanel" name="ID_PANEL25" variable="Panel8" member="yes">
-													<object class="wxPanel" name="ID_PANEL33" variable="Panel20" member="yes">
+												<object class="wxPanel" name="ID_PANEL25" variable="tab_RvizTools" member="yes">
+													<object class="wxPanel" name="ID_PANEL33" variable="panel_RvizTools_CamDisplay" member="yes">
 														<pos>16,128</pos>
 														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP10" variable="img_camDisplay" member="yes">
+														<object class="wxStaticBitmap" name="ID_STATICBITMAP10" variable="img_RvizTools_CamDisplay" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT16" variable="StaticText16" member="yes">
+														<object class="wxStaticText" name="ID_STATICTEXT16" variable="label_RvizTools_CamDisplay" member="yes">
 															<label>Cam Display</label>
 															<pos>48,16</pos>
 															<size>88,17</size>
 														</object>
-														<object class="wxButton" name="ID_BUTTON10" variable="button_im_cam" member="yes">
+														<object class="wxButton" name="ID_BUTTON10" variable="but_RvizTools_CamDisplay" member="yes">
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
 															<handler function="Onbutton_im_camClick" entry="EVT_BUTTON" />
 														</object>
 													</object>
-													<object class="wxPanel" name="ID_PANEL34" variable="Panel21" member="yes">
+													<object class="wxPanel" name="ID_PANEL34" variable="panel_RvizTools_DistanceVisualizer" member="yes">
 														<pos>16,72</pos>
 														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP11" variable="img_distanceVisualizer" member="yes">
+														<object class="wxStaticBitmap" name="ID_STATICBITMAP11" variable="img_RvizTools_DistanceVisualizer" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT17" variable="StaticText17" member="yes">
+														<object class="wxStaticText" name="ID_STATICTEXT17" variable="label_RvizTools_DistanceVisualizer" member="yes">
 															<label>Distance Visualizer</label>
 															<pos>48,16</pos>
 															<size>144,17</size>
 														</object>
-														<object class="wxButton" name="ID_BUTTON11" variable="button_im_distance" member="yes">
+														<object class="wxButton" name="ID_BUTTON11" variable="but_RvizTools_DistanceVisualizer" member="yes">
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
 															<handler function="Onbutton_im_distanceClick" entry="EVT_BUTTON" />
 														</object>
 													</object>
-													<object class="wxPanel" name="ID_PANEL36" variable="Panel9" member="yes">
+													<object class="wxPanel" name="ID_PANEL36" variable="panel_RvizTools_AssistedArmNavigation" member="yes">
 														<pos>16,240</pos>
 														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP13" variable="img_assisted_arm" member="yes">
+														<object class="wxStaticBitmap" name="ID_STATICBITMAP13" variable="img_RvizTools_AssistedArmNavigation" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT23" variable="label" member="yes">
+														<object class="wxStaticText" name="ID_STATICTEXT23" variable="label_RvizTools_AssistedArmNavigation" member="yes">
 															<label>Assisted arm navigation</label>
 															<pos>48,16</pos>
 															<size>168,17</size>
 														</object>
-														<object class="wxButton" name="ID_BUTTON30" variable="button_im_assistedarm" member="yes">
+														<object class="wxButton" name="ID_BUTTON30" variable="but_RvizTools_AssistedArmNavigation" member="yes">
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
 															<handler function="Onbutton_im_assistedarmClick" entry="EVT_BUTTON" />
 														</object>
 													</object>
-													<object class="wxPanel" name="ID_PANEL35" variable="Panel11" member="yes">
+													<object class="wxPanel" name="ID_PANEL35" variable="panel_RvizTools_GoTo" member="yes">
 														<pos>16,184</pos>
 														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP12" variable="img_goto" member="yes">
+														<enabled>0</enabled>
+														<object class="wxStaticBitmap" name="ID_STATICBITMAP12" variable="img_RvizTools_GoTo" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT22" variable="StaticText22" member="yes">
+														<object class="wxStaticText" name="ID_STATICTEXT22" variable="label_RvizTools_GoTo" member="yes">
 															<label>Go to...</label>
 															<pos>48,16</pos>
 															<size>88,17</size>
 														</object>
-														<object class="wxButton" name="ID_BUTTON12" variable="button_im_goto" member="yes">
+														<object class="wxButton" name="ID_BUTTON12" variable="but_RvizTools_GoTo" member="yes">
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
 															<handler function="Onbutton_im_gotoClick" entry="EVT_BUTTON" />
 														</object>
 													</object>
-													<object class="wxPanel" name="ID_PANEL38" variable="Panel14" member="yes">
+													<object class="wxPanel" name="ID_PANEL38" variable="panel_RvizTools_InteractiveTeleop" member="yes">
 														<pos>16,16</pos>
 														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP1" variable="img_movebase" member="yes">
+														<object class="wxStaticBitmap" name="ID_STATICBITMAP1" variable="img_RvizTools_InteractiveTeleop" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT8" variable="StaticText8" member="yes">
+														<object class="wxStaticText" name="ID_STATICTEXT8" variable="label_RvizTools_InteractiveTeleop" member="yes">
 															<label>Interactive teleop</label>
 															<pos>48,16</pos>
 															<size>160,17</size>
 														</object>
-														<object class="wxButton" name="ID_BUTTON4" variable="button_im_mb" member="yes">
+														<object class="wxButton" name="ID_BUTTON4" variable="but_RvizTools_InteractiveTeleop" member="yes">
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
@@ -678,23 +653,23 @@
 														</object>
 													</object>
 												</object>
-												<label>Interactive Markers</label>
+												<label>Rviz tools</label>
 											</object>
 											<object class="notebookpage">
-												<object class="wxPanel" name="ID_PANEL48" variable="Panel12" member="yes">
+												<object class="wxPanel" name="ID_PANEL48" variable="tab_PhantomHaptic" member="yes">
 													<enabled>0</enabled>
-													<object class="wxPanel" name="ID_PANEL50" variable="Panel13" member="yes">
+													<object class="wxPanel" name="ID_PANEL50" variable="panel_phantomHaptic_unused1" member="yes">
 														<pos>16,16</pos>
 														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP5" variable="StaticBitmap3" member="yes">
+														<object class="wxStaticBitmap" name="ID_STATICBITMAP5" variable="img_phantomHaptic_unused1" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT10" variable="StaticText10" member="yes">
+														<object class="wxStaticText" name="ID_STATICTEXT10" variable="label_phantomHaptic_unused1" member="yes">
 															<label>Phantom Haptic</label>
 															<pos>48,16</pos>
 														</object>
-														<object class="wxButton" name="ID_BUTTON23" variable="Button8" member="yes">
+														<object class="wxButton" name="ID_BUTTON23" variable="but_phantomHaptic_unused1" member="yes">
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
@@ -719,15 +694,15 @@
 			<object class="wxPanel" name="ID_PANEL5" variable="panel_status_main" member="yes">
 				<pos>8,480</pos>
 				<size>1253,164</size>
-				<object class="wxBoxSizer" variable="BoxSizer9" member="no">
+				<object class="wxBoxSizer" variable="sizer_status" member="no">
 					<object class="sizeritem">
-						<object class="wxPanel" name="ID_PANEL51" variable="PanelStatus" member="yes">
+						<object class="wxPanel" name="ID_PANEL51" variable="panel_status" member="yes">
 							<size>811,152</size>
 							<style>wxRAISED_BORDER|wxTAB_TRAVERSAL</style>
-							<object class="wxPanel" name="ID_PANEL52" variable="PanelConnectionInf" member="yes">
+							<object class="wxPanel" name="ID_PANEL52" variable="panel_status_RobotInfo" member="yes">
 								<pos>8,8</pos>
 								<size>198,140</size>
-								<object class="wxStaticText" name="ID_STATICTEXT3" variable="StaticText3" member="yes">
+								<object class="wxStaticText" name="ID_STATICTEXT3" variable="label_status_RobotUri" member="yes">
 									<label>Robot URI</label>
 									<pos>8,0</pos>
 									<font>
@@ -739,17 +714,17 @@
 										<face>Sans</face>
 									</font>
 								</object>
-								<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="box_robot_URI" member="yes">
+								<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="box_status_RobotURI" member="yes">
 									<value>Not connected</value>
 									<pos>8,16</pos>
 									<size>184,27</size>
 								</object>
-								<object class="wxGauge" name="ID_GAUGE1" variable="bar_battery" member="yes">
+								<object class="wxGauge" name="ID_GAUGE1" variable="bar_status_battery" member="yes">
 									<value>55</value>
 									<pos>8,68</pos>
 									<size>90,25</size>
 								</object>
-								<object class="wxStaticText" name="ID_STATICTEXT2" variable="StaticText2" member="yes">
+								<object class="wxStaticText" name="ID_STATICTEXT2" variable="label_status_Battery" member="yes">
 									<label>Battery</label>
 									<pos>8,52</pos>
 									<font>
@@ -761,12 +736,12 @@
 										<face>Sans</face>
 									</font>
 								</object>
-								<object class="wxGauge" name="ID_GAUGE2" variable="bar_wifi_signal" member="yes">
+								<object class="wxGauge" name="ID_GAUGE2" variable="bar_status_wifi" member="yes">
 									<value>80</value>
 									<pos>102,68</pos>
 									<size>90,25</size>
 								</object>
-								<object class="wxStaticText" name="ID_STATICTEXT4" variable="StaticText4" member="yes">
+								<object class="wxStaticText" name="ID_STATICTEXT4" variable="label_status_WifiSignal" member="yes">
 									<label>Wifi Signal</label>
 									<pos>102,52</pos>
 									<font>
@@ -778,25 +753,25 @@
 										<face>Sans</face>
 									</font>
 								</object>
-								<object class="wxStaticText" name="ID_STATICTEXT1" variable="label_time_battery" member="yes">
+								<object class="wxStaticText" name="ID_STATICTEXT1" variable="label_status_TimeBattery" member="yes">
 									<label></label>
 									<pos>120,104</pos>
 									<size>80,16</size>
 								</object>
-								<object class="wxStaticText" name="ID_STATICTEXT24" variable="StaticText1" member="yes">
+								<object class="wxStaticText" name="ID_STATICTEXT24" variable="label_status_TimeRemaining" member="yes">
 									<label>Time remaining:</label>
 									<pos>8,104</pos>
 								</object>
 							</object>
-							<object class="wxPanel" name="ID_PANEL53" variable="Panel24" member="yes">
+							<object class="wxPanel" name="ID_PANEL53" variable="panel_status_log" member="yes">
 								<pos>272,8</pos>
 								<size>748,140</size>
-								<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="log_box" member="yes">
+								<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="box_status_log" member="yes">
 									<pos>0,24</pos>
 									<size>528,111</size>
 									<style>wxTE_AUTO_SCROLL|wxTE_MULTILINE|wxVSCROLL</style>
 								</object>
-								<object class="wxStaticText" name="ID_STATICTEXT6" variable="StaticText6" member="yes">
+								<object class="wxStaticText" name="ID_STATICTEXT6" variable="label_status_log" member="yes">
 									<label>Status log</label>
 									<pos>0,8</pos>
 									<size>78,9</size>
@@ -821,17 +796,17 @@
 				<pos>1042,0</pos>
 				<size>306,472</size>
 				<enabled>0</enabled>
-				<object class="wxBoxSizer" variable="BoxSizer10" member="no">
+				<object class="wxBoxSizer" variable="sizer_options" member="no">
 					<object class="sizeritem">
 						<object class="wxPanel" name="ID_PANEL16" variable="panel_options" member="yes">
 							<size>296,469</size>
-							<object class="wxNotebook" name="ID_NOTEBOOK6" variable="tab_options" member="yes">
+							<object class="wxNotebook" name="ID_NOTEBOOK6" variable="tabs_options" member="yes">
 								<pos>0,0</pos>
 								<size>296,472</size>
 								<object class="notebookpage">
-									<object class="wxPanel" name="ID_PANEL55" variable="panel_ROS" member="yes">
+									<object class="wxPanel" name="ID_PANEL55" variable="tab_ROS" member="yes">
 										<size>292,437</size>
-										<object class="wxNotebook" name="ID_NOTEBOOK7" variable="Notebook1" member="yes">
+										<object class="wxNotebook" name="ID_NOTEBOOK7" variable="tabs_subROS" member="yes">
 											<pos>0,0</pos>
 											<size>288,408</size>
 											<object class="notebookpage">
@@ -888,7 +863,7 @@
 									<label>ROS</label>
 								</object>
 								<object class="notebookpage">
-									<object class="wxPanel" name="ID_PANEL8" variable="panel_objects" member="yes">
+									<object class="wxPanel" name="ID_PANEL8" variable="tab_objects" member="yes">
 										<size>292,436</size>
 										<object class="wxPanel" name="ID_PANEL61" variable="panel_db_objects" member="yes">
 											<pos>0,256</pos>
@@ -899,7 +874,7 @@
 												<size>292,184</size>
 											</object>
 										</object>
-										<object class="wxStaticText" name="ID_STATICTEXT28" variable="StaticText24" member="yes">
+										<object class="wxStaticText" name="ID_STATICTEXT28" variable="label_DatabaseObjectsList" member="yes">
 											<label>Database object list</label>
 											<pos>4,236</pos>
 											<font>
@@ -911,7 +886,7 @@
 												<face>Sans</face>
 											</font>
 										</object>
-										<object class="wxStaticText" name="ID_STATICTEXT29" variable="StaticText25" member="yes">
+										<object class="wxStaticText" name="ID_STATICTEXT29" variable="label_TeachNewObject" member="yes">
 											<label>Teach new object</label>
 											<pos>4,0</pos>
 											<font>
@@ -923,36 +898,36 @@
 												<face>Sans</face>
 											</font>
 										</object>
-										<object class="wxComboBox" name="ID_COMBOBOX1" variable="ComboBox1" member="yes">
+										<object class="wxComboBox" name="ID_COMBOBOX1" variable="choice_TeachNewObject" member="yes">
 											<content>
 												<item>Rotate-on-Gripper</item>
 											</content>
 											<pos>4,48</pos>
 											<size>240,29</size>
 										</object>
-										<object class="wxStaticText" name="ID_STATICTEXT30" variable="StaticText26" member="yes">
+										<object class="wxStaticText" name="ID_STATICTEXT30" variable="label_TeachNewObjectBy" member="yes">
 											<label>Teach new object by</label>
 											<pos>4,32</pos>
 										</object>
-										<object class="wxButton" name="ID_BUTTON8" variable="Button2" member="yes">
+										<object class="wxButton" name="ID_BUTTON8" variable="but_TeachNewObjectStart" member="yes">
 											<label>Start</label>
 											<pos>244,48</pos>
 											<size>44,29</size>
 											<enabled>0</enabled>
 										</object>
-										<object class="wxStaticLine" name="ID_STATICLINE2" variable="StaticLine2" member="yes">
+										<object class="wxStaticLine" name="ID_STATICLINE2" variable="separador1" member="yes">
 											<pos>4,240</pos>
 											<size>284,24</size>
 										</object>
-										<object class="wxStaticLine" name="ID_STATICLINE3" variable="StaticLine3" member="yes">
+										<object class="wxStaticLine" name="ID_STATICLINE3" variable="separador2" member="yes">
 											<pos>4,4</pos>
 											<size>284,24</size>
 										</object>
-										<object class="wxStaticLine" name="ID_STATICLINE1" variable="StaticLine1" member="yes">
+										<object class="wxStaticLine" name="ID_STATICLINE1" variable="separador3" member="yes">
 											<pos>4,100</pos>
 											<size>284,24</size>
 										</object>
-										<object class="wxStaticText" name="ID_STATICTEXT31" variable="StaticText27" member="yes">
+										<object class="wxStaticText" name="ID_STATICTEXT31" variable="label_DefineTheObject" member="yes">
 											<label>Define the object</label>
 											<pos>4,96</pos>
 											<font>
@@ -964,15 +939,15 @@
 												<face>Sans</face>
 											</font>
 										</object>
-										<object class="wxStaticText" name="ID_STATICTEXT33" variable="StaticText29" member="yes">
+										<object class="wxStaticText" name="ID_STATICTEXT33" variable="label_ObjectName" member="yes">
 											<label>Object name</label>
 											<pos>4,128</pos>
 										</object>
-										<object class="wxStaticText" name="ID_STATICTEXT32" variable="StaticText28" member="yes">
+										<object class="wxStaticText" name="ID_STATICTEXT32" variable="label_Category" member="yes">
 											<label>Category</label>
 											<pos>144,128</pos>
 										</object>
-										<object class="wxComboBox" name="ID_COMBOBOX2" variable="ComboBox2" member="yes">
+										<object class="wxComboBox" name="ID_COMBOBOX2" variable="choice_category" member="yes">
 											<content>
 												<item>bottles</item>
 												<item>cups</item>
@@ -981,17 +956,17 @@
 											<pos>144,144</pos>
 											<size>144,24</size>
 										</object>
-										<object class="wxTextCtrl" name="ID_TEXTCTRL19" variable="TextCtrl1" member="yes">
+										<object class="wxTextCtrl" name="ID_TEXTCTRL19" variable="box_ObjectName" member="yes">
 											<pos>4,144</pos>
 											<size>140,24</size>
 										</object>
-										<object class="wxButton" name="ID_BUTTON21" variable="Button5" member="yes">
+										<object class="wxButton" name="ID_BUTTON21" variable="but_Save" member="yes">
 											<label>Save</label>
 											<pos>88,168</pos>
 											<size>56,29</size>
 											<enabled>0</enabled>
 										</object>
-										<object class="wxButton" name="ID_BUTTON20" variable="Button3" member="yes">
+										<object class="wxButton" name="ID_BUTTON20" variable="but_Cancel" member="yes">
 											<label>Cancel</label>
 											<pos>144,168</pos>
 											<size>56,29</size>
@@ -1001,7 +976,56 @@
 									<label>Objects</label>
 								</object>
 								<object class="notebookpage">
-									<object class="wxPanel" name="ID_PANEL26" variable="panel_tasks" member="yes" />
+									<object class="wxPanel" name="ID_PANEL26" variable="tab_tasks" member="yes">
+										<object class="wxStaticText" name="ID_STATICTEXT34" variable="label_TeachNewTask" member="yes">
+											<label>Teach new task</label>
+											<pos>4,0</pos>
+											<font>
+												<size>10</size>
+												<style>normal</style>
+												<weight>bold</weight>
+												<underlined>0</underlined>
+												<family>swiss</family>
+												<face>Sans</face>
+											</font>
+										</object>
+										<object class="wxStaticLine" name="ID_STATICLINE4" variable="separador4" member="yes">
+											<pos>4,4</pos>
+											<size>284,24</size>
+										</object>
+										<object class="wxStaticText" name="ID_STATICTEXT35" variable="label_TasksList" member="yes">
+											<label>Tasks list</label>
+											<pos>4,328</pos>
+											<font>
+												<size>10</size>
+												<style>normal</style>
+												<weight>bold</weight>
+												<underlined>0</underlined>
+												<family>swiss</family>
+												<face>Sans</face>
+											</font>
+										</object>
+										<object class="wxStaticLine" name="ID_STATICLINE5" variable="separador5" member="yes">
+											<pos>8,332</pos>
+											<size>284,24</size>
+										</object>
+										<object class="wxComboBox" name="ID_COMBOBOX4" variable="choice_TasksList" member="yes">
+											<pos>4,352</pos>
+											<size>284,29</size>
+										</object>
+										<object class="wxButton" name="ID_BUTTON18" variable="but_StartTask" member="yes">
+											<label>Start task</label>
+											<pos>4,400</pos>
+											<size>140,29</size>
+											<enabled>0</enabled>
+										</object>
+										<object class="wxButton" name="ID_BUTTON2" variable="but_StopTask" member="yes">
+											<label>Stop task</label>
+											<pos>148,400</pos>
+											<size>140,29</size>
+											<enabled>0</enabled>
+										</object>
+									</object>
 									<label>Tasks</label>
 								</object>
 							</object>
@@ -1017,7 +1041,7 @@
 				<size>292,148</size>
 				<enabled>0</enabled>
 				<style>wxRAISED_BORDER|wxTAB_TRAVERSAL</style>
-				<object class="wxStaticText" name="ID_STATICTEXT26" variable="StaticText23" member="yes">
+				<object class="wxStaticText" name="ID_STATICTEXT26" variable="label_ObjectsOnTray" member="yes">
 					<label>Objects on tray</label>
 					<pos>4,4</pos>
 				</object>
@@ -1140,7 +1164,17 @@
 					<object class="wxMenuItem" name="ID_MENUITEM15" variable="menu_dashboard_run" member="yes">
 						<label>Run</label>
 						<enabled>0</enabled>
-						<handler function="runDashboard" entry="EVT_MENU" />
+					</object>
+				</object>
+				<object class="wxMenu" name="ID_MENUITEM8" variable="menu_status" member="yes">
+					<label>Status</label>
+					<object class="wxMenuItem" name="ID_MENUITEM23" variable="menu_status_rxgraph" member="yes">
+						<label>rxgraph</label>
+						<handler function="Onmenu_status_rxgraphSelected" entry="EVT_MENU" />
+					</object>
+					<object class="wxMenuItem" name="ID_MENUITEM24" variable="menu_status_runtimeMonitor" member="no">
+						<label>Runtime monitor</label>
+						<handler function="Onmenu_status_runtimeMonitorSelected" entry="EVT_MENU" />
 					</object>
 				</object>
 			</object>
@@ -1154,8 +1188,8 @@
 				</object>
 			</object>
 		</object>
-		<object class="wxTimer" name="ID_TIMER1" variable="Timer1" member="yes">
-			<handler function="OnTimer1Trigger" entry="EVT_TIMER" />
+		<object class="wxTimer" name="ID_TIMER1" variable="timer_updates" member="yes">
+			<handler function="Ontimer_updatesTrigger" entry="EVT_TIMER" />
 		</object>
 		<object class="wxTimer" name="ID_TIMER2" variable="timer_URI" member="yes">
 			<handler function="Ontimer_URITrigger" entry="EVT_TIMER" />

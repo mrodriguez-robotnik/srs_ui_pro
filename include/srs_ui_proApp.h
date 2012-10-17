@@ -11,7 +11,7 @@
 #define srs_ui_proAPP_H
 
 #include <wx/app.h>
-
+#include "LogginScreen.h"
 
 class srs_ui_proApp : public wxApp
 {

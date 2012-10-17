@@ -21,6 +21,7 @@ const long SkypeWindow::ID_PANEL2 = wxNewId();
 const long SkypeWindow::ID_STATICTEXT1 = wxNewId();
 const long SkypeWindow::ID_STATICTEXT2 = wxNewId();
 const long SkypeWindow::ID_PANEL1 = wxNewId();
+const long SkypeWindow::ID_TIMER1 = wxNewId();
 //*)
 
 BEGIN_EVENT_TABLE(SkypeWindow,wxFrame)
@@ -50,12 +51,15 @@ SkypeWindow::SkypeWindow(wxWindow* parent, SkypeFunctions *sf, std::string un, w
 	img_micro->SetDefault();
 	label_name = new wxStaticText(Panel1, ID_STATICTEXT1, _("Name"), wxPoint(104,48), wxDefaultSize, 0, _T("ID_STATICTEXT1"));
 	label_location = new wxStaticText(Panel1, ID_STATICTEXT2, _("City, Country"), wxPoint(104,72), wxDefaultSize, 0, _T("ID_STATICTEXT2"));
-	
+	timer_messageEvents.SetOwner(this, ID_TIMER1);
+	timer_messageEvents.Start(100, false);
+
 	Connect(ID_TEXTCTRL2,wxEVT_COMMAND_TEXT_ENTER,(wxObjectEventFunction)&SkypeWindow::Onchat_sendTextEnter);
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SkypeWindow::Onbutton_chatClick);
 	Connect(ID_BITMAPBUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SkypeWindow::callButton);
 	Connect(ID_BITMAPBUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SkypeWindow::soundButton);
 	Connect(ID_BITMAPBUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SkypeWindow::muteButton);
+	Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&SkypeWindow::Ontimer_messageEventsTrigger);
 	//*)
 
 
@@ -63,7 +67,6 @@ SkypeWindow::SkypeWindow(wxWindow* parent, SkypeFunctions *sf, std::string un, w
     SF = sf;
     userName = un;
     log_box = lb;
-    SF->setChatOutput(chat_log);
 
     chat_log->AppendText(wxString("Now you can chat with ", wxConvUTF8));
     chat_log->AppendText(wxString(userName.c_str(), wxConvUTF8));
@@ -77,13 +80,9 @@ SkypeWindow::~SkypeWindow()
 {
     if (SF->calling == true)
     {
-        SF->calling = false;
         Sid::String user = userName.c_str();
         SF->stopCall(user);
     }
-
-    SF->setChatOutput(log_box);
-
 
 	//(*Destroy(SkypeWindow)
 	//*)
@@ -120,6 +119,13 @@ void SkypeWindow::callButton(wxCommandEvent& event)
 void SkypeWindow::Onbutton_chatClick(wxCommandEvent& event)
 {
     std::string text = std::string((chat_send->GetValue()).mb_str());
+
+    std::string aux;
+    aux = "me: "+ text + "\n";
+
+    chat_log->SetDefaultStyle(wxTextAttr(*wxBLUE));
+    chat_log->AppendText(wxString(aux.c_str(), wxConvUTF8));
+
     SF->sendText(userName.c_str(), text);
     chat_send->Clear();
 }
@@ -127,6 +133,13 @@ void SkypeWindow::Onbutton_chatClick(wxCommandEvent& event)
 void SkypeWindow::Onchat_sendTextEnter(wxCommandEvent& event)
 {
     std::string text = std::string((chat_send->GetValue()).mb_str());
+
+    std::string aux;
+    aux = "me: "+ text + "\n";
+
+    chat_log->SetDefaultStyle(wxTextAttr(*wxBLUE));
+    chat_log->AppendText(wxString(aux.c_str(), wxConvUTF8));
+
     SF->sendText(userName.c_str(), text);
     chat_send->Clear();
 }
@@ -200,4 +213,14 @@ void SkypeWindow::setUserInfo()
     label_name->SetLabel(wxString(user_info.name.c_str(), wxConvUTF8));
     label_location->SetLabel(wxString(user_info.location.c_str(), wxConvUTF8));
 
+}
+
+void SkypeWindow::Ontimer_messageEventsTrigger(wxTimerEvent& event)
+{
+    if (SF->messageEvent() && userName.compare(SF->contact_event) == 0)
+    {
+        chat_log->SetDefaultStyle(wxTextAttr(*wxRED));
+        chat_log->AppendText(wxString(SF->textEvent().c_str(), wxConvUTF8));
+        SF->allowNewMessageEvent();
+    }
 }

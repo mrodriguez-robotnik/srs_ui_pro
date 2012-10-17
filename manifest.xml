@@ -26,6 +26,7 @@
   <depend package="move_base_msgs"/>
   <depend package="trajectory_msgs"/>
 
+
   <!--export>
 	<cpp cflags ="-I${prefix}/include -I${prefix}/msg_gen/cpp/include -I${prefix}/srv_gen/cpp/include"/>
   </export-->

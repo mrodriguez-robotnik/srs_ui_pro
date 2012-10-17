@@ -1,0 +1,4 @@
+<launch>
+   <include file="$(find srs_ui_pro)/launch/but_assisted_arm_navigation.launch"/>
+   <node pkg="srs_ui_pro" type="srs_ui_pro" name="srs_ui_pro" ns="srs_ui_pro" cwd="node" respawn="false" output="screen" />
+</launch>

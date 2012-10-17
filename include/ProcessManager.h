@@ -46,6 +46,9 @@ private:
 	pid_t pid_skype_runtime;
 	pid_t pid_dashboard;
 	pid_t pid_interaction_primitives;
+	pid_t pid_runtime_monitor;
+    pid_t pid_rxgraph;
+
 
 public:
 	//! Constructor
@@ -60,6 +63,8 @@ public:
         pid_skype_runtime = -1;
         pid_dashboard = -1;
         pid_interaction_primitives = -1;
+        pid_runtime_monitor = -1;
+        pid_rxgraph = -1;
 
 	};
 	//! Destructor
@@ -76,6 +81,8 @@ public:
     int ExecIM_AssistedArmNavigation();
     int ExecSkypeRuntime(std::string skype_runtime_path);
     int ExecDashboard();
+    int ExecRuntimeMonitor();
+    int ExecRxgraph();
 
 	//! Waits for the termination of Kanban
 	int WaitRviz();
@@ -88,6 +95,8 @@ public:
     int WaitIM_AssistedArmNavigation();
     int WaitSkypeRuntime();
     int WaitDashboard();
+    int WaitRuntimeMonitor();
+    int WaitRxgraph();
 
 	//! Sends a signal to the process Kanban to finish the execution
 	int ExitRviz();
@@ -102,6 +111,8 @@ public:
     int ExitDashboard();
     //int ExitSkypeRuntimeVideo();
     int ExitAll();
+    int ExitRuntimeMonitor();
+    int ExitRxgraph();
 
 	//! Kills the process Kanban
 	int KillRviz();
@@ -114,7 +125,8 @@ public:
     int KillIM_AssistedArmNavigation();
     int KillSkypeRuntime();
     int KillDashboard();
-
+    int KillRuntimeMonitor();
+    int KillRxgraph();
 };
 
 #endif

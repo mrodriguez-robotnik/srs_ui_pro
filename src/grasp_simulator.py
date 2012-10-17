@@ -79,10 +79,8 @@ class srs_ui_pro_grasp_simulator():
 		try:
 			grasping_functions.openraveutils.grasp_view(server_goal.object_id, server_goal.grasp_configuration, server_goal.object_pose);
 			server_result.result = True;
-			print "ha funcionado oiga!"
 		except:
 			server_result.result = False;
-			print "algo ha cascado!"
 
 
 		print "Time employed: " + str(time.time() - x);

@@ -8,7 +8,7 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 #  RelWithDebInfo : w/ debug symbols, w/ optimization
 #  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
 #set(ROS_BUILD_TYPE RelWithDebInfo)
-
+add_definitions (-fpermissive)
 
 rosbuild_find_ros_package(actionlib_msgs)
 include(${actionlib_msgs_PACKAGE_PATH}/cmake/actionbuild.cmake)
@@ -51,6 +51,6 @@ set(LIB_DEBUG ${SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/build/libskypekit-c
 set(SKYPE_LFLAGS ${LIBDIR_DEBUG} ${LIB_DEBUG})
 
 
-rosbuild_add_executable(srs_ui_pro src/GUI/srs_ui_proApp.cpp src/GUI/srs_ui_proMain.cpp src/GUI/ObjectInfo.cpp src/GUI/RosInterface.cpp src/GUI/ProcessManager.cc src/GUI/SkypeFunctions.cpp src/GUI/SkypeWindow.cpp src/GUI/SkypeWindow2.cpp)
+rosbuild_add_executable(srs_ui_pro src/GUI/srs_ui_proApp.cpp src/GUI/LogginScreen.cpp src/GUI/srs_ui_proMain.cpp src/GUI/ObjectInfo.cpp src/GUI/RosInterface.cpp src/GUI/ProcessManager.cc src/GUI/SkypeFunctions.cpp src/GUI/SkypeWindow.cpp src/GUI/SkypeWindow2.cpp)
 target_link_libraries(srs_ui_pro ${wxWidgets_LIBRARIES} ${SKYPE_LFLAGS})
       

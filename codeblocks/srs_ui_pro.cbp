@@ -30,6 +30,7 @@
 			<Add option="`wx-config --libs`" />
 		</Linker>
 		<Unit filename="wxsmith/srs_ui_proframe.wxs" />
+		<Unit filename="../include/LogginScreen.h" />
 		<Unit filename="../include/ObjectInfo.h" />
 		<Unit filename="../include/ProcessManager.h" />
 		<Unit filename="../include/RosInterface.h" />
@@ -38,6 +39,7 @@
 		<Unit filename="../include/SkypeWindow2.h" />
 		<Unit filename="../include/srs_ui_proApp.h" />
 		<Unit filename="../include/srs_ui_proMain.h" />
+		<Unit filename="../src/GUI/LogginScreen.cpp" />
 		<Unit filename="../src/GUI/ObjectInfo.cpp" />
 		<Unit filename="../src/GUI/ProcessManager.cc" />
 		<Unit filename="../src/GUI/RosInterface.cpp" />
@@ -58,6 +60,7 @@
 					<wxFrame wxs="wxsmith/ObjectInfo.wxs" src="../src/GUI/ObjectInfo.cpp" hdr="../include/ObjectInfo.h" name="ObjectInfo" language="CPP" />
 					<wxFrame wxs="wxsmith/SkypeWindow.wxs" src="../src/GUI/SkypeWindow.cpp" hdr="../include/SkypeWindow.h" name="SkypeWindow" language="CPP" />
 					<wxFrame wxs="wxsmith/SkypeWindow2.wxs" src="../src/GUI/SkypeWindow2.cpp" hdr="../include/SkypeWindow2.h" name="SkypeWindow2" language="CPP" />
+					<wxFrame wxs="wxsmith/LogginScreen.wxs" src="../src/GUI/LogginScreen.cpp" hdr="../include/LogginScreen.h" name="LogginScreen" language="CPP" />
 				</resources>
 			</wxsmith>
 		</Extensions>

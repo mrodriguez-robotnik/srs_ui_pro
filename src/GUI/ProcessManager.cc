@@ -285,23 +285,81 @@
         pid_t waitreturnpid;
 
         if(pid_interaction_primitives > 0){	//Check if it's already running
-            waitreturnpid = waitpid(pid_dashboard, &status, WNOHANG);
+            waitreturnpid = waitpid(pid_interaction_primitives, &status, WNOHANG);
             if(waitreturnpid == 0){
                 printf("ProcessManager::ExecInteractionPrimitives: process already running\n");
                 return PROCESS_RUNNING;	//process already running
             }if(waitreturnpid < 0){
                 printf("ProcessManager::ExecInteractionPrimitives: Error in waitpid: %s\n", strerror(errno));
-                pid_dashboard = -1;
+                pid_interaction_primitives = -1;
                 return PROCESS_ERROR_WAITING;
             }
         }
 
-        if((pid_dashboard = fork()) == -1){
+        if((pid_interaction_primitives = fork()) == -1){
             printf("ProcessManager::ExecInteractionPrimitives: Error in fork: %s\n", strerror(errno));
             return PROCESS_ERROR_FORK; //Error al ejecutar fork
-        }else if(pid_dashboard == 0){ //child
+        }else if(pid_interaction_primitives == 0){ //child
             if(execlp("rosrun", "rosrun", "srs_interaction_primitives", "interaction_primitives_service_server", NULL) < 0){
                 printf("ProcessManager::ExecInteracionPrimitives: Error in exec: %s\n", strerror(errno));
+                return PROCESS_ERROR_EXEC;
+            }
+        }else{
+            return PROCESS_OK;
+        }
+    }
+
+	int ProcessManager::ExecRuntimeMonitor(){
+        int status;
+        pid_t waitreturnpid;
+
+        if(pid_runtime_monitor > 0){	//Check if it's already running
+            waitreturnpid = waitpid(pid_runtime_monitor, &status, WNOHANG);
+            if(waitreturnpid == 0){
+                printf("ProcessManager::ExecRuntimeMonitor: process already running\n");
+                return PROCESS_RUNNING;	//process already running
+            }if(waitreturnpid < 0){
+                printf("ProcessManager::ExecRuntimeMonitor: Error in waitpid: %s\n", strerror(errno));
+                pid_runtime_monitor = -1;
+                return PROCESS_ERROR_WAITING;
+            }
+        }
+
+        if((pid_runtime_monitor = fork()) == -1){
+            printf("ProcessManager::ExecRuntimeMonitor: Error in fork: %s\n", strerror(errno));
+            return PROCESS_ERROR_FORK; //Error al ejecutar fork
+        }else if(pid_runtime_monitor == 0){ //child
+            if(execlp("rosrun", "rosrun", "runtime_monitor", "monitor", NULL) < 0){
+                printf("ProcessManager::ExecRuntimeMonitor: Error in exec: %s\n", strerror(errno));
+                return PROCESS_ERROR_EXEC;
+            }
+        }else{
+            return PROCESS_OK;
+        }
+    }
+
+	int ProcessManager::ExecRxgraph(){
+        int status;
+        pid_t waitreturnpid;
+
+        if(pid_rxgraph > 0){	//Check if it's already running
+            waitreturnpid = waitpid(pid_rxgraph, &status, WNOHANG);
+            if(waitreturnpid == 0){
+                printf("ProcessManager::ExecRxgraph: process already running\n");
+                return PROCESS_RUNNING;	//process already running
+            }if(waitreturnpid < 0){
+                printf("ProcessManager::ExecRxgraph: Error in waitpid: %s\n", strerror(errno));
+                pid_rxgraph = -1;
+                return PROCESS_ERROR_WAITING;
+            }
+        }
+
+        if((pid_rxgraph = fork()) == -1){
+            printf("ProcessManager::ExecRxgraph: Error in fork: %s\n", strerror(errno));
+            return PROCESS_ERROR_FORK; //Error al ejecutar fork
+        }else if(pid_rxgraph == 0){ //child
+            if(execlp("rxgraph", "rxgraph", NULL) < 0){
+                printf("ProcessManager::ExecRxgraph: Error in exec: %s\n", strerror(errno));
                 return PROCESS_ERROR_EXEC;
             }
         }else{
@@ -695,6 +753,82 @@
         }
     }
 
+    int ProcessManager::WaitRuntimeMonitor(){
+        pid_t waitreturnpid;
+        int status;
+
+        if(pid_runtime_monitor > 0){	//Check if it's already running
+            do{
+                waitreturnpid = waitpid(pid_runtime_monitor, &status, WNOHANG);
+                if(waitreturnpid == 0){
+                    //printf("ProcessManager::WaitDashboard: Running\n");
+                    return PROCESS_RUNNING;
+                }
+
+                if(waitreturnpid < 0){
+                    //printf("ProcessManager::WaitDashboard: Error in waitpid: %s\n", strerror(errno));
+                    return PROCESS_ERROR_WAITING;
+                }
+
+                if (WIFEXITED(status)) {
+                    //printf("ProcessManager::WaitDashboard:child exited, status= %d\n", WEXITSTATUS(status));
+
+                } else if (WIFSIGNALED(status)) {
+                    //printf("ProcessManager::WaitDashboard: child killed (signal %d)\n", WTERMSIG(status));
+
+
+                } else if (WIFSTOPPED(status)) {
+                    //printf("ProcessManager::WaitDashboard: child stopped (signal %d)\n", WSTOPSIG(status));
+                }
+
+            } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+
+            pid_runtime_monitor = -1;
+            return PROCESS_OK;
+        }else{
+            //printf("ProcessManager::WaitDashboard: no process to wait for..\n");
+            return PROCESS_OK;
+        }
+    }
+
+    int ProcessManager::WaitRxgraph(){
+        pid_t waitreturnpid;
+        int status;
+
+        if(pid_rxgraph > 0){	//Check if it's already running
+            do{
+                waitreturnpid = waitpid(pid_rxgraph, &status, WNOHANG);
+                if(waitreturnpid == 0){
+                    //printf("ProcessManager::WaitDashboard: Running\n");
+                    return PROCESS_RUNNING;
+                }
+
+                if(waitreturnpid < 0){
+                    //printf("ProcessManager::WaitDashboard: Error in waitpid: %s\n", strerror(errno));
+                    return PROCESS_ERROR_WAITING;
+                }
+
+                if (WIFEXITED(status)) {
+                    //printf("ProcessManager::WaitDashboard:child exited, status= %d\n", WEXITSTATUS(status));
+
+                } else if (WIFSIGNALED(status)) {
+                    //printf("ProcessManager::WaitDashboard: child killed (signal %d)\n", WTERMSIG(status));
+
+
+                } else if (WIFSTOPPED(status)) {
+                    //printf("ProcessManager::WaitDashboard: child stopped (signal %d)\n", WSTOPSIG(status));
+                }
+
+            } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+
+            pid_rxgraph = -1;
+            return PROCESS_OK;
+        }else{
+            //printf("ProcessManager::WaitDashboard: no process to wait for..\n");
+            return PROCESS_OK;
+        }
+    }
+
 
 /*!	\fn int ProcessManager::Exit<PROCESS_NAME>()
  * 	\brief Sends a signal to the process TurtleSim to finish the execution
@@ -851,18 +985,74 @@
         }
     }
 
+	int ProcessManager::ExitRuntimeMonitor(){
+        if(pid_runtime_monitor > 0){
+            if(kill(pid_runtime_monitor, SIGINT)!=0){
+                printf("ProcessManager::ExitRuntimeMonitor: Error sending the signal: %s\n", strerror(errno));
+                return PROCESS_ERRROR_KILL;
+            }else{
+                pid_runtime_monitor = -1;
+                return PROCESS_OK;
+            }
+        }else{
+            printf("ProcessManager::ExitRuntimeMonitor: process is not running\n");
+            return PROCESS_OK;
+        }
+    }
+
+	int ProcessManager::ExitRxgraph(){
+        if(pid_rxgraph > 0){
+            if(kill(pid_rxgraph, SIGINT)!=0){
+                printf("ProcessManager::ExitRxgraph: Error sending the signal: %s\n", strerror(errno));
+                return PROCESS_ERRROR_KILL;
+            }else{
+                pid_rxgraph = -1;
+                return PROCESS_OK;
+            }
+        }else{
+            printf("ProcessManager::ExitRxgraph: process is not running\n");
+            return PROCESS_OK;
+        }
+    }
+
 	int ProcessManager::ExitAll(){
-        ExitRviz();
-        ExitInteractionPrimitives();
-        ExitGraspSimulator();
-        ExitIM_goTo();
-        ExitIM_moveBase();
-        ExitIM_distanceViewer();
-        ExitIM_camDisplay();
-        ExitIM_AssistedArmNavigation();
-        ExitSkypeRuntime();
-        ExitDashboard();
+	    if (WaitRviz() == -4)
+            ExitRviz();
+
+	    if (WaitInteractionPrimitives() == -4)
+            ExitInteractionPrimitives();
+
+	    if (WaitGraspSimulator() == -4)
+            ExitGraspSimulator();
+
+	    if (WaitIM_goTo() == -4)
+            ExitIM_goTo();
+
+	    if (WaitIM_moveBase() == -4)
+            ExitIM_moveBase();
+
+	    if (WaitIM_distanceViewer() == -4)
+            ExitIM_distanceViewer();
+
+	    if (WaitIM_camDisplay() == -4)
+            ExitIM_camDisplay();
+
+	    if (WaitIM_AssistedArmNavigation() == -4)
+            ExitIM_AssistedArmNavigation();
+
+	    if (WaitSkypeRuntime() == -4)
+            ExitSkypeRuntime();
+
+	    if (WaitDashboard() == -4)
+            ExitDashboard();
+
+        if (WaitRuntimeMonitor() == -4)
+            ExitRuntimeMonitor();
+
+	    if (WaitRxgraph() == -4)
+            ExitRxgraph();
 	}
+
 
 /*!	\fn int ProcessManager::Kill<PROCESS_NAME>()
  * 	\brief Kills the process TurtleSim
@@ -1018,4 +1208,36 @@
             return PROCESS_OK;
         }
     }
+
+	int ProcessManager::KillRuntimeMonitor(){
+        if(pid_runtime_monitor > 0){
+            if(kill(pid_runtime_monitor, SIGKILL)!=0){
+                printf("ProcessManager::KillRuntimeMonitor: Error sending the signal: %s\n", strerror(errno));
+                return PROCESS_ERRROR_KILL;
+            }else{
+                pid_runtime_monitor = -1;
+                return PROCESS_OK;
+            }
+        }else{
+            printf("ProcessManager::KillRuntimeMonitor: process is not running\n");
+            return PROCESS_OK;
+        }
+    }
+
+	int ProcessManager::KillRxgraph(){
+        if(pid_rxgraph > 0){
+            if(kill(pid_rxgraph, SIGKILL)!=0){
+                printf("ProcessManager::KillRxgraph: Error sending the signal: %s\n", strerror(errno));
+                return PROCESS_ERRROR_KILL;
+            }else{
+                pid_rxgraph = -1;
+                return PROCESS_OK;
+            }
+        }else{
+            printf("ProcessManager::KillRxgraph: process is not running\n");
+            return PROCESS_OK;
+        }
+    }
+
+
 

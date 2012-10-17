@@ -8,8 +8,10 @@ void *AuxControlThread(void *threadParam){
 }
 
 RosInterface::RosInterface(){
+    initializeVariables();
     initTopics();
     initServices();
+    initActionServers();
     Start();
 }
 
@@ -23,8 +25,8 @@ void RosInterface::ControlThread(){
 
 void RosInterface::init(){
     int argc = 1;
-    char *argv[1] = {(char*)"srs_UI_PRO"};
-    ros::init(argc, argv, "srs_UI_PRO");
+    char *argv[1] = {(char*)"srs_ui_pro"};
+    ros::init(argc, argv, "srs_ui_pro");
 }
 
 int RosInterface::Start(){
@@ -44,12 +46,19 @@ int RosInterface::Start(){
     return 0;
 }
 
-void RosInterface::initTopics(){
+void RosInterface::initializeVariables(){
+    dm_exceptional_case_id = 0;
+    dm_solution_required = false;
+    dm_current_task = dm_current_task_id = "";
+
+}
+
+void RosInterface::initServices(){
     detection_client = n.serviceClient<cob_object_detection_msgs::DetectObjects>("/object_detection/detect_object");
     gazebo_models_client = n.serviceClient<gazebo_msgs::GetWorldProperties>("/gazebo/get_world_properties");
     getgraspconfigurations_client = n.serviceClient<srs_grasping::GetDBGrasps>("/get_db_grasps");
     getgraspsfromposition_client = n.serviceClient<srs_grasping::GetFeasibleGrasps>("/get_feasible_grasps");
-    ik_client = n.serviceClient<kinematics_msgs::GetPositionIK>("/arm_kinematics/get_ik");
+    ik_client = n.serviceClient<kinematics_msgs::GetConstraintAwarePositionIK>("/arm_kinematics/get_constraint_aware_ik");
     baseIsMoving_client = n.serviceClient<cob_srvs::Trigger>("/base_controller/is_moving");
     get_models_client = n.serviceClient<srs_object_database_msgs::GetObjectId>("/get_models");
     get_img_client = n.serviceClient<srs_object_database_msgs::GetImg>("/get_model_img");
@@ -67,17 +76,23 @@ void RosInterface::initTopics(){
     get_workspace_for_object_client = n.serviceClient<srs_knowledge::GetWorkspaceForObject>("/get_workspace_for_object");
 }
 
-void RosInterface::initServices(){
+void RosInterface::initTopics(){
+    sub_arm_state = n.subscribe("/arm_controller/state", 1000, &RosInterface::callback_arm_joint_states, this);
     sub_joint_states = n.subscribe("/joint_states", 1000, &RosInterface::callback_joint_states, this);
     sub_diagnostic = n.subscribe("/diagnostics", 1000, &RosInterface::callback_diagnostic, this);
     sub_emergency_state_stop = n.subscribe("/emergency_stop_state", 1000, &RosInterface::callback_emergency_stop_state, this);
     sub_goto_status = n.subscribe("/move_base/status", 1000, &RosInterface::callback_MoveBase, this);
     sub_dm_fb = n.subscribe("/srs_decision_making_actions/feedback", 1000, &RosInterface::callback_dm_fb, this);
+    sub_dm_result = n.subscribe("/srs_decision_making_actions/result", 1000, &RosInterface::callback_dm_result, this);
     sub_ts = n.subscribe("/sdh_controller/tactile_data", 1000, &RosInterface::callback_ts, this);
     sub_power_state = n.subscribe("/power_state", 1000, &RosInterface::callback_power_state, this);
     sub_wifi_state = n.subscribe("/ddwrt/accesspoint", 1000, &RosInterface::callback_wifi_state, this);
     sub_grabbed = n.subscribe("/sdh_controller/grabbed", 1000, &RosInterface::callback_grabbed, this);
     sub_grabbed2 = n.subscribe("/sdh_controller/cylindric_grabbed", 1000, &RosInterface::callback_grabbed2, this);
+}
+
+void RosInterface::initActionServers(){
+    dm_client = new actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction>("srs_decision_making_actions", true);
 }
 
 void RosInterface::serviceAvailable(ros::ServiceClient sc){
@@ -136,7 +151,7 @@ bool RosInterface::callIKSolver(std::vector<float> current_joint_configuration, 
     serviceAvailable(ik_client);
 
     solution.resize(7);
-    kinematics_msgs::GetPositionIK callIKSolver_msg;
+    kinematics_msgs::GetConstraintAwarePositionIK callIKSolver_msg;
         callIKSolver_msg.request.ik_request.ik_link_name = "sdh_palm_link";
         callIKSolver_msg.request.ik_request.pose_stamped = pose;
         //callIKSolver_msg.request.timeout = ros::Duration(2.0);
@@ -466,22 +481,27 @@ bool RosInterface::baseIsMoving()
     return baseIsMoving_msg.response.success.data;;
 }
 
-int RosInterface::decision_making_actions(std::string action, std::string parameters)
+int RosInterface::decision_making_actions(std::string action, std::string parameters, std::string json_parameters)
 {
-    actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction> dm_client("srs_decision_making_actions", true);
-
     ROS_INFO("Waiting for the srs_decision_making_actions action server to come up.");
-    if (!dm_client.waitForServer(ros::Duration(5.0)))
+    if (!dm_client->waitForServer(ros::Duration(5.0)))
         throw ServiceUnavailable("/srs_decision_making_actions");
 
 
     srs_decision_making_interface::srs_actionGoal goal;
+    if (json_parameters != "NULL")
+    {
+        goal.json_parameters = json_parameters;
+        dm_client->sendGoalAndWait(goal);
+        return dm_client->getResult()->return_value;
+    }
+
     if (action == "move" || action == "search" || action == "check" || action == "get" || action == "fetch" || action == "deliver" || action == "stop" || action == "pause" || action == "resume")
     {
         goal.action = action.c_str();
         //goal.json_parameters = parameters;
         goal.parameter = parameters;
-        goal.priority = 1;
+        goal.priority = 0;
     }
     else
     {
@@ -489,18 +509,21 @@ int RosInterface::decision_making_actions(std::string action, std::string parame
         return -1;
     }
 
-    dm_client.sendGoalAndWait(goal);
-    return dm_client.getResult()->return_value;
+    dm_client->sendGoalAndWait(goal);
+    return dm_client->getResult()->return_value;
 }
 
 void RosInterface::startAssistedArm()
 {
+    //TODO:
+    /*
     actionlib::SimpleActionClient<srs_assisted_arm_navigation::ManualArmManipAction> client("/but_arm_manip/manual_arm_manip_action", true);
     client.waitForServer();
     srs_assisted_arm_navigation::ManualArmManipActionGoal goal;
-    goal.goal.away = true;
+    goal.goal.allow_repeat = true;//goal.goal.away = true;
     client.sendGoal(goal.goal);
     client.waitForResult();
+    */
 }
 
 
@@ -551,7 +574,7 @@ std::vector<std::string> RosInterface::get_workspace_on_map()
     return workspace_msg.response.objects;
 }
 
-std::vector<srs_knowledge::SRSSpatialInfo> RosInterface::get_workspace_on_map_info()
+std::vector<srs_msgs::SRSSpatialInfo> RosInterface::get_workspace_on_map_info()
 {
     serviceAvailable(get_workspace_on_map_client);
     //std::vector<srs_knowledge::SRSSpatialInfo> response;
@@ -749,8 +772,31 @@ std::string RosInterface::getDMStatusText()
 
 std::string RosInterface::getDMCurrentState()
 {
+    return dm_current_state;
+}
+
+std::string RosInterface::getDMCurrentTask()
+{
+    return dm_current_task;
+}
+
+int RosInterface::getDMCurrentStatus()
+{
     return dm_current_status;
 }
+
+
+std::string RosInterface::getDMCurrentTaskID()
+{
+    return dm_current_task_id;
+}
+
+
+int RosInterface::DM_InterventionRequired()
+{
+    return dm_exceptional_case_id;
+}
+
 
 std::vector<srs_msgs::DBGrasp> RosInterface::getGraspConfigurations(int object_id)
 {
@@ -810,7 +856,19 @@ pr2_msgs::AccessPoint RosInterface::getWifiState()
 
 
 
+
+
+
+
 //CALLBACKS
+void RosInterface::callback_arm_joint_states(const pr2_controllers_msgs::JointTrajectoryControllerState::ConstPtr &msg)
+{
+    for (int i=0; i<7; i++)
+        arm_joints[i].position = msg->desired.positions[i];
+}
+
+
+
 void RosInterface::callback_joint_states(const sensor_msgs::JointState::ConstPtr &msg)
 {
     if (msg->position.size() > 8)
@@ -825,7 +883,7 @@ void RosInterface::callback_joint_states(const sensor_msgs::JointState::ConstPtr
             if ((joint_name.substr(0,3)).compare("arm")==0)
             {
                 arm_joints[arm_count].name = msg->name[i];
-                arm_joints[arm_count].position = msg->position[i];
+                //arm_joints[arm_count].position = msg->position[i];
                 arm_joints[arm_count].velocity = msg->velocity[i];
                 arm_count++;
             }
@@ -972,8 +1030,17 @@ void RosInterface::callback_dm_fb(const srs_decision_making_interface::srs_actio
     }
 
     dm_status_text = status+": "+msg->status.text;
-    dm_current_status = msg->feedback.current_state;
+    dm_current_state = msg->feedback.current_state;
+    dm_solution_required = msg->feedback.solution_required;
+    dm_exceptional_case_id = msg->feedback.exceptional_case_id;
     dm_goal_id = msg->status.goal_id.id;
+}
+
+void RosInterface::callback_dm_result(const srs_decision_making_interface::srs_actionActionResult::ConstPtr &msg)
+{
+    dm_current_task = msg->status.text;
+    dm_current_status = msg->status.status;
+    dm_current_task_id = msg->status.goal_id.id;
 }
 
 void RosInterface::callback_ts(const schunk_sdh::TactileSensor::ConstPtr &msg)

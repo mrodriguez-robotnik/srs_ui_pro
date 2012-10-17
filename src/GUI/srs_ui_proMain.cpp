@@ -46,13 +46,11 @@ const long srs_ui_proFrame::ID_PANEL4 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL2 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON14 = wxNewId();
 const long srs_ui_proFrame::ID_TEXTCTRL6 = wxNewId();
-const long srs_ui_proFrame::ID_TEXTCTRL7 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE3 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL46 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL20 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON13 = wxNewId();
 const long srs_ui_proFrame::ID_TEXTCTRL3 = wxNewId();
-const long srs_ui_proFrame::ID_TEXTCTRL8 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE8 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE4 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT5 = wxNewId();
@@ -60,14 +58,12 @@ const long srs_ui_proFrame::ID_PANEL19 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL18 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON19 = wxNewId();
 const long srs_ui_proFrame::ID_TEXTCTRL9 = wxNewId();
-const long srs_ui_proFrame::ID_TEXTCTRL10 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE7 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE5 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT11 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL37 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL21 = wxNewId();
 const long srs_ui_proFrame::ID_TEXTCTRL5 = wxNewId();
-const long srs_ui_proFrame::ID_TEXTCTRL14 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON1 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE10 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE9 = wxNewId();
@@ -77,7 +73,6 @@ const long srs_ui_proFrame::ID_PANEL30 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL22 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON25 = wxNewId();
 const long srs_ui_proFrame::ID_TEXTCTRL11 = wxNewId();
-const long srs_ui_proFrame::ID_TEXTCTRL12 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE12 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE11 = wxNewId();
 const long srs_ui_proFrame::ID_CHOICE6 = wxNewId();
@@ -210,6 +205,13 @@ const long srs_ui_proFrame::ID_TEXTCTRL19 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON21 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON20 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL8 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT34 = wxNewId();
+const long srs_ui_proFrame::ID_STATICLINE4 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT35 = wxNewId();
+const long srs_ui_proFrame::ID_STATICLINE5 = wxNewId();
+const long srs_ui_proFrame::ID_COMBOBOX4 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON18 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON2 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL26 = wxNewId();
 const long srs_ui_proFrame::ID_NOTEBOOK6 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL16 = wxNewId();
@@ -243,6 +245,9 @@ const long srs_ui_proFrame::ID_MENUITEM4 = wxNewId();
 const long srs_ui_proFrame::ID_MENUITEM12 = wxNewId();
 const long srs_ui_proFrame::ID_MENUITEM15 = wxNewId();
 const long srs_ui_proFrame::ID_MENUITEM14 = wxNewId();
+const long srs_ui_proFrame::ID_MENUITEM23 = wxNewId();
+const long srs_ui_proFrame::ID_MENUITEM24 = wxNewId();
+const long srs_ui_proFrame::ID_MENUITEM8 = wxNewId();
 const long srs_ui_proFrame::idMenuAbout = wxNewId();
 const long srs_ui_proFrame::ID_TIMER1 = wxNewId();
 const long srs_ui_proFrame::ID_TIMER2 = wxNewId();
@@ -260,39 +265,40 @@ BEGIN_EVENT_TABLE(srs_ui_proFrame,wxFrame)
 END_EVENT_TABLE()
 
 
-srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent,wxWindowID id)
+srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessManager *pm, wxWindowID id)
 {
     //(*Initialize(srs_ui_proFrame)
     wxMenuItem* MenuItem2;
+    wxMenuItem* menu_status_runtimeMonitor;
     wxMenuItem* MenuItem1;
-    wxBoxSizer* BoxSizer3;
     wxMenu* Menu5;
     wxMenu* Menu1;
-    wxBoxSizer* BoxSizer10;
-    wxBoxSizer* BoxSizer7;
+    wxBoxSizer* sizer_comunications;
     wxMenuItem* MenuItem20;
-    wxBoxSizer* BoxSizer2;
-    wxBoxSizer* BoxSizer9;
-    wxBoxSizer* BoxSizer4;
-    wxBoxSizer* BoxSizer8;
+    wxBoxSizer* sizer_automatic_deliver;
+    wxBoxSizer* sizer_automatic_search;
+    wxBoxSizer* sizer_options;
+    wxBoxSizer* sizer_actions;
     wxMenuBar* MenuBar1;
+    wxBoxSizer* sizer_status;
+    wxBoxSizer* sizer_automatic_fetch;
+    wxBoxSizer* sizer_automatic_move;
     wxMenu* Menu2;
-    wxBoxSizer* BoxSizer6;
-    wxBoxSizer* BoxSizer5;
-
+    wxBoxSizer* sizer_automatic_get;
+    
     Create(parent, wxID_ANY, _("GUI-PRO"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxFULL_REPAINT_ON_RESIZE, _T("wxID_ANY"));
     SetClientSize(wxSize(1357,654));
     panel_main = new wxPanel(this, ID_PANEL3, wxPoint(0,0), wxSize(1360,400), wxTAB_TRAVERSAL, _T("ID_PANEL3"));
     panel_comunications_main = new wxPanel(panel_main, ID_PANEL2, wxPoint(8,0), wxSize(391,688), wxTAB_TRAVERSAL, _T("ID_PANEL2"));
-    BoxSizer7 = new wxBoxSizer(wxHORIZONTAL);
-    PanelCommunications = new wxPanel(panel_comunications_main, ID_PANEL4, wxPoint(0,0), wxSize(360,600), wxTAB_TRAVERSAL, _T("ID_PANEL4"));
-    grid_requests = new wxGrid(PanelCommunications, ID_GRID1, wxPoint(0,32), wxSize(344,176), 0, _T("ID_GRID1"));
-    grid_requests->CreateGrid(1,3);
+    sizer_comunications = new wxBoxSizer(wxHORIZONTAL);
+    panel_comunications = new wxPanel(panel_comunications_main, ID_PANEL4, wxPoint(0,0), wxSize(360,600), wxTAB_TRAVERSAL, _T("ID_PANEL4"));
+    grid_requests = new wxGrid(panel_comunications, ID_GRID1, wxPoint(0,32), wxSize(345,176), 0, _T("ID_GRID1"));
+    grid_requests->CreateGrid(6,3);
     grid_requests->SetMinSize(wxSize(-1,-1));
     grid_requests->EnableEditing(false);
     grid_requests->EnableGridLines(true);
     grid_requests->SetRowLabelSize(1);
-    grid_requests->SetDefaultColSize(110, true);
+    grid_requests->SetDefaultColSize(115, true);
     grid_requests->SetColLabelValue(0, _("ID"));
     grid_requests->SetColLabelValue(1, _("URI"));
     grid_requests->SetColLabelValue(2, _("Problem"));
@@ -301,290 +307,299 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent,wxWindowID id)
     grid_requests->SetCellValue(0, 2, _("Can\'t grasp an object"));
     grid_requests->SetDefaultCellFont( grid_requests->GetFont() );
     grid_requests->SetDefaultCellTextColour( grid_requests->GetForegroundColour() );
-    StaticText7 = new wxStaticText(PanelCommunications, ID_STATICTEXT7, _("Requests"), wxPoint(8,8), wxSize(72,24), 0, _T("ID_STATICTEXT7"));
-    chat = new wxNotebook(PanelCommunications, ID_NOTEBOOK2, wxPoint(0,232), wxSize(360,240), wxNB_MULTILINE, _T("ID_NOTEBOOK2"));
-    Panel10 = new wxPanel(chat, ID_PANEL10, wxPoint(4,381), wxSize(352,243), wxTAB_TRAVERSAL, _T("ID_PANEL10"));
-    notebook_skype_contacts_contactList = new wxListCtrl(Panel10, ID_LISTCTRL1, wxPoint(16,16), wxSize(320,168), wxLC_REPORT|wxSIMPLE_BORDER, wxDefaultValidator, _T("ID_LISTCTRL1"));
-    PanelIncomingCalls = new wxPanel(chat, ID_PANEL9, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL9"));
-    notebook_skype_incoming_calls_incomingList = new wxListCtrl(PanelIncomingCalls, ID_LISTCTRL2, wxPoint(16,16), wxSize(320,168), wxLC_REPORT|wxSIMPLE_BORDER, wxDefaultValidator, _T("ID_LISTCTRL2"));
-    chat->AddPage(Panel10, _("Contacts"), false);
-    chat->AddPage(PanelIncomingCalls, _("Incoming Calls"), false);
-    BoxSizer7->Add(PanelCommunications, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    panel_comunications_main->SetSizer(BoxSizer7);
-    BoxSizer7->SetSizeHints(panel_comunications_main);
+    label_Requests = new wxStaticText(panel_comunications, ID_STATICTEXT7, _("Requests"), wxPoint(0,8), wxSize(72,24), 0, _T("ID_STATICTEXT7"));
+    tabs_skype = new wxNotebook(panel_comunications, ID_NOTEBOOK2, wxPoint(0,232), wxSize(360,240), wxNB_MULTILINE, _T("ID_NOTEBOOK2"));
+    tab_skype_contacts = new wxPanel(tabs_skype, ID_PANEL10, wxPoint(4,381), wxSize(352,243), wxTAB_TRAVERSAL, _T("ID_PANEL10"));
+    grid_skype_contactList = new wxListCtrl(tab_skype_contacts, ID_LISTCTRL1, wxPoint(16,16), wxSize(320,168), wxLC_REPORT|wxSIMPLE_BORDER, wxDefaultValidator, _T("ID_LISTCTRL1"));
+    tab_skype_IncomingCalls = new wxPanel(tabs_skype, ID_PANEL9, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL9"));
+    grid_skype_IncomingCalls = new wxListCtrl(tab_skype_IncomingCalls, ID_LISTCTRL2, wxPoint(16,16), wxSize(320,168), wxLC_REPORT|wxSIMPLE_BORDER, wxDefaultValidator, _T("ID_LISTCTRL2"));
+    tabs_skype->AddPage(tab_skype_contacts, _("Contacts"), false);
+    tabs_skype->AddPage(tab_skype_IncomingCalls, _("Incoming Calls"), false);
+    sizer_comunications->Add(panel_comunications, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    panel_comunications_main->SetSizer(sizer_comunications);
+    sizer_comunications->SetSizeHints(panel_comunications_main);
     panel_actions_main = new wxPanel(panel_main, ID_PANEL6, wxPoint(376,0), wxSize(674,482), wxTAB_TRAVERSAL, _T("ID_PANEL6"));
     panel_actions_main->Disable();
-    BoxSizer2 = new wxBoxSizer(wxHORIZONTAL);
+    sizer_actions = new wxBoxSizer(wxHORIZONTAL);
     panel_actions = new wxPanel(panel_actions_main, ID_PANEL7, wxPoint(360,0), wxSize(800,500), wxTAB_TRAVERSAL, _T("ID_PANEL7"));
-    tab_actions = new wxNotebook(panel_actions, ID_NOTEBOOK1, wxPoint(0,0), wxSize(656,472), 0, _T("ID_NOTEBOOK1"));
-    tab_automatic = new wxPanel(tab_actions, ID_PANEL11, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL11"));
-    NotebookFull = new wxNotebook(tab_automatic, ID_NOTEBOOK4, wxPoint(0,0), wxSize(648,100), 0, _T("ID_NOTEBOOK4"));
-    tab_automatic_move = new wxPanel(NotebookFull, ID_PANEL20, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL20"));
-    BoxSizer5 = new wxBoxSizer(wxHORIZONTAL);
-    panel_GetMilk_sub = new wxPanel(tab_automatic_move, ID_PANEL46, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL46"));
-    button_GetMilkStart = new wxButton(panel_GetMilk_sub, ID_BUTTON14, _("Start"), wxPoint(128,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON14"));
-    box_automatic_move_small = new wxTextCtrl(panel_GetMilk_sub, ID_TEXTCTRL6, wxEmptyString, wxPoint(184,16), wxSize(448,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL6"));
-    box_automatic_move_big = new wxTextCtrl(panel_GetMilk_sub, ID_TEXTCTRL7, wxEmptyString, wxPoint(8,56), wxSize(624,296), wxTE_MULTILINE, wxDefaultValidator, _T("ID_TEXTCTRL7"));
-    choice_automatic_move = new wxChoice(panel_GetMilk_sub, ID_CHOICE3, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE3"));
-    BoxSizer5->Add(panel_GetMilk_sub, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
-    tab_automatic_move->SetSizer(BoxSizer5);
-    BoxSizer5->Fit(tab_automatic_move);
-    BoxSizer5->SetSizeHints(tab_automatic_move);
-    tab_automatic_get = new wxPanel(NotebookFull, ID_PANEL18, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL18"));
-    BoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
-    Panel26 = new wxPanel(tab_automatic_get, ID_PANEL19, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL19"));
-    Button1 = new wxButton(Panel26, ID_BUTTON13, _("Start"), wxPoint(248,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON13"));
-    box_automatic_get_small = new wxTextCtrl(Panel26, ID_TEXTCTRL3, wxEmptyString, wxPoint(304,16), wxSize(328,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL3"));
-    box_automatic_get_big = new wxTextCtrl(Panel26, ID_TEXTCTRL8, wxEmptyString, wxPoint(8,56), wxSize(624,296), wxTE_MULTILINE, wxDefaultValidator, _T("ID_TEXTCTRL8"));
-    choice_automatic_get_search = new wxChoice(Panel26, ID_CHOICE8, wxPoint(128,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE8"));
-    choice_automatic_get = new wxChoice(Panel26, ID_CHOICE4, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE4"));
-    StaticText5 = new wxStaticText(Panel26, ID_STATICTEXT5, _("Optional:"), wxPoint(128,0), wxDefaultSize, 0, _T("ID_STATICTEXT5"));
-    BoxSizer3->Add(Panel26, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
-    tab_automatic_get->SetSizer(BoxSizer3);
-    BoxSizer3->Fit(tab_automatic_get);
-    BoxSizer3->SetSizeHints(tab_automatic_get);
-    tab_automatic_search = new wxPanel(NotebookFull, ID_PANEL21, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL21"));
-    BoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
-    Panel28 = new wxPanel(tab_automatic_search, ID_PANEL37, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL37"));
-    Button12 = new wxButton(Panel28, ID_BUTTON19, _("Start"), wxPoint(248,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON19"));
-    box_automatic_search_small = new wxTextCtrl(Panel28, ID_TEXTCTRL9, wxEmptyString, wxPoint(304,16), wxSize(328,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL9"));
-    box_automatic_search_big = new wxTextCtrl(Panel28, ID_TEXTCTRL10, wxEmptyString, wxPoint(8,56), wxSize(624,296), wxTE_MULTILINE, wxDefaultValidator, _T("ID_TEXTCTRL10"));
-    choice_automatic_search_search = new wxChoice(Panel28, ID_CHOICE7, wxPoint(128,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE7"));
-    choice_automatic_search = new wxChoice(Panel28, ID_CHOICE5, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE5"));
-    StaticText11 = new wxStaticText(Panel28, ID_STATICTEXT11, _("Optional:"), wxPoint(128,0), wxDefaultSize, 0, _T("ID_STATICTEXT11"));
-    BoxSizer4->Add(Panel28, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
-    tab_automatic_search->SetSizer(BoxSizer4);
-    BoxSizer4->Fit(tab_automatic_search);
-    BoxSizer4->SetSizeHints(tab_automatic_search);
-    tab_automatic_fetch = new wxPanel(NotebookFull, ID_PANEL22, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL22"));
-    BoxSizer8 = new wxBoxSizer(wxHORIZONTAL);
-    panel_GoTo_sub = new wxPanel(tab_automatic_fetch, ID_PANEL30, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL30"));
-    box_automatic_fetch_small = new wxTextCtrl(panel_GoTo_sub, ID_TEXTCTRL5, wxEmptyString, wxPoint(424,16), wxSize(208,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL5"));
-    box_automatic_fetch_big = new wxTextCtrl(panel_GoTo_sub, ID_TEXTCTRL14, wxEmptyString, wxPoint(8,56), wxSize(624,296), wxTE_MULTILINE, wxDefaultValidator, _T("ID_TEXTCTRL14"));
-    button_GoToStart = new wxButton(panel_GoTo_sub, ID_BUTTON1, _("Start"), wxPoint(368,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON1"));
-    choice_automatic_fetch_order = new wxChoice(panel_GoTo_sub, ID_CHOICE10, wxPoint(128,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE10"));
-    choice_automatic_fetch_search = new wxChoice(panel_GoTo_sub, ID_CHOICE9, wxPoint(248,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE9"));
+    tabs_actions = new wxNotebook(panel_actions, ID_NOTEBOOK1, wxPoint(0,0), wxSize(656,472), 0, _T("ID_NOTEBOOK1"));
+    tab_automatic = new wxPanel(tabs_actions, ID_PANEL11, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL11"));
+    tabs_decisionmaking = new wxNotebook(tab_automatic, ID_NOTEBOOK4, wxPoint(0,0), wxSize(648,100), 0, _T("ID_NOTEBOOK4"));
+    tab_automatic_move = new wxPanel(tabs_decisionmaking, ID_PANEL20, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL20"));
+    sizer_automatic_move = new wxBoxSizer(wxHORIZONTAL);
+    panel_automatic_move = new wxPanel(tab_automatic_move, ID_PANEL46, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL46"));
+    but_move_Start = new wxButton(panel_automatic_move, ID_BUTTON14, _("Start"), wxPoint(128,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON14"));
+    box_automatic_move_small = new wxTextCtrl(panel_automatic_move, ID_TEXTCTRL6, wxEmptyString, wxPoint(184,16), wxSize(448,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL6"));
+    choice_automatic_move = new wxChoice(panel_automatic_move, ID_CHOICE3, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE3"));
+    sizer_automatic_move->Add(panel_automatic_move, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
+    tab_automatic_move->SetSizer(sizer_automatic_move);
+    sizer_automatic_move->Fit(tab_automatic_move);
+    sizer_automatic_move->SetSizeHints(tab_automatic_move);
+    tab_automatic_get = new wxPanel(tabs_decisionmaking, ID_PANEL18, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL18"));
+    sizer_automatic_get = new wxBoxSizer(wxHORIZONTAL);
+    panel_automatic_get = new wxPanel(tab_automatic_get, ID_PANEL19, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL19"));
+    but_get_Start = new wxButton(panel_automatic_get, ID_BUTTON13, _("Start"), wxPoint(248,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON13"));
+    box_automatic_get_small = new wxTextCtrl(panel_automatic_get, ID_TEXTCTRL3, wxEmptyString, wxPoint(304,16), wxSize(328,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL3"));
+    choice_automatic_get_search = new wxChoice(panel_automatic_get, ID_CHOICE8, wxPoint(128,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE8"));
+    choice_automatic_get = new wxChoice(panel_automatic_get, ID_CHOICE4, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE4"));
+    label_get_Optional = new wxStaticText(panel_automatic_get, ID_STATICTEXT5, _("Optional:"), wxPoint(128,0), wxDefaultSize, 0, _T("ID_STATICTEXT5"));
+    sizer_automatic_get->Add(panel_automatic_get, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
+    tab_automatic_get->SetSizer(sizer_automatic_get);
+    sizer_automatic_get->Fit(tab_automatic_get);
+    sizer_automatic_get->SetSizeHints(tab_automatic_get);
+    tab_automatic_search = new wxPanel(tabs_decisionmaking, ID_PANEL21, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL21"));
+    sizer_automatic_search = new wxBoxSizer(wxHORIZONTAL);
+    panel_automatic_search = new wxPanel(tab_automatic_search, ID_PANEL37, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL37"));
+    but_search_Start = new wxButton(panel_automatic_search, ID_BUTTON19, _("Start"), wxPoint(248,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON19"));
+    box_automatic_search_small = new wxTextCtrl(panel_automatic_search, ID_TEXTCTRL9, wxEmptyString, wxPoint(304,16), wxSize(328,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL9"));
+    choice_automatic_search_search = new wxChoice(panel_automatic_search, ID_CHOICE7, wxPoint(128,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE7"));
+    choice_automatic_search = new wxChoice(panel_automatic_search, ID_CHOICE5, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE5"));
+    label_search_Optional = new wxStaticText(panel_automatic_search, ID_STATICTEXT11, _("Optional:"), wxPoint(128,0), wxDefaultSize, 0, _T("ID_STATICTEXT11"));
+    sizer_automatic_search->Add(panel_automatic_search, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
+    tab_automatic_search->SetSizer(sizer_automatic_search);
+    sizer_automatic_search->Fit(tab_automatic_search);
+    sizer_automatic_search->SetSizeHints(tab_automatic_search);
+    tab_automatic_fetch = new wxPanel(tabs_decisionmaking, ID_PANEL22, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL22"));
+    sizer_automatic_fetch = new wxBoxSizer(wxHORIZONTAL);
+    panel_automatic_fetch = new wxPanel(tab_automatic_fetch, ID_PANEL30, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL30"));
+    box_automatic_fetch_small = new wxTextCtrl(panel_automatic_fetch, ID_TEXTCTRL5, wxEmptyString, wxPoint(424,16), wxSize(208,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL5"));
+    but_fetch_Start = new wxButton(panel_automatic_fetch, ID_BUTTON1, _("Start"), wxPoint(368,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON1"));
+    choice_automatic_fetch_order = new wxChoice(panel_automatic_fetch, ID_CHOICE10, wxPoint(128,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE10"));
+    choice_automatic_fetch_search = new wxChoice(panel_automatic_fetch, ID_CHOICE9, wxPoint(248,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE9"));
     choice_automatic_fetch_search->Append(_("kitchen"));
     choice_automatic_fetch_search->Append(_("home"));
-    choice_automatic_fetch = new wxChoice(panel_GoTo_sub, ID_CHOICE2, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE2"));
-    StaticText13 = new wxStaticText(panel_GoTo_sub, ID_STATICTEXT13, _("Optional:"), wxPoint(248,0), wxDefaultSize, 0, _T("ID_STATICTEXT13"));
-    BoxSizer8->Add(panel_GoTo_sub, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
-    tab_automatic_fetch->SetSizer(BoxSizer8);
-    BoxSizer8->Fit(tab_automatic_fetch);
-    BoxSizer8->SetSizeHints(tab_automatic_fetch);
-    tab_automatic_deliver = new wxPanel(NotebookFull, ID_PANEL47, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL47"));
-    BoxSizer6 = new wxBoxSizer(wxHORIZONTAL);
-    Panel30 = new wxPanel(tab_automatic_deliver, ID_PANEL49, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL49"));
-    Button16 = new wxButton(Panel30, ID_BUTTON25, _("Start"), wxPoint(368,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON25"));
-    box_automatic_deliver_small = new wxTextCtrl(Panel30, ID_TEXTCTRL11, wxEmptyString, wxPoint(424,16), wxSize(208,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL11"));
-    box_automatic_deliver_big = new wxTextCtrl(Panel30, ID_TEXTCTRL12, wxEmptyString, wxPoint(8,56), wxSize(624,296), wxTE_MULTILINE, wxDefaultValidator, _T("ID_TEXTCTRL12"));
-    choice_automatic_deliver_deliver_position = new wxChoice(Panel30, ID_CHOICE12, wxPoint(128,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE12"));
-    choice_automatic_deliver_search = new wxChoice(Panel30, ID_CHOICE11, wxPoint(248,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE11"));
-    choice_automatic_deliver = new wxChoice(Panel30, ID_CHOICE6, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE6"));
-    StaticText14 = new wxStaticText(Panel30, ID_STATICTEXT25, _("Optional:"), wxPoint(248,0), wxDefaultSize, 0, _T("ID_STATICTEXT25"));
-    BoxSizer6->Add(Panel30, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
-    tab_automatic_deliver->SetSizer(BoxSizer6);
-    BoxSizer6->Fit(tab_automatic_deliver);
-    BoxSizer6->SetSizeHints(tab_automatic_deliver);
-    NotebookFull->AddPage(tab_automatic_move, _("move"), false);
-    NotebookFull->AddPage(tab_automatic_get, _("get"), false);
-    NotebookFull->AddPage(tab_automatic_search, _("search"), false);
-    NotebookFull->AddPage(tab_automatic_fetch, _("fetch"), false);
-    NotebookFull->AddPage(tab_automatic_deliver, _("deliver"), false);
-    button_PAUSE = new wxButton(tab_automatic, ID_BUTTON16, _("PAUSE"), wxPoint(12,400), wxSize(200,29), 0, wxDefaultValidator, _T("ID_BUTTON16"));
-    button_RESUME = new wxButton(tab_automatic, ID_BUTTON17, _("RESUME"), wxPoint(224,400), wxSize(200,29), 0, wxDefaultValidator, _T("ID_BUTTON17"));
-    button_RESUME->Disable();
-    button_STOP = new wxButton(tab_automatic, ID_BUTTON15, _("STOP"), wxPoint(436,400), wxSize(200,29), 0, wxDefaultValidator, _T("ID_BUTTON15"));
-    box_automatic_log = new wxTextCtrl(tab_automatic, ID_TEXTCTRL17, wxEmptyString, wxPoint(12,112), wxSize(624,280), wxTE_MULTILINE, wxDefaultValidator, _T("ID_TEXTCTRL17"));
-    tab_semi = new wxPanel(tab_actions, ID_PANEL12, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL12"));
-    PanelSemi_sub = new wxNotebook(tab_semi, ID_NOTEBOOK3, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK3"));
-    tab_semi_navigation = new wxPanel(PanelSemi_sub, ID_PANEL13, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL13"));
-    Panel19 = new wxPanel(tab_semi_navigation, ID_PANEL32, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL32"));
-    Panel19->Disable();
-    StaticBitmap6 = new wxStaticBitmap(Panel19, ID_STATICBITMAP9, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP9"));
-    StaticText15 = new wxStaticText(Panel19, ID_STATICTEXT15, _("Other..."), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT15"));
-    Button7 = new wxButton(Panel19, ID_BUTTON9, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON9"));
-    tab_semi_detection = new wxPanel(PanelSemi_sub, ID_PANEL14, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL14"));
-    button_detect_objects = new wxButton(tab_semi_detection, ID_BUTTON5, _("Detect object"), wxPoint(176,16), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON5"));
+    choice_automatic_fetch = new wxChoice(panel_automatic_fetch, ID_CHOICE2, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE2"));
+    label_fetch_Optional = new wxStaticText(panel_automatic_fetch, ID_STATICTEXT13, _("Optional:"), wxPoint(248,0), wxDefaultSize, 0, _T("ID_STATICTEXT13"));
+    sizer_automatic_fetch->Add(panel_automatic_fetch, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
+    tab_automatic_fetch->SetSizer(sizer_automatic_fetch);
+    sizer_automatic_fetch->Fit(tab_automatic_fetch);
+    sizer_automatic_fetch->SetSizeHints(tab_automatic_fetch);
+    tab_automatic_deliver = new wxPanel(tabs_decisionmaking, ID_PANEL47, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL47"));
+    sizer_automatic_deliver = new wxBoxSizer(wxHORIZONTAL);
+    panel_automatic_deliver = new wxPanel(tab_automatic_deliver, ID_PANEL49, wxDefaultPosition, wxSize(968,392), wxTAB_TRAVERSAL, _T("ID_PANEL49"));
+    but_deliver_Start = new wxButton(panel_automatic_deliver, ID_BUTTON25, _("Start"), wxPoint(368,16), wxSize(48,29), 0, wxDefaultValidator, _T("ID_BUTTON25"));
+    box_automatic_deliver_small = new wxTextCtrl(panel_automatic_deliver, ID_TEXTCTRL11, wxEmptyString, wxPoint(424,16), wxSize(208,29), 0, wxDefaultValidator, _T("ID_TEXTCTRL11"));
+    choice_automatic_deliver_deliver_position = new wxChoice(panel_automatic_deliver, ID_CHOICE12, wxPoint(128,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE12"));
+    choice_automatic_deliver_search = new wxChoice(panel_automatic_deliver, ID_CHOICE11, wxPoint(248,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE11"));
+    choice_automatic_deliver = new wxChoice(panel_automatic_deliver, ID_CHOICE6, wxPoint(8,16), wxSize(112,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE6"));
+    label_deliver_Optional = new wxStaticText(panel_automatic_deliver, ID_STATICTEXT25, _("Optional:"), wxPoint(248,0), wxDefaultSize, 0, _T("ID_STATICTEXT25"));
+    sizer_automatic_deliver->Add(panel_automatic_deliver, 0, wxALIGN_LEFT|wxALIGN_TOP, 0);
+    tab_automatic_deliver->SetSizer(sizer_automatic_deliver);
+    sizer_automatic_deliver->Fit(tab_automatic_deliver);
+    sizer_automatic_deliver->SetSizeHints(tab_automatic_deliver);
+    tabs_decisionmaking->AddPage(tab_automatic_move, _("move"), false);
+    tabs_decisionmaking->AddPage(tab_automatic_get, _("get"), false);
+    tabs_decisionmaking->AddPage(tab_automatic_search, _("search"), false);
+    tabs_decisionmaking->AddPage(tab_automatic_fetch, _("fetch"), false);
+    tabs_decisionmaking->AddPage(tab_automatic_deliver, _("deliver"), false);
+    but_PAUSE = new wxButton(tab_automatic, ID_BUTTON16, _("PAUSE"), wxPoint(12,400), wxSize(200,29), 0, wxDefaultValidator, _T("ID_BUTTON16"));
+    but_PAUSE->Disable();
+    but_RESUME = new wxButton(tab_automatic, ID_BUTTON17, _("RESUME"), wxPoint(224,400), wxSize(200,29), 0, wxDefaultValidator, _T("ID_BUTTON17"));
+    but_RESUME->Disable();
+    but_STOP = new wxButton(tab_automatic, ID_BUTTON15, _("STOP"), wxPoint(436,400), wxSize(200,29), 0, wxDefaultValidator, _T("ID_BUTTON15"));
+    box_dm_log = new wxTextCtrl(tab_automatic, ID_TEXTCTRL17, wxEmptyString, wxPoint(12,112), wxSize(624,280), wxTE_MULTILINE, wxDefaultValidator, _T("ID_TEXTCTRL17"));
+    tab_semi = new wxPanel(tabs_actions, ID_PANEL12, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL12"));
+    tabs_subsemi = new wxNotebook(tab_semi, ID_NOTEBOOK3, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK3"));
+    tab_semi_navigation = new wxPanel(tabs_subsemi, ID_PANEL13, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL13"));
+    panel_navigation_dashboard = new wxPanel(tab_semi_navigation, ID_PANEL32, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL32"));
+    img_navigation_dashboard = new wxStaticBitmap(panel_navigation_dashboard, ID_STATICBITMAP9, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP9"));
+    label_navigation_dashboard = new wxStaticText(panel_navigation_dashboard, ID_STATICTEXT15, _("Dashboard"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT15"));
+    but_navigation_dashboard = new wxButton(panel_navigation_dashboard, ID_BUTTON9, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON9"));
+    tab_semi_detection = new wxPanel(tabs_subsemi, ID_PANEL14, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL14"));
+    but_DetectObjects = new wxButton(tab_semi_detection, ID_BUTTON5, _("Detect object"), wxPoint(176,16), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON5"));
     panel_detected_objects = new wxPanel(tab_semi_detection, ID_PANEL27, wxPoint(16,96), wxSize(616,216), wxTAB_TRAVERSAL, _T("ID_PANEL27"));
-    StaticText12 = new wxStaticText(tab_semi_detection, ID_STATICTEXT12, _("Detected objects"), wxPoint(16,72), wxDefaultSize, 0, _T("ID_STATICTEXT12"));
-    button_spawn_objects = new wxButton(tab_semi_detection, ID_BUTTON33, _("Spawn objects in RVIZ"), wxPoint(16,320), wxSize(168,29), 0, wxDefaultValidator, _T("ID_BUTTON33"));
-    button_spawn_objects->Disable();
+    label_DetectedObjects = new wxStaticText(tab_semi_detection, ID_STATICTEXT12, _("Detected objects"), wxPoint(16,72), wxDefaultSize, 0, _T("ID_STATICTEXT12"));
+    but_SpawnObjectsInRviz = new wxButton(tab_semi_detection, ID_BUTTON33, _("Spawn objects in RVIZ"), wxPoint(16,320), wxSize(168,29), 0, wxDefaultValidator, _T("ID_BUTTON33"));
+    but_SpawnObjectsInRviz->Disable();
     choice_objectstodetect = new wxComboBox(tab_semi_detection, ID_COMBOBOX3, wxEmptyString, wxPoint(16,16), wxSize(152,29), 0, 0, 0, wxDefaultValidator, _T("ID_COMBOBOX3"));
-    tab_semi_grasping = new wxPanel(PanelSemi_sub, ID_PANEL15, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL15"));
+    tab_semi_grasping = new wxPanel(tabs_subsemi, ID_PANEL15, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL15"));
     tab_semi_grasping->Disable();
-    panelrandom = new wxPanel(tab_semi_grasping, ID_PANEL28, wxPoint(8,8), wxSize(957,367), wxTAB_TRAVERSAL, _T("ID_PANEL28"));
-    button_generate_grasps = new wxButton(panelrandom, ID_BUTTON6, _("Generate grasps"), wxPoint(152,74), wxSize(184,29), 0, wxDefaultValidator, _T("ID_BUTTON6"));
-    choice_selected_grasp_object = new wxChoice(panelrandom, ID_CHOICE1, wxPoint(16,74), wxSize(128,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE1"));
+    panel_grasping = new wxPanel(tab_semi_grasping, ID_PANEL28, wxPoint(8,8), wxSize(957,367), wxTAB_TRAVERSAL, _T("ID_PANEL28"));
+    but_GenerateGrasps = new wxButton(panel_grasping, ID_BUTTON6, _("Generate grasps"), wxPoint(152,74), wxSize(184,29), 0, wxDefaultValidator, _T("ID_BUTTON6"));
+    choice_selected_grasp_object = new wxChoice(panel_grasping, ID_CHOICE1, wxPoint(16,74), wxSize(128,29), 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE1"));
     choice_selected_grasp_object->Append(wxEmptyString);
-    choice_grasp_conf = new wxSpinCtrl(panelrandom, ID_SPINCTRL1, _T("0"), wxPoint(16,162), wxSize(47,29), 0, 0, 0, 0, _T("ID_SPINCTRL1"));
+    choice_grasp_conf = new wxSpinCtrl(panel_grasping, ID_SPINCTRL1, _T("0"), wxPoint(16,162), wxSize(47,29), 0, 0, 0, 0, _T("ID_SPINCTRL1"));
     choice_grasp_conf->SetValue(_T("0"));
     choice_grasp_conf->Disable();
-    button_GraspIt = new wxButton(panelrandom, ID_BUTTON7, _("Grasp it!"), wxPoint(200,162), wxSize(136,29), 0, wxDefaultValidator, _T("ID_BUTTON7"));
-    button_GraspIt->Disable();
-    box_graspResult = new wxTextCtrl(panelrandom, ID_TEXTCTRL4, _("Text"), wxPoint(72,202), wxSize(224,31), 0, wxDefaultValidator, _T("ID_TEXTCTRL4"));
-    label_result = new wxStaticText(panelrandom, ID_STATICTEXT14, _("Result:"), wxPoint(16,210), wxDefaultSize, 0, _T("ID_STATICTEXT14"));
-    panel_grasp_result = new wxPanel(panelrandom, ID_PANEL29, wxPoint(304,202), wxSize(37,42), wxTAB_TRAVERSAL, _T("ID_PANEL29"));
+    but_GraspIt = new wxButton(panel_grasping, ID_BUTTON7, _("Grasp it!"), wxPoint(200,162), wxSize(136,29), 0, wxDefaultValidator, _T("ID_BUTTON7"));
+    but_GraspIt->Disable();
+    box_graspResult = new wxTextCtrl(panel_grasping, ID_TEXTCTRL4, _("Text"), wxPoint(72,202), wxSize(224,31), 0, wxDefaultValidator, _T("ID_TEXTCTRL4"));
+    label_Result = new wxStaticText(panel_grasping, ID_STATICTEXT14, _("Result:"), wxPoint(16,210), wxDefaultSize, 0, _T("ID_STATICTEXT14"));
+    panel_grasp_result = new wxPanel(panel_grasping, ID_PANEL29, wxPoint(304,202), wxSize(37,42), wxTAB_TRAVERSAL, _T("ID_PANEL29"));
     img_graspResult = new wxStaticBitmap(panel_grasp_result, ID_STATICBITMAP6, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(0,0), wxDefaultSize, 0, _T("ID_STATICBITMAP6"));
-    button_simulateGrasp = new wxButton(panelrandom, ID_BUTTON22, _("Simulate grasp"), wxPoint(72,162), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON22"));
-    button_simulateGrasp->Disable();
-    panel_tactil = new wxPanel(panelrandom, ID_PANEL40, wxPoint(368,0), wxSize(216,320), wxTAB_TRAVERSAL, _T("ID_PANEL40"));
-    panel_ts11 = new wxPanel(panel_tactil, ID_PANEL45, wxPoint(16,16), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL45"));
-    panel_ts21 = new wxPanel(panel_tactil, ID_PANEL42, wxPoint(80,16), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL42"));
-    panel_ts31 = new wxPanel(panel_tactil, ID_PANEL39, wxPoint(144,16), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL39"));
-    panel_ts12 = new wxPanel(panel_tactil, ID_PANEL41, wxPoint(16,160), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL41"));
-    panel_ts22 = new wxPanel(panel_tactil, ID_PANEL43, wxPoint(80,160), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL43"));
-    panel_ts32 = new wxPanel(panel_tactil, ID_PANEL44, wxPoint(144,160), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL44"));
-    StaticText18 = new wxStaticText(panel_tactil, ID_STATICTEXT18, _("F2"), wxPoint(104,304), wxSize(23,17), 0, _T("ID_STATICTEXT18"));
-    StaticText20 = new wxStaticText(panel_tactil, ID_STATICTEXT20, _("F3"), wxPoint(168,304), wxSize(16,19), 0, _T("ID_STATICTEXT20"));
-    StaticText19 = new wxStaticText(panel_tactil, ID_STATICTEXT19, _("F1"), wxPoint(40,304), wxSize(23,17), 0, _T("ID_STATICTEXT19"));
-    StaticText21 = new wxStaticText(panel_tactil, ID_STATICTEXT21, _("TACTIL SENSORS"), wxPoint(32,0), wxSize(148,28), wxSIMPLE_BORDER, _T("ID_STATICTEXT21"));
-    wxFont StaticText21Font(13,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
-    StaticText21->SetFont(StaticText21Font);
-    PanelSemi_sub->AddPage(tab_semi_navigation, _("Navigation"), false);
-    PanelSemi_sub->AddPage(tab_semi_detection, _("Detection"), false);
-    PanelSemi_sub->AddPage(tab_semi_grasping, _("Grasping"), false);
-    tab_manual = new wxPanel(tab_actions, ID_PANEL17, wxDefaultPosition, wxSize(1066,324), wxTAB_TRAVERSAL, _T("ID_PANEL17"));
-    PanelManual_sub = new wxNotebook(tab_manual, ID_NOTEBOOK5, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK5"));
-    Panel6 = new wxPanel(PanelManual_sub, ID_PANEL23, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL23"));
-    Panel6->Disable();
-    Panel7 = new wxPanel(Panel6, ID_PANEL24, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL24"));
-    Panel7->Disable();
-    StaticBitmap2 = new wxStaticBitmap(Panel7, ID_STATICBITMAP3, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP3"));
-    StaticText9 = new wxStaticText(Panel7, ID_STATICTEXT9, _("Joystick"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT9"));
-    Button4 = new wxButton(Panel7, ID_BUTTON3, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON3"));
-    RadioButton2 = new wxRadioButton(Panel6, ID_RADIOBUTTON2, _("Head"), wxPoint(16,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON2"));
-    RadioButton3 = new wxRadioButton(Panel6, ID_RADIOBUTTON3, _("Torso"), wxPoint(96,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON3"));
-    RadioButton4 = new wxRadioButton(Panel6, ID_RADIOBUTTON4, _("Tray"), wxPoint(176,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON4"));
-    RadioButton5 = new wxRadioButton(Panel6, ID_RADIOBUTTON5, _("Arm"), wxPoint(256,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON5"));
-    RadioButton6 = new wxRadioButton(Panel6, ID_RADIOBUTTON6, _("Hand"), wxPoint(336,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON6"));
-    RadioButton1 = new wxRadioButton(Panel6, ID_RADIOBUTTON1, _("Base"), wxPoint(416,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON1"));
-    Panel8 = new wxPanel(PanelManual_sub, ID_PANEL25, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL25"));
-    Panel20 = new wxPanel(Panel8, ID_PANEL33, wxPoint(16,128), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL33"));
-    img_camDisplay = new wxStaticBitmap(Panel20, ID_STATICBITMAP10, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP10"));
-    StaticText16 = new wxStaticText(Panel20, ID_STATICTEXT16, _("Cam Display"), wxPoint(48,16), wxSize(88,17), 0, _T("ID_STATICTEXT16"));
-    button_im_cam = new wxButton(Panel20, ID_BUTTON10, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON10"));
-    Panel21 = new wxPanel(Panel8, ID_PANEL34, wxPoint(16,72), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL34"));
-    img_distanceVisualizer = new wxStaticBitmap(Panel21, ID_STATICBITMAP11, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP11"));
-    StaticText17 = new wxStaticText(Panel21, ID_STATICTEXT17, _("Distance Visualizer"), wxPoint(48,16), wxSize(144,17), 0, _T("ID_STATICTEXT17"));
-    button_im_distance = new wxButton(Panel21, ID_BUTTON11, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON11"));
-    Panel9 = new wxPanel(Panel8, ID_PANEL36, wxPoint(16,240), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL36"));
-    img_assisted_arm = new wxStaticBitmap(Panel9, ID_STATICBITMAP13, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP13"));
-    label = new wxStaticText(Panel9, ID_STATICTEXT23, _("Assisted arm navigation"), wxPoint(48,16), wxSize(168,17), 0, _T("ID_STATICTEXT23"));
-    button_im_assistedarm = new wxButton(Panel9, ID_BUTTON30, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON30"));
-    Panel11 = new wxPanel(Panel8, ID_PANEL35, wxPoint(16,184), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL35"));
-    img_goto = new wxStaticBitmap(Panel11, ID_STATICBITMAP12, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP12"));
-    StaticText22 = new wxStaticText(Panel11, ID_STATICTEXT22, _("Go to..."), wxPoint(48,16), wxSize(88,17), 0, _T("ID_STATICTEXT22"));
-    button_im_goto = new wxButton(Panel11, ID_BUTTON12, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON12"));
-    Panel14 = new wxPanel(Panel8, ID_PANEL38, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL38"));
-    img_movebase = new wxStaticBitmap(Panel14, ID_STATICBITMAP1, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP1"));
-    StaticText8 = new wxStaticText(Panel14, ID_STATICTEXT8, _("Interactive teleop"), wxPoint(48,16), wxSize(160,17), 0, _T("ID_STATICTEXT8"));
-    button_im_mb = new wxButton(Panel14, ID_BUTTON4, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON4"));
-    Panel12 = new wxPanel(PanelManual_sub, ID_PANEL48, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL48"));
-    Panel12->Disable();
-    Panel13 = new wxPanel(Panel12, ID_PANEL50, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL50"));
-    StaticBitmap3 = new wxStaticBitmap(Panel13, ID_STATICBITMAP5, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP5"));
-    StaticText10 = new wxStaticText(Panel13, ID_STATICTEXT10, _("Phantom Haptic"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT10"));
-    Button8 = new wxButton(Panel13, ID_BUTTON23, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON23"));
-    PanelManual_sub->AddPage(Panel6, _("Joystick"), false);
-    PanelManual_sub->AddPage(Panel8, _("Interactive Markers"), false);
-    PanelManual_sub->AddPage(Panel12, _("Phantom Haptic"), false);
-    tab_actions->AddPage(tab_automatic, _("Automatic"), false);
-    tab_actions->AddPage(tab_semi, _("Semi"), false);
-    tab_actions->AddPage(tab_manual, _("Manual"), false);
-    BoxSizer2->Add(panel_actions, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    panel_actions_main->SetSizer(BoxSizer2);
-    BoxSizer2->SetSizeHints(panel_actions_main);
+    but_SimulateGrasp = new wxButton(panel_grasping, ID_BUTTON22, _("Simulate grasp"), wxPoint(72,162), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON22"));
+    but_SimulateGrasp->Disable();
+    panel_TactilSensors = new wxPanel(panel_grasping, ID_PANEL40, wxPoint(368,0), wxSize(216,320), wxTAB_TRAVERSAL, _T("ID_PANEL40"));
+    panel_ts11 = new wxPanel(panel_TactilSensors, ID_PANEL45, wxPoint(16,16), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL45"));
+    panel_ts21 = new wxPanel(panel_TactilSensors, ID_PANEL42, wxPoint(80,16), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL42"));
+    panel_ts31 = new wxPanel(panel_TactilSensors, ID_PANEL39, wxPoint(144,16), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL39"));
+    panel_ts12 = new wxPanel(panel_TactilSensors, ID_PANEL41, wxPoint(16,160), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL41"));
+    panel_ts22 = new wxPanel(panel_TactilSensors, ID_PANEL43, wxPoint(80,160), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL43"));
+    panel_ts32 = new wxPanel(panel_TactilSensors, ID_PANEL44, wxPoint(144,160), wxSize(60,140), wxSIMPLE_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL44"));
+    label_TS_F2 = new wxStaticText(panel_TactilSensors, ID_STATICTEXT18, _("F2"), wxPoint(104,304), wxSize(23,17), 0, _T("ID_STATICTEXT18"));
+    label_TS_F3 = new wxStaticText(panel_TactilSensors, ID_STATICTEXT20, _("F3"), wxPoint(168,304), wxSize(16,19), 0, _T("ID_STATICTEXT20"));
+    label_TS_F1 = new wxStaticText(panel_TactilSensors, ID_STATICTEXT19, _("F1"), wxPoint(40,304), wxSize(23,17), 0, _T("ID_STATICTEXT19"));
+    label_TS_TactilSensors = new wxStaticText(panel_TactilSensors, ID_STATICTEXT21, _("TACTIL SENSORS"), wxPoint(32,0), wxSize(148,28), wxSIMPLE_BORDER, _T("ID_STATICTEXT21"));
+    wxFont label_TS_TactilSensorsFont(13,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_TS_TactilSensors->SetFont(label_TS_TactilSensorsFont);
+    tabs_subsemi->AddPage(tab_semi_navigation, _("Navigation"), false);
+    tabs_subsemi->AddPage(tab_semi_detection, _("Detection"), false);
+    tabs_subsemi->AddPage(tab_semi_grasping, _("Grasping"), false);
+    tab_manual = new wxPanel(tabs_actions, ID_PANEL17, wxDefaultPosition, wxSize(1066,324), wxTAB_TRAVERSAL, _T("ID_PANEL17"));
+    tabs_submanual = new wxNotebook(tab_manual, ID_NOTEBOOK5, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK5"));
+    tab_joystick = new wxPanel(tabs_submanual, ID_PANEL23, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL23"));
+    tab_joystick->Disable();
+    panel_joystick_unused1 = new wxPanel(tab_joystick, ID_PANEL24, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL24"));
+    panel_joystick_unused1->Disable();
+    img_joystick_unused1 = new wxStaticBitmap(panel_joystick_unused1, ID_STATICBITMAP3, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP3"));
+    label_joystick_unnused1 = new wxStaticText(panel_joystick_unused1, ID_STATICTEXT9, _("Joystick"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT9"));
+    but_joystick_unused1 = new wxButton(panel_joystick_unused1, ID_BUTTON3, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON3"));
+    option_joystick_Head = new wxRadioButton(tab_joystick, ID_RADIOBUTTON2, _("Head"), wxPoint(16,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON2"));
+    option_joystick_Torso = new wxRadioButton(tab_joystick, ID_RADIOBUTTON3, _("Torso"), wxPoint(96,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON3"));
+    option_joystick_Tray = new wxRadioButton(tab_joystick, ID_RADIOBUTTON4, _("Tray"), wxPoint(176,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON4"));
+    option_joystick_Arm = new wxRadioButton(tab_joystick, ID_RADIOBUTTON5, _("Arm"), wxPoint(256,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON5"));
+    option_joystick_Hand = new wxRadioButton(tab_joystick, ID_RADIOBUTTON6, _("Hand"), wxPoint(336,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON6"));
+    option_joystick_Base = new wxRadioButton(tab_joystick, ID_RADIOBUTTON1, _("Base"), wxPoint(416,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON1"));
+    tab_RvizTools = new wxPanel(tabs_submanual, ID_PANEL25, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL25"));
+    panel_RvizTools_CamDisplay = new wxPanel(tab_RvizTools, ID_PANEL33, wxPoint(16,128), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL33"));
+    img_RvizTools_CamDisplay = new wxStaticBitmap(panel_RvizTools_CamDisplay, ID_STATICBITMAP10, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP10"));
+    label_RvizTools_CamDisplay = new wxStaticText(panel_RvizTools_CamDisplay, ID_STATICTEXT16, _("Cam Display"), wxPoint(48,16), wxSize(88,17), 0, _T("ID_STATICTEXT16"));
+    but_RvizTools_CamDisplay = new wxButton(panel_RvizTools_CamDisplay, ID_BUTTON10, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON10"));
+    panel_RvizTools_DistanceVisualizer = new wxPanel(tab_RvizTools, ID_PANEL34, wxPoint(16,72), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL34"));
+    img_RvizTools_DistanceVisualizer = new wxStaticBitmap(panel_RvizTools_DistanceVisualizer, ID_STATICBITMAP11, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP11"));
+    label_RvizTools_DistanceVisualizer = new wxStaticText(panel_RvizTools_DistanceVisualizer, ID_STATICTEXT17, _("Distance Visualizer"), wxPoint(48,16), wxSize(144,17), 0, _T("ID_STATICTEXT17"));
+    but_RvizTools_DistanceVisualizer = new wxButton(panel_RvizTools_DistanceVisualizer, ID_BUTTON11, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON11"));
+    panel_RvizTools_AssistedArmNavigation = new wxPanel(tab_RvizTools, ID_PANEL36, wxPoint(16,240), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL36"));
+    img_RvizTools_AssistedArmNavigation = new wxStaticBitmap(panel_RvizTools_AssistedArmNavigation, ID_STATICBITMAP13, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP13"));
+    label_RvizTools_AssistedArmNavigation = new wxStaticText(panel_RvizTools_AssistedArmNavigation, ID_STATICTEXT23, _("Assisted arm navigation"), wxPoint(48,16), wxSize(168,17), 0, _T("ID_STATICTEXT23"));
+    but_RvizTools_AssistedArmNavigation = new wxButton(panel_RvizTools_AssistedArmNavigation, ID_BUTTON30, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON30"));
+    panel_RvizTools_GoTo = new wxPanel(tab_RvizTools, ID_PANEL35, wxPoint(16,184), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL35"));
+    panel_RvizTools_GoTo->Disable();
+    img_RvizTools_GoTo = new wxStaticBitmap(panel_RvizTools_GoTo, ID_STATICBITMAP12, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP12"));
+    label_RvizTools_GoTo = new wxStaticText(panel_RvizTools_GoTo, ID_STATICTEXT22, _("Go to..."), wxPoint(48,16), wxSize(88,17), 0, _T("ID_STATICTEXT22"));
+    but_RvizTools_GoTo = new wxButton(panel_RvizTools_GoTo, ID_BUTTON12, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON12"));
+    panel_RvizTools_InteractiveTeleop = new wxPanel(tab_RvizTools, ID_PANEL38, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL38"));
+    img_RvizTools_InteractiveTeleop = new wxStaticBitmap(panel_RvizTools_InteractiveTeleop, ID_STATICBITMAP1, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP1"));
+    label_RvizTools_InteractiveTeleop = new wxStaticText(panel_RvizTools_InteractiveTeleop, ID_STATICTEXT8, _("Interactive teleop"), wxPoint(48,16), wxSize(160,17), 0, _T("ID_STATICTEXT8"));
+    but_RvizTools_InteractiveTeleop = new wxButton(panel_RvizTools_InteractiveTeleop, ID_BUTTON4, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON4"));
+    tab_PhantomHaptic = new wxPanel(tabs_submanual, ID_PANEL48, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL48"));
+    tab_PhantomHaptic->Disable();
+    panel_phantomHaptic_unused1 = new wxPanel(tab_PhantomHaptic, ID_PANEL50, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL50"));
+    img_phantomHaptic_unused1 = new wxStaticBitmap(panel_phantomHaptic_unused1, ID_STATICBITMAP5, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP5"));
+    label_phantomHaptic_unused1 = new wxStaticText(panel_phantomHaptic_unused1, ID_STATICTEXT10, _("Phantom Haptic"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT10"));
+    but_phantomHaptic_unused1 = new wxButton(panel_phantomHaptic_unused1, ID_BUTTON23, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON23"));
+    tabs_submanual->AddPage(tab_joystick, _("Joystick"), false);
+    tabs_submanual->AddPage(tab_RvizTools, _("Rviz tools"), false);
+    tabs_submanual->AddPage(tab_PhantomHaptic, _("Phantom Haptic"), false);
+    tabs_actions->AddPage(tab_automatic, _("Automatic"), false);
+    tabs_actions->AddPage(tab_semi, _("Semi"), false);
+    tabs_actions->AddPage(tab_manual, _("Manual"), false);
+    sizer_actions->Add(panel_actions, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    panel_actions_main->SetSizer(sizer_actions);
+    sizer_actions->SetSizeHints(panel_actions_main);
     panel_status_main = new wxPanel(panel_main, ID_PANEL5, wxPoint(8,480), wxSize(1253,164), wxTAB_TRAVERSAL, _T("ID_PANEL5"));
-    BoxSizer9 = new wxBoxSizer(wxHORIZONTAL);
-    PanelStatus = new wxPanel(panel_status_main, ID_PANEL51, wxDefaultPosition, wxSize(811,152), wxRAISED_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL51"));
-    PanelConnectionInf = new wxPanel(PanelStatus, ID_PANEL52, wxPoint(8,8), wxSize(198,140), wxTAB_TRAVERSAL, _T("ID_PANEL52"));
-    StaticText3 = new wxStaticText(PanelConnectionInf, ID_STATICTEXT3, _("Robot URI"), wxPoint(8,0), wxDefaultSize, 0, _T("ID_STATICTEXT3"));
-    wxFont StaticText3Font(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
-    StaticText3->SetFont(StaticText3Font);
-    box_robot_URI = new wxTextCtrl(PanelConnectionInf, ID_TEXTCTRL1, _("Not connected"), wxPoint(8,16), wxSize(184,27), 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
-    bar_battery = new wxGauge(PanelConnectionInf, ID_GAUGE1, 100, wxPoint(8,68), wxSize(90,25), 0, wxDefaultValidator, _T("ID_GAUGE1"));
-    bar_battery->SetValue(55);
-    StaticText2 = new wxStaticText(PanelConnectionInf, ID_STATICTEXT2, _("Battery"), wxPoint(8,52), wxDefaultSize, 0, _T("ID_STATICTEXT2"));
-    wxFont StaticText2Font(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
-    StaticText2->SetFont(StaticText2Font);
-    bar_wifi_signal = new wxGauge(PanelConnectionInf, ID_GAUGE2, 100, wxPoint(102,68), wxSize(90,25), 0, wxDefaultValidator, _T("ID_GAUGE2"));
-    bar_wifi_signal->SetValue(80);
-    StaticText4 = new wxStaticText(PanelConnectionInf, ID_STATICTEXT4, _("Wifi Signal"), wxPoint(102,52), wxDefaultSize, 0, _T("ID_STATICTEXT4"));
-    wxFont StaticText4Font(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
-    StaticText4->SetFont(StaticText4Font);
-    label_time_battery = new wxStaticText(PanelConnectionInf, ID_STATICTEXT1, wxEmptyString, wxPoint(120,104), wxSize(80,16), 0, _T("ID_STATICTEXT1"));
-    StaticText1 = new wxStaticText(PanelConnectionInf, ID_STATICTEXT24, _("Time remaining:"), wxPoint(8,104), wxDefaultSize, 0, _T("ID_STATICTEXT24"));
-    Panel24 = new wxPanel(PanelStatus, ID_PANEL53, wxPoint(272,8), wxSize(748,140), wxTAB_TRAVERSAL, _T("ID_PANEL53"));
-    log_box = new wxTextCtrl(Panel24, ID_TEXTCTRL2, wxEmptyString, wxPoint(0,24), wxSize(528,111), wxTE_AUTO_SCROLL|wxTE_MULTILINE|wxVSCROLL, wxDefaultValidator, _T("ID_TEXTCTRL2"));
-    StaticText6 = new wxStaticText(Panel24, ID_STATICTEXT6, _("Status log"), wxPoint(0,8), wxSize(78,9), 0, _T("ID_STATICTEXT6"));
-    wxFont StaticText6Font(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
-    StaticText6->SetFont(StaticText6Font);
-    BoxSizer9->Add(PanelStatus, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    panel_status_main->SetSizer(BoxSizer9);
-    BoxSizer9->SetSizeHints(panel_status_main);
+    sizer_status = new wxBoxSizer(wxHORIZONTAL);
+    panel_status = new wxPanel(panel_status_main, ID_PANEL51, wxDefaultPosition, wxSize(811,152), wxRAISED_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL51"));
+    panel_status_RobotInfo = new wxPanel(panel_status, ID_PANEL52, wxPoint(8,8), wxSize(198,140), wxTAB_TRAVERSAL, _T("ID_PANEL52"));
+    label_status_RobotUri = new wxStaticText(panel_status_RobotInfo, ID_STATICTEXT3, _("Robot URI"), wxPoint(8,0), wxDefaultSize, 0, _T("ID_STATICTEXT3"));
+    wxFont label_status_RobotUriFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_status_RobotUri->SetFont(label_status_RobotUriFont);
+    box_status_RobotURI = new wxTextCtrl(panel_status_RobotInfo, ID_TEXTCTRL1, _("Not connected"), wxPoint(8,16), wxSize(184,27), 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
+    bar_status_battery = new wxGauge(panel_status_RobotInfo, ID_GAUGE1, 100, wxPoint(8,68), wxSize(90,25), 0, wxDefaultValidator, _T("ID_GAUGE1"));
+    bar_status_battery->SetValue(55);
+    label_status_Battery = new wxStaticText(panel_status_RobotInfo, ID_STATICTEXT2, _("Battery"), wxPoint(8,52), wxDefaultSize, 0, _T("ID_STATICTEXT2"));
+    wxFont label_status_BatteryFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_status_Battery->SetFont(label_status_BatteryFont);
+    bar_status_wifi = new wxGauge(panel_status_RobotInfo, ID_GAUGE2, 100, wxPoint(102,68), wxSize(90,25), 0, wxDefaultValidator, _T("ID_GAUGE2"));
+    bar_status_wifi->SetValue(80);
+    label_status_WifiSignal = new wxStaticText(panel_status_RobotInfo, ID_STATICTEXT4, _("Wifi Signal"), wxPoint(102,52), wxDefaultSize, 0, _T("ID_STATICTEXT4"));
+    wxFont label_status_WifiSignalFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_status_WifiSignal->SetFont(label_status_WifiSignalFont);
+    label_status_TimeBattery = new wxStaticText(panel_status_RobotInfo, ID_STATICTEXT1, wxEmptyString, wxPoint(120,104), wxSize(80,16), 0, _T("ID_STATICTEXT1"));
+    label_status_TimeRemaining = new wxStaticText(panel_status_RobotInfo, ID_STATICTEXT24, _("Time remaining:"), wxPoint(8,104), wxDefaultSize, 0, _T("ID_STATICTEXT24"));
+    panel_status_log = new wxPanel(panel_status, ID_PANEL53, wxPoint(272,8), wxSize(748,140), wxTAB_TRAVERSAL, _T("ID_PANEL53"));
+    box_status_log = new wxTextCtrl(panel_status_log, ID_TEXTCTRL2, wxEmptyString, wxPoint(0,24), wxSize(528,111), wxTE_AUTO_SCROLL|wxTE_MULTILINE|wxVSCROLL, wxDefaultValidator, _T("ID_TEXTCTRL2"));
+    label_status_log = new wxStaticText(panel_status_log, ID_STATICTEXT6, _("Status log"), wxPoint(0,8), wxSize(78,9), 0, _T("ID_STATICTEXT6"));
+    wxFont label_status_logFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_status_log->SetFont(label_status_logFont);
+    sizer_status->Add(panel_status, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    panel_status_main->SetSizer(sizer_status);
+    sizer_status->SetSizeHints(panel_status_main);
     panel_options_main = new wxPanel(panel_main, ID_PANEL54, wxPoint(1042,0), wxSize(306,472), wxTAB_TRAVERSAL, _T("ID_PANEL54"));
     panel_options_main->Disable();
-    BoxSizer10 = new wxBoxSizer(wxHORIZONTAL);
+    sizer_options = new wxBoxSizer(wxHORIZONTAL);
     panel_options = new wxPanel(panel_options_main, ID_PANEL16, wxDefaultPosition, wxSize(296,469), wxTAB_TRAVERSAL, _T("ID_PANEL16"));
-    tab_options = new wxNotebook(panel_options, ID_NOTEBOOK6, wxPoint(0,0), wxSize(296,472), 0, _T("ID_NOTEBOOK6"));
-    panel_ROS = new wxPanel(tab_options, ID_PANEL55, wxDefaultPosition, wxSize(292,437), wxTAB_TRAVERSAL, _T("ID_PANEL55"));
-    Notebook1 = new wxNotebook(panel_ROS, ID_NOTEBOOK7, wxPoint(0,0), wxSize(288,408), 0, _T("ID_NOTEBOOK7"));
-    tab_nodes = new wxPanel(Notebook1, ID_PANEL57, wxDefaultPosition, wxSize(284,361), wxTAB_TRAVERSAL, _T("ID_PANEL57"));
+    tabs_options = new wxNotebook(panel_options, ID_NOTEBOOK6, wxPoint(0,0), wxSize(296,472), 0, _T("ID_NOTEBOOK6"));
+    tab_ROS = new wxPanel(tabs_options, ID_PANEL55, wxDefaultPosition, wxSize(292,437), wxTAB_TRAVERSAL, _T("ID_PANEL55"));
+    tabs_subROS = new wxNotebook(tab_ROS, ID_NOTEBOOK7, wxPoint(0,0), wxSize(288,408), 0, _T("ID_NOTEBOOK7"));
+    tab_nodes = new wxPanel(tabs_subROS, ID_PANEL57, wxDefaultPosition, wxSize(284,361), wxTAB_TRAVERSAL, _T("ID_PANEL57"));
     box_ROS_nodes = new wxTextCtrl(tab_nodes, ID_TEXTCTRL13, wxEmptyString, wxPoint(4,8), wxSize(276,360), wxTE_MULTILINE|wxHSCROLL, wxDefaultValidator, _T("ID_TEXTCTRL13"));
-    tab_topics = new wxPanel(Notebook1, ID_PANEL56, wxDefaultPosition, wxSize(284,336), wxTAB_TRAVERSAL, _T("ID_PANEL56"));
+    tab_topics = new wxPanel(tabs_subROS, ID_PANEL56, wxDefaultPosition, wxSize(284,336), wxTAB_TRAVERSAL, _T("ID_PANEL56"));
     box_ROS_topics = new wxTextCtrl(tab_topics, ID_TEXTCTRL15, wxEmptyString, wxPoint(4,8), wxSize(276,360), wxTE_MULTILINE|wxHSCROLL, wxDefaultValidator, _T("ID_TEXTCTRL15"));
-    tab_services = new wxPanel(Notebook1, ID_PANEL58, wxDefaultPosition, wxSize(-1,-1), wxTAB_TRAVERSAL, _T("ID_PANEL58"));
+    tab_services = new wxPanel(tabs_subROS, ID_PANEL58, wxDefaultPosition, wxSize(-1,-1), wxTAB_TRAVERSAL, _T("ID_PANEL58"));
     box_ROS_services = new wxTextCtrl(tab_services, ID_TEXTCTRL16, wxEmptyString, wxPoint(4,8), wxSize(276,360), wxTE_MULTILINE|wxHSCROLL, wxDefaultValidator, _T("ID_TEXTCTRL16"));
-    tab_params = new wxPanel(Notebook1, ID_PANEL59, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL59"));
+    tab_params = new wxPanel(tabs_subROS, ID_PANEL59, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL59"));
     box_ROS_params = new wxTextCtrl(tab_params, ID_TEXTCTRL18, wxEmptyString, wxPoint(4,8), wxSize(276,360), wxTE_MULTILINE|wxHSCROLL, wxDefaultValidator, _T("ID_TEXTCTRL18"));
-    Notebook1->AddPage(tab_nodes, _("nodes"), false);
-    Notebook1->AddPage(tab_topics, _("topics"), false);
-    Notebook1->AddPage(tab_services, _("services"), false);
-    Notebook1->AddPage(tab_params, _("params"), false);
-    img_update_rosinfo = new wxBitmapButton(panel_ROS, ID_BITMAPBUTTON2, wxBitmap(wxImage(_T("./img/update.png"))), wxPoint(262,408), wxDefaultSize, wxBU_AUTODRAW, wxDefaultValidator, _T("ID_BITMAPBUTTON2"));
+    tabs_subROS->AddPage(tab_nodes, _("nodes"), false);
+    tabs_subROS->AddPage(tab_topics, _("topics"), false);
+    tabs_subROS->AddPage(tab_services, _("services"), false);
+    tabs_subROS->AddPage(tab_params, _("params"), false);
+    img_update_rosinfo = new wxBitmapButton(tab_ROS, ID_BITMAPBUTTON2, wxBitmap(wxImage(_T("./img/update.png"))), wxPoint(262,408), wxDefaultSize, wxBU_AUTODRAW, wxDefaultValidator, _T("ID_BITMAPBUTTON2"));
     img_update_rosinfo->SetFocus();
-    panel_objects = new wxPanel(tab_options, ID_PANEL8, wxDefaultPosition, wxSize(292,436), wxTAB_TRAVERSAL, _T("ID_PANEL8"));
-    panel_db_objects = new wxPanel(panel_objects, ID_PANEL61, wxPoint(0,256), wxSize(292,184), wxRAISED_BORDER, _T("ID_PANEL61"));
+    tab_objects = new wxPanel(tabs_options, ID_PANEL8, wxDefaultPosition, wxSize(292,436), wxTAB_TRAVERSAL, _T("ID_PANEL8"));
+    panel_db_objects = new wxPanel(tab_objects, ID_PANEL61, wxPoint(0,256), wxSize(292,184), wxRAISED_BORDER, _T("ID_PANEL61"));
     scrollablewindow_dbobjects = new wxScrolledWindow(panel_db_objects, ID_SCROLLEDWINDOW2, wxPoint(0,0), wxSize(292,184), wxHSCROLL|wxVSCROLL, _T("ID_SCROLLEDWINDOW2"));
-    StaticText24 = new wxStaticText(panel_objects, ID_STATICTEXT28, _("Database object list"), wxPoint(4,236), wxDefaultSize, 0, _T("ID_STATICTEXT28"));
-    wxFont StaticText24Font(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
-    StaticText24->SetFont(StaticText24Font);
-    StaticText25 = new wxStaticText(panel_objects, ID_STATICTEXT29, _("Teach new object"), wxPoint(4,0), wxDefaultSize, 0, _T("ID_STATICTEXT29"));
-    wxFont StaticText25Font(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
-    StaticText25->SetFont(StaticText25Font);
-    ComboBox1 = new wxComboBox(panel_objects, ID_COMBOBOX1, wxEmptyString, wxPoint(4,48), wxSize(240,29), 0, 0, 0, wxDefaultValidator, _T("ID_COMBOBOX1"));
-    ComboBox1->Append(_("Rotate-on-Gripper"));
-    StaticText26 = new wxStaticText(panel_objects, ID_STATICTEXT30, _("Teach new object by"), wxPoint(4,32), wxDefaultSize, 0, _T("ID_STATICTEXT30"));
-    Button2 = new wxButton(panel_objects, ID_BUTTON8, _("Start"), wxPoint(244,48), wxSize(44,29), 0, wxDefaultValidator, _T("ID_BUTTON8"));
-    Button2->Disable();
-    StaticLine2 = new wxStaticLine(panel_objects, ID_STATICLINE2, wxPoint(4,240), wxSize(284,24), wxLI_HORIZONTAL, _T("ID_STATICLINE2"));
-    StaticLine3 = new wxStaticLine(panel_objects, ID_STATICLINE3, wxPoint(4,4), wxSize(284,24), wxLI_HORIZONTAL, _T("ID_STATICLINE3"));
-    StaticLine1 = new wxStaticLine(panel_objects, ID_STATICLINE1, wxPoint(4,100), wxSize(284,24), wxLI_HORIZONTAL, _T("ID_STATICLINE1"));
-    StaticText27 = new wxStaticText(panel_objects, ID_STATICTEXT31, _("Define the object"), wxPoint(4,96), wxDefaultSize, 0, _T("ID_STATICTEXT31"));
-    wxFont StaticText27Font(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
-    StaticText27->SetFont(StaticText27Font);
-    StaticText29 = new wxStaticText(panel_objects, ID_STATICTEXT33, _("Object name"), wxPoint(4,128), wxDefaultSize, 0, _T("ID_STATICTEXT33"));
-    StaticText28 = new wxStaticText(panel_objects, ID_STATICTEXT32, _("Category"), wxPoint(144,128), wxDefaultSize, 0, _T("ID_STATICTEXT32"));
-    ComboBox2 = new wxComboBox(panel_objects, ID_COMBOBOX2, wxEmptyString, wxPoint(144,144), wxSize(144,24), 0, 0, 0, wxDefaultValidator, _T("ID_COMBOBOX2"));
-    ComboBox2->Append(_("bottles"));
-    ComboBox2->Append(_("cups"));
-    ComboBox2->Append(_("drugs"));
-    TextCtrl1 = new wxTextCtrl(panel_objects, ID_TEXTCTRL19, wxEmptyString, wxPoint(4,144), wxSize(140,24), 0, wxDefaultValidator, _T("ID_TEXTCTRL19"));
-    Button5 = new wxButton(panel_objects, ID_BUTTON21, _("Save"), wxPoint(88,168), wxSize(56,29), 0, wxDefaultValidator, _T("ID_BUTTON21"));
-    Button5->Disable();
-    Button3 = new wxButton(panel_objects, ID_BUTTON20, _("Cancel"), wxPoint(144,168), wxSize(56,29), 0, wxDefaultValidator, _T("ID_BUTTON20"));
-    Button3->Disable();
-    panel_tasks = new wxPanel(tab_options, ID_PANEL26, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL26"));
-    tab_options->AddPage(panel_ROS, _("ROS"), false);
-    tab_options->AddPage(panel_objects, _("Objects"), false);
-    tab_options->AddPage(panel_tasks, _("Tasks"), false);
-    BoxSizer10->Add(panel_options, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    panel_options_main->SetSizer(BoxSizer10);
-    BoxSizer10->SetSizeHints(panel_options_main);
+    label_DatabaseObjectsList = new wxStaticText(tab_objects, ID_STATICTEXT28, _("Database object list"), wxPoint(4,236), wxDefaultSize, 0, _T("ID_STATICTEXT28"));
+    wxFont label_DatabaseObjectsListFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_DatabaseObjectsList->SetFont(label_DatabaseObjectsListFont);
+    label_TeachNewObject = new wxStaticText(tab_objects, ID_STATICTEXT29, _("Teach new object"), wxPoint(4,0), wxDefaultSize, 0, _T("ID_STATICTEXT29"));
+    wxFont label_TeachNewObjectFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_TeachNewObject->SetFont(label_TeachNewObjectFont);
+    choice_TeachNewObject = new wxComboBox(tab_objects, ID_COMBOBOX1, wxEmptyString, wxPoint(4,48), wxSize(240,29), 0, 0, 0, wxDefaultValidator, _T("ID_COMBOBOX1"));
+    choice_TeachNewObject->Append(_("Rotate-on-Gripper"));
+    label_TeachNewObjectBy = new wxStaticText(tab_objects, ID_STATICTEXT30, _("Teach new object by"), wxPoint(4,32), wxDefaultSize, 0, _T("ID_STATICTEXT30"));
+    but_TeachNewObjectStart = new wxButton(tab_objects, ID_BUTTON8, _("Start"), wxPoint(244,48), wxSize(44,29), 0, wxDefaultValidator, _T("ID_BUTTON8"));
+    but_TeachNewObjectStart->Disable();
+    separador1 = new wxStaticLine(tab_objects, ID_STATICLINE2, wxPoint(4,240), wxSize(284,24), wxLI_HORIZONTAL, _T("ID_STATICLINE2"));
+    separador2 = new wxStaticLine(tab_objects, ID_STATICLINE3, wxPoint(4,4), wxSize(284,24), wxLI_HORIZONTAL, _T("ID_STATICLINE3"));
+    separador3 = new wxStaticLine(tab_objects, ID_STATICLINE1, wxPoint(4,100), wxSize(284,24), wxLI_HORIZONTAL, _T("ID_STATICLINE1"));
+    label_DefineTheObject = new wxStaticText(tab_objects, ID_STATICTEXT31, _("Define the object"), wxPoint(4,96), wxDefaultSize, 0, _T("ID_STATICTEXT31"));
+    wxFont label_DefineTheObjectFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_DefineTheObject->SetFont(label_DefineTheObjectFont);
+    label_ObjectName = new wxStaticText(tab_objects, ID_STATICTEXT33, _("Object name"), wxPoint(4,128), wxDefaultSize, 0, _T("ID_STATICTEXT33"));
+    label_Category = new wxStaticText(tab_objects, ID_STATICTEXT32, _("Category"), wxPoint(144,128), wxDefaultSize, 0, _T("ID_STATICTEXT32"));
+    choice_category = new wxComboBox(tab_objects, ID_COMBOBOX2, wxEmptyString, wxPoint(144,144), wxSize(144,24), 0, 0, 0, wxDefaultValidator, _T("ID_COMBOBOX2"));
+    choice_category->Append(_("bottles"));
+    choice_category->Append(_("cups"));
+    choice_category->Append(_("drugs"));
+    box_ObjectName = new wxTextCtrl(tab_objects, ID_TEXTCTRL19, wxEmptyString, wxPoint(4,144), wxSize(140,24), 0, wxDefaultValidator, _T("ID_TEXTCTRL19"));
+    but_Save = new wxButton(tab_objects, ID_BUTTON21, _("Save"), wxPoint(88,168), wxSize(56,29), 0, wxDefaultValidator, _T("ID_BUTTON21"));
+    but_Save->Disable();
+    but_Cancel = new wxButton(tab_objects, ID_BUTTON20, _("Cancel"), wxPoint(144,168), wxSize(56,29), 0, wxDefaultValidator, _T("ID_BUTTON20"));
+    but_Cancel->Disable();
+    tab_tasks = new wxPanel(tabs_options, ID_PANEL26, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL26"));
+    label_TeachNewTask = new wxStaticText(tab_tasks, ID_STATICTEXT34, _("Teach new task"), wxPoint(4,0), wxDefaultSize, 0, _T("ID_STATICTEXT34"));
+    wxFont label_TeachNewTaskFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_TeachNewTask->SetFont(label_TeachNewTaskFont);
+    separador4 = new wxStaticLine(tab_tasks, ID_STATICLINE4, wxPoint(4,4), wxSize(284,24), wxLI_HORIZONTAL, _T("ID_STATICLINE4"));
+    label_TasksList = new wxStaticText(tab_tasks, ID_STATICTEXT35, _("Tasks list"), wxPoint(4,328), wxDefaultSize, 0, _T("ID_STATICTEXT35"));
+    wxFont label_TasksListFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
+    label_TasksList->SetFont(label_TasksListFont);
+    separador5 = new wxStaticLine(tab_tasks, ID_STATICLINE5, wxPoint(8,332), wxSize(284,24), wxLI_HORIZONTAL, _T("ID_STATICLINE5"));
+    choice_TasksList = new wxComboBox(tab_tasks, ID_COMBOBOX4, wxEmptyString, wxPoint(4,352), wxSize(284,29), 0, 0, 0, wxDefaultValidator, _T("ID_COMBOBOX4"));
+    but_StartTask = new wxButton(tab_tasks, ID_BUTTON18, _("Start task"), wxPoint(4,400), wxSize(140,29), 0, wxDefaultValidator, _T("ID_BUTTON18"));
+    but_StartTask->Disable();
+    but_StopTask = new wxButton(tab_tasks, ID_BUTTON2, _("Stop task"), wxPoint(148,400), wxSize(140,29), 0, wxDefaultValidator, _T("ID_BUTTON2"));
+    but_StopTask->Disable();
+    tabs_options->AddPage(tab_ROS, _("ROS"), false);
+    tabs_options->AddPage(tab_objects, _("Objects"), false);
+    tabs_options->AddPage(tab_tasks, _("Tasks"), false);
+    sizer_options->Add(panel_options, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    panel_options_main->SetSizer(sizer_options);
+    sizer_options->SetSizeHints(panel_options_main);
     panel_ontray_main = new wxPanel(panel_main, ID_PANEL31, wxPoint(1048,488), wxSize(292,148), wxRAISED_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL31"));
     panel_ontray_main->Disable();
-    StaticText23 = new wxStaticText(panel_ontray_main, ID_STATICTEXT26, _("Objects on tray"), wxPoint(4,4), wxDefaultSize, 0, _T("ID_STATICTEXT26"));
+    label_ObjectsOnTray = new wxStaticText(panel_ontray_main, ID_STATICTEXT26, _("Objects on tray"), wxPoint(4,4), wxDefaultSize, 0, _T("ID_STATICTEXT26"));
     label_ontray = new wxStaticText(panel_ontray_main, ID_STATICTEXT27, _("(0)"), wxPoint(116,4), wxDefaultSize, 0, _T("ID_STATICTEXT27"));
     wxFont label_ontrayFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
     label_ontray->SetFont(label_ontrayFont);
@@ -644,13 +659,19 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent,wxWindowID id)
     menu_dashboard->Append(menu_dashboard_run);
     menu_dashboard_run->Enable(false);
     Menu6->Append(ID_MENUITEM14, _("Dashboard"), menu_dashboard, wxEmptyString);
+    menu_status = new wxMenu();
+    menu_status_rxgraph = new wxMenuItem(menu_status, ID_MENUITEM23, _("rxgraph"), wxEmptyString, wxITEM_NORMAL);
+    menu_status->Append(menu_status_rxgraph);
+    menu_status_runtimeMonitor = new wxMenuItem(menu_status, ID_MENUITEM24, _("Runtime monitor"), wxEmptyString, wxITEM_NORMAL);
+    menu_status->Append(menu_status_runtimeMonitor);
+    Menu6->Append(ID_MENUITEM8, _("Status"), menu_status, wxEmptyString);
     MenuBar1->Append(Menu6, _("Tools"));
     Menu2 = new wxMenu();
     MenuItem2 = new wxMenuItem(Menu2, idMenuAbout, _("About\tF1"), _("Show info about this application"), wxITEM_NORMAL);
     Menu2->Append(MenuItem2);
     MenuBar1->Append(Menu2, _("Help"));
     SetMenuBar(MenuBar1);
-    Timer1.SetOwner(this, ID_TIMER1);
+    timer_updates.SetOwner(this, ID_TIMER1);
     timer_URI.SetOwner(this, ID_TIMER2);
     timer_RequestsEvent.SetOwner(this, ID_TIMER3);
     StatusBar1 = new wxStatusBar(this, ID_STATUSBAR1, 0, _T("ID_STATUSBAR1"));
@@ -662,9 +683,8 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent,wxWindowID id)
     timer_skype_contacts.SetOwner(this, ID_TIMER4);
     timer_ROS.SetOwner(this, ID_TIMER5);
     timer_choice.SetOwner(this, ID_TIMER6);
-
+    
     Connect(ID_GRID1,wxEVT_GRID_CELL_LEFT_DCLICK,(wxObjectEventFunction)&srs_ui_proFrame::Ongrid_requestsCellLeftDClick);
-    Connect(ID_GRID1,wxEVT_GRID_LABEL_LEFT_DCLICK,(wxObjectEventFunction)&srs_ui_proFrame::Ongrid_request_eventsLabelLeftDClick);
     Connect(ID_LISTCTRL1,wxEVT_COMMAND_LIST_ITEM_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showContextualMenu);
     Connect(ID_LISTCTRL2,wxEVT_COMMAND_LIST_ITEM_ACTIVATED,(wxObjectEventFunction)&srs_ui_proFrame::acceptCall);
     Connect(ID_BUTTON14,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_move_STARTClick);
@@ -713,9 +733,10 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent,wxWindowID id)
     Connect(ID_MENUITEM9,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_assistedarmClick);
     Connect(ID_MENUITEM5,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::manual_moveBaseButton);
     Connect(ID_MENUITEM7,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_gotoClick);
-    Connect(ID_MENUITEM15,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::runDashboard);
+    Connect(ID_MENUITEM23,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::Onmenu_status_rxgraphSelected);
+    Connect(ID_MENUITEM24,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::Onmenu_status_runtimeMonitorSelected);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::OnAbout);
-    Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::OnTimer1Trigger);
+    Connect(ID_TIMER1,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Ontimer_updatesTrigger);
     Connect(ID_TIMER2,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Ontimer_URITrigger);
     Connect(ID_TIMER3,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Ontimer_RequestsEventTrigger1);
     Connect(ID_TIMER4,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Onskype_timerTrigger1);
@@ -723,27 +744,40 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent,wxWindowID id)
     Connect(ID_TIMER6,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Ontimer_choiceTrigger);
     //*)
 
+    SF = sf;
+    PM = pm;
     stopTimers();
     Initialize();
-    InitSkype();
+    connectToSkype();
+    option_skype_start->Enable();
+
+    //InitSkype();
 }
 
 srs_ui_proFrame::~srs_ui_proFrame()
 {
+    if (SF->connected)
+        SF->disconnect(NULL);
+
+    //Ri->IP_RemoveAllObjects();
+
     PM->ExitAll();
-    Ri->IP_RemoveAllObjects();
 }
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void srs_ui_proFrame::Initialize()
 {
     RosInterface::init();
-    SF = new SkypeFunctions();
-    PM = new ProcessManager();
+    //SF = new SkypeFunctions();
+    //PM = new ProcessManager();
     num_events = 0;
     dm_working = false;
+    dm_paused = dm_resumed = dm_stoped = false;
     run_notification = false;
-    last_chat_user = "";
+    last_chat_user = "None";
+    current_task_id = "None";
 
     InitTactileSensorSimulator();
     InitSkypeNotebooks();
@@ -809,7 +843,7 @@ void srs_ui_proFrame::stopTimers()
     timer_ROS.Stop();
     timer_URI.Stop();
     timer_RequestsEvent.Stop();
-    Timer1.Stop();
+    timer_updates.Stop();
     timer_skype_contacts.Stop();
     timer_choice.Stop();
 }
@@ -945,7 +979,6 @@ void srs_ui_proFrame::InitPredefinedPoses()
 
 void srs_ui_proFrame::UpdateTactilSensorSimulator()
 {
-    //TODO: Read TS
     RosInterface::tactil_data tactil_data = Ri->getTactilSensorData();
 
     wxBitmap off(wxImage(_T("./img/ts_off.png")));
@@ -1047,12 +1080,12 @@ void srs_ui_proFrame::UpdateTactilSensorSimulator()
 void srs_ui_proFrame::UpdateRobotStatus()
 {
     pr2_msgs::PowerState ps = Ri->getPowerState();
-    bar_battery->SetValue(ps.relative_capacity);
+    bar_status_battery->SetValue(ps.relative_capacity);
 
     int time = ps.time_remaining.sec;
     std::stringstream aux;
     aux << time;
-    label_time_battery->SetLabel(toWXString(aux.str()));
+    label_status_TimeBattery->SetLabel(toWXString(aux.str()));
 
     //pr2_msgs::AccessPoint ws = Ri->getWifiState();
     //bar_wifi_signal->SetValue(ws.signal);
@@ -1064,36 +1097,36 @@ void srs_ui_proFrame::UpdateIMGs()
     wxBitmap img_off(wxImage(_T("./img/off.gif")));
 
     if (PM->WaitIM_goTo() == -4)
-        img_goto->SetBitmap(img_on);
+        img_RvizTools_GoTo->SetBitmap(img_on);
     else
-        img_goto->SetBitmap(img_off);
+        img_RvizTools_GoTo->SetBitmap(img_off);
 
     if (PM->WaitIM_moveBase() == -4)
-        img_movebase->SetBitmap(img_on);
+        img_RvizTools_InteractiveTeleop->SetBitmap(img_on);
     else
-        img_movebase->SetBitmap(img_off);
+        img_RvizTools_InteractiveTeleop->SetBitmap(img_off);
 
     if (PM->WaitIM_distanceViewer() == -4)
-        img_distanceVisualizer->SetBitmap(img_on);
+        img_RvizTools_DistanceVisualizer->SetBitmap(img_on);
     else
-        img_distanceVisualizer->SetBitmap(img_off);
+        img_RvizTools_DistanceVisualizer->SetBitmap(img_off);
 
     if (PM->WaitIM_camDisplay() == -4)
-        img_camDisplay->SetBitmap(img_on);
+        img_RvizTools_CamDisplay->SetBitmap(img_on);
     else
-        img_camDisplay->SetBitmap(img_off);
+        img_RvizTools_CamDisplay->SetBitmap(img_off);
 
     if (PM->WaitIM_AssistedArmNavigation() == -4)
-        img_assisted_arm->SetBitmap(img_on);
+        img_RvizTools_AssistedArmNavigation->SetBitmap(img_on);
     else
-        img_assisted_arm->SetBitmap(img_off);
+        img_RvizTools_AssistedArmNavigation->SetBitmap(img_off);
 }
 
 void srs_ui_proFrame::runRviz(wxCommandEvent& event)
 {
     PM->ExecRviz(RVIZ_CONFIG_FILE);
     sleep(1);
-    button_spawn_objects->Enable();
+    but_SpawnObjectsInRviz->Enable();
 }
 
 void srs_ui_proFrame::Onbutton_GenerateGraspsClick(wxCommandEvent& event)
@@ -1101,8 +1134,6 @@ void srs_ui_proFrame::Onbutton_GenerateGraspsClick(wxCommandEvent& event)
     wxMessageBox( wxT("The graspings will be generated in second plane. When the process finish, you will be notified."), wxT("SRS_UI_PRO: Grasp generation."), wxICON_INFORMATION);
     pthread_t thread1;
     pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_GenerateGrasps, (void*)this);
-    //pthread_join(thread1, NULL);
-    //wxMessageBox(wxT("Has finished!"), wxT("SRS_UI_PRO: Grasp generation."), wxICON_INFORMATION);
 }
 
 void srs_ui_proFrame::Onbutton_GraspItClick(wxCommandEvent& event)
@@ -1141,17 +1172,16 @@ void srs_ui_proFrame::Onbutton_DMPauseClick(wxCommandEvent& event)
     dm_thread_arg *arg = new dm_thread_arg;
         arg->form = this;
         arg->action = "pause";
+        arg->log = box_dm_log;
+
+        dm_resumed = dm_stoped = false;
+        dm_paused = true;
+
+        but_RESUME->Enable();
+        but_PAUSE->Disable();
+        but_STOP->Enable();
 
     pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
-    dm_working = false;//dm_move_working = dm_get_working = dm_fetch_working = dm_search_working = dm_deliver_working = false;
-
-    wxButton *r = (wxButton *)event.GetEventObject();
-    std::string dm_parent = toString(r->GetName());
-
-    writeInDMLog("PAUSED", BLUE);
-    button_PAUSE->Disable();
-    button_RESUME->Enable();
-    //pthread_join(thread1, NULL);
 }
 
 void srs_ui_proFrame::Onbutton_DMResumeClick(wxCommandEvent& event)
@@ -1161,17 +1191,18 @@ void srs_ui_proFrame::Onbutton_DMResumeClick(wxCommandEvent& event)
     dm_thread_arg *arg = new dm_thread_arg;
         arg->form = this;
         arg->action = "resume";
+        arg->log = box_dm_log;
+
+
+        dm_paused = dm_stoped = false;
+        dm_resumed = true;
+
+        but_RESUME->Disable();
+        but_PAUSE->Enable();
+        but_STOP->Enable();
+
 
     pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
-
-    wxButton *r = (wxButton *)event.GetEventObject();
-    std::string dm_parent = toString(r->GetName());
-
-    dm_working = true;//dm_move_working = dm_get_working = dm_fetch_working = dm_search_working = dm_deliver_working = true;
-
-    writeInDMLog("RESUME", BLUE);
-    button_PAUSE->Enable();
-    button_RESUME->Disable();
 }
 
 void srs_ui_proFrame::Onbutton_DMStopClick(wxCommandEvent& event)
@@ -1181,16 +1212,16 @@ void srs_ui_proFrame::Onbutton_DMStopClick(wxCommandEvent& event)
     dm_thread_arg *arg = new dm_thread_arg;
         arg->form = this;
         arg->action = "stop";
+        arg->log = box_dm_log;
+
+        dm_resumed = dm_paused = false;
+        dm_stoped = true;
+
+        but_RESUME->Disable();
+        but_PAUSE->Disable();
+        but_STOP->Disable();
 
     pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
-    dm_working = false;//dm_move_working = dm_get_working = dm_fetch_working = dm_search_working = dm_deliver_working = false;
-
-    wxButton *r = (wxButton *)event.GetEventObject();
-    std::string dm_parent = toString(r->GetName());
-
-    writeInDMLog("STOPPED", BLUE);
-    button_PAUSE->Enable();
-    button_RESUME->Disable();
 }
 
 void srs_ui_proFrame::Onbutton_im_distanceClick(wxCommandEvent& event)
@@ -1221,6 +1252,7 @@ void srs_ui_proFrame::semi_goToButton(wxCommandEvent& event)
 {
     if (PM->WaitIM_goTo() == -4)
         PM->ExitIM_goTo();
+
     else
         PM->ExecIM_goTo();
 }
@@ -1338,20 +1370,28 @@ void srs_ui_proFrame::Onbutton_im_assistedarmClick(wxCommandEvent& event)
 
 }
 
-void srs_ui_proFrame::Ongrid_request_eventsLabelLeftDClick(wxGridEvent& event)
+void srs_ui_proFrame::Onbut_navigation_dashboardClick(wxCommandEvent& event)
 {
-    if ((grid_requests->GetSelectedRows()).size() > 0)
-    {
-        int row = grid_requests->GetSelectedRows()[0];
-        std::string ros_uri = toString(grid_requests->GetCellValue(row,1));
-        ROS_ERROR("Fake connection to %s", ros_uri.c_str());
-        //TODO: Connect to this URI.
-    }
+    if (PM->WaitDashboard() == -4)
+        PM->ExitDashboard();
+    else
+        PM->ExecDashboard();
 }
 
-void srs_ui_proFrame::runDashboard(wxCommandEvent& event)
+void srs_ui_proFrame::Onmenu_status_rxgraphSelected(wxCommandEvent& event)
 {
-    PM->ExecDashboard();
+    if (PM->WaitRxgraph() == -4)
+        PM->ExitRxgraph();
+    else
+        PM->ExecRxgraph();
+}
+
+void srs_ui_proFrame::Onmenu_status_runtimeMonitorSelected(wxCommandEvent& event)
+{
+    if (PM->WaitRuntimeMonitor() == -4)
+        PM->ExitRuntimeMonitor();
+    else
+        PM->ExecRuntimeMonitor();
 }
 
 void srs_ui_proFrame::Onbutton_move_STARTClick(wxCommandEvent& event)
@@ -1366,11 +1406,17 @@ void srs_ui_proFrame::Onbutton_move_STARTClick(wxCommandEvent& event)
             arg->form = this;
             arg->action = "move";
             arg->parameters = toString(choice_automatic_move->GetStringSelection());
+            arg->log = box_dm_log;
 
-            dm_working = true;
-            //dm_move_working = true;
-            pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
-            writeInDMLog(toString(box_automatic_move_small->GetValue()));
+
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"move\",\"destination\":{\"predefined_pose\":\""+toString(choice_automatic_move->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"ui_loc\",\"device_id\":\"ui_loc_0001\"}}";
+
+        but_RESUME->Disable();
+        but_PAUSE->Enable();
+        but_STOP->Enable();
+
+        pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
+        writeInDMLog(toString(box_automatic_move_small->GetValue()), BLUE);
     }
 }
 
@@ -1389,11 +1435,14 @@ void srs_ui_proFrame::Onbutton_search_STARTClick(wxCommandEvent& event)
             aux2 = (choice_automatic_search_search->GetCurrentSelection() == -1)?"":"%" + toString(choice_automatic_search_search->GetStringSelection());
             aux = toString(choice_automatic_search->GetStringSelection())+aux2;
             arg->parameters = aux;
+            arg->log = box_dm_log;
 
-        dm_working = true;
-        //dm_search_working = true;
+        but_RESUME->Disable();
+        but_PAUSE->Enable();
+        but_STOP->Enable();
+
         pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
-        writeInDMLog(toString(box_automatic_search_small->GetValue()));
+        writeInDMLog(toString(box_automatic_search_small->GetValue()), BLUE);
     }
 }
 
@@ -1412,12 +1461,18 @@ void srs_ui_proFrame::Onbutton_get_STARTClick(wxCommandEvent& event)
             aux2 = (choice_automatic_get_search->GetCurrentSelection() == -1)?"":"%" + toString(choice_automatic_get_search->GetStringSelection());
             aux = toString(choice_automatic_get->GetStringSelection())+aux2;
             arg->parameters = aux;
+            arg->log = box_dm_log;
+
+            std::string json_aux = (choice_automatic_get_search->GetCurrentSelection() == -1)?"":toString(choice_automatic_get_search->GetStringSelection());
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"get\",\"workspaces\":[\""+json_aux+"\"],\"object\":{\"object_type\":\""+toString(choice_automatic_get->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"ui_loc\",\"device_id\":\"ui_loc_0001\"}}";
 
 
-        dm_working = true;
-        //dm_get_working = true;
+        but_RESUME->Disable();
+        but_PAUSE->Enable();
+        but_STOP->Enable();
+
         pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
-        writeInDMLog(toString(box_automatic_get_small->GetValue()));
+        writeInDMLog(toString(box_automatic_get_small->GetValue()), BLUE);
     }
 }
 
@@ -1433,14 +1488,21 @@ void srs_ui_proFrame::Onbutton_fetch_STARTClick(wxCommandEvent& event)
             arg->form = this;
             arg->action = "fetch";
             std::string aux, aux2;
-            aux2 = (choice_automatic_fetch_order->GetCurrentSelection() == -1)?"":"%"+toString(choice_automatic_fetch_order->GetStringSelection());
-            aux = toString(choice_automatic_fetch->GetStringSelection()) + "%" + toString(choice_automatic_fetch_search->GetStringSelection()) + aux2;
+            aux2 = (choice_automatic_fetch_search->GetCurrentSelection() == -1)?"":"%"+toString(choice_automatic_fetch_search->GetStringSelection());
+            aux = toString(choice_automatic_fetch->GetStringSelection()) + "%" + toString(choice_automatic_fetch_order->GetStringSelection()) + aux2;
             arg->parameters = aux;
+            arg->log = box_dm_log;
 
-        dm_working = true;
-        //dm_fetch_working = true;
+            std::string json_aux = (choice_automatic_fetch_search->GetCurrentSelection() == -1)?"":toString(choice_automatic_fetch_search->GetCurrentSelection());
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"fetch\",\"workspaces\":[\""+json_aux+"\"],\"deliver_destination\":{\"predefined_pose\":\""+toString(choice_automatic_fetch_order->GetStringSelection())+"\"},\"object\":{\"object_type\":\""+toString(choice_automatic_fetch->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"ui_loc\",\"device_id\":\"ui_loc_0001\"}}";
+
+
+        but_RESUME->Disable();
+        but_PAUSE->Enable();
+        but_STOP->Enable();
+
         pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
-        writeInDMLog(toString(box_automatic_fetch_small->GetValue()));
+        writeInDMLog(toString(box_automatic_fetch_small->GetValue()), BLUE);
     }
 }
 
@@ -1458,13 +1520,19 @@ void srs_ui_proFrame::Onbutton_deliver_STARTClick(wxCommandEvent& event)
             arg->action = "deliver";
             std::string aux, aux2;
             aux2 = (choice_automatic_deliver_search->GetCurrentSelection() == -1)?"":"%"+toString(choice_automatic_deliver_search->GetStringSelection());
-            aux = toString(choice_automatic_deliver->GetStringSelection()) + "%" + toString(choice_automatic_deliver_search->GetStringSelection())+aux2;
+            aux = toString(choice_automatic_deliver->GetStringSelection()) + "%" + toString(choice_automatic_deliver_deliver_position->GetStringSelection())+aux2;
             arg->parameters = aux;
+            arg->log = box_dm_log;
 
-        dm_working = true;
-        //dm_deliver_working = true;
+            std::string json_aux = (choice_automatic_deliver_search->GetCurrentSelection() == -1)?"":toString(choice_automatic_deliver_search->GetStringSelection());
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"fetch\",\"workspaces\":[\""+json_aux+"\"],\"deliver_destination\":{\"predefined_pose\":\""+toString(choice_automatic_deliver_deliver_position->GetStringSelection())+"\"},\"object\":{\"object_type\":\""+toString(choice_automatic_deliver->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"ui_loc\",\"device_id\":\"ui_loc_0001\"}}";
+
+        but_RESUME->Disable();
+        but_PAUSE->Enable();
+        but_STOP->Enable();
+
         pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
-        writeInDMLog(toString(box_automatic_deliver_small->GetValue()));
+        writeInDMLog(toString(box_automatic_deliver_small->GetValue()), BLUE);
     }
 }
 
@@ -1475,7 +1543,10 @@ void srs_ui_proFrame::Onbutton_spawn_objectsClick(wxCommandEvent& event)
 
     try
     {
-        Ri->IP_RemoveAllObjects();
+        //Ri->IP_RemoveAllObjects();
+        if (img_objects.size() > 0)
+            for (unsigned int i=0; i<detected_objects.size(); i++)
+                Ri->IP_RemoveObject(detected_objects[i].label.c_str());
 
         for (unsigned int i=0; i<detected_objects.size(); i++)
             Ri->IP_AddObject(detected_objects[i].label.c_str(), detected_objects[i].pose, detected_objects[i].bounding_box_lwh);
@@ -1487,16 +1558,27 @@ void srs_ui_proFrame::Onbutton_spawn_objectsClick(wxCommandEvent& event)
 
 void srs_ui_proFrame::writeInLog(std::string text, wxColour colour)
 {
-    log_box->SetDefaultStyle(wxTextAttr(colour));
-    log_box->AppendText(toWXString(text));
-    log_box->SetDefaultStyle(wxTextAttr(BLACK));
+    box_status_log->SetDefaultStyle(wxTextAttr(colour));
+    box_status_log->AppendText(toWXString(text));
+    box_status_log->SetDefaultStyle(wxTextAttr(BLACK));
 }
 
 void srs_ui_proFrame::writeInDMLog(std::string text, wxColour colour)
 {
-    box_automatic_log->SetDefaultStyle(wxTextAttr(colour));
-    box_automatic_log->AppendText(toWXStringN(text));
-    box_automatic_log->SetDefaultStyle(wxTextAttr(BLACK));
+    box_dm_log->SetDefaultStyle(wxTextAttr(colour));
+    box_dm_log->AppendText(toWXStringN(text));
+    box_dm_log->SetDefaultStyle(wxTextAttr(BLACK));
+}
+
+void srs_ui_proFrame::writeInDMLog_(std::string text, wxTextCtrl *log, wxColour colour)
+{
+    while (event_dm_log){usleep(100000);};
+
+    event_dm_log_str = text;
+    event_dm_log_colour = colour;
+    event_dm_log = true;
+
+    while (event_dm_log){usleep(100000);};
 }
 
 void srs_ui_proFrame::spawnobjects(wxCommandEvent& event)
@@ -1534,7 +1616,10 @@ void srs_ui_proFrame::spawnDetectedObjects(wxCommandEvent& event)
 {
     try
     {
-        Ri->IP_RemoveAllObjects();
+        //Ri->IP_RemoveAllObjects();
+        if (detected_objects.size() > 0)
+            for (unsigned int i=0; i<detected_objects.size(); i++)
+                Ri->IP_RemoveObject(detected_objects[i].label);
 
         for (unsigned int i=0; i<detected_objects.size(); i++)
             Ri->IP_AddObject(detected_objects[i].label.c_str(), detected_objects[i].pose, detected_objects[i].bounding_box_lwh);
@@ -1553,474 +1638,6 @@ void srs_ui_proFrame::Ongrid_requestsCellLeftDClick(wxGridEvent& event)
     //TODO: Connect to this URI
     timer_URI.Start(1000, false);
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-/////////////////////////////////////////////////////////////// THREADS ///////////////////////////////////////////////////////////////
-void *srs_ui_proFrame::_THREAD_StartAssistedArm(void)
-{
-    try
-    {
-        Ri->startAssistedArm();
-    }
-    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
-    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
-    catch(std::exception &e) { writeInLog(); }}
-
-void *srs_ui_proFrame::_THREAD_GenerateGrasps(void)
-{
-    try
-    {
-        int object_id = Ri->getObjectId(toString(choice_selected_grasp_object->GetStringSelection())); //9; //milk
-        geometry_msgs::Pose target_pose = Ri->transformPose(detected_objects[choice_selected_grasp_object->GetSelection()].pose);
-
-        generated_grasps = Ri->getGraspsFromPosition(object_id, target_pose);
-
-        choice_grasp_conf->SetRange(0, generated_grasps.size()-1);
-
-        if (generated_grasps.size()>0)
-        {
-            choice_grasp_conf->Enable();
-            button_simulateGrasp->Enable();
-            button_GraspIt->Enable();
-        }
-        run_notification = true;
-    }
-    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
-    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
-    catch(std::exception &e) { writeInLog(); }
-}
-
-void *srs_ui_proFrame::_THREAD_DMAction(std::string action, std::string parameters)
-{
-    try
-    {
-        int res = Ri->decision_making_actions(action, parameters);
-        if (res!=-1)
-        {
-            if (action=="resume")
-                dm_working = true;
-            /*
-            if (action!="pause" && action=="resume" && action=="stop")
-            {
-                if (action=="move")
-                    dm_move_working = false;
-                else if (action=="get")
-                    dm_get_working = false;
-                else if (action=="search")
-                    dm_search_working = false;
-                else if (action=="fetch")
-                    dm_fetch_working = false;
-                else if (action=="deliver")
-                    dm_deliver_working = false;
-                else
-                    NULL;
-            }
-            */
-        }
-        else
-        {
-            writeInLog("[ERROR]: srs_decision_making fails.\n");
-            //dm_move_working = dm_get_working = dm_search_working = dm_fetch_working = dm_deliver_working = false;
-            dm_working = false;
-        }
-
-
-    }
-    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
-    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
-    catch(std::exception &e) { writeInLog(); }
-}
-
-void *srs_ui_proFrame::_THREAD_GraspSimulator(void)
-{
-    if (PM->WaitGraspSimulator() == -4)
-    {
-        PM->ExitGraspSimulator();
-        //sleep(1);
-    }
-
-    PM->ExecGraspSimulator();
-    try
-    {
-        int object_id = Ri->getObjectId(toString(choice_selected_grasp_object->GetStringSelection()));
-        srs_msgs::FeasibleGrasp grasp_configuration = generated_grasps[choice_grasp_conf->GetValue()];
-        geometry_msgs::Pose object_pose = Ri->transformPose(detected_objects[choice_selected_grasp_object->GetSelection()].pose);
-        Ri->GraspSimulator(object_id, grasp_configuration, object_pose);
-    }
-    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
-    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
-    catch(std::exception &e) { writeInLog(); }
-
-    PM->ExitGraspSimulator();
-}
-
-void *srs_ui_proFrame::_THREAD_SpawnObjects(void)
-{
-    try
-    {
-        std::vector<std::string> names = Ri->get_workspace_on_map();
-        std::vector<srs_knowledge::SRSSpatialInfo> places = Ri->get_workspace_on_map_info();
-
-        Ri->IP_RemoveAllObjects();
-
-        for (unsigned int i=0; i<places.size(); i++)
-        {
-            geometry_msgs::PoseStamped ps;
-                ps.header.frame_id = "/map";
-                ps.pose = places[i].pose;
-
-            geometry_msgs::Point point;
-                point.x = places[i].l;
-                point.y = places[i].w;
-                point.z = places[i].h;
-
-            Ri->IP_AddObject(names[i], ps, point);
-        }
-    }
-    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
-    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
-    catch(std::exception &e) { writeInLog(); }
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-//////////////////////////////////////////////////////////////// TIMER ////////////////////////////////////////////////////////////////
-void srs_ui_proFrame::OnTimer1Trigger(wxTimerEvent& event)
-{
-    UpdateRobotStatus();
-    UpdateTactilSensorSimulator();
-    UpdateIMGs();
-
-    if (dm_working)
-    {
-        std::string status = Ri->getDMStatusText();
-        std::string current_state = Ri->getDMCurrentState() + "\n";
-
-        if (current_state.compare(last_state)!=0)
-            box_automatic_log->AppendText(toWXString(current_state));
-        last_state = current_state;
-/*
-        if (dm_move_working)
-        {
-            box_automatic_move_small->SetValue(toWXString(status));
-            if (current_state.compare(last_state)!=0)
-            {
-                box_automatic_move_big->AppendText(toWXString(current_state));
-                last_state = current_state;
-            }
-        }
-        else if (dm_search_working)
-        {
-            box_automatic_search_small->SetValue(toWXString(status));
-            if (current_state.compare(last_state)!=0)
-            {
-                box_automatic_search_big->AppendText(toWXString(current_state));
-                last_state = current_state;
-            }
-        }
-        else if (dm_get_working)
-        {
-            box_automatic_get_small->SetValue(toWXString(status));
-            if (current_state.compare(last_state)!=0)
-            {
-                box_automatic_get_big->AppendText(toWXString(current_state));
-                last_state = current_state;
-            }
-        }
-        else if (dm_fetch_working)
-        {
-            box_automatic_fetch_small->SetValue(toWXString(status));
-            if (current_state.compare(last_state)!=0)
-            {
-                box_automatic_fetch_big->AppendText(toWXString(current_state));
-                last_state = current_state;
-            }
-        }
-        else// if (dm_deliver_working)
-        {
-            box_automatic_deliver_small->SetValue(toWXString(status));
-            if (current_state.compare(last_state)!=0)
-            {
-                box_automatic_deliver_big->AppendText(toWXString(current_state));
-                last_state = current_state;
-            }
-        }
-*/
-    }
-
-    if (run_notification)
-    {
-        wxMessageBox(wxT("Has finished!\t"), wxT("SRS_UI_PRO: Grasp generation."), wxICON_INFORMATION);
-        run_notification = false;
-    }
-
-}
-
-void srs_ui_proFrame::Ontimer_RequestsEventTrigger1(wxTimerEvent& event)
-{
-    try
-    {
-        std::vector<srs_ui_pro::RequestEventMSG> events = Ri->getRequestEvents();
-        int current_num_events = events.size();
-
-        if (current_num_events > num_events)
-        {
-            int new_events = current_num_events - num_events;
-            //grid_request_events->DeleteRows(0, num_events, true);
-            grid_requests->InsertRows(num_events, new_events, true);
-
-            for (int i=num_events; i<current_num_events; i++)
-            {
-                grid_requests->SetCellValue(i,0, toWXString(events[i].id));
-                grid_requests->SetCellValue(i,1, toWXString(events[i].uri));
-                grid_requests->SetCellValue(i,2, toWXString(events[i].problem));
-            }
-            num_events = current_num_events;
-            grid_requests->AutoSizeColumns(true);
-        }
-    }
-    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
-    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
-    catch(std::exception &e) { writeInLog(); }
-}
-
-void srs_ui_proFrame::Ontimer_ROSTrigger(wxTimerEvent& event)
-{
-    if (!ros::master::check())
-    {
-        Timer1.Stop();
-        timer_RequestsEvent.Stop();
-        box_robot_URI->SetValue(wxString(_("Disconnected.")));
-
-        log_box->SetDefaultStyle(wxTextAttr(RED));
-        std::string aux;
-        aux = "[ERROR] Disconnected from " + ros::master::getURI() + "\n";
-        writeInLog(aux);
-
-        timer_URI.Start(1000, false);
-        timer_ROS.Stop();
-        timer_choice.Stop();
-        panel_actions_main->Disable();
-        panel_options_main->Disable();
-        panel_ontray_main->Disable();
-
-        menu_rviz_run->Enable(false);
-        menu_dashboard_run->Enable(false);
-    }
-}
-
-void srs_ui_proFrame::Ontimer_choiceTrigger(wxTimerEvent& event)
-{
-    InitPredefinedPoses();
-}
-
-void srs_ui_proFrame::Ontimer_URITrigger(wxTimerEvent& event)
-{
-    if (ros::master::check())
-    {
-        log_box->SetDefaultStyle(wxTextAttr(BLUE));
-        std::string aux;
-        aux = "[INFO] Connected to " + ros::master::getURI() + "\n";
-        writeInLog(aux, BLUE);
-
-        Ri = new RosInterface();
-        InitPredefinedPoses();
-        LoadDBObjects();
-
-        box_robot_URI->SetValue(toWXString(ros::master::getURI()));
-        timer_URI.Stop();
-        timer_ROS.Start(500, false);
-        Timer1.Start(1000, false);
-        panel_actions_main->Enable();
-        panel_options_main->Enable();
-        panel_ontray_main->Enable();
-
-        menu_rviz_run->Enable(true);
-        menu_dashboard_run->Enable(true);
-    }
-}
-
-void srs_ui_proFrame::Onskype_timerTrigger1(wxTimerEvent& event)
-{
-    if (SF->connected == true)
-    {
-        try
-        {
-            SF->showContactList(notebook_skype_contacts_contactList);
-        }
-        catch(SkypeException &e)
-        {
-            SF->connected = false;
-            writeInLog(e.getMessage());
-            writeInLog("[SKYPE ERROR] Try to reinitialize skype.\n");
-            timer_skype_contacts.Stop();
-            option_skype_start->Enable(false);
-        }
-    }
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-//////////////////////////////////////////////////////////////// SKYPE ////////////////////////////////////////////////////////////////
-void srs_ui_proFrame::InitSkypeNotebooks()
-{
-    notebook_skype_contacts_contactList->InsertColumn(0, wxT("Skype ID"),wxLIST_FORMAT_LEFT, 77);
-    notebook_skype_contacts_contactList->InsertColumn(1, wxT("Status"),wxLIST_FORMAT_LEFT, 77);
-    notebook_skype_contacts_contactList->InsertColumn(2, wxT("User Name"),wxLIST_FORMAT_LEFT, 154);
-    notebook_skype_incoming_calls_incomingList->InsertColumn(0, wxT("Skype ID"),wxLIST_FORMAT_LEFT, 77);
-    notebook_skype_incoming_calls_incomingList->InsertColumn(1, wxT("Status"),wxLIST_FORMAT_LEFT, 82);
-    notebook_skype_incoming_calls_incomingList->InsertColumn(2, wxT("Date"),wxLIST_FORMAT_LEFT, 160);
-}
-
-void srs_ui_proFrame::InitSkype()
-{
-    if (PM->WaitSkypeRuntime() == -4)
-        PM->KillSkypeRuntime();
-
-    printf("----------------------------------------------------------------------------\n");
-    fflush(stdout);
-
-    try
-    {
-        std::string runtime_path = ros::package::getPath("srs_ui_pro") + "/skype_utils/skype-runtime";
-        if (PM->ExecSkypeRuntime(runtime_path) == 0)
-        {
-            //PM->ExecSkypeRuntimeVideo();
-            SF->initialize();
-            SF->setEventOutput(notebook_skype_incoming_calls_incomingList);
-            SF->setChatOutput(log_box);
-            writeInLog("[INFO] You can now initialize Skype.\n", BLUE);
-            option_skype_start->Enable();
-        }
-        else
-            writeInLog("[SKYPE ERROR]: skype_runtime does't exist.\n");
-    }
-    catch(SkypeException &e) { writeInLog(e.getMessage()); }
-    printf("----------------------------------------------------------------------------\n");
-    fflush(stdout);
-}
-
-void srs_ui_proFrame::OnMenuSkypeStart(wxCommandEvent& event)
-{
-    try
-    {
-        int res = SF->connect(notebook_skype_contacts_contactList);
-        if (res == 1) writeInLog("[SKYPE]: Connected!\n", BLUE);
-        else writeInLog("[SKYPE ERROR]: Can't connect.\n");
-        timer_skype_contacts.Start(5000, false);
-    }
-    catch(SkypeException &e){ writeInLog(e.getMessage()); }
-}
-
-void srs_ui_proFrame::showSkypeWindow()
-{
-    long index = -1;
-    long aux = 0;
-    for (;;)
-    {
-        index = notebook_skype_contacts_contactList->GetNextItem(index, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-
-        if ( index == -1 )
-            break;
-
-        aux = index;
-    }
-
-    wxListItem li;
-    li.SetId(aux);
-    notebook_skype_contacts_contactList->GetItem(li);
-
-    std::string userName = toString(li.GetText());
-
-    SkypeWindow *Frame = new SkypeWindow(0, SF, userName, log_box);
-    Frame->Show(TRUE);
-}
-
-void srs_ui_proFrame::showSkypeWindow2()
-{
-    long index = -1;
-    long aux = 0;
-    for (;;)
-    {
-        index = notebook_skype_contacts_contactList->GetNextItem(index, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-
-        if ( index == -1 )
-            break;
-
-        aux = index;
-    }
-
-    wxListItem li;
-    li.SetId(aux);
-    notebook_skype_contacts_contactList->GetItem(li);
-
-    std::string userName = toString(li.GetText());
-
-    SkypeWindow2 *Frame = new SkypeWindow2(0, SF, userName);
-    Frame->Show(TRUE);
-}
-
-void srs_ui_proFrame::showContextualMenu(wxListEvent& event)
-{
-    long ID_CM1 = wxNewId();
-    long ID_CM2 = wxNewId();
-
-    wxMenu menu(0);
-    menu.Append(ID_CM1, wxString(_("User info")));
-    Connect(ID_CM1,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showSkypeWindow2);
-    menu.Append(ID_CM2, wxString(_("Open conversation")));
-    Connect(ID_CM2,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showSkypeWindow);
-
-    wxPoint cursor_pos;
-    cursor_pos = wxGetMousePosition();
-    int mx = cursor_pos.x - this->GetScreenPosition().x;
-    int my = cursor_pos.y - 75; //TOTALMENTE EMPÍRICO
-
-    PopupMenu(&menu, mx, my);
-}
-
-void srs_ui_proFrame::acceptCall(wxListEvent& event)
-{
-    long index = -1;
-    long aux = 0;
-    for (;;)
-    {
-        index = notebook_skype_incoming_calls_incomingList->GetNextItem(index, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-
-        if ( index == -1 )
-            break;
-
-        aux = index;
-    }
-
-    wxListItem li;
-    li.SetId(aux);
-    notebook_skype_incoming_calls_incomingList->GetItem(li);
-    std::string userName = toString(li.GetText());
-
-    try
-    {
-        SF->acceptCall(userName);
-    }
-    catch(SkypeException &e){ writeInLog(e.getMessage()); }
-
-    SkypeWindow *Frame = new SkypeWindow(0, SF, userName, log_box);
-    Frame->Show(TRUE);
-
-}
-
-void srs_ui_proFrame::ReinitializeSkype(wxCommandEvent& event)
-{
-    InitSkype();
-    option_skype_start->Enable();
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 void srs_ui_proFrame::Onchoice_automatic_moveSelect(wxCommandEvent& event)
 {
@@ -2142,4 +1759,511 @@ void srs_ui_proFrame::Onimg_update_rosinfoClick(wxCommandEvent& event)
     box_ROS_params->Clear();
     for (unsigned int i=0; i<output2.GetCount(); i++)
         box_ROS_params->AppendText(toWXStringN(toString(output2[i])));
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////////////////////// THREADS ///////////////////////////////////////////////////////////////
+void *srs_ui_proFrame::_THREAD_StartAssistedArm(void)
+{
+    try
+    {
+        Ri->startAssistedArm();
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }}
+
+void *srs_ui_proFrame::_THREAD_GenerateGrasps(void)
+{
+    try
+    {
+        int object_id = Ri->getObjectId(toString(choice_selected_grasp_object->GetStringSelection()));
+        geometry_msgs::Pose target_pose = Ri->transformPose(detected_objects[choice_selected_grasp_object->GetSelection()].pose);
+
+        generated_grasps = Ri->getGraspsFromPosition(object_id, target_pose);
+
+        choice_grasp_conf->SetRange(0, generated_grasps.size()-1);
+
+        if (generated_grasps.size()>0)
+        {
+            choice_grasp_conf->Enable();
+            but_SimulateGrasp->Enable();
+            but_GraspIt->Enable();
+        }
+        run_notification = true;
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
+}
+
+void *srs_ui_proFrame::_THREAD_DMAction(std::string action, std::string parameters, std::string json_parameters, wxTextCtrl *log)
+{
+    try
+    {
+        dm_working = true;
+
+        int res = Ri->decision_making_actions(action, parameters);
+
+        if (res>0)
+        {
+
+            if (action != "pause" && action != "resume" && action != "stop")
+            {
+                if (!dm_paused && !dm_stoped)
+                {
+                    if (res == 2)       writeInDMLog_("\tRESULT: preempted", log);
+                    else if (res == 3)  writeInDMLog_("\tRESULT: succeeded", log, GREEN);
+                    else if (res == 4)  writeInDMLog_("\tRESULT: failed", log);
+                    else                writeInDMLog_("\tRESULT: unknown", log);
+
+                    writeInDMLog_("Reached the end of the task.\n", log, BLUE);
+
+                    but_RESUME->Disable();
+                    but_PAUSE->Disable();
+                    but_STOP->Disable();
+
+                    dm_working = false;
+                }
+            }
+
+            else
+            {
+                if (action == "pause")
+                    writeInDMLog_("\tthe task has been paused", log, BLUE);
+                else if (action == "resume")
+                {
+                    current_task_id = Ri->getDMCurrentTaskID();
+                    writeInDMLog_("\tthe task has been resumed", log, BLUE);
+                    dm_paused = false;
+                }
+                else
+                {
+                    writeInDMLog_("\tthe task has been stopped", log);
+                    writeInDMLog_("Reached the end of the task.\n", log, BLUE);
+
+                    but_RESUME->Disable();
+                    but_PAUSE->Disable();
+                    but_STOP->Disable();
+
+                    dm_working = dm_paused = false;
+                }
+
+            }
+
+        }
+        else
+            writeInDMLog_("[ERROR]: srs_decision_making fails.\n", log);
+
+
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
+}
+
+void *srs_ui_proFrame::_THREAD_GraspSimulator(void)
+{
+    if (PM->WaitGraspSimulator() == -4)
+    {
+        PM->ExitGraspSimulator();
+        sleep(1);
+    }
+
+    PM->ExecGraspSimulator();
+    try
+    {
+        int object_id = Ri->getObjectId(toString(choice_selected_grasp_object->GetStringSelection()));
+        srs_msgs::FeasibleGrasp grasp_configuration = generated_grasps[choice_grasp_conf->GetValue()];
+        geometry_msgs::Pose object_pose = Ri->transformPose(detected_objects[choice_selected_grasp_object->GetSelection()].pose);
+        Ri->GraspSimulator(object_id, grasp_configuration, object_pose);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
+
+    PM->ExitGraspSimulator();
+}
+
+void *srs_ui_proFrame::_THREAD_SpawnObjects(void)
+{
+    try
+    {
+        std::vector<std::string> names = Ri->get_workspace_on_map();
+        std::vector<srs_msgs::SRSSpatialInfo> places = Ri->get_workspace_on_map_info();
+
+        //Ri->IP_RemoveAllObjects();
+
+        for (unsigned int i=0; i<places.size(); i++)
+        {
+            geometry_msgs::PoseStamped ps;
+                ps.header.frame_id = "/map";
+                ps.pose = places[i].pose;
+
+            geometry_msgs::Point point;
+                point.x = places[i].l;
+                point.y = places[i].w;
+                point.z = places[i].h;
+
+            Ri->IP_AddObject(names[i], ps, point);
+        }
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////// TIMER ////////////////////////////////////////////////////////////////
+void srs_ui_proFrame::Ontimer_updatesTrigger(wxTimerEvent& event)
+{
+    UpdateRobotStatus();
+    UpdateTactilSensorSimulator();
+    UpdateIMGs();
+
+    if (dm_working)
+    {
+        if (event_dm_log)
+        {
+            writeInDMLog(event_dm_log_str, event_dm_log_colour);
+            event_dm_log = false;
+        }
+
+
+        //std::string status = Ri->getDMStatusText();
+        std::string current_state = Ri->getDMCurrentState() + "\n";
+        std::string current_state_aux = "\t"+current_state;
+
+
+        if (Ri->DM_InterventionRequired() != 0)
+            wxMessageBox(wxT("User intervention is needed!\t"), wxT("srs_decision_making: User intervention is needed."), wxICON_INFORMATION);
+
+        if (current_state.compare(last_state)!=0 && current_state.compare("the task has been paused\n")!=0 && current_state.compare("the task has been stopped\n")!=0)
+            box_dm_log->AppendText(toWXString(current_state_aux));
+        last_state = current_state;
+
+
+        if (current_task_id.compare(Ri->getDMCurrentTaskID())!=0 && current_task_id.compare("None")!=0 && dm_resumed)
+        {
+            int res = Ri->getDMCurrentStatus();
+
+            if (res == 2)       writeInDMLog("\tRESULT: preempted");
+            else if (res == 3)  writeInDMLog("\tRESULT: succeeded",GREEN);
+            else if (res == 4)  writeInDMLog("\tRESULT: failed");
+            else                writeInDMLog("\tRESULT: unknown");
+
+            writeInDMLog("Reached the end of the task.\n", BLUE);
+            dm_working = dm_resumed = false;
+        }
+    }
+
+    if (run_notification)
+    {
+        wxMessageBox(wxT("Grasp generation has finished!\t"), wxT("SRS_UI_PRO: Grasp generation."), wxICON_INFORMATION);
+        run_notification = false;
+    }
+
+}
+
+void srs_ui_proFrame::Ontimer_RequestsEventTrigger1(wxTimerEvent& event)
+{
+    try
+    {
+        std::vector<srs_ui_pro::RequestEventMSG> events = Ri->getRequestEvents();
+        int current_num_events = events.size();
+
+        if (current_num_events > num_events)
+        {
+            int new_events = current_num_events - num_events;
+            //grid_request_events->DeleteRows(0, num_events, true);
+            grid_requests->InsertRows(num_events, new_events, true);
+
+            for (int i=num_events; i<current_num_events; i++)
+            {
+                grid_requests->SetCellValue(i,0, toWXString(events[i].id));
+                grid_requests->SetCellValue(i,1, toWXString(events[i].uri));
+                grid_requests->SetCellValue(i,2, toWXString(events[i].problem));
+            }
+            num_events = current_num_events;
+            grid_requests->AutoSizeColumns(true);
+        }
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
+}
+
+void srs_ui_proFrame::Ontimer_ROSTrigger(wxTimerEvent& event)
+{
+    if (!ros::master::check())
+    {
+        timer_updates.Stop();
+        timer_RequestsEvent.Stop();
+        box_status_RobotURI->SetValue(wxString(_("Disconnected.")));
+
+        box_status_log->SetDefaultStyle(wxTextAttr(RED));
+        std::string aux;
+        aux = "[ERROR] Disconnected from " + ros::master::getURI() + "\n";
+        writeInLog(aux);
+
+        timer_URI.Start(1000, false);
+        timer_ROS.Stop();
+        timer_choice.Stop();
+        panel_actions_main->Disable();
+        panel_options_main->Disable();
+        panel_ontray_main->Disable();
+
+        menu_rviz_run->Enable(false);
+        menu_dashboard_run->Enable(false);
+    }
+}
+
+void srs_ui_proFrame::Ontimer_choiceTrigger(wxTimerEvent& event)
+{
+    InitPredefinedPoses();
+}
+
+void srs_ui_proFrame::Ontimer_URITrigger(wxTimerEvent& event)
+{
+    if (ros::master::check())
+    {
+        box_status_log->SetDefaultStyle(wxTextAttr(BLUE));
+        std::string aux;
+        aux = "[INFO] Connected to " + ros::master::getURI() + "\n";
+        writeInLog(aux, BLUE);
+
+        Ri = new RosInterface();
+        InitPredefinedPoses();
+        LoadDBObjects();
+
+        box_status_RobotURI->SetValue(toWXString(ros::master::getURI()));
+        timer_URI.Stop();
+        timer_ROS.Start(500, false);
+        timer_updates.Start(1000, false);
+        panel_actions_main->Enable();
+        panel_options_main->Enable();
+        panel_ontray_main->Enable();
+
+        menu_rviz_run->Enable(true);
+        menu_dashboard_run->Enable(true);
+    }
+}
+
+void srs_ui_proFrame::Onskype_timerTrigger1(wxTimerEvent& event)
+{
+    if (SF->connected == true)
+    {
+        try
+        {
+            SF->showContactList(grid_skype_contactList);
+        }
+        catch(SkypeException &e)
+        {
+            SF->connected = false;
+            writeInLog(e.getMessage());
+            writeInLog("[SKYPE ERROR] Try to reinitialize skype.\n");
+            timer_skype_contacts.Stop();
+            option_skype_start->Enable(false);
+        }
+    }
+
+
+    if (SF->incomingCallEvent())
+    {
+        long itemIndex = grid_skype_IncomingCalls->InsertItem(0, toWXString(SF->incomingCallMessageEvent()));
+        //grid_skype_IncomingCalls->SetItem(itemIndex, 1, toWXString(SF->incomingCallMessageEvent()));
+        //grid_skype_IncomingCalls->SetItem(itemIndex, 2, toWXString(SF->incomingCallMessageEvent()));
+        wxMessageBox( wxT("New incoming call event!"), wxT("srs_ui_pro: SKYPE EVENT"), wxICON_INFORMATION);
+
+        SF->allowNewIncomingCallEvent();
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////// SKYPE ////////////////////////////////////////////////////////////////
+void srs_ui_proFrame::InitSkypeNotebooks()
+{
+    grid_skype_contactList->InsertColumn(0, wxT("Skype ID"),wxLIST_FORMAT_LEFT, 77);
+    grid_skype_contactList->InsertColumn(1, wxT("Status"),wxLIST_FORMAT_LEFT, 77);
+    grid_skype_contactList->InsertColumn(2, wxT("User Name"),wxLIST_FORMAT_LEFT, 154);
+    grid_skype_IncomingCalls->InsertColumn(0, wxT("Call info"),wxLIST_FORMAT_LEFT, 308);
+    //grid_skype_IncomingCalls->InsertColumn(1, wxT("Status"),wxLIST_FORMAT_LEFT, 82);
+    //grid_skype_IncomingCalls->InsertColumn(2, wxT("Date"),wxLIST_FORMAT_LEFT, 160);
+}
+
+void srs_ui_proFrame::InitSkype()
+{
+    if (PM->WaitSkypeRuntime() == -4)
+        PM->KillSkypeRuntime();
+
+    printf("----------------------------------------------------------------------------\n");
+    fflush(stdout);
+
+    try
+    {
+        std::string runtime_path = ros::package::getPath("srs_ui_pro") + "/skype_utils/skype-runtime";
+        if (PM->ExecSkypeRuntime(runtime_path) == 0)
+        {
+            //PM->ExecSkypeRuntimeVideo();
+            SF->initialize();
+            SF->setEventOutput(grid_skype_IncomingCalls);//SF->setEventOutput(grid_skype_contactList);
+            writeInLog("[INFO] You can now initialize Skype.\n", BLUE);
+            option_skype_start->Enable();
+        }
+        else
+            writeInLog("[SKYPE ERROR]: skype_runtime does't exist.\n");
+    }
+    catch(SkypeException &e) { writeInLog(e.getMessage()); }
+    printf("----------------------------------------------------------------------------\n");
+    fflush(stdout);
+}
+
+void srs_ui_proFrame::OnMenuSkypeStart(wxCommandEvent& event)
+{
+    connectToSkype();
+}
+
+void srs_ui_proFrame::connectToSkype()
+{
+    try
+    {
+        int res = SF->connect(grid_skype_contactList);
+        if (res == 1) writeInLog("[SKYPE]: Connected!\n", BLUE);
+        else
+        {
+            wxMessageBox( wxT("INVALID USER/PASS.\t\t"), wxT("SKYPE: The Skype user/pass is invalid."), wxICON_INFORMATION);
+            Close();
+        }
+        timer_skype_contacts.Start(5000, false);
+    }
+    catch(SkypeException &e)
+    {
+        writeInLog(e.getMessage());
+        wxMessageBox( wxT("INVALID USER/PASS.\t\t"), wxT("SKYPE: Unknown exception."), wxICON_INFORMATION);
+        Close();
+    }
+}
+
+void srs_ui_proFrame::showSkypeWindow()
+{
+    long index = -1;
+    long aux = 0;
+    for (;;)
+    {
+        index = grid_skype_contactList->GetNextItem(index, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
+
+        if ( index == -1 )
+            break;
+
+        aux = index;
+    }
+
+    wxListItem li;
+    li.SetId(aux);
+    grid_skype_contactList->GetItem(li);
+
+    std::string userName = toString(li.GetText());
+
+    SkypeWindow *Frame = new SkypeWindow(0, SF, userName, box_status_log);
+    Frame->Show(TRUE);
+}
+
+void srs_ui_proFrame::showSkypeWindow2()
+{
+    long index = -1;
+    long aux = 0;
+    for (;;)
+    {
+        index = grid_skype_contactList->GetNextItem(index, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
+
+        if ( index == -1 )
+            break;
+
+        aux = index;
+    }
+
+    wxListItem li;
+    li.SetId(aux);
+    grid_skype_contactList->GetItem(li);
+
+    std::string userName = toString(li.GetText());
+
+    SkypeWindow2 *Frame = new SkypeWindow2(0, SF, userName);
+    Frame->Show(TRUE);
+}
+
+void srs_ui_proFrame::showContextualMenu(wxListEvent& event)
+{
+    long ID_CM1 = wxNewId();
+    long ID_CM2 = wxNewId();
+
+    wxMenu menu(0);
+    menu.Append(ID_CM1, wxString(_("User info")));
+    Connect(ID_CM1,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showSkypeWindow2);
+    menu.Append(ID_CM2, wxString(_("Open conversation")));
+    Connect(ID_CM2,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showSkypeWindow);
+
+    wxPoint cursor_pos;
+    cursor_pos = wxGetMousePosition();
+    int mx = cursor_pos.x - this->GetScreenPosition().x;
+    int my = cursor_pos.y - 75; //TOTALMENTE EMPÍRICO
+
+    PopupMenu(&menu, mx, my);
+}
+
+void srs_ui_proFrame::acceptCall(wxListEvent& event)
+{
+    long index = -1;
+    long aux = 0;
+    for (;;)
+    {
+        index = grid_skype_IncomingCalls->GetNextItem(index, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
+
+        if ( index == -1 )
+            break;
+
+        aux = index;
+    }
+
+    wxListItem li;
+    li.SetId(aux);
+    grid_skype_IncomingCalls->GetItem(li);
+    std::string userName = toString(li.GetText());
+
+    int aux_index = userName.find_first_of(" - ");
+    userName = userName.substr(0,aux_index);
+
+    try
+    {
+        SF->acceptCall(userName);
+    }
+    catch(SkypeException &e){ writeInLog(e.getMessage()); }
+
+    SkypeWindow *Frame = new SkypeWindow(0, SF, userName, box_status_log);
+    Frame->Show(TRUE);
+
+}
+
+void srs_ui_proFrame::ReinitializeSkype(wxCommandEvent& event)
+{
+    InitSkype();
+    option_skype_start->Enable();
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+void srs_ui_proFrame::runDashboard(wxCommandEvent& event)
+{
+    if (PM->WaitDashboard() == -4)
+        PM->ExitDashboard();
+    else
+        PM->ExecDashboard();
 }

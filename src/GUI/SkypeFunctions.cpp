@@ -1,11 +1,11 @@
 #include "SkypeFunctions.h"
 #include "keypair.h"
 
-SEString accountName = "srs_ui_pro";
-SEString accountPsw  ="Robotnik2012";
-
 //SKYPEFUNCTIONS
 SkypeFunctions::SkypeFunctions(){
+
+    accountName = "srs_ui_pro";
+    accountPsw  ="Robotnik2012";
 
     inetAddr = "127.0.0.1";
     portNum = 8963;
@@ -39,11 +39,10 @@ void SkypeFunctions::initialize(){
 int SkypeFunctions::connect(wxListCtrl *contactList){
 
    printf("[SKYPE]: Getting account...\n");
-
-  if (skype->GetAccount(accountName, account))
+  if (skype->GetAccount(accountName.c_str(), account))
   {
     printf("[SKYPE]: Logging in...\n");
-    account->LoginWithPassword(accountPsw, false, false);
+    account->LoginWithPassword(accountPsw.c_str(), false, false);
 
     // Loop until LoggedIn or login failure during 3 seconds
     int sec = 0;
@@ -197,11 +196,7 @@ void SkypeFunctions::sendText(std::string selectedContact, std::string text){
     {
         Message::Ref reply;
         conv->PostText(text.c_str(), reply, false);
-        std::string aux;
-        aux = "me: "+ text + "\n";
-
-        log->SetDefaultStyle(wxTextAttr(*wxBLUE));
-        log->AppendText(wxString(aux.c_str(), wxConvUTF8));
+        contact_event = selectedContact;
     }
 }
 
@@ -212,6 +207,7 @@ void SkypeFunctions::stopCall(Sid::String userName){
     if (!skype->callFinished)
     {
         cv->LeaveLiveSession();
+        calling = false;
     };
 }
 
@@ -291,10 +287,35 @@ void SkypeFunctions::acceptCall(std::string userName){
     if (!cr->JoinLiveSession()) throw SkypeException("Can't join to live session.\n");
 }
 
+void SkypeFunctions::allowNewMessageEvent(){
+    skype->message_event = false;
+}
+
+void SkypeFunctions::allowNewIncomingCallEvent(){
+    skype->incomingCall_event = false;
+}
+
+bool SkypeFunctions::messageEvent(){
+    return skype->message_event;
+}
+
+bool SkypeFunctions::incomingCallEvent(){
+    return skype->incomingCall_event;
+}
+
+std::string SkypeFunctions::textEvent(){
+    return skype->text_event;
+}
+
+std::string SkypeFunctions::incomingCallMessageEvent(){
+    return skype->incomingCall_message;
+}
 
 
 //MYSKYPE
 void MySkype::OnMessage(const Message::Ref& message, const bool&, const Message::Ref&, const ConversationRef& conversation){
+
+  while (message_event){ usleep(10000); }
 
   Message::TYPE messageType;
   message->GetPropType(messageType);
@@ -307,15 +328,19 @@ void MySkype::OnMessage(const Message::Ref& message, const bool&, const Message:
     propIds.append(Message::P_BODY_XML);
     propValues = message->GetProps(propIds);
 
-    if (propValues[0] != accountName)
+    if (propValues[0] != accountName.c_str())
     {
         std::string aux;
         aux = propValues[0] + ": " + propValues[1] + "\n";
 
-        log->SetDefaultStyle(wxTextAttr(*wxRED));
-        log->AppendText(wxString(aux.c_str(), wxConvUTF8));
+        //log->SetDefaultStyle(wxTextAttr(*wxRED));
+        //log->AppendText(wxString(aux.c_str(), wxConvUTF8));
+        text_event = aux;
+        colour_event = *wxRED;
+        message_event = true;
     }
   }
+
 }
 
 void MySkype::OnConversationListChange(const ConversationRef &conversation, const Conversation::LIST_TYPE &type, const bool &added){
@@ -352,11 +377,27 @@ void MySkype::OnConversationListChange(const ConversationRef &conversation, cons
 
             time_t mytime = time(0);
             wxString aux3(std::string(asctime(localtime(&mytime))).c_str(), wxConvUTF8);
-
-            //incoming_calls->ClearAll();
+            /*
+            incoming_calls->ClearAll();
             long itemIndex = incoming_calls->InsertItem(0, aux);
+
             incoming_calls->SetItem(itemIndex, 1, aux2);
             incoming_calls->SetItem(itemIndex, 2, aux3);
+
+            */
+
+            //TODO: NINONI
+            std::string auxiliar;
+            auxiliar = "";
+            auxiliar.append(std::string(peopleCalling[i]).c_str());
+            auxiliar.append(" - ");
+            auxiliar.append(s_aux.c_str());
+            auxiliar.append(" - ");
+            auxiliar.append(std::string(asctime(localtime(&mytime))).c_str());
+
+            incomingCall_event = true;
+            incomingCall_message = auxiliar;//std::string(peopleCalling[i]).c_str();
+
 
         };
 

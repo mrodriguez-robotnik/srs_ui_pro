@@ -71,5 +71,9 @@
 				<pos>104,72</pos>
 			</object>
 		</object>
+		<object class="wxTimer" name="ID_TIMER1" variable="timer_messageEvents" member="yes">
+			<interval>100</interval>
+			<handler function="Ontimer_messageEventsTrigger" entry="EVT_TIMER" />
+		</object>
 	</object>
 </wxsmith>
