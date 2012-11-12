@@ -571,13 +571,13 @@
 														<pos>336,232</pos>
 													</object>
 													<object class="wxButton" name="ID_BUTTON28" variable="but_sdh_open" member="yes">
-														<label>Open</label>
+														<label>Close</label>
 														<pos>320,280</pos>
 														<size>120,29</size>
 														<handler function="OnButton1Click" entry="EVT_BUTTON" />
 													</object>
 													<object class="wxButton" name="ID_BUTTON29" variable="but_sdh_close" member="yes">
-														<label>Close</label>
+														<label>Open</label>
 														<pos>320,248</pos>
 														<size>120,29</size>
 														<handler function="OnButton2Click" entry="EVT_BUTTON" />

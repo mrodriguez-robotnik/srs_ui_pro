@@ -470,8 +470,8 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     but_head_front = new wxButton(tab_joystick, ID_BUTTON24, _("Front"), wxPoint(504,248), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON24"));
     but_head_back = new wxButton(tab_joystick, ID_BUTTON26, _("Back"), wxPoint(504,280), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON26"));
     label_robot_hand = new wxStaticText(tab_joystick, ID_STATICTEXT37, _("Robot hand:"), wxPoint(336,232), wxDefaultSize, 0, _T("ID_STATICTEXT37"));
-    but_sdh_open = new wxButton(tab_joystick, ID_BUTTON28, _("Open"), wxPoint(320,280), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON28"));
-    but_sdh_close = new wxButton(tab_joystick, ID_BUTTON29, _("Close"), wxPoint(320,248), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON29"));
+    but_sdh_open = new wxButton(tab_joystick, ID_BUTTON28, _("Close"), wxPoint(320,280), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON28"));
+    but_sdh_close = new wxButton(tab_joystick, ID_BUTTON29, _("Open"), wxPoint(320,248), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON29"));
     tab_RvizTools = new wxPanel(tabs_submanual, ID_PANEL25, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL25"));
     panel_RvizTools_CamDisplay = new wxPanel(tab_RvizTools, ID_PANEL33, wxPoint(16,128), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL33"));
     img_RvizTools_CamDisplay = new wxStaticBitmap(panel_RvizTools_CamDisplay, ID_STATICBITMAP10, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP10"));
