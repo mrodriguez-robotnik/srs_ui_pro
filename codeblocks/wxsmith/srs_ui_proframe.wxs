@@ -1201,6 +1201,7 @@
 					<object class="wxMenuItem" name="ID_MENUITEM15" variable="menu_dashboard_run" member="yes">
 						<label>Run</label>
 						<enabled>0</enabled>
+						<handler function="runDashboard" entry="EVT_MENU" />
 					</object>
 				</object>
 				<object class="wxMenu" name="ID_MENUITEM8" variable="menu_status" member="yes">
