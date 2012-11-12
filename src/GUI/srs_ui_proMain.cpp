@@ -130,6 +130,12 @@ const long srs_ui_proFrame::ID_RADIOBUTTON4 = wxNewId();
 const long srs_ui_proFrame::ID_RADIOBUTTON5 = wxNewId();
 const long srs_ui_proFrame::ID_RADIOBUTTON6 = wxNewId();
 const long srs_ui_proFrame::ID_RADIOBUTTON1 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT36 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON24 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON26 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT37 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON28 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON29 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL23 = wxNewId();
 const long srs_ui_proFrame::ID_STATICBITMAP10 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT16 = wxNewId();
@@ -141,6 +147,7 @@ const long srs_ui_proFrame::ID_BUTTON11 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL34 = wxNewId();
 const long srs_ui_proFrame::ID_STATICBITMAP13 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT23 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON27 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON30 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL36 = wxNewId();
 const long srs_ui_proFrame::ID_STATICBITMAP12 = wxNewId();
@@ -265,7 +272,7 @@ BEGIN_EVENT_TABLE(srs_ui_proFrame,wxFrame)
 END_EVENT_TABLE()
 
 
-srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessManager *pm, wxWindowID id)
+srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessManager *pm, bool offline, wxWindowID id)
 {
     //(*Initialize(srs_ui_proFrame)
     wxMenuItem* MenuItem2;
@@ -448,7 +455,6 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     tab_manual = new wxPanel(tabs_actions, ID_PANEL17, wxDefaultPosition, wxSize(1066,324), wxTAB_TRAVERSAL, _T("ID_PANEL17"));
     tabs_submanual = new wxNotebook(tab_manual, ID_NOTEBOOK5, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK5"));
     tab_joystick = new wxPanel(tabs_submanual, ID_PANEL23, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL23"));
-    tab_joystick->Disable();
     panel_joystick_unused1 = new wxPanel(tab_joystick, ID_PANEL24, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL24"));
     panel_joystick_unused1->Disable();
     img_joystick_unused1 = new wxStaticBitmap(panel_joystick_unused1, ID_STATICBITMAP3, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP3"));
@@ -460,28 +466,35 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     option_joystick_Arm = new wxRadioButton(tab_joystick, ID_RADIOBUTTON5, _("Arm"), wxPoint(256,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON5"));
     option_joystick_Hand = new wxRadioButton(tab_joystick, ID_RADIOBUTTON6, _("Hand"), wxPoint(336,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON6"));
     option_joystick_Base = new wxRadioButton(tab_joystick, ID_RADIOBUTTON1, _("Base"), wxPoint(416,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON1"));
+    label_robot_head = new wxStaticText(tab_joystick, ID_STATICTEXT36, _("Robot head:"), wxPoint(520,232), wxDefaultSize, 0, _T("ID_STATICTEXT36"));
+    but_head_front = new wxButton(tab_joystick, ID_BUTTON24, _("Front"), wxPoint(504,248), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON24"));
+    but_head_back = new wxButton(tab_joystick, ID_BUTTON26, _("Back"), wxPoint(504,280), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON26"));
+    label_robot_hand = new wxStaticText(tab_joystick, ID_STATICTEXT37, _("Robot hand:"), wxPoint(336,232), wxDefaultSize, 0, _T("ID_STATICTEXT37"));
+    but_sdh_open = new wxButton(tab_joystick, ID_BUTTON28, _("Open"), wxPoint(320,280), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON28"));
+    but_sdh_close = new wxButton(tab_joystick, ID_BUTTON29, _("Close"), wxPoint(320,248), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON29"));
     tab_RvizTools = new wxPanel(tabs_submanual, ID_PANEL25, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL25"));
     panel_RvizTools_CamDisplay = new wxPanel(tab_RvizTools, ID_PANEL33, wxPoint(16,128), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL33"));
     img_RvizTools_CamDisplay = new wxStaticBitmap(panel_RvizTools_CamDisplay, ID_STATICBITMAP10, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP10"));
     label_RvizTools_CamDisplay = new wxStaticText(panel_RvizTools_CamDisplay, ID_STATICTEXT16, _("Cam Display"), wxPoint(48,16), wxSize(88,17), 0, _T("ID_STATICTEXT16"));
-    but_RvizTools_CamDisplay = new wxButton(panel_RvizTools_CamDisplay, ID_BUTTON10, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON10"));
+    but_RvizTools_CamDisplay = new wxButton(panel_RvizTools_CamDisplay, ID_BUTTON10, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON10"));
     panel_RvizTools_DistanceVisualizer = new wxPanel(tab_RvizTools, ID_PANEL34, wxPoint(16,72), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL34"));
     img_RvizTools_DistanceVisualizer = new wxStaticBitmap(panel_RvizTools_DistanceVisualizer, ID_STATICBITMAP11, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP11"));
     label_RvizTools_DistanceVisualizer = new wxStaticText(panel_RvizTools_DistanceVisualizer, ID_STATICTEXT17, _("Distance Visualizer"), wxPoint(48,16), wxSize(144,17), 0, _T("ID_STATICTEXT17"));
-    but_RvizTools_DistanceVisualizer = new wxButton(panel_RvizTools_DistanceVisualizer, ID_BUTTON11, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON11"));
-    panel_RvizTools_AssistedArmNavigation = new wxPanel(tab_RvizTools, ID_PANEL36, wxPoint(16,240), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL36"));
+    but_RvizTools_DistanceVisualizer = new wxButton(panel_RvizTools_DistanceVisualizer, ID_BUTTON11, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON11"));
+    panel_RvizTools_AssistedArmNavigation = new wxPanel(tab_RvizTools, ID_PANEL36, wxPoint(16,240), wxSize(384,40), wxTAB_TRAVERSAL, _T("ID_PANEL36"));
     img_RvizTools_AssistedArmNavigation = new wxStaticBitmap(panel_RvizTools_AssistedArmNavigation, ID_STATICBITMAP13, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP13"));
     label_RvizTools_AssistedArmNavigation = new wxStaticText(panel_RvizTools_AssistedArmNavigation, ID_STATICTEXT23, _("Assisted arm navigation"), wxPoint(48,16), wxSize(168,17), 0, _T("ID_STATICTEXT23"));
-    but_RvizTools_AssistedArmNavigation = new wxButton(panel_RvizTools_AssistedArmNavigation, ID_BUTTON30, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON30"));
+    but_RvizTools_AssistedArm_Launch = new wxButton(panel_RvizTools_AssistedArmNavigation, ID_BUTTON27, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON27"));
+    but_RvizTools_AssistedArmNavigation = new wxButton(panel_RvizTools_AssistedArmNavigation, ID_BUTTON30, _("Start"), wxPoint(296,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON30"));
     panel_RvizTools_GoTo = new wxPanel(tab_RvizTools, ID_PANEL35, wxPoint(16,184), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL35"));
     panel_RvizTools_GoTo->Disable();
     img_RvizTools_GoTo = new wxStaticBitmap(panel_RvizTools_GoTo, ID_STATICBITMAP12, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP12"));
     label_RvizTools_GoTo = new wxStaticText(panel_RvizTools_GoTo, ID_STATICTEXT22, _("Go to..."), wxPoint(48,16), wxSize(88,17), 0, _T("ID_STATICTEXT22"));
-    but_RvizTools_GoTo = new wxButton(panel_RvizTools_GoTo, ID_BUTTON12, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON12"));
+    but_RvizTools_GoTo = new wxButton(panel_RvizTools_GoTo, ID_BUTTON12, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON12"));
     panel_RvizTools_InteractiveTeleop = new wxPanel(tab_RvizTools, ID_PANEL38, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL38"));
     img_RvizTools_InteractiveTeleop = new wxStaticBitmap(panel_RvizTools_InteractiveTeleop, ID_STATICBITMAP1, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP1"));
     label_RvizTools_InteractiveTeleop = new wxStaticText(panel_RvizTools_InteractiveTeleop, ID_STATICTEXT8, _("Interactive teleop"), wxPoint(48,16), wxSize(160,17), 0, _T("ID_STATICTEXT8"));
-    but_RvizTools_InteractiveTeleop = new wxButton(panel_RvizTools_InteractiveTeleop, ID_BUTTON4, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON4"));
+    but_RvizTools_InteractiveTeleop = new wxButton(panel_RvizTools_InteractiveTeleop, ID_BUTTON4, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON4"));
     tab_PhantomHaptic = new wxPanel(tabs_submanual, ID_PANEL48, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL48"));
     tab_PhantomHaptic->Disable();
     panel_phantomHaptic_unused1 = new wxPanel(tab_PhantomHaptic, ID_PANEL50, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL50"));
@@ -617,8 +630,8 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     menu_skype->Append(option_skype_start);
     option_skype_start->Enable(false);
     menu_skype->AppendSeparator();
-    MenuItem12 = new wxMenuItem(menu_skype, ID_MENUITEM11, _("Reinitialize"), wxEmptyString, wxITEM_NORMAL);
-    menu_skype->Append(MenuItem12);
+    option_skype_restart = new wxMenuItem(menu_skype, ID_MENUITEM11, _("Reinitialize"), wxEmptyString, wxITEM_NORMAL);
+    menu_skype->Append(option_skype_restart);
     Menu6->Append(ID_MENUITEM13, _("Skype"), menu_skype, wxEmptyString);
     menu_rviz = new wxMenu();
     menu_rviz_run = new wxMenuItem(menu_rviz, ID_MENUITEM1, _("Run"), _("Run run run!"), wxITEM_NORMAL);
@@ -712,8 +725,13 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     Connect(ID_BUTTON7,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_GraspItClick);
     Connect(ID_BUTTON22,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_simulateGraspClick);
     Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::manual_joystickButton);
+    Connect(ID_BUTTON24,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_head_frontClick);
+    Connect(ID_BUTTON26,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_head_backClick);
+    Connect(ID_BUTTON28,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton1Click);
+    Connect(ID_BUTTON29,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton2Click);
     Connect(ID_BUTTON10,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_camClick);
     Connect(ID_BUTTON11,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_distanceClick);
+    Connect(ID_BUTTON27,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_RvizTools_AssistedArm_LaunchClick);
     Connect(ID_BUTTON30,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_assistedarmClick);
     Connect(ID_BUTTON12,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_gotoClick);
     Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::manual_moveBaseButton);
@@ -746,6 +764,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
 
     SF = sf;
     PM = pm;
+    offline = offline;
     stopTimers();
     Initialize();
     connectToSkype();
@@ -974,7 +993,7 @@ void srs_ui_proFrame::InitPredefinedPoses()
     catch(std::exception &e)    {  if (!timer_choice.IsRunning()) writeInLog();                 }
 
     if (throw_timer && !timer_choice.IsRunning())
-        timer_choice.Start(10000, false);
+        timer_choice.Start(30000, false);
 }
 
 void srs_ui_proFrame::UpdateTactilSensorSimulator()
@@ -1096,6 +1115,7 @@ void srs_ui_proFrame::UpdateIMGs()
     wxBitmap img_on(wxImage(_T("./img/on.gif")));
     wxBitmap img_off(wxImage(_T("./img/off.gif")));
 
+/*
     if (PM->WaitIM_goTo() == -4)
         img_RvizTools_GoTo->SetBitmap(img_on);
     else
@@ -1115,11 +1135,65 @@ void srs_ui_proFrame::UpdateIMGs()
         img_RvizTools_CamDisplay->SetBitmap(img_on);
     else
         img_RvizTools_CamDisplay->SetBitmap(img_off);
-
     if (PM->WaitIM_AssistedArmNavigation() == -4)
         img_RvizTools_AssistedArmNavigation->SetBitmap(img_on);
     else
         img_RvizTools_AssistedArmNavigation->SetBitmap(img_off);
+*/
+    /* Node control */
+    if (Ri->nodeExists("/cob_interactive_teleop"))
+    {
+        img_RvizTools_InteractiveTeleop->SetBitmap(img_on);
+        but_RvizTools_InteractiveTeleop->Enable(false);
+    }
+    else
+    {
+        img_RvizTools_InteractiveTeleop->SetBitmap(img_off);
+        but_RvizTools_InteractiveTeleop->Enable(true);
+        but_RvizTools_InteractiveTeleop->SetLabel(toWXString("Launch it"));
+    }
+
+    if (Ri->nodeExists("/but_service_server"))
+    {
+        img_RvizTools_DistanceVisualizer->SetBitmap(img_on);
+        but_RvizTools_DistanceVisualizer->Enable(false);
+    }
+    else
+    {
+        img_RvizTools_DistanceVisualizer->SetBitmap(img_off);
+        but_RvizTools_DistanceVisualizer->Enable(true);
+        but_RvizTools_DistanceVisualizer->SetLabel(toWXString("Launch it"));
+    }
+
+    if (Ri->nodeExists("/view"))
+    {
+        img_RvizTools_CamDisplay->SetBitmap(img_on);
+        but_RvizTools_CamDisplay->Enable(false);
+    }
+    else
+    {
+        img_RvizTools_CamDisplay->SetBitmap(img_off);
+        but_RvizTools_CamDisplay->Enable(true);
+        but_RvizTools_CamDisplay->SetLabel(toWXString("Launch it"));
+    }
+
+    if (Ri->nodeExists("/assisted_arm_navigation"))
+    {
+        img_RvizTools_AssistedArmNavigation->SetBitmap(img_on);
+        but_RvizTools_AssistedArm_Launch->Enable(false);
+        but_RvizTools_AssistedArmNavigation->Enable(true);
+    }
+    else
+    {
+        img_RvizTools_AssistedArmNavigation->SetBitmap(img_off);
+        but_RvizTools_AssistedArm_Launch->Enable(true);
+        but_RvizTools_AssistedArm_Launch->SetLabel(toWXString("Launch it"));
+        but_RvizTools_AssistedArmNavigation->Enable(false);
+    }
+
+
+
+
 }
 
 void srs_ui_proFrame::runRviz(wxCommandEvent& event)
@@ -1226,18 +1300,26 @@ void srs_ui_proFrame::Onbutton_DMStopClick(wxCommandEvent& event)
 
 void srs_ui_proFrame::Onbutton_im_distanceClick(wxCommandEvent& event)
 {
+    PM->ExecIM_distanceViewer();
+
+    /*
     if (PM->WaitIM_distanceViewer() == -4)
         PM->ExitIM_distanceViewer();
     else
         PM->ExecIM_distanceViewer();
+    */
 }
 
 void srs_ui_proFrame::Onbutton_im_camClick(wxCommandEvent& event)
 {
+    PM->ExecIM_camDisplay();
+
+    /*
     if (PM->WaitIM_camDisplay() == -4)
         PM->ExitIM_camDisplay();
     else
         PM->ExecIM_camDisplay();
+    */
 }
 
 void srs_ui_proFrame::Onbutton_im_gotoClick(wxCommandEvent& event)
@@ -1259,10 +1341,14 @@ void srs_ui_proFrame::semi_goToButton(wxCommandEvent& event)
 
 void srs_ui_proFrame::manual_moveBaseButton(wxCommandEvent& event)
 {
+    PM->ExecIM_moveBase();
+
+    /*
     if (PM->WaitIM_moveBase() == -4)
         PM->ExitIM_moveBase();
     else
         PM->ExecIM_moveBase();
+    */
 }
 
 void srs_ui_proFrame::manual_joystickButton(wxCommandEvent& event)
@@ -1358,16 +1444,24 @@ void srs_ui_proFrame::StartClick(wxCommandEvent& event)
 
 void srs_ui_proFrame::Onbutton_im_assistedarmClick(wxCommandEvent& event)
 {
+    try
+    {
+        Ri->startAssistedArm();
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
+
+/*
     if (PM->WaitIM_AssistedArmNavigation() == -4)
         PM->ExitIM_AssistedArmNavigation();
     else
     {
-        PM->ExecIM_AssistedArmNavigation();
-
+        //PM->ExecIM_AssistedArmNavigation(); //Asumimos que está lanzado.
         pthread_t thread1;
         pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_StartAssistedArm, (void*)this);
     }
-
+*/
 }
 
 void srs_ui_proFrame::Onbut_navigation_dashboardClick(wxCommandEvent& event)
@@ -1547,7 +1641,13 @@ void srs_ui_proFrame::Onbutton_spawn_objectsClick(wxCommandEvent& event)
         if (img_objects.size() > 0)
             for (unsigned int i=0; i<detected_objects.size(); i++)
                 Ri->IP_RemoveObject(detected_objects[i].label.c_str());
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
 
+   try
+    {
         for (unsigned int i=0; i<detected_objects.size(); i++)
             Ri->IP_AddObject(detected_objects[i].label.c_str(), detected_objects[i].pose, detected_objects[i].bounding_box_lwh);
     }
@@ -1774,7 +1874,8 @@ void *srs_ui_proFrame::_THREAD_StartAssistedArm(void)
     }
     catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
-    catch(std::exception &e) { writeInLog(); }}
+    catch(std::exception &e) { writeInLog(); }
+}
 
 void *srs_ui_proFrame::_THREAD_GenerateGrasps(void)
 {
@@ -2136,6 +2237,12 @@ void srs_ui_proFrame::connectToSkype()
     {
         int res = SF->connect(grid_skype_contactList);
         if (res == 1) writeInLog("[SKYPE]: Connected!\n", BLUE);
+        else if (offline)
+        {
+            writeInLog("Working offline!\n", RED);
+            option_skype_start->Enable(false);
+            option_skype_restart->Enable(false);
+        }
         else
         {
             wxMessageBox( wxT("INVALID USER/PASS.\t\t"), wxT("SKYPE: The Skype user/pass is invalid."), wxICON_INFORMATION);
@@ -2266,4 +2373,67 @@ void srs_ui_proFrame::runDashboard(wxCommandEvent& event)
         PM->ExitDashboard();
     else
         PM->ExecDashboard();
+}
+
+void srs_ui_proFrame::Onbut_head_frontClick(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {-3.14};
+        std::vector<float> front(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("head", front);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::Onbut_head_backClick(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {0.0};
+        std::vector<float> back(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("head", back);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::OnButton1Click(wxCommandEvent& event)
+{
+        try
+    {
+        float aux[] = {0.0, 0.0, 1.0472, 0.0, 1.0472, 0.0, 1.0472};
+
+        std::vector<float> front(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("sdh", front);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+
+void srs_ui_proFrame::OnButton2Click(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {0.0, -0.9854, 0.9472, -0.9854, 0.9472, -0.9854, 0.9472};
+
+        std::vector<float> front(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("sdh", front);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::Onbut_RvizTools_AssistedArm_LaunchClick(wxCommandEvent& event)
+{
+    if (PM->WaitIM_AssistedArmNavigation() == -4)
+        PM->ExitIM_AssistedArmNavigation();
+    else
+        PM->ExecIM_AssistedArmNavigation();
 }

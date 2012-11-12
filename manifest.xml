@@ -15,6 +15,7 @@
   <depend package="srs_decision_making"/>
   <depend package="srs_decision_making_interface"/>
   <depend package="srs_interaction_primitives"/>
+  <depend package="cob_interactive_teleop"/>
   <depend package="cob_relayboard"/>
   <depend package="schunk_sdh"/>
   <depend package="srs_assisted_arm_navigation"/>

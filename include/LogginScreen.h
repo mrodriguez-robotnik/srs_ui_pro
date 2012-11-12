@@ -28,6 +28,7 @@ class LogginScreen: public wxFrame
 		wxStaticText* label_user;
 		wxStaticBitmap* img_background;
 		wxTextCtrl* box_user;
+		wxButton* but_offline;
 		wxStaticText* label_pass;
 		wxTextCtrl* box_pass;
 		wxButton* but_init;
@@ -45,12 +46,14 @@ class LogginScreen: public wxFrame
 		static const long ID_TEXTCTRL2;
 		static const long ID_STATICTEXT2;
 		static const long ID_BUTTON1;
+		static const long ID_BUTTON2;
 		//*)
 
 	private:
 
 		//(*Handlers(LogginScreen)
 		void Onbut_initClick(wxCommandEvent& event);
+		void Onbut_offlineClick(wxCommandEvent& event);
 		//*)
 
         void InitSkype();

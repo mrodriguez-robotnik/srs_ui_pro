@@ -4,8 +4,8 @@
 //SKYPEFUNCTIONS
 SkypeFunctions::SkypeFunctions(){
 
-    accountName = "srs_ui_pro";
-    accountPsw  ="Robotnik2012";
+    accountName = "";//"srs_ui_pro";
+    accountPsw  = "";//"Robotnik2012";
 
     inetAddr = "127.0.0.1";
     portNum = 8963;

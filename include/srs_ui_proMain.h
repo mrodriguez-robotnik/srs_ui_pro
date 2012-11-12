@@ -46,7 +46,6 @@
 #include "SkypeWindow.h"
 #include "SkypeWindow2.h"
 
-
 #define     RVIZ_CONFIG_FILE    "~/local_packages/srs_ui_pro/rviz_config/config"
 #define     BLUE                *wxBLUE
 #define     RED                 *wxRED
@@ -58,7 +57,7 @@ class srs_ui_proFrame: public wxFrame
 {
     public:
 
-        srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessManager *pm, wxWindowID id = -1);
+        srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessManager *pm, bool offline=false, wxWindowID id = -1);
         ~srs_ui_proFrame();
 
     private:
@@ -68,7 +67,7 @@ class srs_ui_proFrame: public wxFrame
         ProcessManager *PM;
 
         std::string event_dm_log_str;
-        bool event_dm_log;
+        bool event_dm_log, offline;
         wxColour event_dm_log_colour;
 
 
@@ -224,6 +223,11 @@ class srs_ui_proFrame: public wxFrame
         void Onmenu_status_rxgraphSelected(wxCommandEvent& event);
         void Onmenu_status_runtimeMonitorSelected(wxCommandEvent& event);
         void runDashboard(wxCommandEvent& event);
+        void Onbut_head_frontClick(wxCommandEvent& event);
+        void Onbut_head_backClick(wxCommandEvent& event);
+        void OnButton1Click(wxCommandEvent& event);
+        void OnButton2Click(wxCommandEvent& event);
+        void Onbut_RvizTools_AssistedArm_LaunchClick(wxCommandEvent& event);
         //*)
 
 
@@ -323,6 +327,12 @@ class srs_ui_proFrame: public wxFrame
         static const long ID_RADIOBUTTON5;
         static const long ID_RADIOBUTTON6;
         static const long ID_RADIOBUTTON1;
+        static const long ID_STATICTEXT36;
+        static const long ID_BUTTON24;
+        static const long ID_BUTTON26;
+        static const long ID_STATICTEXT37;
+        static const long ID_BUTTON28;
+        static const long ID_BUTTON29;
         static const long ID_PANEL23;
         static const long ID_STATICBITMAP10;
         static const long ID_STATICTEXT16;
@@ -334,6 +344,7 @@ class srs_ui_proFrame: public wxFrame
         static const long ID_PANEL34;
         static const long ID_STATICBITMAP13;
         static const long ID_STATICTEXT23;
+        static const long ID_BUTTON27;
         static const long ID_BUTTON30;
         static const long ID_PANEL36;
         static const long ID_STATICBITMAP12;
@@ -454,8 +465,8 @@ class srs_ui_proFrame: public wxFrame
 
         //(*Declarations(srs_ui_proFrame)
         wxPanel* panel_RvizTools_CamDisplay;
-        wxButton* but_SimulateGrasp;
         wxStaticText* label_Category;
+        wxButton* but_SimulateGrasp;
         wxStaticBitmap* img_RvizTools_InteractiveTeleop;
         wxRadioButton* option_joystick_Base;
         wxComboBox* choice_objectstodetect;
@@ -474,18 +485,21 @@ class srs_ui_proFrame: public wxFrame
         wxPanel* tab_automatic_search;
         wxGauge* bar_status_battery;
         wxStaticLine* separador4;
+        wxButton* but_sdh_close;
         wxStaticText* label_ObjectsOnTray;
         wxTextCtrl* box_ROS_services;
         wxStaticText* label_Result;
         wxTimer timer_choice;
         wxPanel* tab_semi_detection;
         wxTimer timer_ROS;
+        wxButton* but_head_front;
         wxPanel* tab_manual;
         wxStaticText* label_RvizTools_InteractiveTeleop;
         wxStatusBar* StatusBar1;
         wxStaticText* label_TS_TactilSensors;
         wxStaticText* label_status_TimeRemaining;
         wxStaticBitmap* img_navigation_dashboard;
+        wxMenuItem* option_skype_restart;
         wxTextCtrl* box_status_RobotURI;
         wxTextCtrl* box_dm_log;
         wxMenuItem* menu_status_rxgraph;
@@ -499,7 +513,6 @@ class srs_ui_proFrame: public wxFrame
         wxPanel* panel_grasping;
         wxPanel* tab_joystick;
         wxButton* but_move_Start;
-        wxMenuItem* MenuItem12;
         wxStaticText* label_search_Optional;
         wxButton* but_DetectObjects;
         wxButton* but_Cancel;
@@ -513,8 +526,8 @@ class srs_ui_proFrame: public wxFrame
         wxPanel* panel_detected_objects;
         wxPanel* panel_automatic_deliver;
         wxMenu* menu_skype;
-        wxPanel* tab_skype_contacts;
         wxButton* but_TeachNewObjectStart;
+        wxPanel* tab_skype_contacts;
         wxStaticText* label_TS_F2;
         wxPanel* panel_status;
         wxButton* but_get_Start;
@@ -554,6 +567,7 @@ class srs_ui_proFrame: public wxFrame
         wxStaticText* label_joystick_unnused1;
         wxButton* but_GraspIt;
         wxButton* but_RvizTools_AssistedArmNavigation;
+        wxButton* but_RvizTools_AssistedArm_Launch;
         wxTextCtrl* box_ROS_params;
         wxGrid* grid_requests;
         wxNotebook* tabs_subsemi;
@@ -568,14 +582,15 @@ class srs_ui_proFrame: public wxFrame
         wxStaticText* label_TeachNewObject;
         wxButton* but_RvizTools_DistanceVisualizer;
         wxPanel* panel_options;
+        wxButton* but_sdh_open;
         wxChoice* choice_automatic_move;
         wxPanel* tab_RvizTools;
         wxMenuItem* MenuItem16;
         wxStaticText* label_Requests;
-        wxPanel* panel_comunications;
         wxStaticText* label_DefineTheObject;
-        wxButton* but_search_Start;
+        wxPanel* panel_comunications;
         wxStaticLine* separador2;
+        wxButton* but_search_Start;
         wxPanel* panel_comunications_main;
         wxStaticText* label_TS_F1;
         wxStaticBitmap* img_RvizTools_AssistedArmNavigation;
@@ -591,6 +606,7 @@ class srs_ui_proFrame: public wxFrame
         wxStaticText* label_DetectedObjects;
         wxGauge* bar_status_wifi;
         wxNotebook* tabs_submanual;
+        wxStaticText* label_robot_head;
         wxPanel* panel_RvizTools_GoTo;
         wxRadioButton* option_joystick_Arm;
         wxPanel* panel_objects_on_tray;
@@ -611,6 +627,7 @@ class srs_ui_proFrame: public wxFrame
         wxScrolledWindow* scrollablewindow_ontray;
         wxMenu* MenuItem17;
         wxPanel* tab_automatic_get;
+        wxStaticText* label_robot_hand;
         wxButton* but_RvizTools_CamDisplay;
         wxTextCtrl* box_automatic_deliver_small;
         wxButton* but_StopTask;
@@ -667,6 +684,7 @@ class srs_ui_proFrame: public wxFrame
         wxTextCtrl* box_graspResult;
         wxListCtrl* grid_skype_IncomingCalls;
         wxPanel* panel_RvizTools_DistanceVisualizer;
+        wxButton* but_head_back;
         wxPanel* panel_status_RobotInfo;
         wxChoice* choice_automatic_deliver_deliver_position;
         wxButton* but_RvizTools_GoTo;

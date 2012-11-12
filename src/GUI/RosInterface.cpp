@@ -29,6 +29,22 @@ void RosInterface::init(){
     ros::init(argc, argv, "srs_ui_pro");
 }
 
+bool RosInterface::nodeExists(std::string n)
+{
+    ros::V_string nodes;
+    ros::master::getNodes(nodes);
+    for (int i=0; i<nodes.size(); i++)
+        if (nodes[i].compare(n) == 0)
+            return true;
+    return false;
+}
+
+void RosInterface::killNode(std::string node)
+{
+    //Por alguna razón el programa casca cuando se mata un nodo.
+    execlp("rosnode", "rosnode", "kill", node.c_str(), NULL);
+}
+
 int RosInterface::Start(){
     pthread_attr_t attr;
 
@@ -96,7 +112,7 @@ void RosInterface::initActionServers(){
 }
 
 void RosInterface::serviceAvailable(ros::ServiceClient sc){
-    if (!sc.waitForExistence(ros::Duration(3.0)))
+    if (!sc.waitForExistence(ros::Duration(1.0)))
         throw ServiceUnavailable(sc.getService());
 }
 
@@ -516,14 +532,15 @@ int RosInterface::decision_making_actions(std::string action, std::string parame
 void RosInterface::startAssistedArm()
 {
     //TODO:
-    /*
-    actionlib::SimpleActionClient<srs_assisted_arm_navigation::ManualArmManipAction> client("/but_arm_manip/manual_arm_manip_action", true);
+    actionlib::SimpleActionClient<srs_assisted_arm_navigation_msgs::ManualArmManipAction> client("/but_arm_manip/manual_arm_manip_action", true);
     client.waitForServer();
-    srs_assisted_arm_navigation::ManualArmManipActionGoal goal;
+    srs_assisted_arm_navigation_msgs::ManualArmManipActionGoal goal;
     goal.goal.allow_repeat = true;//goal.goal.away = true;
+    goal.goal.action = "Move arm to safe position!";//goal.goal.away = true;
+    goal.goal.object_name = "";//goal.goal.away = true;
+
     client.sendGoal(goal.goal);
     client.waitForResult();
-    */
 }
 
 
@@ -562,7 +579,7 @@ std::vector<std::string> RosInterface::get_objects_on_tray()
     //std::vector<std::string> response;
     srs_knowledge::GetObjectsOnTray objects_msg;
     serviceCall(get_objects_on_tray_client, get_objects_on_tray_client.call(objects_msg));
-    return objects_msg.response.objects;
+    return objects_msg.response.classesOfObjects;
 }
 
 std::vector<std::string> RosInterface::get_workspace_on_map()

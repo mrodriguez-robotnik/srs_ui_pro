@@ -15,6 +15,7 @@ const long LogginScreen::ID_STATICTEXT1 = wxNewId();
 const long LogginScreen::ID_TEXTCTRL2 = wxNewId();
 const long LogginScreen::ID_STATICTEXT2 = wxNewId();
 const long LogginScreen::ID_BUTTON1 = wxNewId();
+const long LogginScreen::ID_BUTTON2 = wxNewId();
 //*)
 
 BEGIN_EVENT_TABLE(LogginScreen,wxFrame)
@@ -40,10 +41,12 @@ LogginScreen::LogginScreen(wxWindow* parent,wxWindowID id)
 	label_pass = new wxStaticText(this, ID_STATICTEXT2, _("Password:"), wxPoint(8,65), wxDefaultSize, 0, _T("ID_STATICTEXT2"));
 	label_pass->SetForegroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
 	label_pass->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
-	but_init = new wxButton(this, ID_BUTTON1, _("Init Session"), wxPoint(8,120), wxSize(152,25), 0, wxDefaultValidator, _T("ID_BUTTON1"));
+	but_init = new wxButton(this, ID_BUTTON1, _("Init Session"), wxPoint(8,120), wxSize(88,25), 0, wxDefaultValidator, _T("ID_BUTTON1"));
+	but_offline = new wxButton(this, ID_BUTTON2, _("Offline"), wxPoint(96,120), wxSize(64,25), 0, wxDefaultValidator, _T("ID_BUTTON2"));
 	Center();
-
+	
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&LogginScreen::Onbut_initClick);
+	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&LogginScreen::Onbut_offlineClick);
 	//*)
 
 	SF = new SkypeFunctions();
@@ -60,7 +63,7 @@ LogginScreen::~LogginScreen()
 void LogginScreen::Onbut_initClick(wxCommandEvent& event)
 {
     SF->setAccountInfo(std::string(box_user->GetValue().mb_str()), std::string(box_pass->GetValue().mb_str()));
-    srs_ui_proFrame* Frame = new srs_ui_proFrame(0, SF, PM);
+    srs_ui_proFrame* Frame = new srs_ui_proFrame(0, SF, PM, false);
     Frame->Show();
     Close();
 
@@ -90,3 +93,10 @@ void LogginScreen::InitSkype()
 }
 
 
+
+void LogginScreen::Onbut_offlineClick(wxCommandEvent& event)
+{
+    srs_ui_proFrame* Frame = new srs_ui_proFrame(0, SF, PM, true);
+    Frame->Show();
+    Close();
+}

@@ -53,7 +53,7 @@ SkypeWindow::SkypeWindow(wxWindow* parent, SkypeFunctions *sf, std::string un, w
 	label_location = new wxStaticText(Panel1, ID_STATICTEXT2, _("City, Country"), wxPoint(104,72), wxDefaultSize, 0, _T("ID_STATICTEXT2"));
 	timer_messageEvents.SetOwner(this, ID_TIMER1);
 	timer_messageEvents.Start(100, false);
-
+	
 	Connect(ID_TEXTCTRL2,wxEVT_COMMAND_TEXT_ENTER,(wxObjectEventFunction)&SkypeWindow::Onchat_sendTextEnter);
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SkypeWindow::Onbutton_chatClick);
 	Connect(ID_BITMAPBUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SkypeWindow::callButton);

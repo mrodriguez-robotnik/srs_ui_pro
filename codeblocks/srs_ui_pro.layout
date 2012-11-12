@@ -8,7 +8,7 @@
 		<Cursor position="433" topLine="15" />
 	</File>
 	<File name="../include/RosInterface.h" open="0" top="0" tabpos="0">
-		<Cursor position="2426" topLine="37" />
+		<Cursor position="4809" topLine="125" />
 	</File>
 	<File name="../include/SkypeFunctions.h" open="0" top="0" tabpos="0">
 		<Cursor position="3925" topLine="136" />
@@ -22,17 +22,17 @@
 	<File name="../include/srs_ui_proMain.h" open="0" top="0" tabpos="0">
 		<Cursor position="2121" topLine="72" />
 	</File>
-	<File name="../src/GUI/LogginScreen.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="15769" topLine="489" />
+	<File name="../src/GUI/LogginScreen.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2800" topLine="44" />
 	</File>
 	<File name="../src/GUI/ProcessManager.cc" open="0" top="0" tabpos="1">
-		<Cursor position="6482" topLine="137" />
+		<Cursor position="7046" topLine="152" />
 	</File>
-	<File name="../src/GUI/RosInterface.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="18410" topLine="492" />
+	<File name="../src/GUI/RosInterface.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="3898" topLine="88" />
 	</File>
 	<File name="../src/GUI/SkypeFunctions.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="3319" topLine="70" />
+		<Cursor position="168" topLine="6" />
 	</File>
 	<File name="../src/GUI/SkypeWindow.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="4126" topLine="46" />
@@ -40,7 +40,7 @@
 	<File name="../src/GUI/srs_ui_proApp.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="850" topLine="0" />
 	</File>
-	<File name="../src/GUI/srs_ui_proMain.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="77889" topLine="1239" />
+	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="27198" topLine="394" />
 	</File>
 </CodeBlocks_layout_file>

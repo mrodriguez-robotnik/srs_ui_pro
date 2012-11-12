@@ -55,7 +55,7 @@
 #include <srs_knowledge/GetPredefinedPoses.h>
 #include <srs_knowledge/GetWorkspaceForObject.h>
 #include <srs_msgs/SRSSpatialInfo.h>
-//#include <srs_assisted_arm_navigation/ManualArmManipAction.h>
+#include <srs_assisted_arm_navigation_msgs/ManualArmManipAction.h>
 
 
 #include <exception>
@@ -138,6 +138,8 @@ class RosInterface
         virtual ~RosInterface();
         static void init();
 
+        bool nodeExists(std::string node);
+        void killNode(std::string node);
         int decision_making_actions(std::string action, std::string parameters, std::string json_parameters="NULL");
         std::vector<srs_msgs::DBGrasp> getGraspConfigurations(int object_id);
         std::vector<srs_msgs::FeasibleGrasp> getGraspsFromPosition(int object_id, geometry_msgs::Pose object_pose);

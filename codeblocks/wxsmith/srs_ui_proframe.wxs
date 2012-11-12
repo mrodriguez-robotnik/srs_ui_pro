@@ -507,7 +507,6 @@
 											<size>648,400</size>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL23" variable="tab_joystick" member="yes">
-													<enabled>0</enabled>
 													<object class="wxPanel" name="ID_PANEL24" variable="panel_joystick_unused1" member="yes">
 														<pos>16,16</pos>
 														<size>296,40</size>
@@ -551,6 +550,38 @@
 														<label>Base</label>
 														<pos>416,96</pos>
 													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT36" variable="label_robot_head" member="yes">
+														<label>Robot head:</label>
+														<pos>520,232</pos>
+													</object>
+													<object class="wxButton" name="ID_BUTTON24" variable="but_head_front" member="yes">
+														<label>Front</label>
+														<pos>504,248</pos>
+														<size>120,29</size>
+														<handler function="Onbut_head_frontClick" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON26" variable="but_head_back" member="yes">
+														<label>Back</label>
+														<pos>504,280</pos>
+														<size>120,29</size>
+														<handler function="Onbut_head_backClick" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT37" variable="label_robot_hand" member="yes">
+														<label>Robot hand:</label>
+														<pos>336,232</pos>
+													</object>
+													<object class="wxButton" name="ID_BUTTON28" variable="but_sdh_open" member="yes">
+														<label>Open</label>
+														<pos>320,280</pos>
+														<size>120,29</size>
+														<handler function="OnButton1Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON29" variable="but_sdh_close" member="yes">
+														<label>Close</label>
+														<pos>320,248</pos>
+														<size>120,29</size>
+														<handler function="OnButton2Click" entry="EVT_BUTTON" />
+													</object>
 												</object>
 												<label>Joystick</label>
 											</object>
@@ -569,9 +600,9 @@
 															<size>88,17</size>
 														</object>
 														<object class="wxButton" name="ID_BUTTON10" variable="but_RvizTools_CamDisplay" member="yes">
-															<label>On/Off</label>
-															<pos>224,8</pos>
-															<size>64,29</size>
+															<label>Launch it</label>
+															<pos>216,8</pos>
+															<size>72,29</size>
 															<handler function="Onbutton_im_camClick" entry="EVT_BUTTON" />
 														</object>
 													</object>
@@ -588,15 +619,15 @@
 															<size>144,17</size>
 														</object>
 														<object class="wxButton" name="ID_BUTTON11" variable="but_RvizTools_DistanceVisualizer" member="yes">
-															<label>On/Off</label>
-															<pos>224,8</pos>
-															<size>64,29</size>
+															<label>Launch it</label>
+															<pos>216,8</pos>
+															<size>72,29</size>
 															<handler function="Onbutton_im_distanceClick" entry="EVT_BUTTON" />
 														</object>
 													</object>
 													<object class="wxPanel" name="ID_PANEL36" variable="panel_RvizTools_AssistedArmNavigation" member="yes">
 														<pos>16,240</pos>
-														<size>296,40</size>
+														<size>384,40</size>
 														<object class="wxStaticBitmap" name="ID_STATICBITMAP13" variable="img_RvizTools_AssistedArmNavigation" member="yes">
 															<bitmap>./img/off.gif</bitmap>
 															<pos>8,8</pos>
@@ -606,10 +637,16 @@
 															<pos>48,16</pos>
 															<size>168,17</size>
 														</object>
+														<object class="wxButton" name="ID_BUTTON27" variable="but_RvizTools_AssistedArm_Launch" member="yes">
+															<label>Launch it</label>
+															<pos>216,8</pos>
+															<size>72,29</size>
+															<handler function="Onbut_RvizTools_AssistedArm_LaunchClick" entry="EVT_BUTTON" />
+														</object>
 														<object class="wxButton" name="ID_BUTTON30" variable="but_RvizTools_AssistedArmNavigation" member="yes">
-															<label>On/Off</label>
-															<pos>224,8</pos>
-															<size>64,29</size>
+															<label>Start</label>
+															<pos>296,8</pos>
+															<size>72,29</size>
 															<handler function="Onbutton_im_assistedarmClick" entry="EVT_BUTTON" />
 														</object>
 													</object>
@@ -627,9 +664,9 @@
 															<size>88,17</size>
 														</object>
 														<object class="wxButton" name="ID_BUTTON12" variable="but_RvizTools_GoTo" member="yes">
-															<label>On/Off</label>
-															<pos>224,8</pos>
-															<size>64,29</size>
+															<label>Launch it</label>
+															<pos>216,8</pos>
+															<size>72,29</size>
 															<handler function="Onbutton_im_gotoClick" entry="EVT_BUTTON" />
 														</object>
 													</object>
@@ -646,9 +683,9 @@
 															<size>160,17</size>
 														</object>
 														<object class="wxButton" name="ID_BUTTON4" variable="but_RvizTools_InteractiveTeleop" member="yes">
-															<label>On/Off</label>
-															<pos>224,8</pos>
-															<size>64,29</size>
+															<label>Launch it</label>
+															<pos>216,8</pos>
+															<size>72,29</size>
 															<handler function="manual_moveBaseButton" entry="EVT_BUTTON" />
 														</object>
 													</object>
@@ -1093,7 +1130,7 @@
 						<handler function="OnMenuSkypeStart" entry="EVT_MENU" />
 					</object>
 					<object class="separator" />
-					<object class="wxMenuItem" name="ID_MENUITEM11" variable="MenuItem12" member="yes">
+					<object class="wxMenuItem" name="ID_MENUITEM11" variable="option_skype_restart" member="yes">
 						<label>Reinitialize</label>
 						<handler function="ReinitializeSkype" entry="EVT_MENU" />
 					</object>
