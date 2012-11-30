@@ -12,7 +12,7 @@ add_definitions (-fpermissive)
 
 rosbuild_find_ros_package(actionlib_msgs)
 include(${actionlib_msgs_PACKAGE_PATH}/cmake/actionbuild.cmake)
-#genaction()
+genaction()
 rosbuild_init()
 
 #set the default path for built executables to the "bin" directory

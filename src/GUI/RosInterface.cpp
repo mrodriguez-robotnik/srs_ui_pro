@@ -64,9 +64,8 @@ int RosInterface::Start(){
 
 void RosInterface::initializeVariables(){
     dm_exceptional_case_id = 0;
-    dm_solution_required = false;
+    dm_solution_required = dm_server_event = emergency_button_stop_state = scanner_stop_state = false;
     dm_current_task = dm_current_task_id = "";
-
 }
 
 void RosInterface::initServices(){
@@ -105,6 +104,7 @@ void RosInterface::initTopics(){
     sub_wifi_state = n.subscribe("/ddwrt/accesspoint", 1000, &RosInterface::callback_wifi_state, this);
     sub_grabbed = n.subscribe("/sdh_controller/grabbed", 1000, &RosInterface::callback_grabbed, this);
     sub_grabbed2 = n.subscribe("/sdh_controller/cylindric_grabbed", 1000, &RosInterface::callback_grabbed2, this);
+    sub_dm_server_feedback = n.subscribe("/ui_pro_server_for_dm/feedback", 1000, &RosInterface::callback_dm_server_fb, this);
 }
 
 void RosInterface::initActionServers(){
@@ -811,9 +811,14 @@ std::string RosInterface::getDMCurrentTaskID()
 
 int RosInterface::DM_InterventionRequired()
 {
+
     return dm_exceptional_case_id;
 }
 
+bool RosInterface::DM_ExcepcionalCase()
+{
+    return dm_server_event;
+}
 
 std::vector<srs_msgs::DBGrasp> RosInterface::getGraspConfigurations(int object_id)
 {
@@ -1100,4 +1105,13 @@ void RosInterface::callback_grabbed(const std_msgs::Bool &msg)
 void RosInterface::callback_grabbed2(const std_msgs::Bool &msg)
 {
     cylinder_grabbed = msg.data;
+}
+
+void RosInterface::callback_dm_server_fb(const srs_ui_pro::dm_serverActionFeedback::ConstPtr &msg)
+{
+    if ((msg->feedback.current_status).compare("new_event") == 0)
+        dm_server_event = true;
+    else
+        dm_server_event = false;
+
 }

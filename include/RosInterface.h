@@ -45,6 +45,7 @@
 #include <srs_ui_pro/GraspSimulator.h>
 #include <srs_ui_pro/RequestEventMSG.h>
 #include <srs_ui_pro/RequestEvent.h>
+#include <srs_ui_pro/dm_serverActionFeedback.h>
 #include <srs_interaction_primitives/AddBoundingBox.h>
 #include <srs_interaction_primitives/GetAllPrimitivesNames.h>
 #include <srs_interaction_primitives/RemovePrimitive.h>
@@ -160,6 +161,7 @@ class RosInterface
         std::string getDMCurrentState();
         std::string getDMCurrentTask();
         std::string getDMCurrentTaskID();
+        bool DM_ExcepcionalCase();
         int getDMCurrentStatus();
         int DM_InterventionRequired();
         std::string getMesh(int object_id);
@@ -200,6 +202,9 @@ class RosInterface
         void callback_wifi_state(const pr2_msgs::AccessPoint &msg);
         void callback_grabbed(const std_msgs::Bool &msg);
         void callback_grabbed2(const std_msgs::Bool &msg);
+        void callback_dm_server_fb(const srs_ui_pro::dm_serverActionFeedback::ConstPtr &msg);
+
+
 
     protected:
         //! Contains data for the main thread
@@ -240,6 +245,7 @@ class RosInterface
         ros::Subscriber sub_wifi_state;
         ros::Subscriber sub_grabbed;
         ros::Subscriber sub_grabbed2;
+        ros::Subscriber sub_dm_server_feedback;
 
         actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction>* dm_client;
 
@@ -287,7 +293,7 @@ class RosInterface
         bool emergency_button_stop_state;
         bool scanner_stop_state;
         std::string dm_current_task, dm_current_task_id;
-
+        bool dm_server_event;
 };
 
 #endif // ROSINTERFACE_H

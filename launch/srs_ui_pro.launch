@@ -1,4 +1,5 @@
+<?xml version="1.0"?>
 <launch>
-   <include file="$(find srs_ui_pro)/launch/but_assisted_arm_navigation.launch"/>
-   <node pkg="srs_ui_pro" type="srs_ui_pro" name="srs_ui_pro" ns="srs_ui_pro" cwd="node" respawn="false" output="screen" />
+	<node pkg="srs_ui_pro" type="srs_ui_pro" name="srs_ui_pro" ns="srs_ui_pro" cwd="node" respawn="false" output="screen"/>
+	<node pkg="srs_ui_pro" type="dm_server.py" name="dm_server" ns="dm_server" cwd="node" respawn="false" output="screen"/>
 </launch>

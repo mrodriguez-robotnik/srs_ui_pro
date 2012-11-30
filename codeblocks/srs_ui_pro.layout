@@ -40,7 +40,7 @@
 	<File name="../src/GUI/srs_ui_proApp.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="850" topLine="0" />
 	</File>
-	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="27198" topLine="394" />
+	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="1" tabpos="0">
+		<Cursor position="120053" topLine="2413" />
 	</File>
 </CodeBlocks_layout_file>

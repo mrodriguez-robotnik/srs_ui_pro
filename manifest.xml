@@ -28,6 +28,9 @@
   <depend package="trajectory_msgs"/>
 
 
+  <depend package="srs_assisted_arm_navigation_msgs"/>
+  <depend package="srs_states"/>
+
   <!--export>
 	<cpp cflags ="-I${prefix}/include -I${prefix}/msg_gen/cpp/include -I${prefix}/srv_gen/cpp/include"/>
   </export-->

@@ -228,6 +228,7 @@ class srs_ui_proFrame: public wxFrame
         void OnButton1Click(wxCommandEvent& event);
         void OnButton2Click(wxCommandEvent& event);
         void Onbut_RvizTools_AssistedArm_LaunchClick(wxCommandEvent& event);
+        void Ontimer_dmServerTrigger(wxTimerEvent& event);
         //*)
 
 
@@ -460,6 +461,7 @@ class srs_ui_proFrame: public wxFrame
         static const long ID_TIMER4;
         static const long ID_TIMER5;
         static const long ID_TIMER6;
+        static const long ID_TIMER7;
         //*)
 
 
@@ -668,6 +670,7 @@ class srs_ui_proFrame: public wxFrame
         wxPanel* panel_RvizTools_AssistedArmNavigation;
         wxMenuItem* MenuItem11;
         wxComboBox* choice_TeachNewObject;
+        wxTimer timer_dmServer;
         wxPanel* tab_objects;
         wxMenuItem* menu_dashboard_run;
         wxStaticText* label_RvizTools_AssistedArmNavigation;

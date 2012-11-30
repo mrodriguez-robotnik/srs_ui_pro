@@ -263,6 +263,7 @@ const long srs_ui_proFrame::ID_STATUSBAR1 = wxNewId();
 const long srs_ui_proFrame::ID_TIMER4 = wxNewId();
 const long srs_ui_proFrame::ID_TIMER5 = wxNewId();
 const long srs_ui_proFrame::ID_TIMER6 = wxNewId();
+const long srs_ui_proFrame::ID_TIMER7 = wxNewId();
 //*)
 
 
@@ -292,7 +293,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     wxBoxSizer* sizer_automatic_move;
     wxMenu* Menu2;
     wxBoxSizer* sizer_automatic_get;
-    
+
     Create(parent, wxID_ANY, _("GUI-PRO"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxFULL_REPAINT_ON_RESIZE, _T("wxID_ANY"));
     SetClientSize(wxSize(1357,654));
     panel_main = new wxPanel(this, ID_PANEL3, wxPoint(0,0), wxSize(1360,400), wxTAB_TRAVERSAL, _T("ID_PANEL3"));
@@ -696,7 +697,8 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     timer_skype_contacts.SetOwner(this, ID_TIMER4);
     timer_ROS.SetOwner(this, ID_TIMER5);
     timer_choice.SetOwner(this, ID_TIMER6);
-    
+    timer_dmServer.SetOwner(this, ID_TIMER7);
+
     Connect(ID_GRID1,wxEVT_GRID_CELL_LEFT_DCLICK,(wxObjectEventFunction)&srs_ui_proFrame::Ongrid_requestsCellLeftDClick);
     Connect(ID_LISTCTRL1,wxEVT_COMMAND_LIST_ITEM_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showContextualMenu);
     Connect(ID_LISTCTRL2,wxEVT_COMMAND_LIST_ITEM_ACTIVATED,(wxObjectEventFunction)&srs_ui_proFrame::acceptCall);
@@ -761,6 +763,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     Connect(ID_TIMER4,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Onskype_timerTrigger1);
     Connect(ID_TIMER5,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Ontimer_ROSTrigger);
     Connect(ID_TIMER6,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Ontimer_choiceTrigger);
+    Connect(ID_TIMER7,wxEVT_TIMER,(wxObjectEventFunction)&srs_ui_proFrame::Ontimer_dmServerTrigger);
     //*)
 
     SF = sf;
@@ -1447,7 +1450,8 @@ void srs_ui_proFrame::Onbutton_im_assistedarmClick(wxCommandEvent& event)
 {
     try
     {
-        Ri->startAssistedArm();
+        pthread_t thread1;
+        pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_StartAssistedArm, (void*)this);
     }
     catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
@@ -2116,6 +2120,7 @@ void srs_ui_proFrame::Ontimer_ROSTrigger(wxTimerEvent& event)
         timer_URI.Start(1000, false);
         timer_ROS.Stop();
         timer_choice.Stop();
+        timer_dmServer.Stop();
         panel_actions_main->Disable();
         panel_options_main->Disable();
         panel_ontray_main->Disable();
@@ -2146,6 +2151,7 @@ void srs_ui_proFrame::Ontimer_URITrigger(wxTimerEvent& event)
         box_status_RobotURI->SetValue(toWXString(ros::master::getURI()));
         timer_URI.Stop();
         timer_ROS.Start(500, false);
+        timer_dmServer.Start(500, false);
         timer_updates.Start(1000, false);
         panel_actions_main->Enable();
         panel_options_main->Enable();
@@ -2437,4 +2443,11 @@ void srs_ui_proFrame::Onbut_RvizTools_AssistedArm_LaunchClick(wxCommandEvent& ev
         PM->ExitIM_AssistedArmNavigation();
     else
         PM->ExecIM_AssistedArmNavigation();
+}
+
+void srs_ui_proFrame::Ontimer_dmServerTrigger(wxTimerEvent& event)
+{
+    //TODO: Esperar evento de feedback
+    if (Ri->DM_ExcepcionalCase())
+        wxMessageBox(wxT("Interventionnnnnnnnnnnnnnnn!\t"), wxT("srs_decision_making: User intervention is needed."), wxICON_INFORMATION);
 }

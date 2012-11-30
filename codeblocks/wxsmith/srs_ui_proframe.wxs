@@ -1249,5 +1249,8 @@
 		<object class="wxTimer" name="ID_TIMER6" variable="timer_choice" member="yes">
 			<handler function="Ontimer_choiceTrigger" entry="EVT_TIMER" />
 		</object>
+		<object class="wxTimer" name="ID_TIMER7" variable="timer_dmServer" member="yes">
+			<handler function="Ontimer_dmServerTrigger" entry="EVT_TIMER" />
+		</object>
 	</object>
 </wxsmith>
