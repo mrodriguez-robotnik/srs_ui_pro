@@ -28,8 +28,8 @@
 	<File name="../src/GUI/ProcessManager.cc" open="0" top="0" tabpos="1">
 		<Cursor position="7046" topLine="152" />
 	</File>
-	<File name="../src/GUI/RosInterface.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="3898" topLine="88" />
+	<File name="../src/GUI/RosInterface.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="5346" topLine="88" />
 	</File>
 	<File name="../src/GUI/SkypeFunctions.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="168" topLine="6" />
@@ -40,7 +40,7 @@
 	<File name="../src/GUI/srs_ui_proApp.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="850" topLine="0" />
 	</File>
-	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="120053" topLine="2413" />
+	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="120863" topLine="2413" />
 	</File>
 </CodeBlocks_layout_file>
