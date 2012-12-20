@@ -27,7 +27,7 @@
   <depend package="move_base_msgs"/>
   <depend package="trajectory_msgs"/>
 
-
+  <depend package="srs_arm_navigation_tests"/>
   <depend package="srs_assisted_arm_navigation_msgs"/>
   <depend package="srs_states"/>
 
