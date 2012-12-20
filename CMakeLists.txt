@@ -33,9 +33,6 @@ rosbuild_gensrv()
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
-rosbuild_add_executable(base_im src/cob_base_marker_server.cpp)
-rosbuild_add_executable(goto_im src/cob_goto_marker_server.cpp)
-rosbuild_add_executable(teleop_uipro src/cob_ui_pro_teleop.cpp)
 
 #srs_ui_pro:
 find_package(wxWidgets REQUIRED)
