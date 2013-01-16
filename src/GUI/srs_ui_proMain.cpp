@@ -8,7 +8,6 @@
  **************************************************************/
 
 #include "srs_ui_proMain.h"
-#include <ros/package.h>
 //helper functions
 enum wxbuildinfoformat {
     short_f, long_f };
@@ -42,6 +41,8 @@ const long srs_ui_proFrame::ID_PANEL10 = wxNewId();
 const long srs_ui_proFrame::ID_LISTCTRL2 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL9 = wxNewId();
 const long srs_ui_proFrame::ID_NOTEBOOK2 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON31 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON32 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL4 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL2 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON14 = wxNewId();
@@ -293,7 +294,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     wxBoxSizer* sizer_automatic_move;
     wxMenu* Menu2;
     wxBoxSizer* sizer_automatic_get;
-    
+
     Create(parent, wxID_ANY, _("GUI-PRO"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxFULL_REPAINT_ON_RESIZE, _T("wxID_ANY"));
     SetClientSize(wxSize(1357,654));
     panel_main = new wxPanel(this, ID_PANEL3, wxPoint(0,0), wxSize(1360,400), wxTAB_TRAVERSAL, _T("ID_PANEL3"));
@@ -323,6 +324,8 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     grid_skype_IncomingCalls = new wxListCtrl(tab_skype_IncomingCalls, ID_LISTCTRL2, wxPoint(16,16), wxSize(320,168), wxLC_REPORT|wxSIMPLE_BORDER, wxDefaultValidator, _T("ID_LISTCTRL2"));
     tabs_skype->AddPage(tab_skype_contacts, _("Contacts"), false);
     tabs_skype->AddPage(tab_skype_IncomingCalls, _("Incoming Calls"), false);
+    Button1 = new wxButton(panel_comunications, ID_BUTTON31, _("Label"), wxPoint(176,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON31"));
+    Button2 = new wxButton(panel_comunications, ID_BUTTON32, _("Label"), wxPoint(288,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON32"));
     sizer_comunications->Add(panel_comunications, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     panel_comunications_main->SetSizer(sizer_comunications);
     sizer_comunications->SetSizeHints(panel_comunications_main);
@@ -698,10 +701,12 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     timer_ROS.SetOwner(this, ID_TIMER5);
     timer_choice.SetOwner(this, ID_TIMER6);
     timer_dmServer.SetOwner(this, ID_TIMER7);
-    
+
     Connect(ID_GRID1,wxEVT_GRID_CELL_LEFT_DCLICK,(wxObjectEventFunction)&srs_ui_proFrame::Ongrid_requestsCellLeftDClick);
     Connect(ID_LISTCTRL1,wxEVT_COMMAND_LIST_ITEM_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showContextualMenu);
     Connect(ID_LISTCTRL2,wxEVT_COMMAND_LIST_ITEM_ACTIVATED,(wxObjectEventFunction)&srs_ui_proFrame::acceptCall);
+    Connect(ID_BUTTON31,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::prueba1);
+    Connect(ID_BUTTON32,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::prueba2);
     Connect(ID_BUTTON14,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_move_STARTClick);
     Connect(ID_CHOICE3,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::Onchoice_automatic_moveSelect);
     Connect(ID_BUTTON13,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_get_STARTClick);
@@ -793,6 +798,7 @@ srs_ui_proFrame::~srs_ui_proFrame()
 void srs_ui_proFrame::Initialize()
 {
     RosInterface::init();
+    RvI = new RvizInterface();
     //SF = new SkypeFunctions();
     //PM = new ProcessManager();
     num_events = 0;
@@ -1194,17 +1200,20 @@ void srs_ui_proFrame::UpdateIMGs()
         but_RvizTools_AssistedArm_Launch->SetLabel(toWXString("Launch it"));
         but_RvizTools_AssistedArmNavigation->Enable(false);
     }
-
-
-
-
 }
+
 
 void srs_ui_proFrame::runRviz(wxCommandEvent& event)
 {
-    PM->ExecRviz(RVIZ_CONFIG_FILE);
-    sleep(1);
+    RvI->showRviz();
     but_SpawnObjectsInRviz->Enable();
+
+    /*
+
+    rviz::DisplayWrapper* disp = manager->createDisplay("rviz","rviz::GridDisplay","Grid", TRUE);
+    //manager->addDisplay(disp, TRUE);
+    */
+
 }
 
 void srs_ui_proFrame::Onbutton_GenerateGraspsClick(wxCommandEvent& event)
@@ -2450,4 +2459,17 @@ void srs_ui_proFrame::Ontimer_dmServerTrigger(wxTimerEvent& event)
     //TODO: Esperar evento de feedback
     if (Ri->DM_ExcepcionalCase())
         wxMessageBox(wxT("Interventionnnnnnnnnnnnnnnn!\t"), wxT("srs_decision_making: User intervention is needed."), wxICON_INFORMATION);
+}
+
+void srs_ui_proFrame::prueba1(wxCommandEvent& event)
+{
+    //RvI->addDisplay("rviz", "rviz::GridDisplay", "Grid", true);
+    RvI->addDisplay("srs_assisted_arm_navigation_ui", "CButArmNavDisplay", "Arm navigation", true);
+
+}
+
+void srs_ui_proFrame::prueba2(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("Grid");
+    RvI->removeDisplay("Arm navigation");
 }

@@ -41,12 +41,12 @@
 #include <pthread.h>
 #include "ProcessManager.h"
 #include "RosInterface.h"
+#include "RvizInterface.h"
 #include "ObjectInfo.h"
 #include "SkypeFunctions.h"
 #include "SkypeWindow.h"
 #include "SkypeWindow2.h"
 
-#define     RVIZ_CONFIG_FILE    "~/local_packages/srs_ui_pro/rviz_config/config"
 #define     BLUE                *wxBLUE
 #define     RED                 *wxRED
 #define     BLACK               *wxBLACK
@@ -64,6 +64,7 @@ class srs_ui_proFrame: public wxFrame
 
         SkypeFunctions *SF;
         RosInterface *Ri;
+        RvizInterface *RvI;
         ProcessManager *PM;
 
         std::string event_dm_log_str;
@@ -229,6 +230,8 @@ class srs_ui_proFrame: public wxFrame
         void OnButton2Click(wxCommandEvent& event);
         void Onbut_RvizTools_AssistedArm_LaunchClick(wxCommandEvent& event);
         void Ontimer_dmServerTrigger(wxTimerEvent& event);
+        void prueba1(wxCommandEvent& event);
+        void prueba2(wxCommandEvent& event);
         //*)
 
 
@@ -240,6 +243,8 @@ class srs_ui_proFrame: public wxFrame
         static const long ID_LISTCTRL2;
         static const long ID_PANEL9;
         static const long ID_NOTEBOOK2;
+        static const long ID_BUTTON31;
+        static const long ID_BUTTON32;
         static const long ID_PANEL4;
         static const long ID_PANEL2;
         static const long ID_BUTTON14;
@@ -586,6 +591,8 @@ class srs_ui_proFrame: public wxFrame
         wxPanel* panel_options;
         wxButton* but_sdh_open;
         wxChoice* choice_automatic_move;
+        wxButton* Button2;
+        wxButton* Button1;
         wxPanel* tab_RvizTools;
         wxMenuItem* MenuItem16;
         wxStaticText* label_Requests;

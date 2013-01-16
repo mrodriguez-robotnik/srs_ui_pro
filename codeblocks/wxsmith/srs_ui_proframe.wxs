@@ -71,6 +71,16 @@
 									<label>Incoming Calls</label>
 								</object>
 							</object>
+							<object class="wxButton" name="ID_BUTTON31" variable="Button1" member="yes">
+								<label>Label</label>
+								<pos>176,0</pos>
+								<handler function="prueba1" entry="EVT_BUTTON" />
+							</object>
+							<object class="wxButton" name="ID_BUTTON32" variable="Button2" member="yes">
+								<label>Label</label>
+								<pos>288,0</pos>
+								<handler function="prueba2" entry="EVT_BUTTON" />
+							</object>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>

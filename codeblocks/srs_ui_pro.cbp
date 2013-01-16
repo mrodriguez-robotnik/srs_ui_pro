@@ -34,6 +34,7 @@
 		<Unit filename="../include/ObjectInfo.h" />
 		<Unit filename="../include/ProcessManager.h" />
 		<Unit filename="../include/RosInterface.h" />
+		<Unit filename="../include/RvizInterface.h" />
 		<Unit filename="../include/SkypeFunctions.h" />
 		<Unit filename="../include/SkypeWindow.h" />
 		<Unit filename="../include/SkypeWindow2.h" />
@@ -43,6 +44,7 @@
 		<Unit filename="../src/GUI/ObjectInfo.cpp" />
 		<Unit filename="../src/GUI/ProcessManager.cc" />
 		<Unit filename="../src/GUI/RosInterface.cpp" />
+		<Unit filename="../src/GUI/RvizInterface.cpp" />
 		<Unit filename="../src/GUI/SkypeFunctions.cpp" />
 		<Unit filename="../src/GUI/SkypeWindow.cpp" />
 		<Unit filename="../src/GUI/SkypeWindow2.cpp" />

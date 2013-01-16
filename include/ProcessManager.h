@@ -36,7 +36,6 @@ class ProcessManager{
 
 private:
 	//! PID of all the processes
-	pid_t pid_rviz;
     pid_t pid_grasp_simulator;
     pid_t pid_im_moveBase;
 	pid_t pid_im_goto;
@@ -53,7 +52,6 @@ private:
 public:
 	//! Constructor
 	ProcessManager(){
-        pid_rviz = -1;
         pid_grasp_simulator = -1;
         pid_im_moveBase = -1;
         pid_im_goto = -1;
@@ -71,7 +69,6 @@ public:
 	~ProcessManager(){};
 
 	//! Creates a new process and exec player server with kanban driver
-	int ExecRviz(std::string rviz_config_file_path);
 	int ExecInteractionPrimitives();
     int ExecGraspSimulator();
 	int ExecIM_goTo();
@@ -85,7 +82,6 @@ public:
     int ExecRxgraph();
 
 	//! Waits for the termination of Kanban
-	int WaitRviz();
     int WaitInteractionPrimitives();
     int WaitGraspSimulator();
     int WaitIM_goTo();
@@ -99,7 +95,6 @@ public:
     int WaitRxgraph();
 
 	//! Sends a signal to the process Kanban to finish the execution
-	int ExitRviz();
     int ExitInteractionPrimitives();
     int ExitGraspSimulator();
     int ExitIM_goTo();
@@ -115,7 +110,6 @@ public:
     int ExitRxgraph();
 
 	//! Kills the process Kanban
-	int KillRviz();
     int KillInteractionPrimitives();
     int KillGraspSimulator();
     int KillIM_goTo();
