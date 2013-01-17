@@ -212,7 +212,7 @@
             printf("ProcessManager::ExecSkypeRuntime: Error in fork: %s\n", strerror(errno));
             return PROCESS_ERROR_FORK; //Error al ejecutar fork
         }else if(pid_skype_runtime == 0){ //child
-            if(execlp("skype-runtime", skype_runtime_path.c_str(), NULL) < 0){
+            if(execlp(skype_runtime_path.c_str(), NULL) < 0){
                 printf("ProcessManager::ExecSkypeRuntime: Error in exec: %s\n", strerror(errno));
                 return PROCESS_ERROR_EXEC;
             }

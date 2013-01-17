@@ -10,7 +10,7 @@
 	<File name="../include/RosInterface.h" open="0" top="0" tabpos="0">
 		<Cursor position="4809" topLine="39" />
 	</File>
-	<File name="../include/RvizInterface.h" open="0" top="0" tabpos="2">
+	<File name="../include/RvizInterface.h" open="1" top="0" tabpos="3">
 		<Cursor position="1221" topLine="10" />
 	</File>
 	<File name="../include/SkypeFunctions.h" open="0" top="0" tabpos="0">
@@ -28,14 +28,14 @@
 	<File name="../src/GUI/LogginScreen.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="2800" topLine="44" />
 	</File>
-	<File name="../src/GUI/ProcessManager.cc" open="0" top="0" tabpos="1">
-		<Cursor position="36503" topLine="422" />
+	<File name="../src/GUI/ProcessManager.cc" open="1" top="1" tabpos="4">
+		<Cursor position="9335" topLine="201" />
 	</File>
 	<File name="../src/GUI/RosInterface.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="285" topLine="0" />
 	</File>
-	<File name="../src/GUI/RvizInterface.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="1612" topLine="30" />
+	<File name="../src/GUI/RvizInterface.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="781" topLine="15" />
 	</File>
 	<File name="../src/GUI/SkypeFunctions.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="168" topLine="6" />
@@ -46,7 +46,7 @@
 	<File name="../src/GUI/srs_ui_proApp.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="850" topLine="0" />
 	</File>
-	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="121379" topLine="2435" />
+	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="115070" topLine="2215" />
 	</File>
 </CodeBlocks_layout_file>

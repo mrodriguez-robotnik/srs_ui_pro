@@ -37,26 +37,31 @@ include_directories(${wxWidgets_INCLUDE_DIRS})
 
 
 # ------------ SKYPE ------------ #
-set(INC_DEBUG 	$ENV{SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/src/api 
-		$ENV{SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/src/ipc
-		$ENV{SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/src/types
-		$ENV{SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/src/platform/threading
-		$ENV{SKYPE_KIT_PATH}ipc/cpp
-		$ENV{SKYPE_KIT_PATH}ipc/cpp/platform/se
-		$ENV{SKYPE_KIT_PATH}ipc/cpp/ssl/cyassl/include
-		$ENV{SKYPE_KIT_PATH}ipc/cpp/ssl/cyassl/ctaocrypt/include 
-		$ENV{SKYPE_KIT_PATH}ipc/cpp/ssl/cyassl/include/openssl 
-		$ENV{SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/src/platform/threading/pthread 
-		$ENV{SKYPE_KIT_PATH}examples/cpp/tutorial/keypair)
+set(INC_DEBUG 	$ENV{SKYPE_KIT_PATH}/interfaces/skype/cpp_embedded/src/api 
+		$ENV{SKYPE_KIT_PATH}/interfaces/skype/cpp_embedded/src/ipc
+		$ENV{SKYPE_KIT_PATH}/interfaces/skype/cpp_embedded/src/types
+		$ENV{SKYPE_KIT_PATH}/interfaces/skype/cpp_embedded/src/platform/threading
+		$ENV{SKYPE_KIT_PATH}/ipc/cpp
+		$ENV{SKYPE_KIT_PATH}/ipc/cpp/platform/se
+		$ENV{SKYPE_KIT_PATH}/ipc/cpp/ssl/cyassl/include
+		$ENV{SKYPE_KIT_PATH}/ipc/cpp/ssl/cyassl/ctaocrypt/include 
+		$ENV{SKYPE_KIT_PATH}/ipc/cpp/ssl/cyassl/include/openssl 
+		$ENV{SKYPE_KIT_PATH}/interfaces/skype/cpp_embedded/src/platform/threading/pthread 
+		$ENV{SKYPE_KIT_PATH}/examples/cpp/tutorial/keypair)
 include_directories(${INC_DEBUG})
 
-set(LIBDIR_DEBUG -L$ENV{SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/build -L$ENV{SKYPE_KIT_PATH}bin/linux-x86)
-set(LIB_DEBUG $ENV{SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/build/libskypekit-cppwrapper_2_lib.a $ENV{SKYPE_KIT_PATH}interfaces/skype/cpp_embedded/build/libskypekit-cyassl_lib.a)
+set(LIBDIR_DEBUG -L$ENV{SKYPE_KIT_PATH}/interfaces/skype/cpp_embedded/build -L$ENV{SKYPE_KIT_PATH}/bin/linux-x86)
+set(LIB_DEBUG $ENV{SKYPE_KIT_PATH}/interfaces/skype/cpp_embedded/build/libskypekit-cppwrapper_2_lib.a $ENV{SKYPE_KIT_PATH}/interfaces/skype/cpp_embedded/build/libskypekit-cyassl_lib.a)
 set(SKYPE_LFLAGS ${LIBDIR_DEBUG} ${LIB_DEBUG})
 
 
 
 # ---------- srs_ui_pro --------- #
+set(INCLUDE_DIRECTORIES ${srs_assisted_arm_navigation_ui_PACKAGE_PATH}/include/
+			${srs_assisted_grasping_ui_PACKAGE_PATH}/include/)
+include_directories(${INCLUDE_DIRECTORIES})
+
+
 set(FLAGS ${wxWidgets_LIBRARIES} ${SKYPE_LFLAGS})
 set(INT_SOURCE_FILES  src/GUI/srs_ui_proApp.cpp 
 			src/GUI/LogginScreen.cpp 
