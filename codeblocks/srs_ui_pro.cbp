@@ -29,6 +29,7 @@
 		<Linker>
 			<Add option="`wx-config --libs`" />
 		</Linker>
+
 		<Unit filename="wxsmith/srs_ui_proframe.wxs" />
 		<Unit filename="../include/LogginScreen.h" />
 		<Unit filename="../include/ObjectInfo.h" />
@@ -38,6 +39,7 @@
 		<Unit filename="../include/SkypeFunctions.h" />
 		<Unit filename="../include/SkypeWindow.h" />
 		<Unit filename="../include/SkypeWindow2.h" />
+		<Unit filename="../include/DM_window.h" />
 		<Unit filename="../include/srs_ui_proApp.h" />
 		<Unit filename="../include/srs_ui_proMain.h" />
 		<Unit filename="../src/GUI/LogginScreen.cpp" />
@@ -48,6 +50,7 @@
 		<Unit filename="../src/GUI/SkypeFunctions.cpp" />
 		<Unit filename="../src/GUI/SkypeWindow.cpp" />
 		<Unit filename="../src/GUI/SkypeWindow2.cpp" />
+		<Unit filename="../src/GUI/DM_window.cpp" />
 		<Unit filename="../src/GUI/srs_ui_proApp.cpp" />
 		<Unit filename="../src/GUI/srs_ui_proMain.cpp" />
 		<Extensions>
@@ -63,6 +66,7 @@
 					<wxFrame wxs="wxsmith/SkypeWindow.wxs" src="../src/GUI/SkypeWindow.cpp" hdr="../include/SkypeWindow.h" name="SkypeWindow" language="CPP" />
 					<wxFrame wxs="wxsmith/SkypeWindow2.wxs" src="../src/GUI/SkypeWindow2.cpp" hdr="../include/SkypeWindow2.h" name="SkypeWindow2" language="CPP" />
 					<wxFrame wxs="wxsmith/LogginScreen.wxs" src="../src/GUI/LogginScreen.cpp" hdr="../include/LogginScreen.h" name="LogginScreen" language="CPP" />
+					<wxFrame wxs="wxsmith/DM_window.wxs" src="../src/GUI/DM_window.cpp" hdr="../include/DM_window.h" name="DM_window" language="CPP" />
 				</resources>
 			</wxsmith>
 		</Extensions>

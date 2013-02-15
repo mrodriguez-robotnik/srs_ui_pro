@@ -1,5 +1,7 @@
-uint32 excepcional_case_id
+string json_input
 ---
-string output
+string output		#deprectad
+string json_result
 ---
-string current_status
+string current_status	#deprectad
+string json_feedback

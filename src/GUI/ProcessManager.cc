@@ -337,6 +337,36 @@
         }
     }
 
+	int ProcessManager::ExecRviz(std::string file_config){
+        int status;
+        pid_t waitreturnpid;
+
+        if(pid_rviz > 0){	//Check if it's already running
+            waitreturnpid = waitpid(pid_rviz, &status, WNOHANG);
+            if(waitreturnpid == 0){
+                printf("ProcessManager::ExecRviz: process already running\n");
+                return PROCESS_RUNNING;	//process already running
+            }if(waitreturnpid < 0){
+                printf("ProcessManager::ExecRviz: Error in waitpid: %s\n", strerror(errno));
+                pid_rviz = -1;
+                return PROCESS_ERROR_WAITING;
+            }
+        }
+
+        if((pid_rviz = fork()) == -1){
+            printf("ProcessManager::ExecRviz: Error in fork: %s\n", strerror(errno));
+            return PROCESS_ERROR_FORK; //Error al ejecutar fork
+        }else if(pid_rviz == 0){ //child
+            if(execlp("rosrun", "rosrun", "rviz", "rviz", file_config.c_str(), NULL) < 0){
+                printf("ProcessManager::ExecRviz: Error in exec: %s\n", strerror(errno));
+                return PROCESS_ERROR_EXEC;
+            }
+        }else{
+            return PROCESS_OK;
+        }
+    }
+
+
 
 /*!	\fn int ProcessManager::Wait<PROCESS_NAME>()
  * 	\brief Waits for the termination of TurtleSim
@@ -762,6 +792,44 @@
         }
     }
 
+    int ProcessManager::WaitRviz(){
+        pid_t waitreturnpid;
+        int status;
+
+        if(pid_rviz > 0){	//Check if it's already running
+            do{
+                waitreturnpid = waitpid(pid_rviz, &status, WNOHANG);
+                if(waitreturnpid == 0){
+                    //printf("ProcessManager::WaitRviz: Running\n");
+                    return PROCESS_RUNNING;
+                }
+
+                if(waitreturnpid < 0){
+                    //printf("ProcessManager::WaitRviz: Error in waitpid: %s\n", strerror(errno));
+                    return PROCESS_ERROR_WAITING;
+                }
+
+                if (WIFEXITED(status)) {
+                    //printf("ProcessManager::WaitRviz:child exited, status= %d\n", WEXITSTATUS(status));
+
+                } else if (WIFSIGNALED(status)) {
+                    //printf("ProcessManager::WaitRviz: child killed (signal %d)\n", WTERMSIG(status));
+
+
+                } else if (WIFSTOPPED(status)) {
+                    //printf("ProcessManager::WaitRviz: child stopped (signal %d)\n", WSTOPSIG(status));
+                }
+
+            } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+
+            pid_rviz = -1;
+            return PROCESS_OK;
+        }else{
+            //printf("ProcessManager::WaitRviz: no process to wait for..\n");
+            return PROCESS_OK;
+        }
+    }
+
 
 /*!	\fn int ProcessManager::Exit<PROCESS_NAME>()
  * 	\brief Sends a signal to the process TurtleSim to finish the execution
@@ -934,6 +1002,21 @@
         }
     }
 
+	int ProcessManager::ExitRviz(){
+        if(pid_rviz > 0){
+            if(kill(pid_rviz, SIGINT)!=0){
+                printf("ProcessManager::ExitRviz: Error sending the signal: %s\n", strerror(errno));
+                return PROCESS_ERRROR_KILL;
+            }else{
+                pid_rviz = -1;
+                return PROCESS_OK;
+            }
+        }else{
+            printf("ProcessManager::ExitRviz: process is not running\n");
+            return PROCESS_OK;
+        }
+    }
+
 	int ProcessManager::ExitAll(){
 
 	    if (WaitInteractionPrimitives() == -4)
@@ -968,6 +1051,9 @@
 
 	    if (WaitRxgraph() == -4)
             ExitRxgraph();
+
+        if (WaitRviz() == -4)
+            ExitRviz();
 	}
 
 
@@ -1141,6 +1227,22 @@
             return PROCESS_OK;
         }
     }
+
+	int ProcessManager::KillRviz(){
+        if(pid_rviz > 0){
+            if(kill(pid_rviz, SIGKILL)!=0){
+                printf("ProcessManager::KillRviz: Error sending the signal: %s\n", strerror(errno));
+                return PROCESS_ERRROR_KILL;
+            }else{
+                pid_rviz = -1;
+                return PROCESS_OK;
+            }
+        }else{
+            printf("ProcessManager::KillRviz: process is not running\n");
+            return PROCESS_OK;
+        }
+    }
+
 
 
 

@@ -47,6 +47,7 @@ private:
 	pid_t pid_interaction_primitives;
 	pid_t pid_runtime_monitor;
     pid_t pid_rxgraph;
+    pid_t pid_rviz;
 
 
 public:
@@ -63,10 +64,11 @@ public:
         pid_interaction_primitives = -1;
         pid_runtime_monitor = -1;
         pid_rxgraph = -1;
+        pid_rviz = -1;
 
 	};
 	//! Destructor
-	~ProcessManager(){};
+	~ProcessManager(){ ExitAll(); };
 
 	//! Creates a new process and exec player server with kanban driver
 	int ExecInteractionPrimitives();
@@ -80,6 +82,7 @@ public:
     int ExecDashboard();
     int ExecRuntimeMonitor();
     int ExecRxgraph();
+    int ExecRviz(std::string file_config);
 
 	//! Waits for the termination of Kanban
     int WaitInteractionPrimitives();
@@ -93,6 +96,7 @@ public:
     int WaitDashboard();
     int WaitRuntimeMonitor();
     int WaitRxgraph();
+    int WaitRviz();
 
 	//! Sends a signal to the process Kanban to finish the execution
     int ExitInteractionPrimitives();
@@ -108,6 +112,7 @@ public:
     int ExitAll();
     int ExitRuntimeMonitor();
     int ExitRxgraph();
+    int ExitRviz();
 
 	//! Kills the process Kanban
     int KillInteractionPrimitives();
@@ -121,6 +126,7 @@ public:
     int KillDashboard();
     int KillRuntimeMonitor();
     int KillRxgraph();
+    int KillRviz();
 };
 
 #endif

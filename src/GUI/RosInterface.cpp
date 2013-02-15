@@ -16,6 +16,7 @@ RosInterface::RosInterface(){
 }
 
 RosInterface::~RosInterface(){
+    //IP_RemoveAllObjects();
     n.shutdown();
 }
 
@@ -65,7 +66,7 @@ int RosInterface::Start(){
 void RosInterface::initializeVariables(){
     dm_exceptional_case_id = 0;
     dm_solution_required = dm_server_event = emergency_button_stop_state = scanner_stop_state = false;
-    dm_current_task = dm_current_task_id = "";
+    dm_current_task = dm_current_task_id = last_goal = "";
 }
 
 void RosInterface::initServices(){
@@ -104,11 +105,30 @@ void RosInterface::initTopics(){
     sub_wifi_state = n.subscribe("/ddwrt/accesspoint", 1000, &RosInterface::callback_wifi_state, this);
     sub_grabbed = n.subscribe("/sdh_controller/grabbed", 1000, &RosInterface::callback_grabbed, this);
     sub_grabbed2 = n.subscribe("/sdh_controller/cylindric_grabbed", 1000, &RosInterface::callback_grabbed2, this);
-    sub_dm_server_feedback = n.subscribe("/ui_pro_server_for_dm/feedback", 1000, &RosInterface::callback_dm_server_fb, this);
+    sub_dm_server_feedback = n.subscribe("/srs_ui_pro/echo_server/feedback", 1000, &RosInterface::callback_dm_server_fb, this);
+    sub_dm_server_goal = n.subscribe("/srs_ui_pro/echo_server/goal", 1000, &RosInterface::callback_dm_server_goal, this);
+
+    srs_ui_pro_pub = n.advertise<srs_ui_pro::srs_ui_proEcho>("/srs_ui_pro/gui/status", 1000);
+}
+
+void RosInterface::publish_status(int status, std::string fb)
+{
+    //ros::Rate d(100);
+    //while(srs_ui_pro_pub.getNumSubscribers() == 0)
+    //    d.sleep();
+
+
+    srs_ui_pro::srs_ui_proEcho srs_echo;
+    srs_echo.status = status;
+    srs_echo.feedback = fb;
+
+    srs_ui_pro_pub.publish(srs_echo);
+
 }
 
 void RosInterface::initActionServers(){
     dm_client = new actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction>("srs_decision_making_actions", true);
+    ui_but_client = new actionlib::SimpleActionClient<srs_ui_pro::ui_butAction>("srs_ui_pro/ui_but_server", true);
 }
 
 void RosInterface::serviceAvailable(ros::ServiceClient sc){
@@ -525,8 +545,25 @@ int RosInterface::decision_making_actions(std::string action, std::string parame
         return -1;
     }
 
-    dm_client->sendGoalAndWait(goal);
+    //if (dm_client->sendGoalAndWait(goal, ros::Duration(5.0)) != actionlib::SimpleClientGoalState::SUCCEEDED)
+    //    throw ServiceUnavailable("/srs_decision_making_actions");
+    dm_client->sendGoal(goal);
     return dm_client->getResult()->return_value;
+}
+
+std::string RosInterface::ui_but_server_actions(int action)
+{
+    ROS_INFO("Waiting for the /srs_ui_pro/ui_but_server action server to come up.");
+    if (!ui_but_client->waitForServer(ros::Duration(5.0)))
+        throw ServiceUnavailable("/srs_ui_pro/ui_but_server");
+
+    srs_ui_pro::ui_butGoal goal;
+    goal.excepcional_case_id = action;
+
+    //if (ui_but_client->sendGoalAndWait(goal, ros::Duration(5.0)) != actionlib::SimpleClientGoalState::SUCCEEDED)
+    //    throw ServiceUnavailable("/srs_ui_pro/ui_but_server");
+    ui_but_client->sendGoal(goal);
+    return ui_but_client->getResult()->output;
 }
 
 void RosInterface::startAssistedArm()
@@ -817,7 +854,9 @@ int RosInterface::DM_InterventionRequired()
 
 bool RosInterface::DM_ExcepcionalCase()
 {
-    return dm_server_event;
+    bool aux = dm_server_event;
+    dm_server_event = false;
+    return aux;
 }
 
 std::vector<srs_msgs::DBGrasp> RosInterface::getGraspConfigurations(int object_id)
@@ -1113,5 +1152,14 @@ void RosInterface::callback_dm_server_fb(const srs_ui_pro::dm_serverActionFeedba
         dm_server_event = true;
     else
         dm_server_event = false;
+}
 
+void RosInterface::callback_dm_server_goal(const srs_ui_pro::dm_serverActionGoal::ConstPtr &msg)
+{
+    last_goal = msg->goal.json_input;
+}
+
+std::string RosInterface::getLastGoalAssistedMsg()
+{
+    return last_goal;
 }

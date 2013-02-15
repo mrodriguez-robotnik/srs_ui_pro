@@ -41,8 +41,6 @@ const long srs_ui_proFrame::ID_PANEL10 = wxNewId();
 const long srs_ui_proFrame::ID_LISTCTRL2 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL9 = wxNewId();
 const long srs_ui_proFrame::ID_NOTEBOOK2 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON31 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON32 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL4 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL2 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON14 = wxNewId();
@@ -86,10 +84,31 @@ const long srs_ui_proFrame::ID_BUTTON17 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON15 = wxNewId();
 const long srs_ui_proFrame::ID_TEXTCTRL17 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL11 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON36 = wxNewId();
 const long srs_ui_proFrame::ID_STATICBITMAP9 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT15 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON9 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL32 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON37 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON38 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON40 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON39 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON41 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON42 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON44 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON43 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON46 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON47 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON45 = wxNewId();
+const long srs_ui_proFrame::ID_STATICLINE7 = wxNewId();
+const long srs_ui_proFrame::ID_STATICLINE6 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT17 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT22 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT23 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT36 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT37 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT46 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT47 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL13 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON5 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL27 = wxNewId();
@@ -131,40 +150,54 @@ const long srs_ui_proFrame::ID_RADIOBUTTON4 = wxNewId();
 const long srs_ui_proFrame::ID_RADIOBUTTON5 = wxNewId();
 const long srs_ui_proFrame::ID_RADIOBUTTON6 = wxNewId();
 const long srs_ui_proFrame::ID_RADIOBUTTON1 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT36 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON24 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON26 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT37 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON28 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON29 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL23 = wxNewId();
-const long srs_ui_proFrame::ID_STATICBITMAP10 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT16 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON10 = wxNewId();
-const long srs_ui_proFrame::ID_PANEL33 = wxNewId();
-const long srs_ui_proFrame::ID_STATICBITMAP11 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT17 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON11 = wxNewId();
-const long srs_ui_proFrame::ID_PANEL34 = wxNewId();
-const long srs_ui_proFrame::ID_STATICBITMAP13 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT23 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON27 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON30 = wxNewId();
-const long srs_ui_proFrame::ID_PANEL36 = wxNewId();
-const long srs_ui_proFrame::ID_STATICBITMAP12 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT22 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON12 = wxNewId();
-const long srs_ui_proFrame::ID_PANEL35 = wxNewId();
-const long srs_ui_proFrame::ID_STATICBITMAP1 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT8 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON4 = wxNewId();
-const long srs_ui_proFrame::ID_PANEL38 = wxNewId();
-const long srs_ui_proFrame::ID_PANEL25 = wxNewId();
-const long srs_ui_proFrame::ID_STATICBITMAP5 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT10 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON10 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT48 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT49 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL33 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON23 = wxNewId();
-const long srs_ui_proFrame::ID_PANEL50 = wxNewId();
-const long srs_ui_proFrame::ID_PANEL48 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON31 = wxNewId();
+const long srs_ui_proFrame::ID_BUTTON32 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT8 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT10 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT16 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL25 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT41 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON13 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON14 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL65 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT42 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON15 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON16 = wxNewId();
+const long srs_ui_proFrame::ID_COMBOBOX5 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL66 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT43 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON17 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON18 = wxNewId();
+const long srs_ui_proFrame::ID_COMBOBOX6 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL67 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT44 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON19 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON20 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL68 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT45 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON21 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON22 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL69 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT38 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON9 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON10 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL62 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT39 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON11 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON12 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL63 = wxNewId();
+const long srs_ui_proFrame::ID_STATICTEXT40 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON7 = wxNewId();
+const long srs_ui_proFrame::ID_RADIOBUTTON8 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL64 = wxNewId();
+const long srs_ui_proFrame::ID_PANEL60 = wxNewId();
 const long srs_ui_proFrame::ID_NOTEBOOK5 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL17 = wxNewId();
 const long srs_ui_proFrame::ID_NOTEBOOK1 = wxNewId();
@@ -324,8 +357,6 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     grid_skype_IncomingCalls = new wxListCtrl(tab_skype_IncomingCalls, ID_LISTCTRL2, wxPoint(16,16), wxSize(320,168), wxLC_REPORT|wxSIMPLE_BORDER, wxDefaultValidator, _T("ID_LISTCTRL2"));
     tabs_skype->AddPage(tab_skype_contacts, _("Contacts"), false);
     tabs_skype->AddPage(tab_skype_IncomingCalls, _("Incoming Calls"), false);
-    Button1 = new wxButton(panel_comunications, ID_BUTTON31, _("Label"), wxPoint(176,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON31"));
-    Button2 = new wxButton(panel_comunications, ID_BUTTON32, _("Label"), wxPoint(288,0), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON32"));
     sizer_comunications->Add(panel_comunications, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     panel_comunications_main->SetSizer(sizer_comunications);
     sizer_comunications->SetSizeHints(panel_comunications_main);
@@ -412,10 +443,32 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     tab_semi = new wxPanel(tabs_actions, ID_PANEL12, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL12"));
     tabs_subsemi = new wxNotebook(tab_semi, ID_NOTEBOOK3, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK3"));
     tab_semi_navigation = new wxPanel(tabs_subsemi, ID_PANEL13, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL13"));
+    Button12 = new wxButton(tab_semi_navigation, ID_BUTTON36, _("Folded"), wxPoint(368,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON36"));
     panel_navigation_dashboard = new wxPanel(tab_semi_navigation, ID_PANEL32, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL32"));
     img_navigation_dashboard = new wxStaticBitmap(panel_navigation_dashboard, ID_STATICBITMAP9, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP9"));
     label_navigation_dashboard = new wxStaticText(panel_navigation_dashboard, ID_STATICTEXT15, _("Dashboard"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT15"));
     but_navigation_dashboard = new wxButton(panel_navigation_dashboard, ID_BUTTON9, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON9"));
+    Button13 = new wxButton(tab_semi_navigation, ID_BUTTON37, _("Front"), wxPoint(16,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON37"));
+    Button14 = new wxButton(tab_semi_navigation, ID_BUTTON38, _("Back"), wxPoint(16,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON38"));
+    Button16 = new wxButton(tab_semi_navigation, ID_BUTTON40, _("Open"), wxPoint(104,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON40"));
+    Button15 = new wxButton(tab_semi_navigation, ID_BUTTON39, _("Close"), wxPoint(104,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON39"));
+    Button17 = new wxButton(tab_semi_navigation, ID_BUTTON41, _("Front"), wxPoint(192,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON41"));
+    Button18 = new wxButton(tab_semi_navigation, ID_BUTTON42, _("Back"), wxPoint(192,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON42"));
+    Button20 = new wxButton(tab_semi_navigation, ID_BUTTON44, _("Down"), wxPoint(280,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON44"));
+    Button19 = new wxButton(tab_semi_navigation, ID_BUTTON43, _("Up"), wxPoint(280,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON43"));
+    Button22 = new wxButton(tab_semi_navigation, ID_BUTTON46, _("Home"), wxPoint(368,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON46"));
+    Button23 = new wxButton(tab_semi_navigation, ID_BUTTON47, _("Home"), wxPoint(456,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON47"));
+    Button21 = new wxButton(tab_semi_navigation, ID_BUTTON45, _("Kitchen"), wxPoint(456,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON45"));
+    StaticLine2 = new wxStaticLine(tab_semi_navigation, ID_STATICLINE7, wxPoint(16,120), wxSize(520,16), wxLI_HORIZONTAL, _T("ID_STATICLINE7"));
+    StaticLine1 = new wxStaticLine(tab_semi_navigation, ID_STATICLINE6, wxPoint(16,216), wxSize(520,16), wxLI_HORIZONTAL, _T("ID_STATICLINE6"));
+    StaticText12 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT17, _("Fast commands"), wxPoint(16,106), wxDefaultSize, 0, _T("ID_STATICTEXT17"));
+    StaticText12->Disable();
+    StaticText13 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT22, _("Head"), wxPoint(16,136), wxDefaultSize, 0, _T("ID_STATICTEXT22"));
+    StaticText14 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT23, _("Hand"), wxPoint(104,136), wxDefaultSize, 0, _T("ID_STATICTEXT23"));
+    StaticText15 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT36, _("Torso"), wxPoint(192,136), wxDefaultSize, 0, _T("ID_STATICTEXT36"));
+    StaticText16 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT37, _("Tray"), wxPoint(280,136), wxDefaultSize, 0, _T("ID_STATICTEXT37"));
+    StaticText17 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT46, _("Arm"), wxPoint(368,136), wxDefaultSize, 0, _T("ID_STATICTEXT46"));
+    StaticText18 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT47, _("Base"), wxPoint(456,136), wxDefaultSize, 0, _T("ID_STATICTEXT47"));
     tab_semi_detection = new wxPanel(tabs_subsemi, ID_PANEL14, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL14"));
     but_DetectObjects = new wxButton(tab_semi_detection, ID_BUTTON5, _("Detect object"), wxPoint(176,16), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON5"));
     panel_detected_objects = new wxPanel(tab_semi_detection, ID_PANEL27, wxPoint(16,96), wxSize(616,216), wxTAB_TRAVERSAL, _T("ID_PANEL27"));
@@ -459,55 +512,85 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     tab_manual = new wxPanel(tabs_actions, ID_PANEL17, wxDefaultPosition, wxSize(1066,324), wxTAB_TRAVERSAL, _T("ID_PANEL17"));
     tabs_submanual = new wxNotebook(tab_manual, ID_NOTEBOOK5, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK5"));
     tab_joystick = new wxPanel(tabs_submanual, ID_PANEL23, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL23"));
+    tab_joystick->Disable();
     panel_joystick_unused1 = new wxPanel(tab_joystick, ID_PANEL24, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL24"));
     panel_joystick_unused1->Disable();
     img_joystick_unused1 = new wxStaticBitmap(panel_joystick_unused1, ID_STATICBITMAP3, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP3"));
     label_joystick_unnused1 = new wxStaticText(panel_joystick_unused1, ID_STATICTEXT9, _("Joystick"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT9"));
     but_joystick_unused1 = new wxButton(panel_joystick_unused1, ID_BUTTON3, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON3"));
-    option_joystick_Head = new wxRadioButton(tab_joystick, ID_RADIOBUTTON2, _("Head"), wxPoint(16,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON2"));
-    option_joystick_Torso = new wxRadioButton(tab_joystick, ID_RADIOBUTTON3, _("Torso"), wxPoint(96,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON3"));
-    option_joystick_Tray = new wxRadioButton(tab_joystick, ID_RADIOBUTTON4, _("Tray"), wxPoint(176,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON4"));
-    option_joystick_Arm = new wxRadioButton(tab_joystick, ID_RADIOBUTTON5, _("Arm"), wxPoint(256,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON5"));
-    option_joystick_Hand = new wxRadioButton(tab_joystick, ID_RADIOBUTTON6, _("Hand"), wxPoint(336,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON6"));
-    option_joystick_Base = new wxRadioButton(tab_joystick, ID_RADIOBUTTON1, _("Base"), wxPoint(416,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON1"));
-    label_robot_head = new wxStaticText(tab_joystick, ID_STATICTEXT36, _("Robot head:"), wxPoint(520,232), wxDefaultSize, 0, _T("ID_STATICTEXT36"));
-    but_head_front = new wxButton(tab_joystick, ID_BUTTON24, _("Front"), wxPoint(504,248), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON24"));
-    but_head_back = new wxButton(tab_joystick, ID_BUTTON26, _("Back"), wxPoint(504,280), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON26"));
-    label_robot_hand = new wxStaticText(tab_joystick, ID_STATICTEXT37, _("Robot hand:"), wxPoint(336,232), wxDefaultSize, 0, _T("ID_STATICTEXT37"));
-    but_sdh_open = new wxButton(tab_joystick, ID_BUTTON28, _("Close"), wxPoint(320,280), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON28"));
-    but_sdh_close = new wxButton(tab_joystick, ID_BUTTON29, _("Open"), wxPoint(320,248), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON29"));
+    option_joystick_Head = new wxRadioButton(tab_joystick, ID_RADIOBUTTON2, _("Head"), wxPoint(16,136), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON2"));
+    option_joystick_Torso = new wxRadioButton(tab_joystick, ID_RADIOBUTTON3, _("Torso"), wxPoint(208,136), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON3"));
+    option_joystick_Tray = new wxRadioButton(tab_joystick, ID_RADIOBUTTON4, _("Tray"), wxPoint(304,136), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON4"));
+    option_joystick_Arm = new wxRadioButton(tab_joystick, ID_RADIOBUTTON5, _("Arm"), wxPoint(400,136), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON5"));
+    option_joystick_Hand = new wxRadioButton(tab_joystick, ID_RADIOBUTTON6, _("Hand"), wxPoint(112,136), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON6"));
+    option_joystick_Base = new wxRadioButton(tab_joystick, ID_RADIOBUTTON1, _("Base"), wxPoint(496,136), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON1"));
+    tab_assisted = new wxPanel(tabs_submanual, ID_PANEL33, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL33"));
+    Button4 = new wxButton(tab_assisted, ID_BUTTON4, _("Assisted arm navigation"), wxPoint(8,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON4"));
+    Button5 = new wxButton(tab_assisted, ID_BUTTON10, _("Assisted grasping"), wxPoint(8,120), wxSize(176,29), 0, wxDefaultValidator, _T("ID_BUTTON10"));
+    StaticText19 = new wxStaticText(tab_assisted, ID_STATICTEXT48, _("Allows to move the hand to a desired position."), wxPoint(8,40), wxSize(456,17), 0, _T("ID_STATICTEXT48"));
+    StaticText20 = new wxStaticText(tab_assisted, ID_STATICTEXT49, _("Allows to manage the hand closure. This state includes the assisted detection."), wxPoint(8,152), wxDefaultSize, 0, _T("ID_STATICTEXT49"));
     tab_RvizTools = new wxPanel(tabs_submanual, ID_PANEL25, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL25"));
-    panel_RvizTools_CamDisplay = new wxPanel(tab_RvizTools, ID_PANEL33, wxPoint(16,128), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL33"));
-    img_RvizTools_CamDisplay = new wxStaticBitmap(panel_RvizTools_CamDisplay, ID_STATICBITMAP10, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP10"));
-    label_RvizTools_CamDisplay = new wxStaticText(panel_RvizTools_CamDisplay, ID_STATICTEXT16, _("Cam Display"), wxPoint(48,16), wxSize(88,17), 0, _T("ID_STATICTEXT16"));
-    but_RvizTools_CamDisplay = new wxButton(panel_RvizTools_CamDisplay, ID_BUTTON10, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON10"));
-    panel_RvizTools_DistanceVisualizer = new wxPanel(tab_RvizTools, ID_PANEL34, wxPoint(16,72), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL34"));
-    img_RvizTools_DistanceVisualizer = new wxStaticBitmap(panel_RvizTools_DistanceVisualizer, ID_STATICBITMAP11, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP11"));
-    label_RvizTools_DistanceVisualizer = new wxStaticText(panel_RvizTools_DistanceVisualizer, ID_STATICTEXT17, _("Distance Visualizer"), wxPoint(48,16), wxSize(144,17), 0, _T("ID_STATICTEXT17"));
-    but_RvizTools_DistanceVisualizer = new wxButton(panel_RvizTools_DistanceVisualizer, ID_BUTTON11, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON11"));
-    panel_RvizTools_AssistedArmNavigation = new wxPanel(tab_RvizTools, ID_PANEL36, wxPoint(16,240), wxSize(384,40), wxTAB_TRAVERSAL, _T("ID_PANEL36"));
-    img_RvizTools_AssistedArmNavigation = new wxStaticBitmap(panel_RvizTools_AssistedArmNavigation, ID_STATICBITMAP13, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP13"));
-    label_RvizTools_AssistedArmNavigation = new wxStaticText(panel_RvizTools_AssistedArmNavigation, ID_STATICTEXT23, _("Assisted arm navigation"), wxPoint(48,16), wxSize(168,17), 0, _T("ID_STATICTEXT23"));
-    but_RvizTools_AssistedArm_Launch = new wxButton(panel_RvizTools_AssistedArmNavigation, ID_BUTTON27, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON27"));
-    but_RvizTools_AssistedArmNavigation = new wxButton(panel_RvizTools_AssistedArmNavigation, ID_BUTTON30, _("Start"), wxPoint(296,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON30"));
-    panel_RvizTools_GoTo = new wxPanel(tab_RvizTools, ID_PANEL35, wxPoint(16,184), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL35"));
-    panel_RvizTools_GoTo->Disable();
-    img_RvizTools_GoTo = new wxStaticBitmap(panel_RvizTools_GoTo, ID_STATICBITMAP12, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP12"));
-    label_RvizTools_GoTo = new wxStaticText(panel_RvizTools_GoTo, ID_STATICTEXT22, _("Go to..."), wxPoint(48,16), wxSize(88,17), 0, _T("ID_STATICTEXT22"));
-    but_RvizTools_GoTo = new wxButton(panel_RvizTools_GoTo, ID_BUTTON12, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON12"));
-    panel_RvizTools_InteractiveTeleop = new wxPanel(tab_RvizTools, ID_PANEL38, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL38"));
-    img_RvizTools_InteractiveTeleop = new wxStaticBitmap(panel_RvizTools_InteractiveTeleop, ID_STATICBITMAP1, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP1"));
-    label_RvizTools_InteractiveTeleop = new wxStaticText(panel_RvizTools_InteractiveTeleop, ID_STATICTEXT8, _("Interactive teleop"), wxPoint(48,16), wxSize(160,17), 0, _T("ID_STATICTEXT8"));
-    but_RvizTools_InteractiveTeleop = new wxButton(panel_RvizTools_InteractiveTeleop, ID_BUTTON4, _("Launch it"), wxPoint(216,8), wxSize(72,29), 0, wxDefaultValidator, _T("ID_BUTTON4"));
-    tab_PhantomHaptic = new wxPanel(tabs_submanual, ID_PANEL48, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL48"));
-    tab_PhantomHaptic->Disable();
-    panel_phantomHaptic_unused1 = new wxPanel(tab_PhantomHaptic, ID_PANEL50, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL50"));
-    img_phantomHaptic_unused1 = new wxStaticBitmap(panel_phantomHaptic_unused1, ID_STATICBITMAP5, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP5"));
-    label_phantomHaptic_unused1 = new wxStaticText(panel_phantomHaptic_unused1, ID_STATICTEXT10, _("Phantom Haptic"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT10"));
-    but_phantomHaptic_unused1 = new wxButton(panel_phantomHaptic_unused1, ID_BUTTON23, _("On/Off"), wxPoint(224,8), wxSize(64,29), 0, wxDefaultValidator, _T("ID_BUTTON23"));
+    tab_RvizTools->Disable();
+    Button1 = new wxButton(tab_RvizTools, ID_BUTTON23, _("Basic configurations"), wxPoint(8,8), wxSize(160,29), 0, wxDefaultValidator, _T("ID_BUTTON23"));
+    Button2 = new wxButton(tab_RvizTools, ID_BUTTON31, _("Assisted navigation"), wxPoint(8,78), wxSize(160,29), 0, wxDefaultValidator, _T("ID_BUTTON31"));
+    Button3 = new wxButton(tab_RvizTools, ID_BUTTON32, _("Assisted manipulation"), wxPoint(8,148), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON32"));
+    StaticText9 = new wxStaticText(tab_RvizTools, ID_STATICTEXT8, _("Basic displays to see the robot in the current map."), wxPoint(8,40), wxSize(544,17), 0, _T("ID_STATICTEXT8"));
+    StaticText10 = new wxStaticText(tab_RvizTools, ID_STATICTEXT10, _("Basic displays to move the robot arround the map."), wxPoint(8,110), wxDefaultSize, 0, _T("ID_STATICTEXT10"));
+    StaticText11 = new wxStaticText(tab_RvizTools, ID_STATICTEXT16, _("Basic displays to move the robot and use assisted tasks."), wxPoint(8,180), wxDefaultSize, 0, _T("ID_STATICTEXT16"));
+    tab_Rviz = new wxPanel(tabs_submanual, ID_PANEL60, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL60"));
+    tab_Rviz->Disable();
+    Panel4 = new wxPanel(tab_Rviz, ID_PANEL65, wxPoint(8,88), wxSize(312,32), wxTAB_TRAVERSAL, _T("ID_PANEL65"));
+    StaticText4 = new wxStaticText(Panel4, ID_STATICTEXT41, _("Base teleoperation"), wxPoint(8,8), wxSize(184,17), 0, _T("ID_STATICTEXT41"));
+    RadioButton7 = new wxRadioButton(Panel4, ID_RADIOBUTTON13, _("On"), wxPoint(200,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON13"));
+    RadioButton8 = new wxRadioButton(Panel4, ID_RADIOBUTTON14, _("Off"), wxPoint(256,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON14"));
+    RadioButton8->SetValue(true);
+    Panel5 = new wxPanel(tab_Rviz, ID_PANEL66, wxPoint(8,128), wxSize(456,32), wxTAB_TRAVERSAL, _T("ID_PANEL66"));
+    StaticText5 = new wxStaticText(Panel5, ID_STATICTEXT42, _("Distance linear visualizer"), wxPoint(8,8), wxSize(184,17), 0, _T("ID_STATICTEXT42"));
+    RadioButton9 = new wxRadioButton(Panel5, ID_RADIOBUTTON15, _("On"), wxPoint(200,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON15"));
+    RadioButton10 = new wxRadioButton(Panel5, ID_RADIOBUTTON16, _("Off"), wxPoint(256,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON16"));
+    RadioButton10->SetValue(true);
+    ComboBox1 = new wxComboBox(Panel5, ID_COMBOBOX5, wxEmptyString, wxPoint(320,4), wxSize(128,29), 0, 0, 0, wxDefaultValidator, _T("ID_COMBOBOX5"));
+    ComboBox1->Append(_("base"));
+    ComboBox1->Append(_("body"));
+    ComboBox1->Append(_("hand"));
+    Panel6 = new wxPanel(tab_Rviz, ID_PANEL67, wxPoint(8,168), wxSize(456,32), wxTAB_TRAVERSAL, _T("ID_PANEL67"));
+    StaticText6 = new wxStaticText(Panel6, ID_STATICTEXT43, _("Distance circular indicator"), wxPoint(8,8), wxSize(184,17), 0, _T("ID_STATICTEXT43"));
+    RadioButton11 = new wxRadioButton(Panel6, ID_RADIOBUTTON17, _("On"), wxPoint(200,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON17"));
+    RadioButton12 = new wxRadioButton(Panel6, ID_RADIOBUTTON18, _("Off"), wxPoint(256,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON18"));
+    RadioButton12->SetValue(true);
+    ComboBox2 = new wxComboBox(Panel6, ID_COMBOBOX6, wxEmptyString, wxPoint(320,4), wxSize(128,29), 0, 0, 0, wxDefaultValidator, _T("ID_COMBOBOX6"));
+    ComboBox2->Append(_("base"));
+    ComboBox2->Append(_("body"));
+    ComboBox2->Append(_("hand"));
+    Panel7 = new wxPanel(tab_Rviz, ID_PANEL68, wxPoint(8,208), wxSize(312,32), wxTAB_TRAVERSAL, _T("ID_PANEL68"));
+    StaticText7 = new wxStaticText(Panel7, ID_STATICTEXT44, _("Stretch indicator"), wxPoint(8,8), wxSize(184,17), 0, _T("ID_STATICTEXT44"));
+    RadioButton13 = new wxRadioButton(Panel7, ID_RADIOBUTTON19, _("On"), wxPoint(200,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON19"));
+    RadioButton14 = new wxRadioButton(Panel7, ID_RADIOBUTTON20, _("Off"), wxPoint(256,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON20"));
+    RadioButton14->SetValue(true);
+    Panel8 = new wxPanel(tab_Rviz, ID_PANEL69, wxPoint(8,248), wxSize(312,32), wxTAB_TRAVERSAL, _T("ID_PANEL69"));
+    StaticText8 = new wxStaticText(Panel8, ID_STATICTEXT45, _("Object manager"), wxPoint(8,8), wxSize(184,17), 0, _T("ID_STATICTEXT45"));
+    RadioButton15 = new wxRadioButton(Panel8, ID_RADIOBUTTON21, _("On"), wxPoint(200,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON21"));
+    RadioButton16 = new wxRadioButton(Panel8, ID_RADIOBUTTON22, _("Off"), wxPoint(256,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON22"));
+    RadioButton16->SetValue(true);
+    Panel1 = new wxPanel(tab_Rviz, ID_PANEL62, wxPoint(8,288), wxSize(312,32), wxTAB_TRAVERSAL, _T("ID_PANEL62"));
+    StaticText1 = new wxStaticText(Panel1, ID_STATICTEXT38, _("Data fusion"), wxPoint(8,8), wxSize(184,17), 0, _T("ID_STATICTEXT38"));
+    RadioButton3 = new wxRadioButton(Panel1, ID_RADIOBUTTON9, _("On"), wxPoint(200,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON9"));
+    RadioButton4 = new wxRadioButton(Panel1, ID_RADIOBUTTON10, _("Off"), wxPoint(256,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON10"));
+    RadioButton4->SetValue(true);
+    Panel3 = new wxPanel(tab_Rviz, ID_PANEL63, wxPoint(8,8), wxSize(312,32), wxTAB_TRAVERSAL, _T("ID_PANEL63"));
+    StaticText2 = new wxStaticText(Panel3, ID_STATICTEXT39, _("Assisted arm navigation"), wxPoint(8,8), wxSize(184,17), 0, _T("ID_STATICTEXT39"));
+    RadioButton5 = new wxRadioButton(Panel3, ID_RADIOBUTTON11, _("On"), wxPoint(200,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON11"));
+    RadioButton6 = new wxRadioButton(Panel3, ID_RADIOBUTTON12, _("Off"), wxPoint(256,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON12"));
+    RadioButton6->SetValue(true);
+    Panel2 = new wxPanel(tab_Rviz, ID_PANEL64, wxPoint(8,48), wxSize(312,32), wxTAB_TRAVERSAL, _T("ID_PANEL64"));
+    StaticText3 = new wxStaticText(Panel2, ID_STATICTEXT40, _("Assisted grasp"), wxPoint(8,8), wxSize(184,17), 0, _T("ID_STATICTEXT40"));
+    RadioButton1 = new wxRadioButton(Panel2, ID_RADIOBUTTON7, _("On"), wxPoint(200,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON7"));
+    RadioButton2 = new wxRadioButton(Panel2, ID_RADIOBUTTON8, _("Off"), wxPoint(256,8), wxDefaultSize, 0, wxDefaultValidator, _T("ID_RADIOBUTTON8"));
+    RadioButton2->SetValue(true);
     tabs_submanual->AddPage(tab_joystick, _("Joystick"), false);
-    tabs_submanual->AddPage(tab_RvizTools, _("Rviz tools"), false);
-    tabs_submanual->AddPage(tab_PhantomHaptic, _("Phantom Haptic"), false);
+    tabs_submanual->AddPage(tab_assisted, _("Assisted actions"), false);
+    tabs_submanual->AddPage(tab_RvizTools, _("Rviz configs"), false);
+    tabs_submanual->AddPage(tab_Rviz, _("Rviz displays"), false);
     tabs_actions->AddPage(tab_automatic, _("Automatic"), false);
     tabs_actions->AddPage(tab_semi, _("Semi"), false);
     tabs_actions->AddPage(tab_manual, _("Manual"), false);
@@ -529,6 +612,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     label_status_Battery->SetFont(label_status_BatteryFont);
     bar_status_wifi = new wxGauge(panel_status_RobotInfo, ID_GAUGE2, 100, wxPoint(102,68), wxSize(90,25), 0, wxDefaultValidator, _T("ID_GAUGE2"));
     bar_status_wifi->SetValue(80);
+    bar_status_wifi->Disable();
     label_status_WifiSignal = new wxStaticText(panel_status_RobotInfo, ID_STATICTEXT4, _("Wifi Signal"), wxPoint(102,52), wxDefaultSize, 0, _T("ID_STATICTEXT4"));
     wxFont label_status_WifiSignalFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
     label_status_WifiSignal->SetFont(label_status_WifiSignalFont);
@@ -595,6 +679,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     but_Cancel = new wxButton(tab_objects, ID_BUTTON20, _("Cancel"), wxPoint(144,168), wxSize(56,29), 0, wxDefaultValidator, _T("ID_BUTTON20"));
     but_Cancel->Disable();
     tab_tasks = new wxPanel(tabs_options, ID_PANEL26, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL26"));
+    tab_tasks->Disable();
     label_TeachNewTask = new wxStaticText(tab_tasks, ID_STATICTEXT34, _("Teach new task"), wxPoint(4,0), wxDefaultSize, 0, _T("ID_STATICTEXT34"));
     wxFont label_TeachNewTaskFont(10,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
     label_TeachNewTask->SetFont(label_TeachNewTaskFont);
@@ -705,8 +790,6 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     Connect(ID_GRID1,wxEVT_GRID_CELL_LEFT_DCLICK,(wxObjectEventFunction)&srs_ui_proFrame::Ongrid_requestsCellLeftDClick);
     Connect(ID_LISTCTRL1,wxEVT_COMMAND_LIST_ITEM_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showContextualMenu);
     Connect(ID_LISTCTRL2,wxEVT_COMMAND_LIST_ITEM_ACTIVATED,(wxObjectEventFunction)&srs_ui_proFrame::acceptCall);
-    Connect(ID_BUTTON31,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::prueba1);
-    Connect(ID_BUTTON32,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::prueba2);
     Connect(ID_BUTTON14,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_move_STARTClick);
     Connect(ID_CHOICE3,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::Onchoice_automatic_moveSelect);
     Connect(ID_BUTTON13,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_get_STARTClick);
@@ -726,23 +809,45 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     Connect(ID_BUTTON16,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_DMPauseClick);
     Connect(ID_BUTTON17,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_DMResumeClick);
     Connect(ID_BUTTON15,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_DMStopClick);
+    Connect(ID_BUTTON36,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton12Click1);
+    Connect(ID_BUTTON9,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_navigation_dashboardClick1);
+    Connect(ID_BUTTON37,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_head_frontClick);
+    Connect(ID_BUTTON38,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_head_backClick);
+    Connect(ID_BUTTON40,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton2Click);
+    Connect(ID_BUTTON39,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton1Click);
+    Connect(ID_BUTTON41,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton17Click);
+    Connect(ID_BUTTON42,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton18Click);
+    Connect(ID_BUTTON43,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton19Click);
+    Connect(ID_BUTTON46,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton22Click);
+    Connect(ID_BUTTON47,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton23Click);
+    Connect(ID_BUTTON45,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton23Click);
     Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::DetectObjects);
     Connect(ID_BUTTON33,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_spawn_objectsClick);
     Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_GenerateGraspsClick);
     Connect(ID_BUTTON7,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_GraspItClick);
     Connect(ID_BUTTON22,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_simulateGraspClick);
     Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::manual_joystickButton);
-    Connect(ID_BUTTON24,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_head_frontClick);
-    Connect(ID_BUTTON26,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_head_backClick);
-    Connect(ID_BUTTON28,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton1Click);
-    Connect(ID_BUTTON29,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton2Click);
-    Connect(ID_BUTTON10,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_camClick);
-    Connect(ID_BUTTON11,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_distanceClick);
-    Connect(ID_BUTTON27,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbut_RvizTools_AssistedArm_LaunchClick);
-    Connect(ID_BUTTON30,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_assistedarmClick);
-    Connect(ID_BUTTON12,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_im_gotoClick);
-    Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::manual_moveBaseButton);
-    Connect(ID_BUTTON23,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::manual_phantomHapticButton);
+    Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton4Click);
+    Connect(ID_BUTTON10,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton5Click);
+    Connect(ID_BUTTON23,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton1Click2);
+    Connect(ID_BUTTON31,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton2Click1);
+    Connect(ID_BUTTON32,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton3Click);
+    Connect(ID_RADIOBUTTON13,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::baseTeleopOn);
+    Connect(ID_RADIOBUTTON14,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::baseTeleopOff);
+    Connect(ID_RADIOBUTTON15,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::distanceLinuarOn);
+    Connect(ID_RADIOBUTTON16,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::distanceLinuarOff);
+    Connect(ID_RADIOBUTTON17,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::distanceCircularOn);
+    Connect(ID_RADIOBUTTON18,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::distanceCircularOff);
+    Connect(ID_RADIOBUTTON19,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::stretchIndicatorOn);
+    Connect(ID_RADIOBUTTON20,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::stretchIndicatorOff);
+    Connect(ID_RADIOBUTTON21,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::objectManagerOn);
+    Connect(ID_RADIOBUTTON22,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::objectManagerOff);
+    Connect(ID_RADIOBUTTON9,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::dataFusionOn);
+    Connect(ID_RADIOBUTTON10,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::dataFusionOff);
+    Connect(ID_RADIOBUTTON11,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::assistedArmNavigationOn);
+    Connect(ID_RADIOBUTTON12,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::assistedArmNavigationOff);
+    Connect(ID_RADIOBUTTON7,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::assistedGraspOn);
+    Connect(ID_RADIOBUTTON8,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::assistedGraspOff);
     Connect(ID_BITMAPBUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onimg_update_rosinfoClick);
     Connect(ID_BITMAPBUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onimg_update_ontrayClick);
     Connect(idMenuQuit,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::OnQuit);
@@ -784,12 +889,10 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
 
 srs_ui_proFrame::~srs_ui_proFrame()
 {
-    if (SF->connected)
-        SF->disconnect(NULL);
-
-    //Ri->IP_RemoveAllObjects();
-
-    PM->ExitAll();
+    delete SF;
+    delete PM;
+    delete Ri;
+    //delete RvI;
 }
 
 
@@ -798,7 +901,8 @@ srs_ui_proFrame::~srs_ui_proFrame()
 void srs_ui_proFrame::Initialize()
 {
     RosInterface::init();
-    RvI = new RvizInterface();
+    //RvI = new RvizInterface();
+
     //SF = new SkypeFunctions();
     //PM = new ProcessManager();
     num_events = 0;
@@ -1125,6 +1229,11 @@ void srs_ui_proFrame::UpdateIMGs()
     wxBitmap img_on(wxImage(_T("./img/on.gif")));
     wxBitmap img_off(wxImage(_T("./img/off.gif")));
 
+    if (PM->WaitDashboard() == -4)
+        img_navigation_dashboard->SetBitmap(img_on);
+    else
+        img_navigation_dashboard->SetBitmap(img_off);
+
 /*
     if (PM->WaitIM_goTo() == -4)
         img_RvizTools_GoTo->SetBitmap(img_on);
@@ -1151,6 +1260,7 @@ void srs_ui_proFrame::UpdateIMGs()
         img_RvizTools_AssistedArmNavigation->SetBitmap(img_off);
 */
     /* Node control */
+/*
     if (Ri->nodeExists("/cob_interactive_teleop"))
     {
         img_RvizTools_InteractiveTeleop->SetBitmap(img_on);
@@ -1200,20 +1310,15 @@ void srs_ui_proFrame::UpdateIMGs()
         but_RvizTools_AssistedArm_Launch->SetLabel(toWXString("Launch it"));
         but_RvizTools_AssistedArmNavigation->Enable(false);
     }
+*/
 }
 
 
 void srs_ui_proFrame::runRviz(wxCommandEvent& event)
 {
-    RvI->showRviz();
+    //RvI->showRviz();
+    PM->ExecRviz(RVIZ_CONFIG);
     but_SpawnObjectsInRviz->Enable();
-
-    /*
-
-    rviz::DisplayWrapper* disp = manager->createDisplay("rviz","rviz::GridDisplay","Grid", TRUE);
-    //manager->addDisplay(disp, TRUE);
-    */
-
 }
 
 void srs_ui_proFrame::Onbutton_GenerateGraspsClick(wxCommandEvent& event)
@@ -1369,10 +1474,6 @@ void srs_ui_proFrame::manual_joystickButton(wxCommandEvent& event)
     //TODO
 }
 
-void srs_ui_proFrame::manual_phantomHapticButton(wxCommandEvent& event)
-{
-    //TODO
-}
 
 void srs_ui_proFrame::DetectObjects(wxCommandEvent& event)
 {
@@ -2056,7 +2157,9 @@ void srs_ui_proFrame::Ontimer_updatesTrigger(wxTimerEvent& event)
 
 
         if (Ri->DM_InterventionRequired() != 0)
+        {
             wxMessageBox(wxT("User intervention is needed!\t"), wxT("srs_decision_making: User intervention is needed."), wxICON_INFORMATION);
+        }
 
         if (current_state.compare(last_state)!=0 && current_state.compare("the task has been paused\n")!=0 && current_state.compare("the task has been stopped\n")!=0)
             box_dm_log->AppendText(toWXString(current_state_aux));
@@ -2154,6 +2257,7 @@ void srs_ui_proFrame::Ontimer_URITrigger(wxTimerEvent& event)
         writeInLog(aux, BLUE);
 
         Ri = new RosInterface();
+
         InitPredefinedPoses();
         LoadDBObjects();
 
@@ -2168,6 +2272,9 @@ void srs_ui_proFrame::Ontimer_URITrigger(wxTimerEvent& event)
 
         menu_rviz_run->Enable(true);
         menu_dashboard_run->Enable(true);
+
+        Ri->publish_status(0, "Inactive");
+
     }
 }
 
@@ -2458,18 +2565,237 @@ void srs_ui_proFrame::Ontimer_dmServerTrigger(wxTimerEvent& event)
 {
     //TODO: Esperar evento de feedback
     if (Ri->DM_ExcepcionalCase())
-        wxMessageBox(wxT("Interventionnnnnnnnnnnnnnnn!\t"), wxT("srs_decision_making: User intervention is needed."), wxICON_INFORMATION);
+    {
+        //wxMessageBox(wxT("Intervention!\t"), wxT("srs_decision_making: User intervention is needed."), wxICON_INFORMATION);
+        wxMessageDialog *dial = new wxMessageDialog(NULL, wxT("Can you attend the call?"), wxT("srs_ui_pro: Your help is needed!"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+        int res = dial->ShowModal();
+
+        if (res == wxID_YES)
+        {
+            Ri->publish_status(42, "I will try to solve your problem!");
+            DM_window *dm_w = new DM_window(this, Ri->getLastGoalAssistedMsg());
+            dm_w->Show(TRUE);
+        }
+        else
+            Ri->publish_status(-42, "Sorry, I can't help you now. Try later...");
+    }
 }
 
-void srs_ui_proFrame::prueba1(wxCommandEvent& event)
+
+//BUT Rviz displays
+void srs_ui_proFrame::assistedArmNavigationOn(wxCommandEvent& event)
 {
-    //RvI->addDisplay("rviz", "rviz::GridDisplay", "Grid", true);
-    RvI->addDisplay("srs_assisted_arm_navigation_ui", "CButArmNavDisplay", "Arm navigation", true);
+    //RvI->addDisplay("srs_assisted_arm_navigation_ui", "CButArmNavDisplay", "Assisted arm navigation", true);
+}
+
+void srs_ui_proFrame::assistedArmNavigationOff(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("Assisted arm navigation");
+}
+
+void srs_ui_proFrame::assistedGraspOn(wxCommandEvent& event)
+{
+    //RvI->addDisplay("srs_assisted_grasping_ui", "CButGraspingDisplay", "Assisted grasping", true);
+}
+
+void srs_ui_proFrame::assistedGraspOff(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("Assisted grasping");
+}
+
+void srs_ui_proFrame::baseTeleopOn(wxCommandEvent& event)
+{
+    //RvI->addDisplay("rviz", "rviz::InteractiveMarkerDisplay", "Robot teleop marker", true);
+}
+
+void srs_ui_proFrame::baseTeleopOff(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("Robot teleop marker");
+}
+
+void srs_ui_proFrame::distanceLinuarOn(wxCommandEvent& event)
+{
+    //RvI->addDisplay("srs_ui_but", "CButDistanceLinearVisualizer", "Distance Linear Visualizer", true);
+}
+
+void srs_ui_proFrame::distanceLinuarOff(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("Distance Linear Visualizer");
+}
+
+void srs_ui_proFrame::distanceCircularOn(wxCommandEvent& event)
+{
+    //RvI->addDisplay("srs_ui_but", "CButDistanceCircularIndicator", "Distance Circular Indicator", true);
+}
+
+void srs_ui_proFrame::distanceCircularOff(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("Distance Circular Indicator");
+}
+
+void srs_ui_proFrame::stretchIndicatorOn(wxCommandEvent& event)
+{
+    //RvI->addDisplay("srs_ui_but", "CButCOBStretchIndicator", "Stretch Indicator", true);
+}
+
+void srs_ui_proFrame::stretchIndicatorOff(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("Stretch Indicator");
+}
+
+void srs_ui_proFrame::objectManagerOn(wxCommandEvent& event)
+{
+    //RvI->addDisplay("srs_ui_but", "CButObjectManager", "Object Manager", true);
+}
+
+void srs_ui_proFrame::objectManagerOff(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("Object Manager");
+}
+
+void srs_ui_proFrame::dataFusionOn(wxCommandEvent& event)
+{
+    //RvI->addDisplay("srs_ui_but", "CButCamDisplay", "CButCamDisplayName", true);
+}
+
+void srs_ui_proFrame::dataFusionOff(wxCommandEvent& event)
+{
+    //RvI->removeDisplay("CButCamDisplayName");
+}
+
+void srs_ui_proFrame::OnButton1Click2(wxCommandEvent& event)
+{
+    //RvI->loadConfig("BASIC");
+}
+
+void srs_ui_proFrame::OnButton2Click1(wxCommandEvent& event)
+{
+    //RvI->loadConfig("NAVIGATION");
+}
+
+void srs_ui_proFrame::OnButton3Click(wxCommandEvent& event)
+{
+    //RvI->loadConfig("MANIPULATION");
+}
+
+void srs_ui_proFrame::Onbut_navigation_dashboardClick1(wxCommandEvent& event)
+{
+    if (PM->WaitDashboard() == -4)
+        PM->ExitDashboard();
+    else
+        PM->ExecDashboard();
+}
+
+void srs_ui_proFrame::OnButton17Click(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {-0.1, 0.0, -0.15};
+        std::vector<float> front(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("torso", front);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::OnButton18Click(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {0.1, 0.0, 0.15};
+        std::vector<float> back(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("torso", back);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::OnButton19Click(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {0};
+        std::vector<float> up(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("tray", up);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::OnButton20Click(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {-3.14};
+        std::vector<float> down(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("tray", down);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::OnButton22Click(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {0,0,0,0,0,0,0};
+        std::vector<float> home(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("arm", home);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::OnButton12Click1(wxCommandEvent& event)
+{
+    try
+    {
+        float aux[] = {-1.1572567240035734, -1.9104664691761568, -2.5334780195730255, -1.7853311980377056, -0.07279873939024305, 0.9176793492327278, -1.8876618005378798};
+        std::vector<float> folded(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("arm", folded);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
 
 }
 
-void srs_ui_proFrame::prueba2(wxCommandEvent& event)
+void srs_ui_proFrame::OnButton23Click(wxCommandEvent& event)
 {
-    //RvI->removeDisplay("Grid");
-    RvI->removeDisplay("Arm navigation");
+    try
+    {
+        float aux[] = {-2.14,0,0};
+        std::vector<float> new_kit(aux, aux+sizeof(aux)/sizeof(float));
+        Ri->move("base", new_kit);
+    }
+    catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
+    catch(std::exception &e) {writeInLog(); }
+}
+
+void srs_ui_proFrame::OnButton4Click(wxCommandEvent& event)
+{
+    try
+    {
+        Ri->ui_but_server_actions(1);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
+}
+
+void srs_ui_proFrame::OnButton5Click(wxCommandEvent& event)
+{
+    try
+    {
+        Ri->ui_but_server_actions(2);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
 }

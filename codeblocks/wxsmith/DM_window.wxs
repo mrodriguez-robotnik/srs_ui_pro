@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="DM_window">
+		<size>410,376</size>
+		<id_arg>0</id_arg>
+		<style>wxCAPTION|wxCLOSE_BOX</style>
+		<handler function="OnClose" entry="EVT_CLOSE" />
+		<object class="wxPanel" name="ID_PANEL1" variable="user_intervention_window" member="yes">
+			<pos>8,16</pos>
+			<size>410,352</size>
+			<style>0</style>
+			<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="box_message" member="yes">
+				<value>Aquí va el mensaje de ayuda que recibimos</value>
+				<pos>16,24</pos>
+				<size>376,104</size>
+				<style>wxTE_MULTILINE|wxTE_READONLY|wxHSCROLL</style>
+			</object>
+			<object class="wxStaticText" name="ID_STATICTEXT1" variable="label_title" member="yes">
+				<label>USER INTERVENTION MESSAGE</label>
+				<pos>16,8</pos>
+				<size>216,17</size>
+				<font>
+					<size>10</size>
+					<style>normal</style>
+					<weight>bold</weight>
+					<underlined>0</underlined>
+					<family>swiss</family>
+					<face>Sans</face>
+				</font>
+			</object>
+			<object class="wxTextCtrl" name="ID_TEXTCTRL2" variable="box_feedback" member="yes">
+				<value>Aquí el feedback que queremos enviar&#x0A;</value>
+				<pos>16,192</pos>
+				<size>288,72</size>
+				<style>wxTE_MULTILINE|wxHSCROLL</style>
+			</object>
+			<object class="wxStaticText" name="ID_STATICTEXT2" variable="label_feedback" member="yes">
+				<label>Feedback</label>
+				<pos>16,176</pos>
+			</object>
+			<object class="wxButton" name="ID_BUTTON1" variable="but_feedback" member="yes">
+				<label>     Send &#x0A;feedback</label>
+				<pos>312,192</pos>
+				<size>80,72</size>
+				<handler function="sendFeedback" entry="EVT_BUTTON" />
+			</object>
+			<object class="wxButton" name="ID_BUTTON2" variable="but_suc" member="yes">
+				<label>Succeeded</label>
+				<pos>16,312</pos>
+				<size>184,29</size>
+				<handler function="sendSucceeded" entry="EVT_BUTTON" />
+			</object>
+			<object class="wxButton" name="ID_BUTTON3" variable="but_fail" member="yes">
+				<label>Failed</label>
+				<pos>208,312</pos>
+				<size>184,29</size>
+				<handler function="sendFailed" entry="EVT_BUTTON" />
+			</object>
+			<object class="wxStaticLine" name="ID_STATICLINE1" variable="line_separator" member="yes">
+				<pos>16,296</pos>
+				<size>376,16</size>
+			</object>
+		</object>
+	</object>
+</wxsmith>

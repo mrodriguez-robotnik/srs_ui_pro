@@ -35,7 +35,7 @@
 
 #include <srs_msgs/FeasibleGrasp.h>
 #include <srs_decision_making_interface/srs_actionActionFeedback.h>     //#include <srs_decision_making/ExecutionActionFeedback.h>
-#include <srs_decision_making_interface/srs_actionActionResult.h>     //#include <srs_decision_making/ExecutionActionFeedback.h>
+#include <srs_decision_making_interface/srs_actionActionResult.h>
 #include <srs_decision_making_interface/srs_actionAction.h>
 #include <srs_grasping/GetDBGrasps.h>
 #include <srs_grasping/GetFeasibleGrasps.h>
@@ -46,6 +46,10 @@
 #include <srs_ui_pro/RequestEventMSG.h>
 #include <srs_ui_pro/RequestEvent.h>
 #include <srs_ui_pro/dm_serverActionFeedback.h>
+#include <srs_ui_pro/dm_serverActionGoal.h>
+#include <srs_ui_pro/srs_ui_proEcho.h>
+#include <srs_ui_pro/ui_butAction.h>
+#include <srs_ui_pro/ui_butGoal.h>
 #include <srs_interaction_primitives/AddBoundingBox.h>
 #include <srs_interaction_primitives/GetAllPrimitivesNames.h>
 #include <srs_interaction_primitives/RemovePrimitive.h>
@@ -139,9 +143,11 @@ class RosInterface
         virtual ~RosInterface();
         static void init();
 
+        void publish_status(int status, std::string fb);
         bool nodeExists(std::string node);
         void killNode(std::string node);
         int decision_making_actions(std::string action, std::string parameters, std::string json_parameters="NULL");
+        std::string ui_but_server_actions(int action);
         std::vector<srs_msgs::DBGrasp> getGraspConfigurations(int object_id);
         std::vector<srs_msgs::FeasibleGrasp> getGraspsFromPosition(int object_id, geometry_msgs::Pose object_pose);
         bool GraspSimulator(int object_id, srs_msgs::FeasibleGrasp grasp_configuration, geometry_msgs::Pose object_pose);
@@ -189,6 +195,9 @@ class RosInterface
         void IP_RemoveAllObjects();
         void IP_RemoveObject(std::string object_name);
         void startAssistedArm();
+        std::string getLastGoalAssistedMsg();
+
+
 
         void callback_arm_joint_states(const pr2_controllers_msgs::JointTrajectoryControllerState::ConstPtr &msg);
         void callback_joint_states(const sensor_msgs::JointState::ConstPtr &msg);
@@ -203,6 +212,7 @@ class RosInterface
         void callback_grabbed(const std_msgs::Bool &msg);
         void callback_grabbed2(const std_msgs::Bool &msg);
         void callback_dm_server_fb(const srs_ui_pro::dm_serverActionFeedback::ConstPtr &msg);
+        void callback_dm_server_goal(const srs_ui_pro::dm_serverActionGoal::ConstPtr &msg);
 
 
 
@@ -246,11 +256,14 @@ class RosInterface
         ros::Subscriber sub_grabbed;
         ros::Subscriber sub_grabbed2;
         ros::Subscriber sub_dm_server_feedback;
+        ros::Subscriber sub_dm_server_goal;
 
         actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction>* dm_client;
+        actionlib::SimpleActionClient<srs_ui_pro::ui_butAction>* ui_but_client;
 
         //ros::Subscriber sub_sdh_controller;    // Suscriber
         //ros::Publisher pub_sdh_controller;     // publisher
+        ros::Publisher srs_ui_pro_pub;
 
     private:
 
@@ -293,6 +306,7 @@ class RosInterface
         bool emergency_button_stop_state;
         bool scanner_stop_state;
         std::string dm_current_task, dm_current_task_id;
+        std::string last_goal;
         bool dm_server_event;
 };
 

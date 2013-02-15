@@ -10,14 +10,6 @@
   <depend package="roscpp"/>
   <depend package="actionlib"/>
   <depend package="interactive_markers"/>
-  <depend package="srs_grasping"/>
-  <depend package="srs_decision_making"/>
-  <depend package="srs_decision_making_interface"/>
-  <depend package="srs_interaction_primitives"/>
-  <depend package="cob_interactive_teleop"/>
-  <depend package="cob_relayboard"/>
-  <depend package="schunk_sdh"/>
-  <depend package="srs_assisted_arm_navigation"/>
   <depend package="visualization_msgs"/>
   <depend package="actionlib_msgs"/>
   <depend package="std_msgs"/>
@@ -25,17 +17,25 @@
   <depend package="gazebo_msgs"/>
   <depend package="move_base_msgs"/>
   <depend package="trajectory_msgs"/>
+  <depend package="cob_interactive_teleop"/>
+  <depend package="cob_relayboard"/>
+  <depend package="schunk_sdh"/>
 
+  <depend package="srs_grasping"/>
+  <depend package="srs_decision_making"/>
+  <depend package="srs_decision_making_interface"/>
+  <depend package="srs_interaction_primitives"/>
   <depend package="srs_arm_navigation_tests"/>
+  <depend package="srs_assisted_arm_navigation"/>
   <depend package="srs_assisted_arm_navigation_msgs"/>
   <depend package="srs_states"/>
-
+  <depend package="srs_ui_but" />
+  <depend package="srs_assisted_grasping_ui"/>
+  <depend package="srs_assisted_arm_navigation_ui"/>
+  <depend package="srs_env_model_ui"/>
 
   <depend package="rviz"/>
   <depend package="ogre_tools" />
-  <depend package="srs_assisted_grasping_ui"/>
-  <depend package="srs_assisted_arm_navigation_ui"/>
-
 
   <!--export>
 	<cpp cflags ="-I${prefix}/include -I${prefix}/msg_gen/cpp/include -I${prefix}/srv_gen/cpp/include"/>

@@ -57,31 +57,48 @@ set(SKYPE_LFLAGS ${LIBDIR_DEBUG} ${LIB_DEBUG})
 
 
 # ---------- srs_ui_pro --------- #
-set(INCLUDE_DIRECTORIES ${srs_assisted_arm_navigation_ui_PACKAGE_PATH}/include/
-			${srs_assisted_grasping_ui_PACKAGE_PATH}/include/)
-include_directories(${INCLUDE_DIRECTORIES})
+#set(INCLUDE_DIRECTORIES ${srs_assisted_arm_navigation_ui_PACKAGE_PATH}/include
+			#${srs_assisted_grasping_ui_PACKAGE_PATH}/include)
+
+#set(LIB_DIRECTORIES ${srs_assisted_arm_navigation_ui_PACKAGE_PATH}/lib
+			#${srs_assisted_grasping_ui_PACKAGE_PATH}/lib)
+
+#include_directories(${INCLUDE_DIRECTORIES} ${LIB_DIRECTORIES} ${rviz_PACKAGE_PATH})
+#include_directories(${rviz_PACKAGE_PATH})
+
+
+
+set(SOURCE_FILES src/GUI/srs_ui_proApp.cpp 
+		src/GUI/LogginScreen.cpp 
+		src/GUI/srs_ui_proMain.cpp 
+		src/GUI/ObjectInfo.cpp 
+		src/GUI/RosInterface.cpp 
+		#src/GUI/RvizInterface.cpp 
+		src/GUI/ProcessManager.cc 
+		src/GUI/SkypeFunctions.cpp 
+		src/GUI/SkypeWindow.cpp 
+		src/GUI/SkypeWindow2.cpp
+		src/GUI/DM_window.cpp)
+
+#set(EXT_SOURCE_FILES ${srs_assisted_grasping_ui_PACKAGE_PATH}/src/grasping_display.cpp
+			#${srs_assisted_grasping_ui_PACKAGE_PATH}/src/grasping_controls.cpp
+			#${srs_assisted_arm_navigation_ui_PACKAGE_PATH}/src/arm_navigation_display.cpp
+			#${srs_assisted_arm_navigation_ui_PACKAGE_PATH}/src/arm_navigation_controls.cpp
+			#${rviz_PACKAGE_PATH}/src/rviz/default_plugin/grid_display.cpp
+			#${rviz_PACKAGE_PATH}/src/rviz/default_plugin/camera_display.cpp
+			#${rviz_PACKAGE_PATH}/src/rviz/default_plugin/grid_cells_display.cpp
+			#${rviz_PACKAGE_PATH}/src/rviz/default_plugin/map_display.cpp
+			#${rviz_PACKAGE_PATH}/src/rviz/default_plugin/marker_display.cpp
+			#${rviz_PACKAGE_PATH}/src/rviz/default_plugin/point_cloud2_display.cpp
+			#${rviz_PACKAGE_PATH}/src/rviz/default_plugin/robot_model_display.cpp
+#)
+
 
 
 set(FLAGS ${wxWidgets_LIBRARIES} ${SKYPE_LFLAGS})
-set(INT_SOURCE_FILES  src/GUI/srs_ui_proApp.cpp 
-			src/GUI/LogginScreen.cpp 
-			src/GUI/srs_ui_proMain.cpp 
-			src/GUI/ObjectInfo.cpp 
-			src/GUI/RosInterface.cpp 
-			src/GUI/RvizInterface.cpp 
-			src/GUI/ProcessManager.cc 
-			src/GUI/SkypeFunctions.cpp 
-			src/GUI/SkypeWindow.cpp 
-			src/GUI/SkypeWindow2.cpp)
-
-set(EXT_SOURCE_FILES ${srs_assisted_grasping_ui_PACKAGE_PATH}/src/grasping_display.cpp
-			${srs_assisted_grasping_ui_PACKAGE_PATH}/src/grasping_controls.cpp
-			${srs_assisted_arm_navigation_ui_PACKAGE_PATH}/src/arm_navigation_display.cpp
-			${srs_assisted_arm_navigation_ui_PACKAGE_PATH}/src/arm_navigation_controls.cpp
-			${rviz_PACKAGE_PATH}/src/rviz/default_plugin/grid_display.cpp)
-
-set(SOURCE_FILES ${INT_SOURCE_FILES} ${EXT_SOURCE_FILES})
+#set(LIBS default_plugin but_assisted_plugins but_assisted_grasping_plugin but_gui but_env_model_gui)
+#set(SOURCE_FILES ${SOURCE_FILES})# ${EXT_SOURCE_FILES})
 
 rosbuild_add_executable(srs_ui_pro ${SOURCE_FILES})
-target_link_libraries(srs_ui_pro  ${FLAGS})
+target_link_libraries(srs_ui_pro  ${FLAGS} ${LIBS})
 

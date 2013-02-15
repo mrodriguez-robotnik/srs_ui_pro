@@ -19,6 +19,8 @@ SkypeFunctions::SkypeFunctions(){
 
 SkypeFunctions::~SkypeFunctions(){
     //dtor
+    if (connected)
+        disconnect(NULL);
 }
 
 void SkypeFunctions::initialize(){
@@ -147,7 +149,7 @@ void SkypeFunctions::disconnect(wxListCtrl *contactList){
     if (account->loggedIn){
             account->Logout(false);
             while (!account->loggedOut) { Delay(1); }; // Loop until LoggedOut
-            contactList->ClearAll();
+            if (contactList != NULL) contactList->ClearAll();
             printf("[SKYPE]: Cleaning up.\n");
             skype->stop();
             delete skype;

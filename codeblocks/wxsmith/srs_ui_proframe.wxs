@@ -71,16 +71,6 @@
 									<label>Incoming Calls</label>
 								</object>
 							</object>
-							<object class="wxButton" name="ID_BUTTON31" variable="Button1" member="yes">
-								<label>Label</label>
-								<pos>176,0</pos>
-								<handler function="prueba1" entry="EVT_BUTTON" />
-							</object>
-							<object class="wxButton" name="ID_BUTTON32" variable="Button2" member="yes">
-								<label>Label</label>
-								<pos>288,0</pos>
-								<handler function="prueba2" entry="EVT_BUTTON" />
-							</object>
 						</object>
 						<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 						<border>5</border>
@@ -331,6 +321,12 @@
 											<size>648,400</size>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL13" variable="tab_semi_navigation" member="yes">
+													<object class="wxButton" name="ID_BUTTON36" variable="Button12" member="yes">
+														<label>Folded</label>
+														<pos>368,184</pos>
+														<size>80,29</size>
+														<handler function="OnButton12Click1" entry="EVT_BUTTON" />
+													</object>
 													<object class="wxPanel" name="ID_PANEL32" variable="panel_navigation_dashboard" member="yes">
 														<pos>16,16</pos>
 														<size>296,40</size>
@@ -346,7 +342,110 @@
 															<label>On/Off</label>
 															<pos>224,8</pos>
 															<size>64,29</size>
+															<handler function="Onbut_navigation_dashboardClick1" entry="EVT_BUTTON" />
 														</object>
+													</object>
+													<object class="wxButton" name="ID_BUTTON37" variable="Button13" member="yes">
+														<label>Front</label>
+														<pos>16,152</pos>
+														<size>80,29</size>
+														<handler function="Onbut_head_frontClick" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON38" variable="Button14" member="yes">
+														<label>Back</label>
+														<pos>16,184</pos>
+														<size>80,29</size>
+														<handler function="Onbut_head_backClick" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON40" variable="Button16" member="yes">
+														<label>Open</label>
+														<pos>104,152</pos>
+														<size>80,29</size>
+														<handler function="OnButton2Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON39" variable="Button15" member="yes">
+														<label>Close</label>
+														<pos>104,184</pos>
+														<size>80,29</size>
+														<handler function="OnButton1Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON41" variable="Button17" member="yes">
+														<label>Front</label>
+														<pos>192,152</pos>
+														<size>80,29</size>
+														<handler function="OnButton17Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON42" variable="Button18" member="yes">
+														<label>Back</label>
+														<pos>192,184</pos>
+														<size>80,29</size>
+														<handler function="OnButton18Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON44" variable="Button20" member="yes">
+														<label>Down</label>
+														<pos>280,184</pos>
+														<size>80,29</size>
+													</object>
+													<object class="wxButton" name="ID_BUTTON43" variable="Button19" member="yes">
+														<label>Up</label>
+														<pos>280,152</pos>
+														<size>80,29</size>
+														<handler function="OnButton19Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON46" variable="Button22" member="yes">
+														<label>Home</label>
+														<pos>368,152</pos>
+														<size>80,29</size>
+														<handler function="OnButton22Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON47" variable="Button23" member="yes">
+														<label>Home</label>
+														<pos>456,152</pos>
+														<size>80,29</size>
+														<handler function="OnButton23Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON45" variable="Button21" member="yes">
+														<label>Kitchen</label>
+														<pos>456,184</pos>
+														<size>80,29</size>
+														<handler function="OnButton23Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxStaticLine" name="ID_STATICLINE7" variable="StaticLine2" member="yes">
+														<pos>16,120</pos>
+														<size>520,16</size>
+													</object>
+													<object class="wxStaticLine" name="ID_STATICLINE6" variable="StaticLine1" member="yes">
+														<pos>16,216</pos>
+														<size>520,16</size>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT17" variable="StaticText12" member="yes">
+														<label>Fast commands</label>
+														<pos>16,106</pos>
+														<enabled>0</enabled>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT22" variable="StaticText13" member="yes">
+														<label>Head</label>
+														<pos>16,136</pos>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT23" variable="StaticText14" member="yes">
+														<label>Hand</label>
+														<pos>104,136</pos>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT36" variable="StaticText15" member="yes">
+														<label>Torso</label>
+														<pos>192,136</pos>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT37" variable="StaticText16" member="yes">
+														<label>Tray</label>
+														<pos>280,136</pos>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT46" variable="StaticText17" member="yes">
+														<label>Arm</label>
+														<pos>368,136</pos>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT47" variable="StaticText18" member="yes">
+														<label>Base</label>
+														<pos>456,136</pos>
 													</object>
 												</object>
 												<label>Navigation</label>
@@ -517,6 +616,7 @@
 											<size>648,400</size>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL23" variable="tab_joystick" member="yes">
+													<enabled>0</enabled>
 													<object class="wxPanel" name="ID_PANEL24" variable="panel_joystick_unused1" member="yes">
 														<pos>16,16</pos>
 														<size>296,40</size>
@@ -538,193 +638,275 @@
 													</object>
 													<object class="wxRadioButton" name="ID_RADIOBUTTON2" variable="option_joystick_Head" member="yes">
 														<label>Head</label>
-														<pos>16,96</pos>
+														<pos>16,136</pos>
 													</object>
 													<object class="wxRadioButton" name="ID_RADIOBUTTON3" variable="option_joystick_Torso" member="yes">
 														<label>Torso</label>
-														<pos>96,96</pos>
+														<pos>208,136</pos>
 													</object>
 													<object class="wxRadioButton" name="ID_RADIOBUTTON4" variable="option_joystick_Tray" member="yes">
 														<label>Tray</label>
-														<pos>176,96</pos>
+														<pos>304,136</pos>
 													</object>
 													<object class="wxRadioButton" name="ID_RADIOBUTTON5" variable="option_joystick_Arm" member="yes">
 														<label>Arm</label>
-														<pos>256,96</pos>
+														<pos>400,136</pos>
 													</object>
 													<object class="wxRadioButton" name="ID_RADIOBUTTON6" variable="option_joystick_Hand" member="yes">
 														<label>Hand</label>
-														<pos>336,96</pos>
+														<pos>112,136</pos>
 													</object>
 													<object class="wxRadioButton" name="ID_RADIOBUTTON1" variable="option_joystick_Base" member="yes">
 														<label>Base</label>
-														<pos>416,96</pos>
-													</object>
-													<object class="wxStaticText" name="ID_STATICTEXT36" variable="label_robot_head" member="yes">
-														<label>Robot head:</label>
-														<pos>520,232</pos>
-													</object>
-													<object class="wxButton" name="ID_BUTTON24" variable="but_head_front" member="yes">
-														<label>Front</label>
-														<pos>504,248</pos>
-														<size>120,29</size>
-														<handler function="Onbut_head_frontClick" entry="EVT_BUTTON" />
-													</object>
-													<object class="wxButton" name="ID_BUTTON26" variable="but_head_back" member="yes">
-														<label>Back</label>
-														<pos>504,280</pos>
-														<size>120,29</size>
-														<handler function="Onbut_head_backClick" entry="EVT_BUTTON" />
-													</object>
-													<object class="wxStaticText" name="ID_STATICTEXT37" variable="label_robot_hand" member="yes">
-														<label>Robot hand:</label>
-														<pos>336,232</pos>
-													</object>
-													<object class="wxButton" name="ID_BUTTON28" variable="but_sdh_open" member="yes">
-														<label>Close</label>
-														<pos>320,280</pos>
-														<size>120,29</size>
-														<handler function="OnButton1Click" entry="EVT_BUTTON" />
-													</object>
-													<object class="wxButton" name="ID_BUTTON29" variable="but_sdh_close" member="yes">
-														<label>Open</label>
-														<pos>320,248</pos>
-														<size>120,29</size>
-														<handler function="OnButton2Click" entry="EVT_BUTTON" />
+														<pos>496,136</pos>
 													</object>
 												</object>
 												<label>Joystick</label>
 											</object>
 											<object class="notebookpage">
-												<object class="wxPanel" name="ID_PANEL25" variable="tab_RvizTools" member="yes">
-													<object class="wxPanel" name="ID_PANEL33" variable="panel_RvizTools_CamDisplay" member="yes">
-														<pos>16,128</pos>
-														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP10" variable="img_RvizTools_CamDisplay" member="yes">
-															<bitmap>./img/off.gif</bitmap>
-															<pos>8,8</pos>
-														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT16" variable="label_RvizTools_CamDisplay" member="yes">
-															<label>Cam Display</label>
-															<pos>48,16</pos>
-															<size>88,17</size>
-														</object>
-														<object class="wxButton" name="ID_BUTTON10" variable="but_RvizTools_CamDisplay" member="yes">
-															<label>Launch it</label>
-															<pos>216,8</pos>
-															<size>72,29</size>
-															<handler function="Onbutton_im_camClick" entry="EVT_BUTTON" />
-														</object>
+												<object class="wxPanel" name="ID_PANEL33" variable="tab_assisted" member="yes">
+													<object class="wxButton" name="ID_BUTTON4" variable="Button4" member="yes">
+														<label>Assisted arm navigation</label>
+														<pos>8,8</pos>
+														<handler function="OnButton4Click" entry="EVT_BUTTON" />
 													</object>
-													<object class="wxPanel" name="ID_PANEL34" variable="panel_RvizTools_DistanceVisualizer" member="yes">
-														<pos>16,72</pos>
-														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP11" variable="img_RvizTools_DistanceVisualizer" member="yes">
-															<bitmap>./img/off.gif</bitmap>
-															<pos>8,8</pos>
-														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT17" variable="label_RvizTools_DistanceVisualizer" member="yes">
-															<label>Distance Visualizer</label>
-															<pos>48,16</pos>
-															<size>144,17</size>
-														</object>
-														<object class="wxButton" name="ID_BUTTON11" variable="but_RvizTools_DistanceVisualizer" member="yes">
-															<label>Launch it</label>
-															<pos>216,8</pos>
-															<size>72,29</size>
-															<handler function="Onbutton_im_distanceClick" entry="EVT_BUTTON" />
-														</object>
+													<object class="wxButton" name="ID_BUTTON10" variable="Button5" member="yes">
+														<label>Assisted grasping</label>
+														<pos>8,120</pos>
+														<size>176,29</size>
+														<handler function="OnButton5Click" entry="EVT_BUTTON" />
 													</object>
-													<object class="wxPanel" name="ID_PANEL36" variable="panel_RvizTools_AssistedArmNavigation" member="yes">
-														<pos>16,240</pos>
-														<size>384,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP13" variable="img_RvizTools_AssistedArmNavigation" member="yes">
-															<bitmap>./img/off.gif</bitmap>
-															<pos>8,8</pos>
-														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT23" variable="label_RvizTools_AssistedArmNavigation" member="yes">
-															<label>Assisted arm navigation</label>
-															<pos>48,16</pos>
-															<size>168,17</size>
-														</object>
-														<object class="wxButton" name="ID_BUTTON27" variable="but_RvizTools_AssistedArm_Launch" member="yes">
-															<label>Launch it</label>
-															<pos>216,8</pos>
-															<size>72,29</size>
-															<handler function="Onbut_RvizTools_AssistedArm_LaunchClick" entry="EVT_BUTTON" />
-														</object>
-														<object class="wxButton" name="ID_BUTTON30" variable="but_RvizTools_AssistedArmNavigation" member="yes">
-															<label>Start</label>
-															<pos>296,8</pos>
-															<size>72,29</size>
-															<handler function="Onbutton_im_assistedarmClick" entry="EVT_BUTTON" />
-														</object>
+													<object class="wxStaticText" name="ID_STATICTEXT48" variable="StaticText19" member="yes">
+														<label>Allows to move the hand to a desired position.</label>
+														<pos>8,40</pos>
+														<size>456,17</size>
 													</object>
-													<object class="wxPanel" name="ID_PANEL35" variable="panel_RvizTools_GoTo" member="yes">
-														<pos>16,184</pos>
-														<size>296,40</size>
-														<enabled>0</enabled>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP12" variable="img_RvizTools_GoTo" member="yes">
-															<bitmap>./img/off.gif</bitmap>
-															<pos>8,8</pos>
-														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT22" variable="label_RvizTools_GoTo" member="yes">
-															<label>Go to...</label>
-															<pos>48,16</pos>
-															<size>88,17</size>
-														</object>
-														<object class="wxButton" name="ID_BUTTON12" variable="but_RvizTools_GoTo" member="yes">
-															<label>Launch it</label>
-															<pos>216,8</pos>
-															<size>72,29</size>
-															<handler function="Onbutton_im_gotoClick" entry="EVT_BUTTON" />
-														</object>
-													</object>
-													<object class="wxPanel" name="ID_PANEL38" variable="panel_RvizTools_InteractiveTeleop" member="yes">
-														<pos>16,16</pos>
-														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP1" variable="img_RvizTools_InteractiveTeleop" member="yes">
-															<bitmap>./img/off.gif</bitmap>
-															<pos>8,8</pos>
-														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT8" variable="label_RvizTools_InteractiveTeleop" member="yes">
-															<label>Interactive teleop</label>
-															<pos>48,16</pos>
-															<size>160,17</size>
-														</object>
-														<object class="wxButton" name="ID_BUTTON4" variable="but_RvizTools_InteractiveTeleop" member="yes">
-															<label>Launch it</label>
-															<pos>216,8</pos>
-															<size>72,29</size>
-															<handler function="manual_moveBaseButton" entry="EVT_BUTTON" />
-														</object>
+													<object class="wxStaticText" name="ID_STATICTEXT49" variable="StaticText20" member="yes">
+														<label>Allows to manage the hand closure. This state includes the assisted detection.</label>
+														<pos>8,152</pos>
 													</object>
 												</object>
-												<label>Rviz tools</label>
+												<label>Assisted actions</label>
 											</object>
 											<object class="notebookpage">
-												<object class="wxPanel" name="ID_PANEL48" variable="tab_PhantomHaptic" member="yes">
+												<object class="wxPanel" name="ID_PANEL25" variable="tab_RvizTools" member="yes">
 													<enabled>0</enabled>
-													<object class="wxPanel" name="ID_PANEL50" variable="panel_phantomHaptic_unused1" member="yes">
-														<pos>16,16</pos>
-														<size>296,40</size>
-														<object class="wxStaticBitmap" name="ID_STATICBITMAP5" variable="img_phantomHaptic_unused1" member="yes">
-															<bitmap>./img/off.gif</bitmap>
+													<object class="wxButton" name="ID_BUTTON23" variable="Button1" member="yes">
+														<label>Basic configurations</label>
+														<pos>8,8</pos>
+														<size>160,29</size>
+														<handler function="OnButton1Click2" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON31" variable="Button2" member="yes">
+														<label>Assisted navigation</label>
+														<pos>8,78</pos>
+														<size>160,29</size>
+														<handler function="OnButton2Click1" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON32" variable="Button3" member="yes">
+														<label>Assisted manipulation</label>
+														<pos>8,148</pos>
+														<handler function="OnButton3Click" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT8" variable="StaticText9" member="yes">
+														<label>Basic displays to see the robot in the current map.</label>
+														<pos>8,40</pos>
+														<size>544,17</size>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT10" variable="StaticText10" member="yes">
+														<label>Basic displays to move the robot arround the map.</label>
+														<pos>8,110</pos>
+													</object>
+													<object class="wxStaticText" name="ID_STATICTEXT16" variable="StaticText11" member="yes">
+														<label>Basic displays to move the robot and use assisted tasks.</label>
+														<pos>8,180</pos>
+													</object>
+												</object>
+												<label>Rviz configs</label>
+											</object>
+											<object class="notebookpage">
+												<object class="wxPanel" name="ID_PANEL60" variable="tab_Rviz" member="yes">
+													<enabled>0</enabled>
+													<object class="wxPanel" name="ID_PANEL65" variable="Panel4" member="yes">
+														<pos>8,88</pos>
+														<size>312,32</size>
+														<object class="wxStaticText" name="ID_STATICTEXT41" variable="StaticText4" member="yes">
+															<label>Base teleoperation</label>
 															<pos>8,8</pos>
+															<size>184,17</size>
 														</object>
-														<object class="wxStaticText" name="ID_STATICTEXT10" variable="label_phantomHaptic_unused1" member="yes">
-															<label>Phantom Haptic</label>
-															<pos>48,16</pos>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON13" variable="RadioButton7" member="yes">
+															<label>On</label>
+															<pos>200,8</pos>
+															<handler function="baseTeleopOn" entry="EVT_RADIOBUTTON" />
 														</object>
-														<object class="wxButton" name="ID_BUTTON23" variable="but_phantomHaptic_unused1" member="yes">
-															<label>On/Off</label>
-															<pos>224,8</pos>
-															<size>64,29</size>
-															<handler function="manual_phantomHapticButton" entry="EVT_BUTTON" />
+														<object class="wxRadioButton" name="ID_RADIOBUTTON14" variable="RadioButton8" member="yes">
+															<label>Off</label>
+															<selected>1</selected>
+															<pos>256,8</pos>
+															<handler function="baseTeleopOff" entry="EVT_RADIOBUTTON" />
+														</object>
+													</object>
+													<object class="wxPanel" name="ID_PANEL66" variable="Panel5" member="yes">
+														<pos>8,128</pos>
+														<size>456,32</size>
+														<object class="wxStaticText" name="ID_STATICTEXT42" variable="StaticText5" member="yes">
+															<label>Distance linear visualizer</label>
+															<pos>8,8</pos>
+															<size>184,17</size>
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON15" variable="RadioButton9" member="yes">
+															<label>On</label>
+															<pos>200,8</pos>
+															<handler function="distanceLinuarOn" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON16" variable="RadioButton10" member="yes">
+															<label>Off</label>
+															<selected>1</selected>
+															<pos>256,8</pos>
+															<handler function="distanceLinuarOff" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxComboBox" name="ID_COMBOBOX5" variable="ComboBox1" member="yes">
+															<content>
+																<item>base</item>
+																<item>body</item>
+																<item>hand</item>
+															</content>
+															<pos>320,4</pos>
+															<size>128,29</size>
+														</object>
+													</object>
+													<object class="wxPanel" name="ID_PANEL67" variable="Panel6" member="yes">
+														<pos>8,168</pos>
+														<size>456,32</size>
+														<object class="wxStaticText" name="ID_STATICTEXT43" variable="StaticText6" member="yes">
+															<label>Distance circular indicator</label>
+															<pos>8,8</pos>
+															<size>184,17</size>
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON17" variable="RadioButton11" member="yes">
+															<label>On</label>
+															<pos>200,8</pos>
+															<handler function="distanceCircularOn" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON18" variable="RadioButton12" member="yes">
+															<label>Off</label>
+															<selected>1</selected>
+															<pos>256,8</pos>
+															<handler function="distanceCircularOff" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxComboBox" name="ID_COMBOBOX6" variable="ComboBox2" member="yes">
+															<content>
+																<item>base</item>
+																<item>body</item>
+																<item>hand</item>
+															</content>
+															<pos>320,4</pos>
+															<size>128,29</size>
+														</object>
+													</object>
+													<object class="wxPanel" name="ID_PANEL68" variable="Panel7" member="yes">
+														<pos>8,208</pos>
+														<size>312,32</size>
+														<object class="wxStaticText" name="ID_STATICTEXT44" variable="StaticText7" member="yes">
+															<label>Stretch indicator</label>
+															<pos>8,8</pos>
+															<size>184,17</size>
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON19" variable="RadioButton13" member="yes">
+															<label>On</label>
+															<pos>200,8</pos>
+															<handler function="stretchIndicatorOn" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON20" variable="RadioButton14" member="yes">
+															<label>Off</label>
+															<selected>1</selected>
+															<pos>256,8</pos>
+															<handler function="stretchIndicatorOff" entry="EVT_RADIOBUTTON" />
+														</object>
+													</object>
+													<object class="wxPanel" name="ID_PANEL69" variable="Panel8" member="yes">
+														<pos>8,248</pos>
+														<size>312,32</size>
+														<object class="wxStaticText" name="ID_STATICTEXT45" variable="StaticText8" member="yes">
+															<label>Object manager</label>
+															<pos>8,8</pos>
+															<size>184,17</size>
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON21" variable="RadioButton15" member="yes">
+															<label>On</label>
+															<pos>200,8</pos>
+															<handler function="objectManagerOn" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON22" variable="RadioButton16" member="yes">
+															<label>Off</label>
+															<selected>1</selected>
+															<pos>256,8</pos>
+															<handler function="objectManagerOff" entry="EVT_RADIOBUTTON" />
+														</object>
+													</object>
+													<object class="wxPanel" name="ID_PANEL62" variable="Panel1" member="yes">
+														<pos>8,288</pos>
+														<size>312,32</size>
+														<object class="wxStaticText" name="ID_STATICTEXT38" variable="StaticText1" member="yes">
+															<label>Data fusion</label>
+															<pos>8,8</pos>
+															<size>184,17</size>
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON9" variable="RadioButton3" member="yes">
+															<label>On</label>
+															<pos>200,8</pos>
+															<handler function="dataFusionOn" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON10" variable="RadioButton4" member="yes">
+															<label>Off</label>
+															<selected>1</selected>
+															<pos>256,8</pos>
+															<handler function="dataFusionOff" entry="EVT_RADIOBUTTON" />
+														</object>
+													</object>
+													<object class="wxPanel" name="ID_PANEL63" variable="Panel3" member="yes">
+														<pos>8,8</pos>
+														<size>312,32</size>
+														<object class="wxStaticText" name="ID_STATICTEXT39" variable="StaticText2" member="yes">
+															<label>Assisted arm navigation</label>
+															<pos>8,8</pos>
+															<size>184,17</size>
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON11" variable="RadioButton5" member="yes">
+															<label>On</label>
+															<pos>200,8</pos>
+															<handler function="assistedArmNavigationOn" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON12" variable="RadioButton6" member="yes">
+															<label>Off</label>
+															<selected>1</selected>
+															<pos>256,8</pos>
+															<handler function="assistedArmNavigationOff" entry="EVT_RADIOBUTTON" />
+														</object>
+													</object>
+													<object class="wxPanel" name="ID_PANEL64" variable="Panel2" member="yes">
+														<pos>8,48</pos>
+														<size>312,32</size>
+														<object class="wxStaticText" name="ID_STATICTEXT40" variable="StaticText3" member="yes">
+															<label>Assisted grasp</label>
+															<pos>8,8</pos>
+															<size>184,17</size>
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON7" variable="RadioButton1" member="yes">
+															<label>On</label>
+															<pos>200,8</pos>
+															<handler function="assistedGraspOn" entry="EVT_RADIOBUTTON" />
+														</object>
+														<object class="wxRadioButton" name="ID_RADIOBUTTON8" variable="RadioButton2" member="yes">
+															<label>Off</label>
+															<selected>1</selected>
+															<pos>256,8</pos>
+															<handler function="assistedGraspOff" entry="EVT_RADIOBUTTON" />
 														</object>
 													</object>
 												</object>
-												<label>Phantom Haptic</label>
+												<label>Rviz displays</label>
 											</object>
 										</object>
 									</object>
@@ -787,6 +969,7 @@
 									<value>80</value>
 									<pos>102,68</pos>
 									<size>90,25</size>
+									<enabled>0</enabled>
 								</object>
 								<object class="wxStaticText" name="ID_STATICTEXT4" variable="label_status_WifiSignal" member="yes">
 									<label>Wifi Signal</label>
@@ -1024,6 +1207,7 @@
 								</object>
 								<object class="notebookpage">
 									<object class="wxPanel" name="ID_PANEL26" variable="tab_tasks" member="yes">
+										<enabled>0</enabled>
 										<object class="wxStaticText" name="ID_STATICTEXT34" variable="label_TeachNewTask" member="yes">
 											<label>Teach new task</label>
 											<pos>4,0</pos>
