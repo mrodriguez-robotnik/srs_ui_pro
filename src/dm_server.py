@@ -31,11 +31,17 @@ class ui_echo_server():
 		if (data.status != self._ui_msg.status) or (self._ui_msg.feedback != self._ui_msg.feedback):
 			self._ui_msg = data	
 
+	def _create_fb(self, exception_id, content):
+		return "{\"exception_id\":"+str(exception_id)+", \"feedback_type \":\"unstructured\", \"content\":\""+content+"\"}";
+
 	def _publish_fb(self, fb):
 		_feedback = dm_serverFeedback()
 		_feedback.current_status = fb
 		_feedback.json_feedback = fb
 		self._as.publish_feedback(_feedback)
+
+	def _create_result(self, exception_id, result):
+		return "{\"exception_id\":"+str(exception_id)+", \"result\":\""+result+"\")";
 
 	def _publish_result(self, result):
 		_result = dm_serverResult()
@@ -50,15 +56,29 @@ class ui_echo_server():
 	########################################################################
 	def execute(self, goal):
 		rospy.loginfo("[srs_ui_pro/echo_server]: New goal received (%s)", goal)
+		rospy.loginfo("------------------------------------------------")
+
+		exception_id = -1
+
+		try:
+			json_decoded = json.loads(goal.json_input)
+			exception_id = json_decoded['exception_id']
+			tasks = json_decoded['tasks']
+			#something = tasks[0]['something']
+			#info = json_decoded['additional_information']
+		except json.JSONDecodeError:
+			print "Oops, error when decoding goal.json_input", goal.json_input
+			self._end(self._create_fb(exception_id, "Error when decoding json_input"), self._create_result(exception_id, "failed"))
+			return
 
 		rospy.loginfo("[srs_ui_pro/echo_server]: Waiting the srs_ui_pro...")
 		while self._ui_sub.get_num_connections() == 0:
-			self._publish_fb("Waiting srs_ui_pro")
+			self._publish_fb(self._create_fb(exception_id, "Waiting srs_ui_pro"))
     			rospy.sleep(1)
     			continue
 
 		#This feedback warns to the srs_ui_pro/gui about the necessity of user intervention.
-		self._publish_fb("new_event")
+		self._publish_fb(self._create_fb(exception_id, "new_event"))
 		rospy.sleep(5); #Allows the srs_ui_pro catch the event.
 
 		#self._publish_fb("Waiting user choice...")
@@ -71,7 +91,7 @@ class ui_echo_server():
 		#No intervention
 		if self._ui_msg.status == -42:
 			rospy.logerr("[srs_ui_pro/echo_server]: User can't help you now... :(")
-			self._end(self._ui_msg.feedback, "failed")
+			self._end(self._create_fb(exception_id, self._ui_msg.feedback), self._create_result(exception_id, "failed"))
 			return
 
 		#User intervention
@@ -80,13 +100,13 @@ class ui_echo_server():
 		while self._ui_msg.status == 42: #user operating
 			if last_feedback != self._ui_msg.feedback:
 				last_feedback = self._ui_msg.feedback
-				self._publish_fb(last_feedback)
+				self._publish_fb(self._create_fb(exception_id, last_feedback))
 
 
 		rospy.loginfo("[srs_ui_pro/echo_server]: User has finished!")
 		status = "succeeded" if (self._ui_msg.status == 1) else "failed"
 
-		self._end(status, status)
+		self._end(self._create_fb(exception_id, status), self._create_result(exception_id, status))
 		return
 
 

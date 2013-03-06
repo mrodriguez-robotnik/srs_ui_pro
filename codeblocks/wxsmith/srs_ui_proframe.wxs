@@ -448,7 +448,7 @@
 														<pos>456,136</pos>
 													</object>
 												</object>
-												<label>Navigation</label>
+												<label>Dashboard</label>
 											</object>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL14" variable="tab_semi_detection" member="yes">

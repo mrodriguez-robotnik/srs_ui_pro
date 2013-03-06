@@ -52,6 +52,7 @@ class DM_window: public wxFrame
 		void sendFeedback(wxCommandEvent& event);
 		void sendSucceeded(wxCommandEvent& event);
 		void sendFailed(wxCommandEvent& event);
+        std::string getMsgInformation(std::string msg);
 		void OnClose(wxCloseEvent& event);
 		//*)
 

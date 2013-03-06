@@ -44,7 +44,7 @@ LogginScreen::LogginScreen(wxWindow* parent,wxWindowID id)
 	but_init = new wxButton(this, ID_BUTTON1, _("Init Session"), wxPoint(8,120), wxSize(88,25), 0, wxDefaultValidator, _T("ID_BUTTON1"));
 	but_offline = new wxButton(this, ID_BUTTON2, _("Offline"), wxPoint(96,120), wxSize(64,25), 0, wxDefaultValidator, _T("ID_BUTTON2"));
 	Center();
-	
+
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&LogginScreen::Onbut_initClick);
 	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&LogginScreen::Onbut_offlineClick);
 	//*)

@@ -506,7 +506,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     label_TS_TactilSensors = new wxStaticText(panel_TactilSensors, ID_STATICTEXT21, _("TACTIL SENSORS"), wxPoint(32,0), wxSize(148,28), wxSIMPLE_BORDER, _T("ID_STATICTEXT21"));
     wxFont label_TS_TactilSensorsFont(13,wxSWISS,wxFONTSTYLE_NORMAL,wxBOLD,false,_T("Sans"),wxFONTENCODING_DEFAULT);
     label_TS_TactilSensors->SetFont(label_TS_TactilSensorsFont);
-    tabs_subsemi->AddPage(tab_semi_navigation, _("Navigation"), false);
+    tabs_subsemi->AddPage(tab_semi_navigation, _("Dashboard"), false);
     tabs_subsemi->AddPage(tab_semi_detection, _("Detection"), false);
     tabs_subsemi->AddPage(tab_semi_grasping, _("Grasping"), false);
     tab_manual = new wxPanel(tabs_actions, ID_PANEL17, wxDefaultPosition, wxSize(1066,324), wxTAB_TRAVERSAL, _T("ID_PANEL17"));
