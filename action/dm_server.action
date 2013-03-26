@@ -1,7 +1,5 @@
 string json_input
 ---
-string output		#deprectad
 string json_result
 ---
-string current_status	#deprectad
 string json_feedback
