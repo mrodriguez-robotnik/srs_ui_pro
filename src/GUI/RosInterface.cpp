@@ -1148,7 +1148,6 @@ void RosInterface::callback_grabbed2(const std_msgs::Bool &msg)
 
 void RosInterface::callback_dm_server_fb(const srs_ui_pro::dm_serverActionFeedback::ConstPtr &msg)
 {
-    //if ((msg->feedback.current_status).compare("new_event") == 0)
     if ((msg->feedback.json_feedback).find("new_event") != -1)
         dm_server_event = true;
     else

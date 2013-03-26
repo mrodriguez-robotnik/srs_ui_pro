@@ -28,7 +28,6 @@ class ui_echo_server():
 
 	########################################################################
 	def _ui_echo(self, data):
-		if (data.status != self._ui_msg.status) or (self._ui_msg.feedback != self._ui_msg.feedback):
 			self._ui_msg = data	
 
 	def _create_fb(self, exception_id, content):
@@ -36,7 +35,6 @@ class ui_echo_server():
 
 	def _publish_fb(self, fb):
 		_feedback = dm_serverFeedback()
-		_feedback.current_status = fb
 		_feedback.json_feedback = fb
 		self._as.publish_feedback(_feedback)
 
