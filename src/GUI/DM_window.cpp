@@ -61,7 +61,9 @@ std::string DM_window::getMsgInformation(std::string msg)
     std::string search = "additional_information";
     int init = msg.find(search.c_str()) + search.size() + 3;
     int size = msg.size() - init;
-    return msg.substr(init, size-2); //-2 for delete the string }"
+    if (size>2)
+        return msg.substr(init, size-2); //-2 for delete the string }"
+    else return msg;
 }
 
 void DM_window::sendFeedback(wxCommandEvent& event)
