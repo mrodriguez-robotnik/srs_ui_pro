@@ -47,7 +47,7 @@ DM_window::DM_window(wxWindow* parent, std::string msg, wxWindowID id,const wxPo
 	//*)
 
 	box_message->SetValue(wxString(getMsgInformation(msg).c_str(), wxConvUTF8));
-    srs_ui_pro_pub = n.advertise<srs_ui_pro::srs_ui_proEcho>("/srs_ui_pro/gui/status", 30);
+        srs_ui_pro_pub = n.advertise<srs_ui_pro::srs_ui_proEcho>("/srs_ui_pro/gui/status", 30);
 }
 
 DM_window::~DM_window()
@@ -58,11 +58,11 @@ DM_window::~DM_window()
 
 std::string DM_window::getMsgInformation(std::string msg)
 {
-    std::string search = "additional_information";
-    int init = msg.find(search.c_str()) + search.size() + 3;
-    int size = msg.size() - init;
-    if (size>2)
-        return msg.substr(init, size-2); //-2 for delete the string }"
+    std::string search = "new_event:";
+    int init = msg.find(search.c_str())+search.size();
+
+    if (msg.size()>2)
+        return msg.substr(init, msg.size()-init-2); //-2 for delete the string }"
     else return msg;
 }
 

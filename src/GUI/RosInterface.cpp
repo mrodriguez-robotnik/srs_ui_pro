@@ -66,7 +66,7 @@ int RosInterface::Start(){
 void RosInterface::initializeVariables(){
     dm_exceptional_case_id = 0;
     dm_solution_required = dm_server_event = emergency_button_stop_state = scanner_stop_state = false;
-    dm_current_task = dm_current_task_id = last_goal = "";
+    dm_current_task = dm_current_task_id = last_goal = dm_server_event_info = "";
 }
 
 void RosInterface::initServices(){
@@ -859,6 +859,11 @@ bool RosInterface::DM_ExcepcionalCase()
     return aux;
 }
 
+std::string RosInterface::DM_ExcepcionalCaseInfo()
+{
+    return dm_server_event_info;
+}
+
 std::vector<srs_msgs::DBGrasp> RosInterface::getGraspConfigurations(int object_id)
 {
     serviceAvailable(getgraspconfigurations_client);
@@ -1148,14 +1153,22 @@ void RosInterface::callback_grabbed2(const std_msgs::Bool &msg)
 
 void RosInterface::callback_dm_server_fb(const srs_ui_pro::dm_serverActionFeedback::ConstPtr &msg)
 {
-    if ((msg->feedback.json_feedback).find("new_event") != -1)
+    std::string event_text = "new_event";
+    if ((msg->feedback.json_feedback).find(event_text.c_str()) != -1)
+    {
         dm_server_event = true;
+	dm_server_event_info = msg->feedback.json_feedback;
+    }
     else
+    {
         dm_server_event = false;
+	dm_server_event_info = "";
+    }
 }
 
 void RosInterface::callback_dm_server_goal(const srs_ui_pro::dm_serverActionGoal::ConstPtr &msg)
 {
+ROS_ERROR(msg->goal.json_input.c_str());
     last_goal = msg->goal.json_input;
 }
 

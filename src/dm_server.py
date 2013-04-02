@@ -63,7 +63,7 @@ class ui_echo_server():
 			exception_id = json_decoded['exception_id']
 			tasks = json_decoded['tasks']
 			#something = tasks[0]['something']
-			#info = json_decoded['additional_information']
+			info = json_decoded['additional_information']
 		except json.JSONDecodeError:
 			print "Oops, error when decoding goal.json_input", goal.json_input
 			self._end(self._create_fb(exception_id, "Error when decoding json_input"), self._create_result(exception_id, "failed"))
@@ -76,7 +76,9 @@ class ui_echo_server():
     			continue
 
 		#This feedback warns to the srs_ui_pro/gui about the necessity of user intervention.
-		self._publish_fb(self._create_fb(exception_id, "new_event"))
+		new_event = "new_event:"+info
+		print new_event
+		self._publish_fb(self._create_fb(exception_id, new_event))
 		rospy.sleep(5); #Allows the srs_ui_pro catch the event.
 
 		#self._publish_fb("Waiting user choice...")

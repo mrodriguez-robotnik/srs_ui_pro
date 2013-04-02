@@ -2573,7 +2573,8 @@ void srs_ui_proFrame::Ontimer_dmServerTrigger(wxTimerEvent& event)
         if (res == wxID_YES)
         {
             Ri->publish_status(42, "I will try to solve your problem!");
-            DM_window *dm_w = new DM_window(this, Ri->getLastGoalAssistedMsg());
+            //DM_window *dm_w = new DM_window(this, Ri->getLastGoalAssistedMsg());
+            DM_window *dm_w = new DM_window(this, Ri->DM_ExcepcionalCaseInfo());
             dm_w->Show(TRUE);
         }
         else

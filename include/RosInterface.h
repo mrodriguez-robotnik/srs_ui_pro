@@ -168,6 +168,7 @@ class RosInterface
         std::string getDMCurrentTask();
         std::string getDMCurrentTaskID();
         bool DM_ExcepcionalCase();
+	std::string DM_ExcepcionalCaseInfo();
         int getDMCurrentStatus();
         int DM_InterventionRequired();
         std::string getMesh(int object_id);
@@ -308,6 +309,7 @@ class RosInterface
         std::string dm_current_task, dm_current_task_id;
         std::string last_goal;
         bool dm_server_event;
+	std::string dm_server_event_info;
 };
 
 #endif // ROSINTERFACE_H
