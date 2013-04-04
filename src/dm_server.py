@@ -39,7 +39,7 @@ class ui_echo_server():
 		self._as.publish_feedback(_feedback)
 
 	def _create_result(self, exception_id, result):
-		return "{\"exception_id\":"+str(exception_id)+", \"result\":\""+result+"\")";
+		return "{\"exception_id\":"+str(exception_id)+", \"result\":\""+result+"\"}";
 
 	def _publish_result(self, result):
 		_result = dm_serverResult()

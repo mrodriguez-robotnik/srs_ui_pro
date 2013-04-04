@@ -58,12 +58,11 @@ DM_window::~DM_window()
 
 std::string DM_window::getMsgInformation(std::string msg)
 {
-    std::string search = "new_event:";
+    std::string search = "new_event";
     int init = msg.find(search.c_str())+search.size();
 
-    if (msg.size()>2)
-        return msg.substr(init, msg.size()-init-2); //-2 for delete the string }"
-    else return msg;
+    if (msg.size() > 2) return msg.substr(init, msg.size()-init-2); //-2 for delete the string }"
+    else 		return msg;
 }
 
 void DM_window::sendFeedback(wxCommandEvent& event)
