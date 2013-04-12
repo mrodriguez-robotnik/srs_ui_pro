@@ -304,6 +304,7 @@
 											<label>STOP</label>
 											<pos>436,400</pos>
 											<size>200,29</size>
+											<enabled>0</enabled>
 											<handler function="Onbutton_DMStopClick" entry="EVT_BUTTON" />
 										</object>
 										<object class="wxTextCtrl" name="ID_TEXTCTRL17" variable="box_dm_log" member="yes">

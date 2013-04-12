@@ -327,7 +327,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     wxBoxSizer* sizer_automatic_move;
     wxMenu* Menu2;
     wxBoxSizer* sizer_automatic_get;
-
+    
     Create(parent, wxID_ANY, _("GUI-PRO"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxFULL_REPAINT_ON_RESIZE, _T("wxID_ANY"));
     SetClientSize(wxSize(1357,654));
     panel_main = new wxPanel(this, ID_PANEL3, wxPoint(0,0), wxSize(1360,400), wxTAB_TRAVERSAL, _T("ID_PANEL3"));
@@ -439,6 +439,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     but_RESUME = new wxButton(tab_automatic, ID_BUTTON17, _("RESUME"), wxPoint(224,400), wxSize(200,29), 0, wxDefaultValidator, _T("ID_BUTTON17"));
     but_RESUME->Disable();
     but_STOP = new wxButton(tab_automatic, ID_BUTTON15, _("STOP"), wxPoint(436,400), wxSize(200,29), 0, wxDefaultValidator, _T("ID_BUTTON15"));
+    but_STOP->Disable();
     box_dm_log = new wxTextCtrl(tab_automatic, ID_TEXTCTRL17, wxEmptyString, wxPoint(12,112), wxSize(624,280), wxTE_MULTILINE, wxDefaultValidator, _T("ID_TEXTCTRL17"));
     tab_semi = new wxPanel(tabs_actions, ID_PANEL12, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL12"));
     tabs_subsemi = new wxNotebook(tab_semi, ID_NOTEBOOK3, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK3"));
@@ -786,7 +787,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     timer_ROS.SetOwner(this, ID_TIMER5);
     timer_choice.SetOwner(this, ID_TIMER6);
     timer_dmServer.SetOwner(this, ID_TIMER7);
-
+    
     Connect(ID_GRID1,wxEVT_GRID_CELL_LEFT_DCLICK,(wxObjectEventFunction)&srs_ui_proFrame::Ongrid_requestsCellLeftDClick);
     Connect(ID_LISTCTRL1,wxEVT_COMMAND_LIST_ITEM_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showContextualMenu);
     Connect(ID_LISTCTRL2,wxEVT_COMMAND_LIST_ITEM_ACTIVATED,(wxObjectEventFunction)&srs_ui_proFrame::acceptCall);
@@ -1365,7 +1366,7 @@ void srs_ui_proFrame::Onbutton_DMPauseClick(wxCommandEvent& event)
         arg->form = this;
         arg->action = "pause";
         arg->log = box_dm_log;
-
+        arg->json_parameters = "NULL";
         dm_resumed = dm_stoped = false;
         dm_paused = true;
 
@@ -1384,7 +1385,7 @@ void srs_ui_proFrame::Onbutton_DMResumeClick(wxCommandEvent& event)
         arg->form = this;
         arg->action = "resume";
         arg->log = box_dm_log;
-
+        arg->json_parameters = "NULL";
 
         dm_paused = dm_stoped = false;
         dm_resumed = true;
@@ -1405,7 +1406,7 @@ void srs_ui_proFrame::Onbutton_DMStopClick(wxCommandEvent& event)
         arg->form = this;
         arg->action = "stop";
         arg->log = box_dm_log;
-
+        arg->json_parameters = "NULL";
         dm_resumed = dm_paused = false;
         dm_stoped = true;
 
@@ -1609,6 +1610,34 @@ void srs_ui_proFrame::Onbutton_move_STARTClick(wxCommandEvent& event)
         wxMessageBox(wxT("You must select a target value!\t"), wxT("SRS_DECISION_MAKING"), wxICON_INFORMATION);
     else
     {
+        //-----------------------------------------
+        if (but_RESUME->IsEnabled() || but_PAUSE->IsEnabled())
+        {
+            wxMessageDialog *dial = new wxMessageDialog(NULL, wxT("Do you want continue?"), wxT("srs_ui_pro: The current action will be stopped!"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+            int res = dial->ShowModal();
+
+            if (res == wxID_YES)
+            {
+                pthread_t thread1;
+
+                dm_thread_arg *arg = new dm_thread_arg;
+                    arg->form = this;
+                    arg->action = "stop";
+                    arg->log = box_dm_log;
+
+                    dm_resumed = dm_paused = false;
+                    dm_stoped = true;
+
+                    but_RESUME->Disable();
+                    but_PAUSE->Disable();
+                    but_STOP->Disable();
+
+                pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
+            }
+            else return;
+        }
+        //-------------------------------------
+
         pthread_t thread1;
 
         dm_thread_arg *arg = new dm_thread_arg;
@@ -1618,7 +1647,7 @@ void srs_ui_proFrame::Onbutton_move_STARTClick(wxCommandEvent& event)
             arg->log = box_dm_log;
 
 
-            arg->json_parameters = "{\"tasks\":[{\"task\":\"move\",\"destination\":{\"predefined_pose\":\""+toString(choice_automatic_move->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"ui_loc\",\"device_id\":\"ui_loc_0001\"}}";
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"move\",\"destination\":{\"predefined_pose\":\""+toString(choice_automatic_move->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"srs_ui_pro\",\"device_id\":\"srs_ui_pro_0001\"}}";
 
         but_RESUME->Disable();
         but_PAUSE->Enable();
@@ -1635,6 +1664,34 @@ void srs_ui_proFrame::Onbutton_search_STARTClick(wxCommandEvent& event)
         wxMessageBox(wxT("You must select a target value!\t"), wxT("SRS_DECISION_MAKING"), wxICON_INFORMATION);
     else
     {
+        //-----------------------------------------
+        if (but_RESUME->IsEnabled() || but_PAUSE->IsEnabled())
+        {
+            wxMessageDialog *dial = new wxMessageDialog(NULL, wxT("Do you want continue?"), wxT("srs_ui_pro: The current action will be stopped!"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+            int res = dial->ShowModal();
+
+            if (res == wxID_YES)
+            {
+                pthread_t thread1;
+
+                dm_thread_arg *arg = new dm_thread_arg;
+                    arg->form = this;
+                    arg->action = "stop";
+                    arg->log = box_dm_log;
+
+                    dm_resumed = dm_paused = false;
+                    dm_stoped = true;
+
+                    but_RESUME->Disable();
+                    but_PAUSE->Disable();
+                    but_STOP->Disable();
+
+                pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
+            }
+            else return;
+        }
+        //-------------------------------------
+
         pthread_t thread1;
 
         dm_thread_arg *arg = new dm_thread_arg;
@@ -1645,6 +1702,9 @@ void srs_ui_proFrame::Onbutton_search_STARTClick(wxCommandEvent& event)
             aux = toString(choice_automatic_search->GetStringSelection())+aux2;
             arg->parameters = aux;
             arg->log = box_dm_log;
+
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"search\",\"destination\":{\"predefined_pose\":\""+toString(choice_automatic_move->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"srs_ui_pro\",\"device_id\":\"srs_ui_pro_0001\"}}";
+
 
         but_RESUME->Disable();
         but_PAUSE->Enable();
@@ -1661,6 +1721,34 @@ void srs_ui_proFrame::Onbutton_get_STARTClick(wxCommandEvent& event)
         wxMessageBox(wxT("You must select a target value!\t"), wxT("SRS_DECISION_MAKING"), wxICON_INFORMATION);
     else
     {
+        //-----------------------------------------
+        if (but_RESUME->IsEnabled() || but_PAUSE->IsEnabled())
+        {
+            wxMessageDialog *dial = new wxMessageDialog(NULL, wxT("Do you want continue?"), wxT("srs_ui_pro: The current action will be stopped!"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+            int res = dial->ShowModal();
+
+            if (res == wxID_YES)
+            {
+                pthread_t thread1;
+
+                dm_thread_arg *arg = new dm_thread_arg;
+                    arg->form = this;
+                    arg->action = "stop";
+                    arg->log = box_dm_log;
+
+                    dm_resumed = dm_paused = false;
+                    dm_stoped = true;
+
+                    but_RESUME->Disable();
+                    but_PAUSE->Disable();
+                    but_STOP->Disable();
+
+                pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
+            }
+            else return;
+        }
+        //-------------------------------------
+
         pthread_t thread1;
 
         dm_thread_arg *arg = new dm_thread_arg;
@@ -1673,7 +1761,7 @@ void srs_ui_proFrame::Onbutton_get_STARTClick(wxCommandEvent& event)
             arg->log = box_dm_log;
 
             std::string json_aux = (choice_automatic_get_search->GetCurrentSelection() == -1)?"":toString(choice_automatic_get_search->GetStringSelection());
-            arg->json_parameters = "{\"tasks\":[{\"task\":\"get\",\"workspaces\":[\""+json_aux+"\"],\"object\":{\"object_type\":\""+toString(choice_automatic_get->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"ui_loc\",\"device_id\":\"ui_loc_0001\"}}";
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"get\",\"workspaces\":[\""+json_aux+"\"],\"object\":{\"object_type\":\""+toString(choice_automatic_get->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"srs_ui_pro\",\"device_id\":\"srs_ui_pro_0001\"}}";
 
 
         but_RESUME->Disable();
@@ -1691,6 +1779,35 @@ void srs_ui_proFrame::Onbutton_fetch_STARTClick(wxCommandEvent& event)
         wxMessageBox(wxT("You must select a target name and order position value!\t"), wxT("SRS_DECISION_MAKING"), wxICON_INFORMATION);
     else
     {
+
+        //-----------------------------------------
+        if (but_RESUME->IsEnabled() || but_PAUSE->IsEnabled())
+        {
+            wxMessageDialog *dial = new wxMessageDialog(NULL, wxT("Do you want continue?"), wxT("srs_ui_pro: The current action will be stopped!"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+            int res = dial->ShowModal();
+
+            if (res == wxID_YES)
+            {
+                pthread_t thread1;
+
+                dm_thread_arg *arg = new dm_thread_arg;
+                    arg->form = this;
+                    arg->action = "stop";
+                    arg->log = box_dm_log;
+
+                    dm_resumed = dm_paused = false;
+                    dm_stoped = true;
+
+                    but_RESUME->Disable();
+                    but_PAUSE->Disable();
+                    but_STOP->Disable();
+
+                pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
+            }
+            else return;
+        }
+        //-------------------------------------
+
         pthread_t thread1;
 
         dm_thread_arg *arg = new dm_thread_arg;
@@ -1702,9 +1819,8 @@ void srs_ui_proFrame::Onbutton_fetch_STARTClick(wxCommandEvent& event)
             arg->parameters = aux;
             arg->log = box_dm_log;
 
-            std::string json_aux = (choice_automatic_fetch_search->GetCurrentSelection() == -1)?"":toString(choice_automatic_fetch_search->GetCurrentSelection());
-            arg->json_parameters = "{\"tasks\":[{\"task\":\"fetch\",\"workspaces\":[\""+json_aux+"\"],\"deliver_destination\":{\"predefined_pose\":\""+toString(choice_automatic_fetch_order->GetStringSelection())+"\"},\"object\":{\"object_type\":\""+toString(choice_automatic_fetch->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"ui_loc\",\"device_id\":\"ui_loc_0001\"}}";
-
+            std::string json_aux = (choice_automatic_fetch_search->GetCurrentSelection() == -1)?"":toString(choice_automatic_fetch_search->GetStringSelection());
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"fetch\",\"workspaces\":[\""+json_aux+"\"],\"deliver_destination\":{\"predefined_pose\":\""+toString(choice_automatic_fetch_order->GetStringSelection())+"\"},\"object\":{\"object_type\":\""+toString(choice_automatic_fetch->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"srs_ui_pro\",\"device_id\":\"srs_ui_pro_0001\"}}";
 
         but_RESUME->Disable();
         but_PAUSE->Enable();
@@ -1722,6 +1838,34 @@ void srs_ui_proFrame::Onbutton_deliver_STARTClick(wxCommandEvent& event)
         wxMessageBox(wxT("You must select a target value!\t"), wxT("SRS_DECISION_MAKING"), wxICON_INFORMATION);
     else
     {
+        //-----------------------------------------
+        if (but_RESUME->IsEnabled() || but_PAUSE->IsEnabled())
+        {
+            wxMessageDialog *dial = new wxMessageDialog(NULL, wxT("Do you want continue?"), wxT("srs_ui_pro: The current action will be stopped!"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION);
+            int res = dial->ShowModal();
+
+            if (res == wxID_YES)
+            {
+                pthread_t thread1;
+
+                dm_thread_arg *arg = new dm_thread_arg;
+                    arg->form = this;
+                    arg->action = "stop";
+                    arg->log = box_dm_log;
+
+                    dm_resumed = dm_paused = false;
+                    dm_stoped = true;
+
+                    but_RESUME->Disable();
+                    but_PAUSE->Disable();
+                    but_STOP->Disable();
+
+                pthread_create(&thread1, NULL, &srs_ui_proFrame::THREAD_DMAction, (void*)arg);
+            }
+            else return;
+        }
+        //-------------------------------------
+
         pthread_t thread1;
 
         dm_thread_arg *arg = new dm_thread_arg;
@@ -1734,7 +1878,7 @@ void srs_ui_proFrame::Onbutton_deliver_STARTClick(wxCommandEvent& event)
             arg->log = box_dm_log;
 
             std::string json_aux = (choice_automatic_deliver_search->GetCurrentSelection() == -1)?"":toString(choice_automatic_deliver_search->GetStringSelection());
-            arg->json_parameters = "{\"tasks\":[{\"task\":\"fetch\",\"workspaces\":[\""+json_aux+"\"],\"deliver_destination\":{\"predefined_pose\":\""+toString(choice_automatic_deliver_deliver_position->GetStringSelection())+"\"},\"object\":{\"object_type\":\""+toString(choice_automatic_deliver->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"ui_loc\",\"device_id\":\"ui_loc_0001\"}}";
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"deliver\",\"workspaces\":[\""+json_aux+"\"],\"deliver_destination\":{\"predefined_pose\":\""+toString(choice_automatic_deliver_deliver_position->GetStringSelection())+"\"},\"object\":{\"object_type\":\""+toString(choice_automatic_deliver->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"srs_ui_pro\",\"device_id\":\"srs_ui_pro_0001\"}}";
 
         but_RESUME->Disable();
         but_PAUSE->Enable();
@@ -2022,9 +2166,9 @@ void *srs_ui_proFrame::_THREAD_DMAction(std::string action, std::string paramete
     {
         dm_working = true;
 
-        int res = Ri->decision_making_actions(action, parameters);
+        int res = Ri->decision_making_actions(action, parameters, json_parameters);
 
-        if (res>0)
+        if (res>=0)
         {
 
             if (action != "pause" && action != "resume" && action != "stop")

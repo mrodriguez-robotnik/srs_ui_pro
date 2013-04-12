@@ -525,19 +525,25 @@ int RosInterface::decision_making_actions(std::string action, std::string parame
 
 
     srs_decision_making_interface::srs_actionGoal goal;
-    if (json_parameters != "NULL")
+    if (json_parameters.compare("NULL")!=0)
     {
         goal.json_parameters = json_parameters;
         dm_client->sendGoalAndWait(goal);
         return dm_client->getResult()->return_value;
     }
-
-    if (action == "move" || action == "search" || action == "check" || action == "get" || action == "fetch" || action == "deliver" || action == "stop" || action == "pause" || action == "resume")
+    else if (action == "move" || action == "search" || action == "check" || action == "get" || action == "fetch" || action == "deliver")
     {
         goal.action = action.c_str();
         //goal.json_parameters = parameters;
         goal.parameter = parameters;
         goal.priority = 0;
+    }
+    else if (action == "stop" || action == "pause" || action == "resume")
+    {
+        goal.action = action.c_str();
+        //goal.json_parameters = parameters;
+        goal.parameter = parameters;
+        goal.priority = 1;
     }
     else
     {
