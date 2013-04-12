@@ -22,7 +22,6 @@
   <depend package="schunk_sdh"/>
 
   <depend package="srs_grasping"/>
-  <depend package="srs_decision_making"/>
   <depend package="srs_decision_making_interface"/>
   <depend package="srs_interaction_primitives"/>
   <depend package="srs_arm_navigation_tests"/>
