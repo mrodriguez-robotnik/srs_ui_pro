@@ -69,6 +69,7 @@ class srs_ui_proFrame: public wxFrame
         RosInterface *Ri;
         //RvizInterface *RvI;
         ProcessManager *PM;
+        DM_window *DM_W;
 
         std::string event_dm_log_str;
         bool event_dm_log, offline;
@@ -797,7 +798,7 @@ class srs_ui_proFrame: public wxFrame
         wxRadioButton* RadioButton8;
         //*)
 
-
+        bool DM_W_launched;
 
         DECLARE_EVENT_TABLE()
 };

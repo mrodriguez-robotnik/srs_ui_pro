@@ -50,6 +50,7 @@
 #include <srs_ui_pro/srs_ui_proEcho.h>
 #include <srs_ui_pro/ui_butAction.h>
 #include <srs_ui_pro/ui_butGoal.h>
+#include <srs_ui_pro/srs_ui_proEcho.h>
 #include <srs_interaction_primitives/AddBoundingBox.h>
 #include <srs_interaction_primitives/GetAllPrimitivesNames.h>
 #include <srs_interaction_primitives/RemovePrimitive.h>
@@ -197,9 +198,10 @@ class RosInterface
         void IP_RemoveObject(std::string object_name);
         void startAssistedArm();
         std::string getLastGoalAssistedMsg();
+        bool assistedFinished();
 
 
-
+        void callback_gui_status(const srs_ui_pro::srs_ui_proEcho::ConstPtr &msg);
         void callback_arm_joint_states(const pr2_controllers_msgs::JointTrajectoryControllerState::ConstPtr &msg);
         void callback_joint_states(const sensor_msgs::JointState::ConstPtr &msg);
         void callback_diagnostic(const diagnostic_msgs::DiagnosticArray::ConstPtr &msg);
@@ -258,6 +260,7 @@ class RosInterface
         ros::Subscriber sub_grabbed2;
         ros::Subscriber sub_dm_server_feedback;
         ros::Subscriber sub_dm_server_goal;
+        ros::Subscriber sub_ui_pro;
 
         actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction>* dm_client;
         actionlib::SimpleActionClient<srs_ui_pro::ui_butAction>* ui_but_client;
@@ -309,7 +312,8 @@ class RosInterface
         std::string dm_current_task, dm_current_task_id;
         std::string last_goal;
         bool dm_server_event;
-	std::string dm_server_event_info;
+        std::string dm_server_event_info;
+        bool gui_assisted_finish;
 };
 
 #endif // ROSINTERFACE_H

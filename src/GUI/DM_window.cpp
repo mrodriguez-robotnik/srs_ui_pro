@@ -47,7 +47,7 @@ DM_window::DM_window(wxWindow* parent, std::string msg, wxWindowID id,const wxPo
 	//*)
 
 	box_message->SetValue(wxString(getMsgInformation(msg).c_str(), wxConvUTF8));
-        srs_ui_pro_pub = n.advertise<srs_ui_pro::srs_ui_proEcho>("/srs_ui_pro/gui/status", 30);
+    srs_ui_pro_pub = n.advertise<srs_ui_pro::srs_ui_proEcho>("/srs_ui_pro/gui/status", 30);
 }
 
 DM_window::~DM_window()

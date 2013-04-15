@@ -65,7 +65,7 @@ int RosInterface::Start(){
 
 void RosInterface::initializeVariables(){
     dm_exceptional_case_id = 0;
-    dm_solution_required = dm_server_event = emergency_button_stop_state = scanner_stop_state = false;
+    dm_solution_required = dm_server_event = emergency_button_stop_state = scanner_stop_state = gui_assisted_finish = false;
     dm_current_task = dm_current_task_id = last_goal = dm_server_event_info = "";
 }
 
@@ -109,6 +109,8 @@ void RosInterface::initTopics(){
     sub_dm_server_goal = n.subscribe("/srs_ui_pro/echo_server/goal", 1000, &RosInterface::callback_dm_server_goal, this);
 
     srs_ui_pro_pub = n.advertise<srs_ui_pro::srs_ui_proEcho>("/srs_ui_pro/gui/status", 1000);
+    sub_ui_pro = n.subscribe("/srs_ui_pro/gui/status", 1000, &RosInterface::callback_gui_status, this);
+
 }
 
 void RosInterface::publish_status(int status, std::string fb)
@@ -917,13 +919,10 @@ pr2_msgs::AccessPoint RosInterface::getWifiState()
     return wifi_state;
 }
 
-
-
-
-
-
-
-
+bool RosInterface::assistedFinished()
+{
+    return gui_assisted_finish;
+}
 
 
 
@@ -933,6 +932,11 @@ pr2_msgs::AccessPoint RosInterface::getWifiState()
 
 
 //CALLBACKS
+void RosInterface::callback_gui_status(const srs_ui_pro::srs_ui_proEcho::ConstPtr &msg)
+{
+    gui_assisted_finish = (msg->status != 42);
+}
+
 void RosInterface::callback_arm_joint_states(const pr2_controllers_msgs::JointTrajectoryControllerState::ConstPtr &msg)
 {
     for (int i=0; i<7; i++)

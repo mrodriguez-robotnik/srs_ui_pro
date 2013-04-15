@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="default" />
 	<File name="../include/DM_window.h" open="0" top="0" tabpos="3">
-		<Cursor position="86" topLine="4" />
+		<Cursor position="800" topLine="15" />
 	</File>
 	<File name="../include/LogginScreen.h" open="0" top="0" tabpos="0">
 		<Cursor position="198" topLine="0" />
@@ -10,8 +10,8 @@
 	<File name="../include/ProcessManager.h" open="0" top="0" tabpos="0">
 		<Cursor position="1605" topLine="46" />
 	</File>
-	<File name="../include/RosInterface.h" open="0" top="0" tabpos="0">
-		<Cursor position="5129" topLine="128" />
+	<File name="../include/RosInterface.h" open="1" top="1" tabpos="4">
+		<Cursor position="11180" topLine="227" />
 	</File>
 	<File name="../include/RvizInterface.h" open="0" top="0" tabpos="0">
 		<Cursor position="1409" topLine="18" />
@@ -26,10 +26,10 @@
 		<Cursor position="429" topLine="0" />
 	</File>
 	<File name="../include/srs_ui_proMain.h" open="0" top="0" tabpos="4">
-		<Cursor position="4305" topLine="126" />
+		<Cursor position="32105" topLine="765" />
 	</File>
-	<File name="../src/GUI/DM_window.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="3256" topLine="32" />
+	<File name="../src/GUI/DM_window.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="3121" topLine="43" />
 	</File>
 	<File name="../src/GUI/LogginScreen.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="3690" topLine="56" />
@@ -37,8 +37,8 @@
 	<File name="../src/GUI/ProcessManager.cc" open="0" top="0" tabpos="4">
 		<Cursor position="40309" topLine="1023" />
 	</File>
-	<File name="../src/GUI/RosInterface.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="18711" topLine="528" />
+	<File name="../src/GUI/RosInterface.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="5780" topLine="78" />
 	</File>
 	<File name="../src/GUI/RvizInterface.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="227" topLine="0" />
@@ -53,6 +53,6 @@
 		<Cursor position="850" topLine="0" />
 	</File>
 	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="106516" topLine="1800" />
+		<Cursor position="124750" topLine="2303" />
 	</File>
 </CodeBlocks_layout_file>

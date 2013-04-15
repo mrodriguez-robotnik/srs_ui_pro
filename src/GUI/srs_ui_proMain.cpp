@@ -327,7 +327,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     wxBoxSizer* sizer_automatic_move;
     wxMenu* Menu2;
     wxBoxSizer* sizer_automatic_get;
-    
+
     Create(parent, wxID_ANY, _("GUI-PRO"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxFULL_REPAINT_ON_RESIZE, _T("wxID_ANY"));
     SetClientSize(wxSize(1357,654));
     panel_main = new wxPanel(this, ID_PANEL3, wxPoint(0,0), wxSize(1360,400), wxTAB_TRAVERSAL, _T("ID_PANEL3"));
@@ -787,7 +787,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     timer_ROS.SetOwner(this, ID_TIMER5);
     timer_choice.SetOwner(this, ID_TIMER6);
     timer_dmServer.SetOwner(this, ID_TIMER7);
-    
+
     Connect(ID_GRID1,wxEVT_GRID_CELL_LEFT_DCLICK,(wxObjectEventFunction)&srs_ui_proFrame::Ongrid_requestsCellLeftDClick);
     Connect(ID_LISTCTRL1,wxEVT_COMMAND_LIST_ITEM_SELECTED,(wxObjectEventFunction)&srs_ui_proFrame::showContextualMenu);
     Connect(ID_LISTCTRL2,wxEVT_COMMAND_LIST_ITEM_ACTIVATED,(wxObjectEventFunction)&srs_ui_proFrame::acceptCall);
@@ -884,7 +884,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     Initialize();
     connectToSkype();
     option_skype_start->Enable();
-
+    DM_W_launched = false;
     //InitSkype();
 }
 
@@ -2299,12 +2299,12 @@ void srs_ui_proFrame::Ontimer_updatesTrigger(wxTimerEvent& event)
         std::string current_state = Ri->getDMCurrentState() + "\n";
         std::string current_state_aux = "\t"+current_state;
 
-
+        /*
         if (Ri->DM_InterventionRequired() != 0)
         {
             wxMessageBox(wxT("User intervention is needed!\t"), wxT("srs_decision_making: User intervention is needed."), wxICON_INFORMATION);
         }
-
+        */
         if (current_state.compare(last_state)!=0 && current_state.compare("the task has been paused\n")!=0 && current_state.compare("the task has been stopped\n")!=0)
             box_dm_log->AppendText(toWXString(current_state_aux));
         last_state = current_state;
@@ -2330,6 +2330,14 @@ void srs_ui_proFrame::Ontimer_updatesTrigger(wxTimerEvent& event)
         run_notification = false;
     }
 
+    if (DM_W_launched)
+    {
+            if(Ri->assistedFinished())
+            {
+                DM_W_launched = false;
+                tab_automatic->Enable();
+            }
+    }
 }
 
 void srs_ui_proFrame::Ontimer_RequestsEventTrigger1(wxTimerEvent& event)
@@ -2718,8 +2726,11 @@ void srs_ui_proFrame::Ontimer_dmServerTrigger(wxTimerEvent& event)
         {
             Ri->publish_status(42, "I will try to solve your problem!");
             //DM_window *dm_w = new DM_window(this, Ri->getLastGoalAssistedMsg());
-            DM_window *dm_w = new DM_window(this, Ri->DM_ExcepcionalCaseInfo());
-            dm_w->Show(TRUE);
+            DM_W = new DM_window(this, Ri->DM_ExcepcionalCaseInfo());
+            DM_W->Show(TRUE);
+            //TODO: Desactivar botones
+            tab_automatic->Disable();
+            DM_W_launched = true;
         }
         else
             Ri->publish_status(-42, "Sorry, I can't help you now. Try later...");
