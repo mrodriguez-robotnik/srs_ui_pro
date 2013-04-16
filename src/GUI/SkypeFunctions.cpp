@@ -372,13 +372,13 @@ void MySkype::OnConversationListChange(const ConversationRef &conversation, cons
             //Añadir conversaciones a la tabla. Luego cuando se quiera aceptar uno, obtener la conversacion por ID y hacerle un JoinLiveSession
             peopleCalling[i] = (const char*)liveSession->callerList[i]->GetProp(Participant::P_IDENTITY);
 
-            wxString aux(std::string(peopleCalling[i]).c_str(), wxConvUTF8);
+            wxString aux(peopleCalling[i], wxConvUTF8);
 
             std::string s_aux = (liveStatus == Conversation::RINGING_FOR_ME)?"Calling":"Call finished";
             wxString aux2(s_aux.c_str(), wxConvUTF8);
 
             time_t mytime = time(0);
-            wxString aux3(std::string(asctime(localtime(&mytime))).c_str(), wxConvUTF8);
+            wxString aux3(asctime(localtime(&mytime)), wxConvUTF8);
             /*
             incoming_calls->ClearAll();
             long itemIndex = incoming_calls->InsertItem(0, aux);
@@ -391,14 +391,14 @@ void MySkype::OnConversationListChange(const ConversationRef &conversation, cons
             //TODO: NINONI
             std::string auxiliar;
             auxiliar = "";
-            auxiliar.append(std::string(peopleCalling[i]).c_str());
+            auxiliar.append(peopleCalling[i]);
             auxiliar.append(" - ");
             auxiliar.append(s_aux.c_str());
             auxiliar.append(" - ");
-            auxiliar.append(std::string(asctime(localtime(&mytime))).c_str());
+            auxiliar.append(asctime(localtime(&mytime)));
 
             incomingCall_event = true;
-            incomingCall_message = auxiliar;//std::string(peopleCalling[i]).c_str();
+            incomingCall_message = auxiliar;//peopleCalling[i];
 
 
         };
