@@ -1703,7 +1703,8 @@ void srs_ui_proFrame::Onbutton_search_STARTClick(wxCommandEvent& event)
             arg->parameters = aux;
             arg->log = box_dm_log;
 
-            arg->json_parameters = "{\"tasks\":[{\"task\":\"search\",\"destination\":{\"predefined_pose\":\""+toString(choice_automatic_move->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"srs_ui_pro\",\"device_id\":\"srs_ui_pro_0001\"}}";
+            std::string json_aux = (choice_automatic_search_search->GetCurrentSelection() == -1)?"":toString(choice_automatic_search_search->GetStringSelection());
+            arg->json_parameters = "{\"tasks\":[{\"task\":\"search\",\"workspaces\":[\""+json_aux+"\"],\"object\":{\"object_type\":\""+toString(choice_automatic_search->GetStringSelection())+"\"}}],\"initializer\":{\"device_type\":\"srs_ui_pro\",\"device_id\":\"srs_ui_pro_0001\"}}";
 
 
         but_RESUME->Disable();
