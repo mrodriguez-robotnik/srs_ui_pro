@@ -643,7 +643,7 @@ int RosInterface::tt_server_actions(float value)
 int RosInterface::to_server_actions(std::vector<float> values)
 {
     ROS_INFO("Waiting for the /torso_controller/follow_joint_trajector action server to come up.");
-    if (!tt_client->waitForServer(ros::Duration(5.0)))
+    if (!to_client->waitForServer(ros::Duration(5.0)))
         throw ServiceUnavailable("/torso_controller/follow_joint_trajector");
 
     control_msgs::FollowJointTrajectoryGoal goal;
@@ -663,8 +663,8 @@ int RosInterface::to_server_actions(std::vector<float> values)
 
     //if (ui_but_client->sendGoalAndWait(goal, ros::Duration(5.0)) != actionlib::SimpleClientGoalState::SUCCEEDED)
     //    throw ServiceUnavailable("/srs_ui_pro/ui_but_server");
-    tt_client->sendGoal(goal);
-    return tt_client->getResult()->error_code;
+    to_client->sendGoal(goal);
+    return to_client->getResult()->error_code;
 }
 
 void RosInterface::startAssistedArm()
