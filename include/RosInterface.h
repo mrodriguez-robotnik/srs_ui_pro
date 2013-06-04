@@ -149,7 +149,7 @@ class RosInterface
         void killNode(std::string node);
         int decision_making_actions(std::string action, std::string parameters, std::string json_parameters="NULL");
         std::string ui_but_server_actions(int action);
-        int at_server_actions();
+        int at_server_actions(std::vector< std::vector<float> > values);
         int tt_server_actions(float value);
         int to_server_actions(std::vector<float> values);
         int ht_server_actions(std::vector<float> values);

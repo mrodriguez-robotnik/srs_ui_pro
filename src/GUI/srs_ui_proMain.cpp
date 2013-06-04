@@ -2994,6 +2994,7 @@ void srs_ui_proFrame::OnButton20Click(wxCommandEvent& event)
 
 void srs_ui_proFrame::OnButton22Click(wxCommandEvent& event)
 {
+    /*
     try
     {
         float aux[] = {0,0,0,0,0,0,0};
@@ -3003,10 +3004,30 @@ void srs_ui_proFrame::OnButton22Click(wxCommandEvent& event)
     catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
     catch(std::exception &e) {writeInLog(); }
+    */
+    std::vector<float> aux;
+    aux.push_back(0.0);
+    aux.push_back(0.0);
+    aux.push_back(0.0);
+    aux.push_back(0.0);
+    aux.push_back(0.0);
+    aux.push_back(0.0);
+    aux.push_back(0.0);
+
+    std::vector< std::vector<float> > aux2;
+    aux2.push_back(aux);
+    try
+    {
+        Ri->at_server_actions(aux2);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
 }
 
 void srs_ui_proFrame::OnButton12Click1(wxCommandEvent& event)
 {
+    /*
     try
     {
         float aux[] = {-1.1572567240035734, -1.9104664691761568, -2.5334780195730255, -1.7853311980377056, -0.07279873939024305, 0.9176793492327278, -1.8876618005378798};
@@ -3016,6 +3037,25 @@ void srs_ui_proFrame::OnButton12Click1(wxCommandEvent& event)
     catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
     catch(std::exception &e) {writeInLog(); }
+    */
+    std::vector<float> aux;
+    aux.push_back(-1.1572567240035734);
+    aux.push_back(-1.9104664691761568);
+    aux.push_back(-2.5334780195730255);
+    aux.push_back(-1.7853311980377056);
+    aux.push_back(-0.07279873939024305);
+    aux.push_back(0.9176793492327278);
+    aux.push_back(-1.8876618005378798);
+
+    std::vector< std::vector<float> > aux2;
+    aux2.push_back(aux);
+    try
+    {
+        Ri->at_server_actions(aux2);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
 
 }
 
@@ -3056,9 +3096,42 @@ void srs_ui_proFrame::OnButton5Click(wxCommandEvent& event)
 
 void srs_ui_proFrame::OnButton12Click2(wxCommandEvent& event)
 {
+    std::vector<float> v1;
+    v1.push_back(2.567286997401903);
+    v1.push_back(-0.76650447903842134);
+    v1.push_back(-2.879793265790644);
+    v1.push_back(-1.3169067774275871);
+    v1.push_back(0.59769801545593759);
+    v1.push_back(1.3751587638740583);
+    v1.push_back(-1.9299075952888678);
+
+    std::vector<float> v2;
+    v2.push_back(-0.92723326226047276);
+    v2.push_back(-1.0878091156907497);
+    v2.push_back(-1.7511329390916868);
+    v2.push_back(-2.0350967789643617);
+    v2.push_back(0.75547017562671237);
+    v2.push_back(1.55547223138452);
+    v2.push_back(-2.6139619402066767);
+
+
+    std::vector<float> v3;
+    v3.push_back(-1.1572567240035734);
+    v3.push_back(-1.9104664691761568);
+    v3.push_back(-2.5334780195730255);
+    v3.push_back(-1.7853311980377056);
+    v3.push_back(-0.072798739390243047);
+    v3.push_back(0.91767934923272776);
+    v3.push_back(-1.8876618005378798);
+
+    std::vector< std::vector<float> > aux;
+    aux.push_back(v1);
+    aux.push_back(v2);
+    aux.push_back(v3);
+
     try
     {
-        Ri->at_server_actions();
+        Ri->at_server_actions(aux);
     }
     catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }

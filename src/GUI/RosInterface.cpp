@@ -579,7 +579,7 @@ std::string RosInterface::ui_but_server_actions(int action)
     return ui_but_client->getResult()->output;
 }
 
-int RosInterface::at_server_actions()
+int RosInterface::at_server_actions(std::vector< std::vector<float> > values)
 {
     ROS_INFO("Waiting for the /arm_controller/follow_joint_trajectory action server to come up.");
     if (!at_client->waitForServer(ros::Duration(5.0)))
@@ -595,24 +595,17 @@ int RosInterface::at_server_actions()
     goal.trajectory.joint_names.push_back("arm_6_joint");
     goal.trajectory.joint_names.push_back("arm_7_joint");
 
-    goal.trajectory.points.resize(3);
+    goal.trajectory.points.resize(values.size());
 
-    double values[7] = {2.567286997401903, -0.76650447903842134, -2.879793265790644, -1.3169067774275871, 0.59769801545593759, 1.3751587638740583, -1.9299075952888678};
-    double values1[7] = {-0.92723326226047276, -1.0878091156907497, -1.7511329390916868, -2.0350967789643617, 0.75547017562671237, 1.55547223138452, -2.6139619402066767};
-    double values2[7] = {-1.1572567240035734, -1.9104664691761568, -2.5334780195730255, -1.7853311980377056, -0.072798739390243047, 0.91767934923272776, -1.8876618005378798};
 
+for (int j=0; j<values.size(); j++)
+{
     for(int i = 0; i < 7; i++)
     {
-        goal.trajectory.points[0].positions.push_back(values[i]);
-        goal.trajectory.points[0].velocities.push_back(0.0);
-
-        goal.trajectory.points[1].positions.push_back(values1[i]);
-        goal.trajectory.points[1].velocities.push_back(0.0);
-
-        goal.trajectory.points[2].positions.push_back(values2[i]);
-        goal.trajectory.points[2].velocities.push_back(0.0);
+        goal.trajectory.points[j].positions.push_back(values[j][i]);
+        goal.trajectory.points[j].velocities.push_back(0.0);
     }
-
+}
 
     //if (ui_but_client->sendGoalAndWait(goal, ros::Duration(5.0)) != actionlib::SimpleClientGoalState::SUCCEEDED)
     //    throw ServiceUnavailable("/srs_ui_pro/ui_but_server");
