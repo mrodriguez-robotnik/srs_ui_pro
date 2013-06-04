@@ -264,6 +264,9 @@ class srs_ui_proFrame: public wxFrame
         void OnButton21Click(wxCommandEvent& event);
         void OnButton4Click(wxCommandEvent& event);
         void OnButton5Click(wxCommandEvent& event);
+        void followTrajectory(wxCommandEvent& event);
+        void OnButton12Click2(wxCommandEvent& event);
+        void OnButton20Click1(wxCommandEvent& event);
         //*)
 
 
@@ -318,6 +321,7 @@ class srs_ui_proFrame: public wxFrame
         static const long ID_BUTTON15;
         static const long ID_TEXTCTRL17;
         static const long ID_PANEL11;
+        static const long ID_BUTTON11;
         static const long ID_BUTTON36;
         static const long ID_STATICBITMAP9;
         static const long ID_STATICTEXT15;
@@ -647,6 +651,7 @@ class srs_ui_proFrame: public wxFrame
         wxTextCtrl* box_automatic_search_small;
         wxStaticText* label_ontray;
         wxStaticLine* separador1;
+        wxButton* Button6;
         wxRadioButton* RadioButton15;
         wxButton* but_joystick_unused1;
         wxMenu* menu_rviz;

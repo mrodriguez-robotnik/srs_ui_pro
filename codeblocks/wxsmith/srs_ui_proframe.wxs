@@ -308,7 +308,7 @@
 											<handler function="Onbutton_DMStopClick" entry="EVT_BUTTON" />
 										</object>
 										<object class="wxTextCtrl" name="ID_TEXTCTRL17" variable="box_dm_log" member="yes">
-											<pos>12,112</pos>
+											<pos>16,112</pos>
 											<size>624,280</size>
 											<style>wxTE_MULTILINE</style>
 										</object>
@@ -322,11 +322,17 @@
 											<size>648,400</size>
 											<object class="notebookpage">
 												<object class="wxPanel" name="ID_PANEL13" variable="tab_semi_navigation" member="yes">
-													<object class="wxButton" name="ID_BUTTON36" variable="Button12" member="yes">
+													<object class="wxButton" name="ID_BUTTON11" variable="Button6" member="yes">
 														<label>Folded</label>
 														<pos>368,184</pos>
 														<size>80,29</size>
 														<handler function="OnButton12Click1" entry="EVT_BUTTON" />
+													</object>
+													<object class="wxButton" name="ID_BUTTON36" variable="Button12" member="yes">
+														<label>Tray to folder</label>
+														<pos>360,216</pos>
+														<size>102,29</size>
+														<handler function="OnButton12Click2" entry="EVT_BUTTON" />
 													</object>
 													<object class="wxPanel" name="ID_PANEL32" variable="panel_navigation_dashboard" member="yes">
 														<pos>16,16</pos>
@@ -386,6 +392,7 @@
 														<label>Down</label>
 														<pos>280,184</pos>
 														<size>80,29</size>
+														<handler function="OnButton20Click" entry="EVT_BUTTON" />
 													</object>
 													<object class="wxButton" name="ID_BUTTON43" variable="Button19" member="yes">
 														<label>Up</label>
@@ -416,7 +423,7 @@
 														<size>520,16</size>
 													</object>
 													<object class="wxStaticLine" name="ID_STATICLINE6" variable="StaticLine1" member="yes">
-														<pos>16,216</pos>
+														<pos>16,256</pos>
 														<size>520,16</size>
 													</object>
 													<object class="wxStaticText" name="ID_STATICTEXT17" variable="StaticText12" member="yes">

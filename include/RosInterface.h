@@ -32,7 +32,7 @@
 #include <cob_relayboard/EmergencyStopState.h>
 #include <cob_srvs/Trigger.h>
 #include <schunk_sdh/TactileSensor.h>
-
+#include <control_msgs/FollowJointTrajectoryAction.h>
 #include <srs_msgs/FeasibleGrasp.h>
 #include <srs_decision_making_interface/srs_actionActionFeedback.h>     //#include <srs_decision_making/ExecutionActionFeedback.h>
 #include <srs_decision_making_interface/srs_actionActionResult.h>
@@ -149,6 +149,9 @@ class RosInterface
         void killNode(std::string node);
         int decision_making_actions(std::string action, std::string parameters, std::string json_parameters="NULL");
         std::string ui_but_server_actions(int action);
+        int at_server_actions();
+        int tt_server_actions(float value);
+        int to_server_actions(std::vector<float> values);
         std::vector<srs_msgs::DBGrasp> getGraspConfigurations(int object_id);
         std::vector<srs_msgs::FeasibleGrasp> getGraspsFromPosition(int object_id, geometry_msgs::Pose object_pose);
         bool GraspSimulator(int object_id, srs_msgs::FeasibleGrasp grasp_configuration, geometry_msgs::Pose object_pose);
@@ -264,6 +267,11 @@ class RosInterface
 
         actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction>* dm_client;
         actionlib::SimpleActionClient<srs_ui_pro::ui_butAction>* ui_but_client;
+        actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>* at_client;
+        actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>* tt_client;
+        actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>* to_client;
+
+
 
         //ros::Subscriber sub_sdh_controller;    // Suscriber
         //ros::Publisher pub_sdh_controller;     // publisher
