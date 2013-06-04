@@ -131,6 +131,7 @@ void RosInterface::publish_status(int status, std::string fb)
 void RosInterface::initActionServers(){
     dm_client = new actionlib::SimpleActionClient<srs_decision_making_interface::srs_actionAction>("srs_decision_making_actions", true);
     ui_but_client = new actionlib::SimpleActionClient<srs_ui_pro::ui_butAction>("srs_ui_pro/ui_but_server", true);
+    ht_client = new actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>("sdh_controller/follow_joint_trajectory", true);
     at_client = new actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>("arm_controller/follow_joint_trajectory", true);
     tt_client = new actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>("tray_controller/follow_joint_trajectory", true);
     to_client = new actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>("torso_controller/follow_joint_trajectory", true);
@@ -580,9 +581,9 @@ std::string RosInterface::ui_but_server_actions(int action)
 
 int RosInterface::at_server_actions()
 {
-    ROS_INFO("Waiting for the /arm_controller/follow_joint_trajector action server to come up.");
+    ROS_INFO("Waiting for the /arm_controller/follow_joint_trajectory action server to come up.");
     if (!at_client->waitForServer(ros::Duration(5.0)))
-        throw ServiceUnavailable("/arm_controller/follow_joint_trajector");
+        throw ServiceUnavailable("/arm_controller/follow_joint_trajectory");
 
     control_msgs::FollowJointTrajectoryGoal goal;
 
@@ -621,9 +622,9 @@ int RosInterface::at_server_actions()
 
 int RosInterface::tt_server_actions(float value)
 {
-    ROS_INFO("Waiting for the /tray_controller/follow_joint_trajector action server to come up.");
+    ROS_INFO("Waiting for the /tray_controller/follow_joint_trajectory action server to come up.");
     if (!tt_client->waitForServer(ros::Duration(5.0)))
-        throw ServiceUnavailable("/tray_controller/follow_joint_trajector");
+        throw ServiceUnavailable("/tray_controller/follow_joint_trajectory");
 
     control_msgs::FollowJointTrajectoryGoal goal;
 
@@ -643,9 +644,9 @@ int RosInterface::tt_server_actions(float value)
 
 int RosInterface::head_server_actions(float value)
 {
-    ROS_INFO("Waiting for the /head_controller/follow_joint_trajector action server to come up.");
+    ROS_INFO("Waiting for the /head_controller/follow_joint_trajectory action server to come up.");
     if (!head_client->waitForServer(ros::Duration(5.0)))
-        throw ServiceUnavailable("/head_controller/follow_joint_trajector");
+        throw ServiceUnavailable("/head_controller/follow_joint_trajectory");
 
     control_msgs::FollowJointTrajectoryGoal goal;
 
@@ -665,9 +666,9 @@ int RosInterface::head_server_actions(float value)
 
 int RosInterface::to_server_actions(std::vector<float> values)
 {
-    ROS_INFO("Waiting for the /torso_controller/follow_joint_trajector action server to come up.");
+    ROS_INFO("Waiting for the /torso_controller/follow_joint_trajectory action server to come up.");
     if (!to_client->waitForServer(ros::Duration(5.0)))
-        throw ServiceUnavailable("/torso_controller/follow_joint_trajector");
+        throw ServiceUnavailable("/torso_controller/follow_joint_trajectory");
 
     control_msgs::FollowJointTrajectoryGoal goal;
 
@@ -692,9 +693,9 @@ int RosInterface::to_server_actions(std::vector<float> values)
 
 int RosInterface::ht_server_actions(std::vector<float> values)
 {
-    ROS_INFO("Waiting for the /sdh_controller/follow_joint_trajector action server to come up.");
+    ROS_INFO("Waiting for the /sdh_controller/follow_joint_trajectory action server to come up.");
     if (!ht_client->waitForServer(ros::Duration(5.0)))
-        throw ServiceUnavailable("/sdh_controller/follow_joint_trajector");
+        throw ServiceUnavailable("/sdh_controller/follow_joint_trajectory");
 
     control_msgs::FollowJointTrajectoryGoal goal;
 

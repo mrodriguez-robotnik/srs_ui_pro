@@ -10,8 +10,8 @@
 	<File name="../include/ProcessManager.h" open="0" top="0" tabpos="0">
 		<Cursor position="1605" topLine="46" />
 	</File>
-	<File name="../include/RosInterface.h" open="1" top="0" tabpos="2">
-		<Cursor position="5391" topLine="133" />
+	<File name="../include/RosInterface.h" open="0" top="0" tabpos="2">
+		<Cursor position="5510" topLine="142" />
 	</File>
 	<File name="../include/RvizInterface.h" open="0" top="0" tabpos="0">
 		<Cursor position="1409" topLine="18" />
@@ -38,7 +38,7 @@
 		<Cursor position="40309" topLine="1023" />
 	</File>
 	<File name="../src/GUI/RosInterface.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="22162" topLine="568" />
+		<Cursor position="6732" topLine="114" />
 	</File>
 	<File name="../src/GUI/RvizInterface.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="227" topLine="0" />
@@ -52,7 +52,7 @@
 	<File name="../src/GUI/srs_ui_proApp.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="850" topLine="0" />
 	</File>
-	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="113138" topLine="1979" />
+	<File name="../src/GUI/srs_ui_proMain.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="136889" topLine="2734" />
 	</File>
 </CodeBlocks_layout_file>
