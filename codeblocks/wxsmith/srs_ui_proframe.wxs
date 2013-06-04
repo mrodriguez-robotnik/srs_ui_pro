@@ -325,13 +325,13 @@
 													<object class="wxButton" name="ID_BUTTON11" variable="Button6" member="yes">
 														<label>Folded</label>
 														<pos>368,184</pos>
-														<size>80,29</size>
+														<size>104,29</size>
 														<handler function="OnButton12Click1" entry="EVT_BUTTON" />
 													</object>
 													<object class="wxButton" name="ID_BUTTON36" variable="Button12" member="yes">
-														<label>Tray to folder</label>
-														<pos>360,216</pos>
-														<size>102,29</size>
+														<label>Tray to folded</label>
+														<pos>368,216</pos>
+														<size>104,29</size>
 														<handler function="OnButton12Click2" entry="EVT_BUTTON" />
 													</object>
 													<object class="wxPanel" name="ID_PANEL32" variable="panel_navigation_dashboard" member="yes">
@@ -403,20 +403,8 @@
 													<object class="wxButton" name="ID_BUTTON46" variable="Button22" member="yes">
 														<label>Home</label>
 														<pos>368,152</pos>
-														<size>80,29</size>
+														<size>104,29</size>
 														<handler function="OnButton22Click" entry="EVT_BUTTON" />
-													</object>
-													<object class="wxButton" name="ID_BUTTON47" variable="Button23" member="yes">
-														<label>Home</label>
-														<pos>456,152</pos>
-														<size>80,29</size>
-														<handler function="OnButton23Click" entry="EVT_BUTTON" />
-													</object>
-													<object class="wxButton" name="ID_BUTTON45" variable="Button21" member="yes">
-														<label>Kitchen</label>
-														<pos>456,184</pos>
-														<size>80,29</size>
-														<handler function="OnButton23Click" entry="EVT_BUTTON" />
 													</object>
 													<object class="wxStaticLine" name="ID_STATICLINE7" variable="StaticLine2" member="yes">
 														<pos>16,120</pos>
@@ -450,10 +438,6 @@
 													<object class="wxStaticText" name="ID_STATICTEXT46" variable="StaticText17" member="yes">
 														<label>Arm</label>
 														<pos>368,136</pos>
-													</object>
-													<object class="wxStaticText" name="ID_STATICTEXT47" variable="StaticText18" member="yes">
-														<label>Base</label>
-														<pos>456,136</pos>
 													</object>
 												</object>
 												<label>Dashboard</label>

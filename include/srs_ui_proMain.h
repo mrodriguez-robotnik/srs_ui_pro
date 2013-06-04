@@ -336,8 +336,6 @@ class srs_ui_proFrame: public wxFrame
         static const long ID_BUTTON44;
         static const long ID_BUTTON43;
         static const long ID_BUTTON46;
-        static const long ID_BUTTON47;
-        static const long ID_BUTTON45;
         static const long ID_STATICLINE7;
         static const long ID_STATICLINE6;
         static const long ID_STATICTEXT17;
@@ -346,7 +344,6 @@ class srs_ui_proFrame: public wxFrame
         static const long ID_STATICTEXT36;
         static const long ID_STATICTEXT37;
         static const long ID_STATICTEXT46;
-        static const long ID_STATICTEXT47;
         static const long ID_PANEL13;
         static const long ID_BUTTON5;
         static const long ID_PANEL27;
@@ -587,7 +584,6 @@ class srs_ui_proFrame: public wxFrame
         wxTextCtrl* box_dm_log;
         wxMenuItem* menu_status_rxgraph;
         wxPanel* tab_semi_navigation;
-        wxStaticText* StaticText18;
         wxNotebook* tabs_decisionmaking;
         wxStaticText* StaticText17;
         wxNotebook* tabs_subROS;
@@ -716,8 +712,8 @@ class srs_ui_proFrame: public wxFrame
         wxPanel* panel_main;
         wxPanel* Panel8;
         wxTextCtrl* box_status_log;
-        wxNotebook* tabs_actions;
         wxRadioButton* RadioButton6;
+        wxNotebook* tabs_actions;
         wxButton* Button19;
         wxPanel* tab_automatic_move;
         wxPanel* tab_semi_grasping;
@@ -763,7 +759,6 @@ class srs_ui_proFrame: public wxFrame
         wxButton* but_SpawnObjectsInRviz;
         wxButton* but_navigation_dashboard;
         wxChoice* choice_automatic_search;
-        wxButton* Button23;
         wxPanel* tab_automatic_fetch;
         wxMenuItem* MenuItem7;
         wxMenu* menu_dashboard;
@@ -792,7 +787,6 @@ class srs_ui_proFrame: public wxFrame
         wxComboBox* ComboBox1;
         wxPanel* tab_semi;
         wxButton* but_deliver_Start;
-        wxButton* Button21;
         wxTextCtrl* box_graspResult;
         wxListCtrl* grid_skype_IncomingCalls;
         wxPanel* Panel4;

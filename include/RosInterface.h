@@ -152,6 +152,8 @@ class RosInterface
         int at_server_actions();
         int tt_server_actions(float value);
         int to_server_actions(std::vector<float> values);
+        int ht_server_actions(std::vector<float> values);
+        int head_server_actions(float value);
         std::vector<srs_msgs::DBGrasp> getGraspConfigurations(int object_id);
         std::vector<srs_msgs::FeasibleGrasp> getGraspsFromPosition(int object_id, geometry_msgs::Pose object_pose);
         bool GraspSimulator(int object_id, srs_msgs::FeasibleGrasp grasp_configuration, geometry_msgs::Pose object_pose);
@@ -270,6 +272,8 @@ class RosInterface
         actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>* at_client;
         actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>* tt_client;
         actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>* to_client;
+        actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>* ht_client;
+        actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>* head_client;
 
 
 

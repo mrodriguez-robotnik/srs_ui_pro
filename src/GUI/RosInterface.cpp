@@ -134,6 +134,7 @@ void RosInterface::initActionServers(){
     at_client = new actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>("arm_controller/follow_joint_trajectory", true);
     tt_client = new actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>("tray_controller/follow_joint_trajectory", true);
     to_client = new actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>("torso_controller/follow_joint_trajectory", true);
+    head_client = new actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>("head_controller/follow_joint_trajectory", true);
 }
 
 void RosInterface::serviceAvailable(ros::ServiceClient sc){
@@ -640,6 +641,28 @@ int RosInterface::tt_server_actions(float value)
     return tt_client->getResult()->error_code;
 }
 
+int RosInterface::head_server_actions(float value)
+{
+    ROS_INFO("Waiting for the /head_controller/follow_joint_trajector action server to come up.");
+    if (!head_client->waitForServer(ros::Duration(5.0)))
+        throw ServiceUnavailable("/head_controller/follow_joint_trajector");
+
+    control_msgs::FollowJointTrajectoryGoal goal;
+
+    goal.trajectory.joint_names.push_back("head_axis_joint");
+
+
+    goal.trajectory.points.resize(1);
+    goal.trajectory.points[0].positions.push_back(value);
+    goal.trajectory.points[0].velocities.push_back(0.0);
+
+
+    //if (ui_but_client->sendGoalAndWait(goal, ros::Duration(5.0)) != actionlib::SimpleClientGoalState::SUCCEEDED)
+    //    throw ServiceUnavailable("/srs_ui_pro/ui_but_server");
+    head_client->sendGoal(goal);
+    return head_client->getResult()->error_code;
+}
+
 int RosInterface::to_server_actions(std::vector<float> values)
 {
     ROS_INFO("Waiting for the /torso_controller/follow_joint_trajector action server to come up.");
@@ -665,6 +688,47 @@ int RosInterface::to_server_actions(std::vector<float> values)
     //    throw ServiceUnavailable("/srs_ui_pro/ui_but_server");
     to_client->sendGoal(goal);
     return to_client->getResult()->error_code;
+}
+
+int RosInterface::ht_server_actions(std::vector<float> values)
+{
+    ROS_INFO("Waiting for the /sdh_controller/follow_joint_trajector action server to come up.");
+    if (!ht_client->waitForServer(ros::Duration(5.0)))
+        throw ServiceUnavailable("/sdh_controller/follow_joint_trajector");
+
+    control_msgs::FollowJointTrajectoryGoal goal;
+
+    goal.trajectory.joint_names.push_back("sdh_knuckle_joint");
+    goal.trajectory.joint_names.push_back("sdh_thumb_2_joint");
+    goal.trajectory.joint_names.push_back("sdh_thumb_3_joint");
+    goal.trajectory.joint_names.push_back("sdh_finger_12_joint");
+    goal.trajectory.joint_names.push_back("sdh_finger_13_joint");
+    goal.trajectory.joint_names.push_back("sdh_finger_22_joint");
+    goal.trajectory.joint_names.push_back("sdh_finger_23_joint");
+
+
+
+    goal.trajectory.points.resize(1);
+    goal.trajectory.points[0].positions.push_back(values[0]);
+    goal.trajectory.points[0].positions.push_back(values[1]);
+    goal.trajectory.points[0].positions.push_back(values[2]);
+    goal.trajectory.points[0].positions.push_back(values[3]);
+    goal.trajectory.points[0].positions.push_back(values[4]);
+    goal.trajectory.points[0].positions.push_back(values[5]);
+    goal.trajectory.points[0].positions.push_back(values[6]);
+    goal.trajectory.points[0].velocities.push_back(0.0);
+    goal.trajectory.points[0].velocities.push_back(0.0);
+    goal.trajectory.points[0].velocities.push_back(0.0);
+    goal.trajectory.points[0].velocities.push_back(0.0);
+    goal.trajectory.points[0].velocities.push_back(0.0);
+    goal.trajectory.points[0].velocities.push_back(0.0);
+    goal.trajectory.points[0].velocities.push_back(0.0);
+
+
+    //if (ui_but_client->sendGoalAndWait(goal, ros::Duration(5.0)) != actionlib::SimpleClientGoalState::SUCCEEDED)
+    //    throw ServiceUnavailable("/srs_ui_pro/ui_but_server");
+    ht_client->sendGoal(goal);
+    return ht_client->getResult()->error_code;
 }
 
 void RosInterface::startAssistedArm()

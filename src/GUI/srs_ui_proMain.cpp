@@ -99,8 +99,6 @@ const long srs_ui_proFrame::ID_BUTTON42 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON44 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON43 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON46 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON47 = wxNewId();
-const long srs_ui_proFrame::ID_BUTTON45 = wxNewId();
 const long srs_ui_proFrame::ID_STATICLINE7 = wxNewId();
 const long srs_ui_proFrame::ID_STATICLINE6 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT17 = wxNewId();
@@ -109,7 +107,6 @@ const long srs_ui_proFrame::ID_STATICTEXT23 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT36 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT37 = wxNewId();
 const long srs_ui_proFrame::ID_STATICTEXT46 = wxNewId();
-const long srs_ui_proFrame::ID_STATICTEXT47 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL13 = wxNewId();
 const long srs_ui_proFrame::ID_BUTTON5 = wxNewId();
 const long srs_ui_proFrame::ID_PANEL27 = wxNewId();
@@ -445,8 +442,8 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     tab_semi = new wxPanel(tabs_actions, ID_PANEL12, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL12"));
     tabs_subsemi = new wxNotebook(tab_semi, ID_NOTEBOOK3, wxPoint(0,0), wxSize(648,400), 0, _T("ID_NOTEBOOK3"));
     tab_semi_navigation = new wxPanel(tabs_subsemi, ID_PANEL13, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL13"));
-    Button6 = new wxButton(tab_semi_navigation, ID_BUTTON11, _("Folded"), wxPoint(368,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON11"));
-    Button12 = new wxButton(tab_semi_navigation, ID_BUTTON36, _("Tray to folder"), wxPoint(360,216), wxSize(102,29), 0, wxDefaultValidator, _T("ID_BUTTON36"));
+    Button6 = new wxButton(tab_semi_navigation, ID_BUTTON11, _("Folded"), wxPoint(368,184), wxSize(104,29), 0, wxDefaultValidator, _T("ID_BUTTON11"));
+    Button12 = new wxButton(tab_semi_navigation, ID_BUTTON36, _("Tray to folded"), wxPoint(368,216), wxSize(104,29), 0, wxDefaultValidator, _T("ID_BUTTON36"));
     panel_navigation_dashboard = new wxPanel(tab_semi_navigation, ID_PANEL32, wxPoint(16,16), wxSize(296,40), wxTAB_TRAVERSAL, _T("ID_PANEL32"));
     img_navigation_dashboard = new wxStaticBitmap(panel_navigation_dashboard, ID_STATICBITMAP9, wxBitmap(wxImage(_T("./img/off.gif"))), wxPoint(8,8), wxDefaultSize, 0, _T("ID_STATICBITMAP9"));
     label_navigation_dashboard = new wxStaticText(panel_navigation_dashboard, ID_STATICTEXT15, _("Dashboard"), wxPoint(48,16), wxDefaultSize, 0, _T("ID_STATICTEXT15"));
@@ -459,9 +456,7 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     Button18 = new wxButton(tab_semi_navigation, ID_BUTTON42, _("Back"), wxPoint(192,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON42"));
     Button20 = new wxButton(tab_semi_navigation, ID_BUTTON44, _("Down"), wxPoint(280,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON44"));
     Button19 = new wxButton(tab_semi_navigation, ID_BUTTON43, _("Up"), wxPoint(280,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON43"));
-    Button22 = new wxButton(tab_semi_navigation, ID_BUTTON46, _("Home"), wxPoint(368,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON46"));
-    Button23 = new wxButton(tab_semi_navigation, ID_BUTTON47, _("Home"), wxPoint(456,152), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON47"));
-    Button21 = new wxButton(tab_semi_navigation, ID_BUTTON45, _("Kitchen"), wxPoint(456,184), wxSize(80,29), 0, wxDefaultValidator, _T("ID_BUTTON45"));
+    Button22 = new wxButton(tab_semi_navigation, ID_BUTTON46, _("Home"), wxPoint(368,152), wxSize(104,29), 0, wxDefaultValidator, _T("ID_BUTTON46"));
     StaticLine2 = new wxStaticLine(tab_semi_navigation, ID_STATICLINE7, wxPoint(16,120), wxSize(520,16), wxLI_HORIZONTAL, _T("ID_STATICLINE7"));
     StaticLine1 = new wxStaticLine(tab_semi_navigation, ID_STATICLINE6, wxPoint(16,256), wxSize(520,16), wxLI_HORIZONTAL, _T("ID_STATICLINE6"));
     StaticText12 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT17, _("Fast commands"), wxPoint(16,106), wxDefaultSize, 0, _T("ID_STATICTEXT17"));
@@ -471,7 +466,6 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     StaticText15 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT36, _("Torso"), wxPoint(192,136), wxDefaultSize, 0, _T("ID_STATICTEXT36"));
     StaticText16 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT37, _("Tray"), wxPoint(280,136), wxDefaultSize, 0, _T("ID_STATICTEXT37"));
     StaticText17 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT46, _("Arm"), wxPoint(368,136), wxDefaultSize, 0, _T("ID_STATICTEXT46"));
-    StaticText18 = new wxStaticText(tab_semi_navigation, ID_STATICTEXT47, _("Base"), wxPoint(456,136), wxDefaultSize, 0, _T("ID_STATICTEXT47"));
     tab_semi_detection = new wxPanel(tabs_subsemi, ID_PANEL14, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL14"));
     but_DetectObjects = new wxButton(tab_semi_detection, ID_BUTTON5, _("Detect object"), wxPoint(176,16), wxSize(120,29), 0, wxDefaultValidator, _T("ID_BUTTON5"));
     panel_detected_objects = new wxPanel(tab_semi_detection, ID_PANEL27, wxPoint(16,96), wxSize(616,216), wxTAB_TRAVERSAL, _T("ID_PANEL27"));
@@ -824,8 +818,6 @@ srs_ui_proFrame::srs_ui_proFrame(wxWindow* parent, SkypeFunctions *sf, ProcessMa
     Connect(ID_BUTTON44,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton20Click);
     Connect(ID_BUTTON43,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton19Click);
     Connect(ID_BUTTON46,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton22Click);
-    Connect(ID_BUTTON47,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton23Click);
-    Connect(ID_BUTTON45,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::OnButton23Click);
     Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::DetectObjects);
     Connect(ID_BUTTON33,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_spawn_objectsClick);
     Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&srs_ui_proFrame::Onbutton_GenerateGraspsClick);
@@ -2657,6 +2649,7 @@ void srs_ui_proFrame::runDashboard(wxCommandEvent& event)
 
 void srs_ui_proFrame::Onbut_head_frontClick(wxCommandEvent& event)
 {
+    /*
     try
     {
         float aux[] = {-3.14};
@@ -2666,10 +2659,20 @@ void srs_ui_proFrame::Onbut_head_frontClick(wxCommandEvent& event)
     catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
     catch(std::exception &e) {writeInLog(); }
+    */
+
+    try
+    {
+        Ri->head_server_actions(-3.14);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
 }
 
 void srs_ui_proFrame::Onbut_head_backClick(wxCommandEvent& event)
 {
+    /*
     try
     {
         float aux[] = {0.0};
@@ -2679,10 +2682,19 @@ void srs_ui_proFrame::Onbut_head_backClick(wxCommandEvent& event)
     catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
     catch(std::exception &e) {writeInLog(); }
+    */
+    try
+    {
+        Ri->head_server_actions(0.0);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
 }
 
 void srs_ui_proFrame::OnButton1Click(wxCommandEvent& event)
 {
+    /*)
         try
     {
         float aux[] = {0.0, 0.0, 1.0472, 0.0, 1.0472, 0.0, 1.0472};
@@ -2693,11 +2705,28 @@ void srs_ui_proFrame::OnButton1Click(wxCommandEvent& event)
     catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
     catch(std::exception &e) {writeInLog(); }
+    */
+    std::vector<float> aux;
+    aux.push_back(0.0);
+    aux.push_back(0.0);
+    aux.push_back(1.0472);
+    aux.push_back(0.0);
+    aux.push_back(1.0472);
+    aux.push_back(0.0);
+    aux.push_back(1.0472);
+    try
+    {
+        Ri->ht_server_actions(aux);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
 }
 
 
 void srs_ui_proFrame::OnButton2Click(wxCommandEvent& event)
 {
+    /*
     try
     {
         float aux[] = {0.0, -0.9854, 0.9472, -0.9854, 0.9472, -0.9854, 0.9472};
@@ -2708,6 +2737,23 @@ void srs_ui_proFrame::OnButton2Click(wxCommandEvent& event)
     catch(ServiceUnavailable &e) {writeInLog(e.getMessage()); }
     catch(ServiceCallFailed &e) {writeInLog(e.getMessage()); }
     catch(std::exception &e) {writeInLog(); }
+    */
+    std::vector<float> aux;
+    aux.push_back(0.0);
+    aux.push_back(-0.9854);
+    aux.push_back(0.9472);
+    aux.push_back(-0.9854);
+    aux.push_back(0.9472);
+    aux.push_back(-0.9854);
+    aux.push_back(0.9472);
+    try
+    {
+        Ri->ht_server_actions(aux);
+    }
+    catch(ServiceUnavailable &e) { writeInLog(e.getMessage()); }
+    catch(ServiceCallFailed &e) {  writeInLog(e.getMessage()); }
+    catch(std::exception &e) { writeInLog(); }
+
 }
 
 void srs_ui_proFrame::Onbut_RvizTools_AssistedArm_LaunchClick(wxCommandEvent& event)
@@ -2977,7 +3023,7 @@ void srs_ui_proFrame::OnButton23Click(wxCommandEvent& event)
 {
     try
     {
-        float aux[] = {-2.14,0,0};
+        float aux[] = {-2.14,0,0}; //TODO: change
         std::vector<float> new_kit(aux, aux+sizeof(aux)/sizeof(float));
         Ri->move("base", new_kit);
     }
